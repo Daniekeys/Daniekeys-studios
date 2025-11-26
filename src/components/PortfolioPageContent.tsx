@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Play,
   Palette,
@@ -21,165 +22,204 @@ import { useState } from "react";
 
 const categories = [
   { id: "all", name: "All Projects", icon: Star },
-  { id: "motion-graphics", name: "Motion Graphics", icon: Play },
+  { id: "motion", name: "Motion Graphics", icon: Play },
   { id: "branding", name: "Branding", icon: Palette },
-  { id: "web-development", name: "Web Development", icon: Globe },
-  { id: "social-media", name: "Social Media", icon: Share2 },
-  { id: "rebranding", name: "Rebranding", icon: RefreshCw },
+  { id: "marketing", name: "Marketing", icon: Share2 },
+  { id: "events", name: "Events", icon: Building2 },
 ];
 
 const portfolioItems = [
   {
     id: 1,
-    title: "TechCorp Brand Identity",
+    title: "Premium Brand Identity System",
     category: "branding",
     description:
-      "Complete brand identity system for a growing tech startup including logo, color palette, and brand guidelines.",
-    image: "/images/portfolio/techcorp-branding.jpg",
-    video: "/videos/portfolio/techcorp-brand-reveal.mp4",
-    client: "TechCorp Solutions",
+      "Complete brand identity system for enterprise business including logo, color palette, and comprehensive brand guidelines.",
+    image: "/images/samples/branding.jpg",
+    client: "Enterprise Solutions Ltd",
     year: "2024",
     services: ["Brand Identity", "Logo Design", "Brand Guidelines"],
     results: [
-      "300% increase in brand recognition",
-      "50% improvement in client engagement",
+      "400% increase in brand recognition",
+      "60% improvement in client trust",
     ],
     testimonial:
-      "Daniekeys Studios completely transformed our brand. The new identity perfectly captures our vision and values.",
+      "Daniekeys Studios delivered a brand identity that perfectly captures our professional essence.",
     featured: true,
-    tags: ["Startup", "Technology", "B2B"],
+    tags: ["Corporate", "Enterprise", "B2B"],
   },
   {
     id: 2,
-    title: "EcoFarms Motion Graphics Campaign",
-    category: "motion-graphics",
+    title: "Modern Brand Redesign",
+    category: "branding",
     description:
-      "Animated explainer video series showcasing sustainable farming practices and environmental impact.",
-    image: "/images/portfolio/ecofarms-motion.jpg",
-    video: "/videos/portfolio/ecofarms-explainer.mp4",
-    client: "EcoFarms Nigeria",
+      "Contemporary brand redesign featuring clean aesthetics and modern typography for tech startup.",
+    image: "/images/samples/branding-b.png",
+    client: "Innovation Hub Nigeria",
     year: "2024",
-    services: ["Motion Graphics", "Explainer Videos", "Animation"],
+    services: ["Brand Redesign", "Visual Identity", "Typography"],
     results: [
-      "2M+ views across platforms",
-      "40% increase in awareness campaigns",
+      "250% brand recognition improvement",
+      "45% increase in investor interest",
     ],
     testimonial:
-      "The animation brought our sustainability message to life in ways we never imagined.",
+      "The new brand identity elevated our startup to compete with established players.",
     featured: true,
-    tags: ["Agriculture", "Sustainability", "NGO"],
+    tags: ["Startup", "Technology", "Modern"],
   },
   {
     id: 3,
-    title: "FashionForward E-commerce Platform",
-    category: "web-development",
+    title: "Promotional Video Campaign",
+    category: "motion",
     description:
-      "Full-stack e-commerce website with custom UI/UX design and integrated payment systems.",
-    image: "/images/portfolio/fashion-ecommerce.jpg",
-    video: "/videos/portfolio/fashion-website-demo.mp4",
-    client: "FashionForward Lagos",
+      "High-impact promotional video campaign designed to increase brand awareness and drive engagement.",
+    image: "/images/samples/marketing-a.png",
+    video: "/videos/Ads-video.mp4",
+    client: "Digital Marketing Pro",
     year: "2024",
-    services: ["Web Development", "E-commerce", "UI/UX Design"],
-    results: [
-      "200% increase in online sales",
-      "70% improvement in user experience",
-    ],
+    services: ["Motion Graphics", "Video Production", "Campaign Strategy"],
+    results: ["3M+ views across platforms", "200% increase in lead generation"],
     testimonial:
-      "Our new website has revolutionized how customers interact with our brand online.",
-    featured: false,
-    tags: ["Fashion", "E-commerce", "B2C"],
+      "The promotional videos exceeded our expectations and delivered exceptional results.",
+    featured: true,
+    tags: ["Advertising", "Promotion", "Digital"],
   },
   {
     id: 4,
-    title: "HealthPlus Social Media Strategy",
-    category: "social-media",
+    title: "Hero Video Production",
+    category: "motion",
     description:
-      "Comprehensive social media management and content strategy for healthcare provider.",
-    image: "/images/portfolio/healthplus-social.jpg",
-    video: "/videos/portfolio/healthplus-social-reel.mp4",
-    client: "HealthPlus Medical",
+      "Professional hero video production showcasing company values and core services for corporate website.",
+    image: "/images/samples/marketing-b.png",
+    video: "/videos/new-hero.mp4",
+    client: "Corporate Solutions Group",
     year: "2024",
     services: [
-      "Social Media Marketing",
-      "Content Strategy",
-      "Community Management",
+      "Hero Video",
+      "Corporate Storytelling",
+      "Professional Production",
     ],
-    results: ["150% follower growth", "300% engagement rate increase"],
+    results: [
+      "150% website engagement increase",
+      "80% improvement in conversion rate",
+    ],
     testimonial:
-      "Their strategic approach to social media has significantly boosted our patient engagement.",
+      "The hero video perfectly communicates our brand story and mission.",
     featured: false,
-    tags: ["Healthcare", "Medical", "B2C"],
+    tags: ["Corporate", "Hero Video", "Website"],
   },
   {
     id: 5,
-    title: "RetailMax Complete Rebranding",
-    category: "rebranding",
+    title: "Brand Video Production",
+    category: "motion",
     description:
-      "End-to-end rebranding project including new identity, website redesign, and marketing materials.",
-    image: "/images/portfolio/retailmax-rebrand.jpg",
-    video: "/videos/portfolio/retailmax-rebrand-reveal.mp4",
-    client: "RetailMax Stores",
-    year: "2023",
-    services: ["Rebranding", "Web Design", "Marketing Materials"],
-    results: [
-      "400% brand recognition improvement",
-      "85% customer retention increase",
-    ],
+      "Dynamic brand video production showcasing company identity and core values through engaging storytelling.",
+    image: "/images/samples/branding.jpg",
+    video: "/videos/brand-vid.mp4",
+    client: "Creative Studio Pro",
+    year: "2024",
+    services: ["Brand Video", "Creative Direction", "Video Storytelling"],
+    results: ["250% brand awareness increase", "90% viewer engagement rate"],
     testimonial:
-      "The rebrand positioned us as a modern, customer-focused retail brand.",
-    featured: true,
-    tags: ["Retail", "Rebranding", "B2C"],
+      "The brand video perfectly captured our essence and elevated our market presence.",
+    featured: false,
+    tags: ["Branding", "Video", "Creative"],
   },
   {
     id: 6,
-    title: "YouthEmpower Campaign Videos",
-    category: "motion-graphics",
+    title: "Marketing Campaign Design",
+    category: "marketing",
     description:
-      "Community awareness video series promoting youth empowerment and skill development.",
-    image: "/images/portfolio/youth-empower.jpg",
-    video: "/videos/portfolio/youth-campaign.mp4",
-    client: "Youth Development Foundation",
+      "Comprehensive marketing campaign including social media assets, print materials, and digital advertisements.",
+    image: "/images/samples/marketing-c.png",
+    client: "Retail Excellence",
     year: "2024",
-    services: ["Campaign Videos", "Motion Graphics", "Social Impact"],
-    results: ["5M+ reach across Nigeria", "500+ youth program enrollments"],
+    services: ["Campaign Design", "Social Media", "Digital Marketing"],
+    results: ["300% social media engagement", "120% sales increase"],
     testimonial:
-      "These videos have been instrumental in spreading our youth empowerment message.",
+      "Their marketing campaign design drove unprecedented growth for our business.",
     featured: false,
-    tags: ["NGO", "Youth", "Social Impact"],
+    tags: ["Retail", "Campaign", "Social Media"],
   },
   {
     id: 7,
-    title: "StartupHub Website Platform",
-    category: "web-development",
+    title: "Digital Marketing Suite",
+    category: "marketing",
     description:
-      "Custom website platform for startup incubator with member portal and event management.",
-    image: "/images/portfolio/startuphub-website.jpg",
-    video: "/videos/portfolio/startuphub-demo.mp4",
-    client: "Lagos StartupHub",
+      "Complete digital marketing package including website banners, social media templates, and email campaigns.",
+    image: "/images/samples/marketing-d.png",
+    client: "E-commerce Plus",
     year: "2024",
-    services: ["Web Development", "Portal Design", "Event Management"],
-    results: ["300+ startup applications", "50% improved user engagement"],
+    services: ["Digital Marketing", "Template Design", "Email Campaigns"],
+    results: ["250% email open rates", "180% click-through improvement"],
     testimonial:
-      "The platform has streamlined our operations and improved startup experience.",
+      "The digital marketing suite transformed our online presence completely.",
     featured: false,
-    tags: ["Startup", "Technology", "Platform"],
+    tags: ["E-commerce", "Digital", "Templates"],
   },
   {
     id: 8,
-    title: "FoodieNaija Social Content",
-    category: "social-media",
+    title: "Social Media Strategy",
+    category: "marketing",
     description:
-      "Food photography, video content creation, and social media strategy for restaurant chain.",
-    image: "/images/portfolio/foodie-social.jpg",
-    video: "/videos/portfolio/foodie-content-reel.mp4",
-    client: "FoodieNaija Restaurants",
+      "Strategic social media content design and planning for lifestyle brand targeting young professionals.",
+    image: "/images/samples/marketing-e.png",
+    client: "Lifestyle Brand Co",
     year: "2024",
-    services: ["Food Photography", "Video Content", "Social Strategy"],
-    results: ["250% social media growth", "40% increase in foot traffic"],
+    services: ["Social Strategy", "Content Design", "Brand Positioning"],
+    results: ["400% follower growth", "350% engagement increase"],
     testimonial:
-      "Their content strategy has made our food look irresistible and drove real results.",
+      "Their social media strategy helped us connect with our target audience authentically.",
     featured: false,
-    tags: ["Food", "Restaurant", "B2C"],
+    tags: ["Lifestyle", "Social Media", "Content"],
+  },
+  {
+    id: 9,
+    title: "Corporate Event Branding",
+    category: "events",
+    description:
+      "Complete event branding package for major business conference including signage, materials, and digital assets.",
+    image: "/images/samples/events.png",
+    client: "Business Summit 2024",
+    year: "2024",
+    services: ["Event Branding", "Signage Design", "Conference Materials"],
+    results: ["500+ attendee satisfaction", "95% brand recall rate"],
+    testimonial:
+      "The event branding created a memorable and professional conference experience.",
+    featured: true,
+    tags: ["Corporate", "Conference", "Event"],
+  },
+  {
+    id: 10,
+    title: "Cultural Event Promotion",
+    category: "events",
+    description:
+      "Vibrant promotional materials and branding for cultural festival celebrating Nigerian heritage and arts.",
+    image: "/images/samples/events-b.jpg",
+    client: "Heritage Cultural Festival",
+    year: "2024",
+    services: ["Event Promotion", "Cultural Branding", "Festival Marketing"],
+    results: ["10,000+ festival attendance", "80% ticket sales increase"],
+    testimonial:
+      "The promotional materials perfectly captured our cultural celebration spirit.",
+    featured: false,
+    tags: ["Cultural", "Festival", "Heritage"],
+  },
+  {
+    id: 11,
+    title: "Premium Launch Event",
+    category: "events",
+    description:
+      "Luxury event branding and promotional materials for high-end product launch targeting premium market segment.",
+    image: "/images/samples/event-c.jpg",
+    client: "Luxury Brands Ltd",
+    year: "2024",
+    services: ["Launch Event", "Luxury Branding", "Premium Marketing"],
+    results: ["200+ VIP attendance", "150% media coverage"],
+    testimonial:
+      "The event branding elevated our product launch to luxury standards.",
+    featured: false,
+    tags: ["Luxury", "Product Launch", "Premium"],
   },
 ];
 
@@ -205,7 +245,24 @@ export default function PortfolioPageContent() {
     <div className="bg-primary text-white">
       {/* Hero Section */}
       <section className="section-padding relative overflow-hidden">
-        <div className="container-padding">
+        {/* Background Video */}
+        <div className="absolute inset-0">
+          <video
+            className="hero-video opacity-20"
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src="/videos/hero-video.mp4" type="video/mp4" />
+            <div className="w-full h-full bg-gradient-to-br from-accent-blue/20 to-accent-blue-light/10"></div>
+          </video>
+
+          {/* Subtle atmospheric overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-primary/80"></div>
+        </div>
+
+        <div className="container-padding relative z-10">
           <motion.div
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
@@ -245,12 +302,6 @@ export default function PortfolioPageContent() {
             })}
           </motion.div>
         </div>
-
-        {/* Background decoration */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-accent-blue/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-blue-light/5 rounded-full blur-3xl"></div>
-        </div>
       </section>
 
       {/* Featured Projects */}
@@ -286,14 +337,26 @@ export default function PortfolioPageContent() {
               >
                 <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
                   <div className="relative bg-secondary/10 rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 group">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-80 object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Play className="w-16 h-16 text-white" />
-                    </div>
+                    {/* Show video for Motion category, image for others */}
+                    {item.category === "motion" && item.video ? (
+                      <video
+                        className="w-full h-80 object-cover"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      >
+                        <source src={item.video} type="video/mp4" />
+                      </video>
+                    ) : (
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        width={600}
+                        height={320}
+                        className="w-full h-80 object-cover"
+                      />
+                    )}
                     <div className="absolute top-4 right-4">
                       <span className="bg-accent-blue text-white px-3 py-1 rounded-full text-xs font-semibold">
                         {item.year}
@@ -437,14 +500,26 @@ export default function PortfolioPageContent() {
                 whileHover={{ y: -5 }}
               >
                 <div className="relative overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Play className="w-12 h-12 text-white" />
-                  </div>
+                  {/* Show video for Motion category, image for others */}
+                  {item.category === "motion" && item.video ? (
+                    <video
+                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    >
+                      <source src={item.video} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      width={400}
+                      height={200}
+                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  )}
                   {item.featured && (
                     <div className="absolute top-4 left-4">
                       <span className="bg-accent-blue text-white px-2 py-1 rounded text-xs font-semibold">

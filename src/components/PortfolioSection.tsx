@@ -3,88 +3,128 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 const portfolioItems = [
   {
     id: 1,
-    title: "Global Tech Rebrand",
-    client: "TechCorp International",
+    title: "Brand Identity Design",
+    client: "Premium Business Solutions",
     category: "Branding",
     year: "2024",
-    image: "/images/work-1.jpg",
-    video: "/videos/Ads-video.mp4",
-    description:
-      "Complete visual identity overhaul for leading technology company",
+    image: "/images/samples/branding.jpg",
+    description: "Complete visual identity for modern business enterprise",
     height: "h-96",
   },
   {
     id: 2,
-    title: "Motion Campaign",
-    client: "Creative Agency",
-    category: "Motion Graphics",
+    title: "Creative Brand System",
+    client: "Innovation Hub",
+    category: "Branding",
     year: "2024",
-    image: "/images/work-2.jpg",
-    video: "/videos/Ads-video.mp4",
-    description: "Award-winning animated campaign for luxury brand",
+    image: "/images/samples/branding-b.png",
+    description: "Comprehensive branding solution for tech startup",
     height: "h-80",
   },
   {
     id: 3,
-    title: "E-commerce Platform",
-    client: "Retail Innovation",
-    category: "Web Development",
-    year: "2023",
-    image: "/images/work-3.jpg",
+    title: "Motion Graphics Campaign",
+    client: "Digital Marketing Agency",
+    category: "Motion",
+    year: "2024",
+    image: "/images/samples/marketing-a.png",
     video: "/videos/Ads-video.mp4",
-    description: "Custom e-commerce solution driving 300% conversion increase",
+    description: "Engaging animated advertisements for brand awareness",
     height: "h-88",
   },
   {
     id: 4,
-    title: "Brand Identity System",
-    client: "Startup Ventures",
-    category: "Branding",
+    title: "Hero Video Production",
+    client: "Corporate Solutions",
+    category: "Motion",
     year: "2024",
-    image: "/images/work-4.jpg",
-    video: "/videos/Ads-video.mp4",
-    description: "Comprehensive identity for emerging fintech company",
+    image: "/images/samples/marketing-b.png",
+    video: "/videos/new-hero.mp4",
+    description: "Professional hero video for company website",
     height: "h-72",
   },
   {
     id: 5,
-    title: "Digital Experience",
-    client: "Cultural Institution",
-    category: "Web Development",
-    year: "2023",
-    image: "/images/work-5.jpg",
-    video: "/videos/Ads-video.mp4",
-    description: "Immersive digital experience for art museum",
-    height: "h-96",
+    title: "Brand Video Production",
+    client: "Creative Studio",
+    category: "Motion",
+    year: "2024",
+    image: "/images/samples/branding.jpg",
+    video: "/videos/brand-vid.mp4",
+    description: "Dynamic brand video showcasing company identity",
+    height: "h-84",
   },
   {
     id: 6,
-    title: "Product Launch Campaign",
-    client: "Consumer Electronics",
+    title: "Marketing Campaign Design",
+    client: "E-commerce Platform",
     category: "Marketing",
     year: "2024",
-    image: "/images/work-6.jpg",
-    video: "/videos/Ads-video.mp4",
-    description: "Integrated campaign launching revolutionary product",
+    image: "/images/samples/marketing-c.png",
+    description: "Comprehensive marketing materials for product launch",
+    height: "h-96",
+  },
+  {
+    id: 7,
+    title: "Digital Marketing Suite",
+    client: "Retail Brand",
+    category: "Marketing",
+    year: "2024",
+    image: "/images/samples/marketing-d.png",
+    description: "Complete digital marketing package for online presence",
     height: "h-80",
+  },
+  {
+    id: 8,
+    title: "Social Media Campaign",
+    client: "Lifestyle Brand",
+    category: "Marketing",
+    year: "2024",
+    image: "/images/samples/marketing-e.png",
+    description: "Engaging social media content and strategy",
+    height: "h-84",
+  },
+  {
+    id: 9,
+    title: "Corporate Event Branding",
+    client: "Business Conference",
+    category: "Events",
+    year: "2024",
+    image: "/images/samples/events.png",
+    description: "Complete visual identity for major business conference",
+    height: "h-90",
+  },
+  {
+    id: 10,
+    title: "Event Marketing Materials",
+    client: "Cultural Festival",
+    category: "Events",
+    year: "2024",
+    image: "/images/samples/events-b.jpg",
+    description: "Comprehensive event promotion and branding package",
+    height: "h-88",
+  },
+  {
+    id: 11,
+    title: "Premium Event Experience",
+    client: "Luxury Launch Event",
+    category: "Events",
+    year: "2024",
+    image: "/images/samples/event-c.jpg",
+    description: "High-end event branding and promotional materials",
+    height: "h-92",
   },
 ];
 
-const categories = [
-  "All",
-  "Branding",
-  "Motion Graphics",
-  "Web Development",
-  "Marketing",
-];
+const categories = ["All", "Branding", "Motion", "Marketing", "Events"];
 
 export default function PortfolioSection() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
 
   const filteredItems =
     activeCategory === "All"
@@ -149,27 +189,12 @@ export default function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              onMouseEnter={() => setHoveredItem(item.id)}
-              onMouseLeave={() => setHoveredItem(null)}
             >
               <div className={`relative ${item.height} overflow-hidden`}>
-                {/* Static Image */}
-                <div
-                  className={`absolute inset-0 bg-secondary/20 transition-opacity duration-300 ${
-                    hoveredItem === item.id ? "opacity-0" : "opacity-100"
-                  }`}
-                >
-                  <div className="w-full h-full bg-gradient-to-br from-secondary/40 to-primary/40 flex items-center justify-center">
-                    <span className="text-white text-lg font-light">
-                      {item.category}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Video on Hover */}
-                {hoveredItem === item.id && (
+                {/* Show video for Motion category, image for others */}
+                {item.category === "Motion" && item.video ? (
                   <video
-                    className="portfolio-video absolute inset-0"
+                    className="w-full h-full object-cover"
                     autoPlay
                     muted
                     loop
@@ -177,10 +202,17 @@ export default function PortfolioSection() {
                   >
                     <source src={item.video} type="video/mp4" />
                   </video>
+                ) : (
+                  <Image
+                    src={item.image}
+                    alt={`${item.title} - ${item.category}`}
+                    fill
+                    className="object-cover"
+                  />
                 )}
 
                 {/* Overlay Content */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div>
