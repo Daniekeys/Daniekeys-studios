@@ -7,14 +7,8 @@ import {
   MapPin,
   Clock,
   Instagram,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Send,
-  MessageCircle,
-  Briefcase,
-  Star,
-  ArrowRight,
+  Facebook, Send, Star,
+  ArrowRight
 } from "lucide-react";
 import { useState } from "react";
 

@@ -5,6 +5,8 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export default function TransformationSection() {
+
+  
   return (
     <section className="section-padding bg-primary">
       <div className="container-padding">

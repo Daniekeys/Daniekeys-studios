@@ -4,19 +4,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import {
   Play,
-  Palette,
-  Globe,
-  Share2,
-  RefreshCw,
-  Users,
-  Building2,
-  Film,
-  ExternalLink,
+  Palette, Share2, Users,
+  Building2, ExternalLink,
   ArrowRight,
   Star,
   Eye,
   Award,
-  TrendingUp,
+  TrendingUp
 } from "lucide-react";
 import { useState } from "react";
 
@@ -232,7 +226,7 @@ const stats = [
 
 export default function PortfolioPageContent() {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [selectedItem, setSelectedItem] = useState<number | null>(null);
+  const [, setSelectedItem] = useState<number | null>(null);
 
   const filteredItems =
     activeCategory === "all"
