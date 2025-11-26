@@ -20,19 +20,19 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Daniekeys Studios" }],
   icons: {
-    icon: "/images/daniekeys-favicon.png",
-    shortcut: "/images/daniekeys-favicon.png",
-    apple: "/images/daniekeys-favicon.png",
+    icon: "/images/logos/logo-alone.png",
+    shortcut: "/images/logos/logo-alone.png",
+    apple: "/images/logos/logo-alone.png",
     other: {
       rel: "apple-touch-icon-precomposed",
-      url: "/images/daniekeys-favicon.png",
+      url: "/images/logos/logo-alone.png",
     },
   },
   openGraph: {
     title: "Daniekeys Studios - Where Creativity Meets Technology",
     description:
       "Premium creative studio creating cinematic visuals and cutting-edge digital experiences for world-class brands.",
-    images: ["/images/daniekeys-og.png"],
+    images: ["/images/logos/logo-alone.png"],
     type: "website",
     siteName: "Daniekeys Studios",
     locale: "en_US",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "Daniekeys Studios - Premium Creative Studio",
     description:
       "Where creativity meets technology. Premium motion graphics, branding, and digital experiences.",
-    images: ["/images/daniekeys-og.png"],
+    images: ["/images/logos/logo-alone.png"],
     creator: "@daniekeys",
   },
   robots: {
