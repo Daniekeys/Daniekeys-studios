@@ -48,7 +48,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="section-padding bg-off-white">
+    <section className="section-padding bg-primary">
       <div className="container-padding">
         {/* Section Header */}
         <motion.div
@@ -59,9 +59,9 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.8 }}
         >
           <span className="text-accent-blue text-sm font-medium tracking-wider uppercase mb-4 block">
-            Client Testimonials
+            Testimonials
           </span>
-          <h2 className="display-2 text-primary mb-8">
+          <h2 className="display-2 text-white mb-8">
             What Our Clients Say About
             <span className="text-accent-blue"> Our Work</span>
           </h2>

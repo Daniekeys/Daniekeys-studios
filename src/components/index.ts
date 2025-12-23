@@ -7,10 +7,12 @@ export { default as ServicesSection } from "./ServicesSection";
 export { default as TransformationSection } from "./TransformationSection";
 export { default as PortfolioSection } from "./PortfolioSection";
 export { default as WhyChooseUsSection } from "./WhyChooseUsSection";
+export { default as WhyChooseUsHero } from "./WhyChooseUsHero";
 export { default as TestimonialsSection } from "./TestimonialsSection";
 export { default as PricingSection } from "./PricingSection";
 export { default as CTASection } from "./CTASection";
 export { default as Footer } from "./Footer";
+export { default as OurServices } from "./OurServices";
 
 // New page components
 export { default as ServicesPageContent } from "./ServicesPageContent";

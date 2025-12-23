@@ -1,14 +1,13 @@
 "use client";
 
 import Navigation from "../components/Navigation";
-import HeroSection from "../components/HeroSection";
-import TrustBar from "../components/TrustBar";
-import AboutSection from "../components/AboutSection";
-import ServicesSection from "../components/ServicesSection";
+import Hero3DMarquee from "../components/ui/3d-marquee-demo-2";
+import { About3 } from "../components/ui/about-3";
+import WhyChooseUsHero from "../components/WhyChooseUsHero";
+import OurServices from "../components/OurServices";
 import TransformationSection from "../components/TransformationSection";
 import PortfolioSection from "../components/PortfolioSection";
-import WhyChooseUsSection from "../components/WhyChooseUsSection";
-import TestimonialsSection from "../components/TestimonialsSection";
+import Testimonials from "../components/ui/testimonials-columns-1";
 import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
 import { useEffect } from "react";
@@ -46,19 +45,24 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <HeroSection />
+      <Hero3DMarquee />
 
-      {/* Trust Bar */}
-      <TrustBar />
-
-      {/* About Section */}
+      {/* About Section - Integrated with Trust Bar */}
       <section id="about">
-        <AboutSection />
+        <About3 />
       </section>
 
+      {/* Why Choose Us Hero */}
+      <WhyChooseUsHero />
+
       {/* Services Section */}
-      <section id="services">
+      {/* <section id="services">
         <ServicesSection />
+      </section> */}
+
+      {/* Our Services Platform Section */}
+      <section id="our-services">
+        <OurServices />
       </section>
 
       {/* Transformation Section */}
@@ -69,11 +73,11 @@ export default function Home() {
         <PortfolioSection />
       </section>
 
-      {/* Why Choose Us Section */}
-      <WhyChooseUsSection />
+      {/* Carousel Rotation Section */}
+    
 
       {/* Testimonials Section */}
-      <TestimonialsSection />
+      <Testimonials />
 
       {/* CTA Section */}
       <section id="contact">

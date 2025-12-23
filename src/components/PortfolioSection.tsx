@@ -33,7 +33,7 @@ const portfolioItems = [
     category: "Motion",
     year: "2024",
     image: "/images/samples/marketing-a.png",
-    video: "/videos/Ads-video.mp4",
+    video: "/videos/motion-vids1.mp4",
     description: "Engaging animated advertisements for brand awareness",
     height: "h-88",
   },
@@ -44,7 +44,7 @@ const portfolioItems = [
     category: "Motion",
     year: "2024",
     image: "/images/samples/marketing-b.png",
-    video: "/videos/new-hero.mp4",
+    video: "/videos/motion-vids2.mp4",
     description: "Professional hero video for company website",
     height: "h-72",
   },
@@ -55,9 +55,31 @@ const portfolioItems = [
     category: "Motion",
     year: "2024",
     image: "/images/samples/branding.jpg",
-    video: "/videos/brand-vid.mp4",
+    video: "/videos/motion-vids3.mp4",
     description: "Dynamic brand video showcasing company identity",
     height: "h-84",
+  },
+  {
+    id: 12,
+    title: "Product Animation",
+    client: "Tech Startup",
+    category: "Motion",
+    year: "2024",
+    image: "/images/samples/marketing-a.png",
+    video: "/videos/motion-vids4.mp4",
+    description: "Captivating product showcase animation",
+    height: "h-86",
+  },
+  {
+    id: 13,
+    title: "Explainer Video",
+    client: "SaaS Company",
+    category: "Motion",
+    year: "2024",
+    image: "/images/samples/marketing-b.png",
+    video: "/videos/motion-vids5.mp4",
+    description: "Engaging explainer video for complex services",
+    height: "h-82",
   },
   {
     id: 6,
@@ -132,7 +154,7 @@ export default function PortfolioSection() {
       : portfolioItems.filter((item) => item.category === activeCategory);
 
   return (
-    <section className="section-padding bg-primary-white">
+    <section className="section-padding bg-primary">
       <div className="container-padding">
         {/* Section Header */}
         <motion.div
@@ -143,9 +165,9 @@ export default function PortfolioSection() {
           transition={{ duration: 0.8 }}
         >
           <span className="text-accent-blue text-sm font-medium tracking-wider uppercase mb-4 block">
-            Selected Work
+            Our Work
           </span>
-          <h2 className="display-2 text-primary mb-8">
+          <h2 className="display-2 text-white mb-8">
             Projects That
             <span className="text-accent-blue"> Define Excellence</span>
           </h2>
@@ -184,7 +206,7 @@ export default function PortfolioSection() {
           {filteredItems.map((item, index) => (
             <motion.div
               key={item.id}
-              className="break-inside-avoid relative group cursor-pointer overflow-hidden bg-off-white hover-lift"
+              className="break-inside-avoid relative group cursor-pointer overflow-hidden bg-white hover-lift"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

@@ -22,12 +22,43 @@ module.exports = {
       black: "#000000",
       transparent: "transparent",
       current: "currentColor",
+      // Shadcn colors
+      background: "hsl(var(--background))",
+      foreground: "hsl(var(--foreground))",
+      card: {
+        DEFAULT: "hsl(var(--card))",
+        foreground: "hsl(var(--card-foreground))",
+      },
+      popover: {
+        DEFAULT: "hsl(var(--popover))",
+        foreground: "hsl(var(--popover-foreground))",
+      },
+      muted: {
+        DEFAULT: "hsl(var(--muted))",
+        foreground: "hsl(var(--muted-foreground))",
+      },
+      accent: {
+        DEFAULT: "hsl(var(--accent))",
+        foreground: "hsl(var(--accent-foreground))",
+      },
+      destructive: {
+        DEFAULT: "hsl(var(--destructive))",
+        foreground: "hsl(var(--destructive-foreground))",
+      },
+      border: "hsl(var(--border))",
+      input: "hsl(var(--input))",
+      ring: "hsl(var(--ring))",
     },
     fontFamily: {
       sans: ["Neue Montreal", "system-ui", "sans-serif"],
       "neue-montreal": ["Neue Montreal", "system-ui", "sans-serif"],
     },
     extend: {
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
       fontWeight: {
         light: "300",
         normal: "400",
@@ -52,6 +83,9 @@ module.exports = {
         "fade-up": "fadeUp 0.6s ease-out",
         "fade-in": "fadeIn 0.8s ease-out",
         "slow-zoom": "slowZoom 0.3s ease-out",
+      },
+      transformStyle: {
+        "preserve-3d": "preserve-3d",
       },
       keyframes: {
         fadeUp: {
