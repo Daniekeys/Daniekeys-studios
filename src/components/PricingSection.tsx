@@ -230,7 +230,7 @@ export default function PricingSection() {
                     className={`w-full py-4 rounded-lg font-semibold transition-all duration-300 ${pkg.buttonColor} flex items-center justify-center gap-2 group`}
                     onClick={() => {
                       window.open(
-                        `mailto:hello@daniekeys.studio?subject=Interest in ${pkg.name} Package&body=Hi! I'm interested in learning more about the ${pkg.name} package. Please send me more details.`,
+                        `mailto:starlordflash2@gmail.com?subject=Interest in ${pkg.name} Package&body=Hi! I'm interested in learning more about the ${pkg.name} package. Please send me more details.`,
                         "_blank"
                       );
                     }}
@@ -297,7 +297,7 @@ export default function PricingSection() {
             className="bg-accent-blue text-white px-8 py-4 rounded-lg font-semibold hover:bg-accent-blue-light transition-all duration-300 flex items-center gap-2 mx-auto group"
             onClick={() => {
               window.open(
-                "mailto:hello@daniekeys.studio?subject=Custom Solution Request&body=Hi! I need a custom solution for my business. Here are my requirements:%0A%0A[Please describe your needs]",
+                "mailto:starlordflash2@gmail.com?subject=Custom Solution Request&body=Hi! I need a custom solution for my business. Here are my requirements:%0A%0A[Please describe your needs]",
                 "_blank"
               );
             }}

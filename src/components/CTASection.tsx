@@ -84,7 +84,7 @@ export default function CTASection() {
                 <h4 className="text-accent-blue text-sm font-medium tracking-wider uppercase mb-2">
                   Email Us
                 </h4>
-                <p className="text-primary-white">hello@daniekeys.studio</p>
+                <p className="text-primary-white">starlordflash2@gmail.com</p>
               </div>
 
               <div>

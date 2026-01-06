@@ -7,8 +7,10 @@ import {
   MapPin,
   Clock,
   Instagram,
-  Facebook, Send, Star,
-  ArrowRight
+  Facebook,
+  Send,
+  Star,
+  ArrowRight,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -24,8 +26,8 @@ const contactMethods = [
   {
     icon: Mail,
     title: "Email",
-    value: "hello@daniekeys.studio",
-    href: "mailto:hello@daniekeys.studio",
+    value: "starlordflash2@gmail.com",
+    href: "mailto:starlordflash2@gmail.com",
     description: "Send us a detailed message about your project",
     gradient: "from-accent-blue-light to-accent-blue-lighter",
   },
@@ -113,7 +115,7 @@ ${formData.message}
 
     // Open mailto link
     window.open(
-      `mailto:hello@daniekeys.studio?subject=New Project Inquiry from ${
+      `mailto:starlordflash2@gmail.com?subject=New Project Inquiry from ${
         formData.name
       }&body=${encodeURIComponent(emailBody)}`,
       "_blank"
@@ -182,7 +184,7 @@ ${formData.message}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </motion.a>
               <motion.a
-                href="mailto:hello@daniekeys.studio"
+                href="mailto:starlordflash2@gmail.com"
                 className="border-2 border-accent-blue text-accent-blue px-8 py-4 rounded-lg font-medium hover:bg-accent-blue hover:text-white transition-all duration-300 flex items-center gap-2 justify-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

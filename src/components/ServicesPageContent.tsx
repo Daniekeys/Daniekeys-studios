@@ -540,7 +540,7 @@ export default function ServicesPageContent() {
                 className="bg-white text-accent-blue px-8 py-4 rounded-lg font-semibold hover:bg-off-white transition-all duration-300"
                 onClick={() =>
                   window.open(
-                    "mailto:hello@daniekeys.studio?subject=Service Inquiry&body=Hi! I'm interested in your creative services. Please send me more information.",
+                    "mailto:starlordflash2@gmail.com?subject=Service Inquiry&body=Hi! I'm interested in your creative services. Please send me more information.",
                     "_blank"
                   )
                 }
