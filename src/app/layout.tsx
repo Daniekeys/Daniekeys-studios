@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
+import Chatbot from "@/components/Chatbot";
 
 export const metadata: Metadata = {
   title: "Daniekeys Studios - Where Creativity Meets Technology",
@@ -56,9 +57,13 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  viewport: "width=device-width, initial-scale=1",
-  themeColor: "#111111",
   category: "creative-services",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#111111",
 };
 
 export default function RootLayout({
@@ -68,8 +73,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-neue-montreal antialiased">
+      <body className="font-neue-montreal antialiased text-white">
         {children}
+        
+        <Chatbot />
 
         {/* Google Analytics */}
         <Script

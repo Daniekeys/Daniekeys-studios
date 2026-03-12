@@ -1,0 +1,272 @@
+DANIEKEYS STUDIOS CHATBOT KNOWLEDGE BASE
+
+
+Introduction
+
+
+This document contains the structured information required for building a chatbot that will automatically answer customer inquiries about Daniekeys Studios.
+
+
+The chatbot will be connected to a Notion knowledge base and will retrieve information related to services, company information, pricing, frequently asked questions, and contact details.
+
+
+The purpose of the chatbot is to improve customer support, provide instant responses to common questions, and guide potential clients toward contacting the studio for project discussions.
+
+
+1. Services Offered
+
+
+Website Design and Development
+
+
+Daniekeys Studios provides website design and development services aimed at helping businesses establish a strong digital presence.
+
+
+These websites are designed to be modern, responsive, and optimized to convert visitors into customers.
+
+
+Key features include custom website development, ecommerce website solutions, user interface and user experience design, and mobile responsive websites.
+
+
+The goal of this service is to help businesses present their brand professionally online and improve their ability to attract and retain customers through a functional and visually appealing website.
+
+
+
+
+Branding and Rebranding
+
+
+Daniekeys Studios offers branding and rebranding services that help businesses create strong and memorable brand identities.
+
+
+Branding services include logo design, visual identity creation, and the development of brand guidelines that ensure consistency across all marketing materials.
+
+
+This service helps businesses stand out in competitive markets by building a recognizable brand that communicates trust and professionalism to customers.
+
+
+
+
+Motion Graphics and Animation
+
+
+Motion graphics and animation services focus on creating visually engaging digital content that communicates ideas clearly and creatively.
+
+
+These services include brand animations, explainer videos, and logo reveal animations.
+
+
+Motion graphics help businesses present information in a more engaging way while strengthening their brand presence across digital platforms.
+
+
+
+
+Digital Marketing and Social Media
+
+
+Daniekeys Studios provides digital marketing and social media services that help businesses grow their online presence and connect with their audience.
+
+
+These services include digital marketing campaigns, social media creative content, and content strategy development.
+
+
+The goal of this service is to help businesses reach more potential customers, increase engagement, and build stronger relationships with their online community.
+
+
+
+
+2. Frequently Asked Questions
+
+
+What services does Daniekeys Studios offer?
+
+
+Daniekeys Studios offers website design and development, branding and rebranding, motion graphics and animation, and digital marketing and social media services.
+
+
+
+
+What is Daniekeys Studios?
+
+
+Daniekeys Studios is a creative digital studio that helps businesses grow through strategic design, technology, and digital marketing solutions.
+
+
+
+
+
+
+Where is Daniekeys Studios located?
+
+
+Daniekeys Studios operates from Lagos, Nigeria and collaborates with clients both locally and internationally.
+
+
+
+
+Do you design websites?
+
+
+Yes. Daniekeys Studios designs and develops modern and responsive websites including business websites and ecommerce platforms.
+
+
+
+
+Do you offer branding services?
+
+
+Yes. The studio provides branding and rebranding services including logo design and full brand identity development.
+
+
+
+
+Do you create animations?
+
+
+Yes. Daniekeys Studios produces motion graphics and animations including explainer videos and logo animations.
+
+
+
+
+Do you provide digital marketing services?
+
+
+Yes. The studio provides digital marketing strategies including social media campaigns and content creation.
+
+
+
+
+How can I request a quote?
+
+
+You can request a quote by contacting Daniekeys Studios through the email or contact information provided on the website.
+
+
+
+
+How long does a project take?
+
+
+Project timelines vary depending on the complexity of the project. Most projects are completed within a few weeks once the project requirements are finalized.
+
+
+
+
+Do you work with international clients?
+
+
+Yes. Daniekeys Studios works with clients from different parts of the world through remote collaboration.
+
+
+
+
+
+
+Can you redesign an existing website?
+
+
+Yes. The studio offers website redesign services to improve the appearance, functionality, and user experience of existing websites.
+
+
+
+
+
+
+What makes Daniekeys Studios different?
+
+
+Daniekeys Studios combines creativity, strategy, and technology to deliver solutions that help businesses stand out and grow.
+
+
+
+
+
+
+3. Company Information
+
+
+About the Company
+
+
+Daniekeys Studios is a creative digital studio that focuses on helping businesses build strong digital identities and improve their online presence.
+
+
+The studio combines design, technology, and marketing expertise to create digital solutions that support business growth.
+
+
+
+
+
+
+Mission
+
+
+The mission of Daniekeys Studios is to help businesses transform their ideas into impactful digital experiences that attract and engage their audience.
+
+
+
+
+
+
+Vision
+
+
+The vision of Daniekeys Studios is to become a trusted creative and technology partner for businesses seeking innovative digital solutions.
+
+
+
+
+
+
+Experience
+
+
+Daniekeys Studios has successfully completed numerous creative projects, helping brands communicate their message more effectively and strengthen their digital presence.
+
+
+
+
+Work Approach
+
+
+The studio focuses on understanding the goals of each client, developing tailored solutions, and delivering high quality creative work that meets the needs of the business.
+
+
+4. Pricing Information
+
+
+Pricing for Daniekeys Studios services depends on the specific requirements of each project.
+
+
+Website design and development costs vary depending on the number of pages, features, integrations, and overall complexity of the project.
+
+
+Branding and rebranding services are priced based on the scope of work such as logo design, visual identity creation, and brand guidelines development.
+
+
+Motion graphics and animation pricing depends on the style, length, and level of animation required.
+
+
+Digital marketing and social media services are priced according to the campaign scope, platforms involved, and the duration of the marketing strategy.
+
+
+Because every project is unique, potential clients are encouraged to contact the studio to receive a customized quote tailored to their business needs.
+
+
+
+
+5. Contact Information
+
+
+Clients and potential customers can contact Daniekeys Studios through the following channels.
+
+
+Email
+contactdaniekeystudio@gmail.com
+
+
+Location
+Lagos, Nigeria
+
+
+Potential clients are encouraged to contact the studio through email to discuss project requirements, request quotes, and inquire about available services.
