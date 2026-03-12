@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     // Exclude the system prompt since we handle it separately
     let history = messages
       .slice(0, -1)
-      .map((msg: any) => ({
+      .map((msg: { role: string; content: string }) => ({
         role: msg.role === 'user' ? 'user' : 'model',
         parts: [{ text: msg.content }],
       }));
@@ -85,10 +85,11 @@ export async function POST(req: Request) {
         'Connection': 'keep-alive',
       },
     });
-  } catch (error: any) {
-    console.error('Chat API Error:', error);
+  } catch (error: unknown) {
+    const err = error as Error;
+    console.error('Chat API Error:', err);
     return new Response(
-      JSON.stringify({ error: 'An error occurred while processing your request', details: error.message, stack: error.stack }),
+      JSON.stringify({ error: 'An error occurred while processing your request', details: err.message, stack: err.stack }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
