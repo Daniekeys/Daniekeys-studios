@@ -68,47 +68,135 @@ const packages = [
 
 const standaloneServices = [
   {
-    category: "Branding & Rebranding",
-    services: [{ name: "Brand Rebranding", price: "₦150,000 - ₦350,000" }],
-  },
-  {
-    category: "Web Development",
+    category: "Creative Production",
+    headers: ["Service", "Starter", "Standard", "Premium"],
     services: [
-      { name: "Landing Page Website", price: "₦150,000 - ₦250,000" },
-      { name: "Full Website (5-7 pages)", price: "₦250,000 - ₦1,000,000" },
-      { name: "E-Commerce Website", price: "₦700,000 - ₦2,000,000" },
+      {
+        name: "Logo Design (concept + files)",
+        tiers: ["₦60,000", "₦120,000", "₦250,000+"],
+      },
+      {
+        name: "Full Brand Identity Kit",
+        tiers: ["₦120,000", "₦250,000", "₦500,000+"],
+      },
+      {
+        name: "Rebranding Package (audit + redesign)",
+        tiers: ["₦200,000", "₦400,000", "₦800,000+"],
+      },
+      {
+        name: "Motion Graphics Video (30–60 seconds)",
+        tiers: ["₦50,000", "₦120,000", "₦250,000+"],
+      },
+      {
+        name: "Animated Ad / Promo (social media format)",
+        tiers: ["₦40,000", "₦90,000", "₦180,000+"],
+      },
+      {
+        name: "Brand Intro / Outro (10–15 seconds)",
+        tiers: ["₦30,000", "₦60,000", "₦120,000+"],
+      },
+      {
+        name: "Video Editing (per video, supplied footage)",
+        tiers: ["₦25,000", "₦60,000", "₦150,000+"],
+      },
+      {
+        name: "Reels Creation (concept to final edit)",
+        tiers: ["₦35,000", "₦80,000", "₦160,000+"],
+      },
     ],
   },
   {
-    category: "Motion Graphics",
+    category: "Digital Marketing & Social Media",
+    headers: ["Service", "Basic", "Standard", "Premium"],
     services: [
-      { name: "15-second Video", price: "₦25,000 - ₦60,000" },
-      { name: "30-second Video", price: "₦60,000 - ₦150,000" },
-      { name: "Explainer Video (60s+)", price: "₦120,000 - ₦300,000" },
+      {
+        name: "Social Media Management (per month, 2 platforms)",
+        tiers: ["₦150,000", "₦280,000", "₦500,000+"],
+      },
+      {
+        name: "Social Media Management (per month, 3+ platforms)",
+        tiers: ["₦250,000", "₦400,000", "₦700,000+"],
+      },
+      {
+        name: "Ad Creative Production (4 ad graphics/videos)",
+        tiers: ["₦60,000", "₦120,000", "₦250,000+"],
+      },
+      {
+        name: "Social Media Kit (profile, cover, 5 templates)",
+        tiers: ["₦50,000", "₦100,000", "₦200,000+"],
+      },
+      {
+        name: "30-Day Content Calendar (strategy document)",
+        tiers: ["₦40,000", "₦80,000", "₦150,000+"],
+      },
+      {
+        name: "Community & Campaign Video (awareness/NGO)",
+        tiers: ["₦100,000", "₦250,000", "₦500,000+"],
+      },
+      {
+        name: "Event Highlight Video (editing + motion)",
+        tiers: ["₦80,000", "₦180,000", "₦350,000+"],
+      },
     ],
   },
   {
-    category: "Social Media Packages",
+    category: "Website & App Development",
+    headers: ["Service", "Starting From", "Typical Range", "Timeline"],
     services: [
-      { name: "Basic Package", price: "₦45,000 - ₦85,000" },
-      { name: "Standard Package", price: "₦90,000 - ₦180,000" },
-      { name: "Premium Package", price: "₦200,000 - ₦450,000" },
+      {
+        name: "Landing Page (1 page, mobile optimised)",
+        tiers: ["₦120,000", "₦120,000 – ₦350,000", "5–7 days"],
+      },
+      {
+        name: "Business Website (3–5 pages)",
+        tiers: ["₦300,000", "₦300,000 – ₦800,000", "2–3 weeks"],
+      },
+      {
+        name: "Full Website (5–7 pages + blog/SEO)",
+        tiers: ["₦500,000", "₦500,000 – ₦1,500,000", "3–4 weeks"],
+      },
+      {
+        name: "E-commerce Website (product + payments)",
+        tiers: ["₦600,000", "₦600,000 – ₦2,500,000", "4–6 weeks"],
+      },
+      {
+        name: "Website Maintenance (monthly)",
+        tiers: ["₦50,000", "₦50,000 – ₦150,000/mo", "Ongoing"],
+      },
+      {
+        name: "Mobile App (Android or iOS)",
+        tiers: ["₦800,000", "₦800,000 – ₦3,000,000", "6–12 weeks"],
+      },
     ],
   },
   {
-    category: "GMB Services",
+    category: "Training & Skills Development",
+    headers: ["Training Programme", "Duration", "Format", "Investment"],
     services: [
-      { name: "Setup", price: "₦20,000 - ₦45,000" },
-      { name: "Optimization", price: "₦60,000 - ₦150,000" },
-    ],
-  },
-  {
-    category: "Training & Development",
-    services: [
-      { name: "Motion Graphics Training", price: "₦80,000 - ₦150,000" },
-      { name: "Graphics Design Training", price: "₦70,000 - ₦120,000" },
-      { name: "Social Media Management", price: "₦60,000 - ₦100,000" },
-      { name: "Digital Marketing Workshop", price: "₦90,000 - ₦180,000" },
+      {
+        name: "Motion Graphics Fundamentals",
+        tiers: ["4 weeks", "Online/Physical", "₦45,000 per student"],
+      },
+      {
+        name: "Graphic Design for Beginners",
+        tiers: ["4 weeks", "Online/Physical", "₦40,000 per student"],
+      },
+      {
+        name: "Social Media Management Masterclass",
+        tiers: ["3 weeks", "Online", "₦35,000 per student"],
+      },
+      {
+        name: "Digital Marketing Strategy Workshop",
+        tiers: ["2 days", "Physical", "₦50,000 per student"],
+      },
+      {
+        name: "Private 1-on-1 Coaching (per session)",
+        tiers: ["2 hours", "Online/Physical", "₦25,000 per session"],
+      },
+      {
+        name: "Corporate Team Training (group of 5+)",
+        tiers: ["Custom", "Physical", "From ₦150,000/group"],
+      },
     ],
   },
 ];
@@ -246,31 +334,57 @@ export default function PricingSection() {
 
         {/* Standalone Services */}
         {activeTab === "standalone" && (
-          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+          <div className="space-y-12 mb-16">
             {standaloneServices.map((category, index) => (
               <motion.div
                 key={category.category}
-                className="bg-secondary/5 rounded-2xl p-8 border border-secondary/20"
+                className="bg-secondary/5 rounded-2xl overflow-hidden border border-secondary/20"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <h3 className="text-xl font-bold mb-6 text-accent-blue">
-                  {category.category}
-                </h3>
-                <div className="space-y-4">
-                  {category.services.map((service, serviceIndex) => (
-                    <div
-                      key={serviceIndex}
-                      className="flex items-center justify-between p-4 bg-secondary/5 rounded-lg border border-secondary/10"
-                    >
-                      <span className="text-white">{service.name}</span>
-                      <span className="text-accent-blue font-semibold">
-                        {service.price}
-                      </span>
-                    </div>
-                  ))}
+                <div className="p-6 border-b border-secondary/20 bg-secondary/10">
+                  <h3 className="text-xl font-bold text-accent-blue">
+                    {category.category}
+                  </h3>
+                </div>
+                
+                <div className="overflow-x-auto custom-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="bg-secondary/20">
+                        {category.headers.map((header) => (
+                          <th
+                            key={header}
+                            className="p-4 text-sm font-bold text-white uppercase tracking-wider border-b border-secondary/20"
+                          >
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {category.services.map((service, serviceIndex) => (
+                        <tr
+                          key={serviceIndex}
+                          className="hover:bg-accent-blue/5 transition-colors group"
+                        >
+                          <td className="p-4 text-white border-b border-secondary/10 font-medium">
+                            {service.name}
+                          </td>
+                          {service.tiers.map((tier, tierIndex) => (
+                            <td
+                              key={tierIndex}
+                              className="p-4 text-secondary border-b border-secondary/10 group-hover:text-white transition-colors"
+                            >
+                              {tier}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </motion.div>
             ))}
