@@ -113,6 +113,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta
+          name="google-site-verification"
+          content="j13HwmdDfAyxcRgD-X_KTTXJfqM2zKsNh1gRP0APgXc"
+        />
         {/* Structured Data */}
         <Script
           id="organization-schema"
