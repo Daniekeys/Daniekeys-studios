@@ -1,17 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import {
+  Facebook,
   Instagram,
-  Twitter,
   Linkedin,
-  Youtube,
   Mail,
-  Phone,
   MapPin,
+  Phone,
   Share2,
+  Youtube,
 } from "lucide-react";
+import Image from "next/image";
 
 const services = [
   "Motion Graphics & Video Creation",
@@ -25,23 +25,23 @@ const services = [
 const socialLinks = [
   {
     icon: Instagram,
-    href: "https://instagram.com/daniekeysstudios",
+    href: "https://www.instagram.com/daniekeys_studios/",
     label: "Instagram",
   },
   {
-    icon: Twitter,
-    href: "https://twitter.com/daniekeysstudios",
-    label: "Twitter",
-  },
-  {
     icon: Linkedin,
-    href: "https://linkedin.com/company/daniekeysstudios",
+    href: "https://www.linkedin.com/company/daniekeys-studios/about/",
     label: "LinkedIn",
   },
   {
     icon: Youtube,
-    href: "https://youtube.com/@daniekeysstudios",
+    href: "https://www.youtube.com/@Danieskeys",
     label: "YouTube",
+  },
+  {
+    icon: Facebook,
+    href: "https://www.facebook.com/profile.php?id=61583310572575",
+    label: "Facebook",
   },
 ];
 
@@ -78,12 +78,12 @@ export default function Footer() {
                 <a
                   key={label}
                   href={href}
-                  className="w-10 h-10 bg-secondary/10 hover:bg-accent-blue transition-colors duration-300 flex items-center justify-center group"
+                  className="w-10 h-10 border border-secondary/30 rounded-lg text-secondary hover:border-accent-blue transition-colors duration-300 flex items-center justify-center group"
                   aria-label={label}
                 >
                   <Icon
                     size={16}
-                    className="text-secondary group-hover:text-white transition-colors"
+                    className="text-secondary group-hover:text-accent-blue transition-colors"
                   />
                 </a>
               ))}
@@ -217,7 +217,9 @@ export default function Footer() {
                 <MapPin size={16} className="text-accent-blue mt-1" />
                 <div>
                   <p className="text-secondary text-sm">Studio</p>
-                  <p className="text-white text-sm">Lagos, Nigeria</p>
+                  <p className="text-white text-sm">
+                    Ilorin, Kwara state, Nigeria
+                  </p>
                 </div>
               </div>
 

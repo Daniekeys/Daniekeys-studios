@@ -1,0 +1,27 @@
+# Allow all bots to crawl and index the site
+User-agent: *
+Allow: /
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Disallow crawling of common admin paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /api/
+
+# Allow crawling of important assets
+Allow: /*.css$
+Allow: /*.js$
+Allow: /images/
+
+# Sitemap location
+Sitemap: https://www.daniekeysstudios.com/sitemap.xml

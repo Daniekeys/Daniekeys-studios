@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Globe, Palette, Megaphone, Sparkles } from "lucide-react";
+import { ArrowRight, Globe, Megaphone, Palette, Sparkles } from "lucide-react";
 
 const services = [
   {
@@ -73,10 +73,10 @@ export default function OurServices() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-            <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6 text-left">
+          <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6 text-left">
             Explore Our <br />
             <span className="text-accent-blue">Creative Services</span>
-            </h2>
+          </h2>
           <p className="text-xl text-secondary text-left  ">
             Four ways to elevate your brand and drive real results
           </p>
@@ -134,7 +134,13 @@ export default function OurServices() {
   );
 }
 
-function ServiceCard({ service, delay }: { service: typeof services[0]; delay: number }) {
+function ServiceCard({
+  service,
+  delay,
+}: {
+  service: (typeof services)[0];
+  delay: number;
+}) {
   const IconComponent = service.icon;
 
   return (

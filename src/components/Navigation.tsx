@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Services", href: "/services" },
@@ -17,6 +17,7 @@ const navItems = [
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,13 +65,21 @@ export default function Navigation() {
                 <motion.a
                   key={item.label}
                   href={item.href}
-                  className="text-primary-white hover:text-accent-blue transition-colors duration-300 text-sm font-light tracking-wide uppercase"
+                  className="text-primary-white text-xs font-normal tracking-wide uppercase relative"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 1.7 + index * 0.1 }}
                   whileHover={{ y: -2 }}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
                 >
                   {item.label}
+                  <motion.div
+                    className="absolute  left-0 h-0.5 bg-accent-blue -bottom-1 rounded-full"
+                    initial={{ width: 0, height: 3 }}
+                    animate={{ width: hoveredIndex === index ? "100%" : 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
                 </motion.a>
               ))}
             </div>
@@ -78,7 +87,7 @@ export default function Navigation() {
             {/* CTA Button */}
             <motion.a
               href="/contact"
-              className="hidden lg:block bg-accent-blue text-white px-6 py-3 text-sm font-medium hover:bg-accent-blue-light transition-colors duration-300"
+              className="hidden lg:block bg-accent-blue text-white px-6 py-3 text-sm font-medium hover:bg-accent-blue-light transition-colors duration-300 rounded-full hover:border-2"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 2.2 }}
@@ -128,7 +137,7 @@ export default function Navigation() {
 
           <motion.a
             href="/contact"
-            className="bg-accent-blue text-white px-8 py-4 text-lg font-medium hover:bg-accent-blue-light transition-colors duration-300 mt-8"
+            className="bg-accent-blue text-white px-8 py-4 text-lg font-medium hover:bg-accent-blue-light transition-colors duration-300 mt-8 rounded-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{
               opacity: isMobileMenuOpen ? 1 : 0,

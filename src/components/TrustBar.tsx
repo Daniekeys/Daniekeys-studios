@@ -47,7 +47,7 @@ export default function TrustBar() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-secondary text-lg font-light">
+          <p className="text-secondary text-lg font-meduim">
             Trusted by brands, businesses & organizations across Nigeria and
             beyond.
           </p>

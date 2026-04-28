@@ -62,7 +62,7 @@ export default function CTASection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <button className="group bg-accent-blue text-white px-12 py-6 text-lg font-medium hover:bg-accent-blue-light transition-all duration-300 hover-lift flex items-center gap-4 mx-auto">
+            <button className="group bg-accent-blue text-white px-12 py-6 text-lg font-medium hover:bg-accent-blue-light transition-all duration-300 hover-lift flex items-center gap-4 mx-auto rounded-full">
               Start a Project
               <ArrowRight
                 size={20}
@@ -98,7 +98,9 @@ export default function CTASection() {
                 <h4 className="text-accent-blue text-sm font-medium tracking-wider uppercase mb-2">
                   Visit Studio
                 </h4>
-                <p className="text-primary-white">Lagos, Nigeria</p>
+                <p className="text-primary-white">
+                  Ilorin, Kwara state, Nigeria
+                </p>
               </div>
             </div>
           </motion.div>

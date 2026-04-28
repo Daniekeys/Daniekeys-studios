@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 const portfolioItems = [
   {
@@ -190,10 +190,10 @@ export default function PortfolioSection() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-6 py-3 text-sm font-medium tracking-wide uppercase transition-all duration-300 ${
+              className={`px-6 py-3 text-sm font-medium tracking-wide uppercase transition-all duration-300 rounded-full ${
                 activeCategory === category
                   ? "bg-accent-blue text-white"
-                  : "bg-transparent text-secondary hover:text-accent-blue border border-secondary/20"
+                  : "bg-transparent text-secondary hover:text-accent-blue border hover:border-accent-blue border-secondary/20"
               }`}
             >
               {category}
@@ -271,9 +271,11 @@ export default function PortfolioSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <button className="bg-accent-blue text-white px-8 py-4 font-medium hover:bg-accent-blue-light transition-colors duration-300 hover-lift">
-            View All Projects
-          </button>
+          <a href="/portfolio">
+            <button className="bg-accent-blue text-white px-8 py-4 font-medium hover:bg-accent-blue-light transition-colors duration-300 hover-lift rounded-full">
+              View All Projects
+            </button>
+          </a>
         </motion.div>
       </div>
     </section>

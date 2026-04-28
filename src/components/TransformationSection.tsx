@@ -5,8 +5,6 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export default function TransformationSection() {
-
-  
   return (
     <section className="section-padding bg-primary">
       <div className="container-padding">
@@ -141,9 +139,11 @@ export default function TransformationSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <button className="bg-accent-blue text-white px-8 py-4 font-medium hover:bg-accent-blue-light transition-colors duration-300 hover-lift">
-            Learn More About Us
-          </button>
+          <a href="#about">
+            <button className="bg-accent-blue text-white px-8 py-4 font-medium hover:bg-accent-blue-light transition-colors duration-300 hover-lift rounded-full">
+              Learn More About Us
+            </button>
+          </a>
         </motion.div>
       </div>
     </section>

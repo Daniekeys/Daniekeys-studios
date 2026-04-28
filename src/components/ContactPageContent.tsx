@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import {
-  Mail,
-  Phone,
-  MapPin,
+  ArrowRight,
   Clock,
-  Instagram,
   Facebook,
+  Instagram,
+  Mail,
+  MapPin,
+  Phone,
   Send,
   Star,
-  ArrowRight,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -34,8 +34,8 @@ const contactMethods = [
   {
     icon: Instagram,
     title: "Instagram",
-    value: "@daniekeysstudios",
-    href: "https://instagram.com/daniekeysstudios",
+    value: "@daniekeys_studios",
+    href: "https://www.instagram.com/daniekeys_studios/",
     description: "Follow our latest work and behind-the-scenes",
     gradient: "from-accent-blue-lighter to-primary",
   },
@@ -43,7 +43,7 @@ const contactMethods = [
     icon: Facebook,
     title: "Facebook",
     value: "Daniekeys Studios",
-    href: "https://facebook.com/daniekeysstudios",
+    href: "https://www.facebook.com/profile.php?id=61583310572575",
     description: "Connect with our community and updates",
     gradient: "from-primary to-accent-blue",
   },
@@ -118,7 +118,7 @@ ${formData.message}
       `mailto:starlordflash2@gmail.com?subject=New Project Inquiry from ${
         formData.name
       }&body=${encodeURIComponent(emailBody)}`,
-      "_blank"
+      "_blank",
     );
 
     setTimeout(() => {
