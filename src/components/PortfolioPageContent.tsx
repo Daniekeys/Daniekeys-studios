@@ -349,6 +349,7 @@ export default function PortfolioPageContent() {
                         width={600}
                         height={320}
                         className="w-full h-80 object-cover"
+                        loading="lazy"
                       />
                     )}
                     <div className="absolute top-4 right-4">
@@ -512,6 +513,7 @@ export default function PortfolioPageContent() {
                       width={400}
                       height={200}
                       className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
                     />
                   )}
                   {item.featured && (

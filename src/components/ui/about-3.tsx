@@ -1,8 +1,8 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 
 interface About3Props {
   title?: string;
@@ -166,13 +166,13 @@ export const About3 = ({
         {/* Main Content Grid */}
         <div className="grid gap-7 lg:grid-cols-3 mb-16">
           {/* Main Image */}
-            <motion.div
+          <motion.div
             className="lg:col-span-2"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            >
+          >
             <video
               src="/videos/motion-vids4.mp4"
               className="size-full max-h-[620px] rounded-xl object-cover"
@@ -181,7 +181,7 @@ export const About3 = ({
               loop
               playsInline
             />
-            </motion.div>
+          </motion.div>
 
           {/* Right Column */}
           <motion.div
@@ -224,13 +224,13 @@ export const About3 = ({
               {videoSrc ? (
                 <div className="aspect-video relative">
                   <video
-                  className="w-full h-full object-cover rounded-xl"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
+                    className="w-full h-full object-cover rounded-xl"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
                   >
-                  <source src={videoSrc} type="video/mp4" />
+                    <source src={videoSrc} type="video/mp4" />
                   </video>
 
                   {/* Video overlay and caption */}
@@ -242,10 +242,13 @@ export const About3 = ({
                   </div> */}
                 </div>
               ) : (
-                <img
+                <Image
                   src={secondaryImage.src}
                   alt={secondaryImage.alt}
                   className="w-full h-full rounded-xl object-cover"
+                  width={400}
+                  height={300}
+                  loading="lazy"
                 />
               )}
             </div>

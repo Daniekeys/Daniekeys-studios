@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "google28b2d061ea7b1eb6",
+    google: "google15ceedf174cb66b0",
   },
   category: "creative-services",
   appleWebApp: {

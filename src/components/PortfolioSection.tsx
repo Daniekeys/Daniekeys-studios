@@ -230,6 +230,7 @@ export default function PortfolioSection() {
                     alt={`${item.title} - ${item.category}`}
                     fill
                     className="object-cover"
+                    loading="lazy"
                   />
                 )}
 

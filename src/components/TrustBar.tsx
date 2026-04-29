@@ -86,6 +86,7 @@ export default function TrustBar() {
                     maxWidth: "140px",
                     height: "auto",
                   }}
+                  loading="lazy"
                 />
               )}
             </motion.div>
