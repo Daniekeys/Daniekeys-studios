@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "@next/third-parties": "^16.2.4",
     "@radix-ui/react-slot": "^1.2.4",
     "@tabler/icons-react": "^3.36.0",
     "aos": "^2.3.4",
@@ -40,5 +41,19 @@
     "rimraf": "^5.0.10",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
-  }
+  },
+  "description": "A world-class, cinematic website built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion. Features full-screen video backgrounds, premium black-and-white minimalism, and elegant motion design.",
+  "main": "fix-entities.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniekeys/Daniekeys-studios.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Daniekeys/Daniekeys-studios/issues"
+  },
+  "homepage": "https://github.com/Daniekeys/Daniekeys-studios#readme"
 }
