@@ -12,6 +12,7 @@ import {
   Youtube,
 } from "lucide-react";
 import Image from "next/image";
+import { FaTiktok } from "react-icons/fa";
 
 const services = [
   "Motion Graphics & Video Creation",
@@ -42,6 +43,11 @@ const socialLinks = [
     icon: Facebook,
     href: "https://www.facebook.com/profile.php?id=61583310572575",
     label: "Facebook",
+  },
+  {
+    icon: FaTiktok,
+    href: "https://www.tiktok.com/@daniekeys_studios",
+    label: "TikTok",
   },
 ];
 

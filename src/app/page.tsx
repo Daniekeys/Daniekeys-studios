@@ -1,16 +1,16 @@
 "use client";
 
-import Navigation from "../components/Navigation";
-import Hero3DMarquee from "../components/ui/3d-marquee-demo-2";
-import { About3 } from "../components/ui/about-3";
-import WhyChooseUsHero from "../components/WhyChooseUsHero";
-import OurServices from "../components/OurServices";
-import TransformationSection from "../components/TransformationSection";
-import PortfolioSection from "../components/PortfolioSection";
-import Testimonials from "../components/ui/testimonials-columns-1";
+import { useEffect } from "react";
 import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
-import { useEffect } from "react";
+import Navigation from "../components/Navigation";
+import OurServices from "../components/OurServices";
+import PortfolioSection from "../components/PortfolioSection";
+import TransformationSection from "../components/TransformationSection";
+import Hero3DMarquee from "../components/ui/3d-marquee-demo-2";
+import { About3 } from "../components/ui/about-3";
+import Testimonials from "../components/ui/testimonials-columns-1";
+import WhyChooseUsHero from "../components/WhyChooseUsHero";
 
 export default function Home() {
   useEffect(() => {
