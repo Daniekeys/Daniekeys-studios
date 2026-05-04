@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Bot, User, Loader2, Copy, Check } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Bot, Check, Copy, Loader2, MessageCircle, Send, User, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 type Message = {
   role: "user" | "model";
@@ -12,7 +12,19 @@ type Message = {
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: "model", content: "Hi there! I'm the Daniekeys Studios Assistant. How can I help you today?" }
+   {
+  role: "model",
+  content: `Hi 👋 welcome to Daniekeys Studio.
+
+We help businesses with logo design, branding, and websites.
+
+To get started, tell us:
+• What you need
+• A short description
+• Your timeline
+
+Ready to get started?`
+}
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
