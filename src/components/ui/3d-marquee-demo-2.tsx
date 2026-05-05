@@ -44,7 +44,7 @@ export default function Hero3DMarquee() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative z-20 mx-auto max-w-5xl text-center font-neue-montreal text-4xl font-bold text-balance text-primary-white md:text-6xl lg:text-hero"
+          className="relative z-20 mx-auto max-w-5xl text-center font-neue-montreal text-4xl font-bold text-balance text-primary-white md:text-6xl lg:text-hero mt-10"
         >
           Where Creativity Meets{" "}
           <span className="relative z-20 inline-block rounded-xl bg-accent-blue/80 px-6 py-2 text-primary-white underline decoration-accent-blue-light decoration-[6px] underline-offset-[16px] backdrop-blur-sm">
