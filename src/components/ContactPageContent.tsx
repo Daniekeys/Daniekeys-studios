@@ -1,5 +1,5 @@
 "use client";
-
+import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -13,6 +13,7 @@ import {
   Star,
 } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const contactMethods = [
   {
@@ -96,33 +97,67 @@ export default function ContactPageContent() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  //   const handleSubmit = async (e: React.FormEvent) => {
+  //     e.preventDefault();
+  //     setIsSubmitting(true);
+
+  //     // Create email body
+  //     const emailBody = `
+  // Name: ${formData.name}
+  // Email: ${formData.email}
+  // Phone: ${formData.phone}
+  // Service Interested: ${formData.service}
+  // Budget Range: ${formData.budget}
+  // Timeline: ${formData.timeline}
+
+  // Message:
+  // ${formData.message}
+  //     `;
+
+  //     // Open mailto link
+  //     window.open(
+  //       `mailto:starlordflash2@gmail.com?subject=New Project Inquiry from ${
+  //         formData.name
+  //       }&body=${encodeURIComponent(emailBody)}`,
+  //       "_blank",
+  //     );
+
+  //     setTimeout(() => {
+  //       setIsSubmitting(false);
+  //       setFormData({
+  //         name: "",
+  //         email: "",
+  //         phone: "",
+  //         service: "",
+  //         budget: "",
+  //         message: "",
+  //         timeline: "",
+  //       });
+  //     }, 2000);
+  //   };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     setIsSubmitting(true);
 
-    // Create email body
-    const emailBody = `
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Service Interested: ${formData.service}
-Budget Range: ${formData.budget}
-Timeline: ${formData.timeline}
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          budget: formData.budget,
+          timeline: formData.timeline,
+          message: formData.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+      );
 
-Message:
-${formData.message}
-    `;
-
-    // Open mailto link
-    window.open(
-      `mailto:starlordflash2@gmail.com?subject=New Project Inquiry from ${
-        formData.name
-      }&body=${encodeURIComponent(emailBody)}`,
-      "_blank",
-    );
-
-    setTimeout(() => {
-      setIsSubmitting(false);
+      toast.success("Message sent successfully!");
       setFormData({
         name: "",
         email: "",
@@ -132,7 +167,12 @@ ${formData.message}
         message: "",
         timeline: "",
       });
-    }, 2000);
+    } catch (error) {
+      console.log(error);
+      alert("Failed to send message");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

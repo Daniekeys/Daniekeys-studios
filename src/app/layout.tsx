@@ -1,6 +1,8 @@
 import Chatbot from "@/components/Chatbot";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Toaster } from "sonner";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -188,6 +190,7 @@ export default function RootLayout({
       </head>
       <body className="font-neue-montreal antialiased text-white">
         {children}
+        <Toaster position="top-right" richColors />
 
         <Chatbot />
 
