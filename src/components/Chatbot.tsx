@@ -1,8 +1,17 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Bot, User, Loader2, Copy, Check } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import {
+  Bot,
+  Check,
+  Copy,
+  Loader2,
+  MessageCircle,
+  Send,
+  User,
+  X,
+} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 type Message = {
   role: "user" | "model";
@@ -12,12 +21,24 @@ type Message = {
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: "model", content: "Hi there! I'm the Daniekeys Studios Assistant. How can I help you today?" }
+    {
+      role: "model",
+      content: `Hi 👋 welcome to Daniekeys Studio.
+
+We help businesses with logo design, branding, and websites.
+
+To get started, tell us:
+• What you need
+• A short description
+• Your timeline
+
+Ready to get started?`,
+    },
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [copiedId, setCopiedId] = useState<number | null>(null);
-  
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const handleCopy = (text: string, idx: number) => {
@@ -65,33 +86,40 @@ export default function Chatbot() {
         const { value, done: doneReading } = await reader.read();
         done = doneReading;
         const chunkValue = decoder.decode(value);
-        
+
         // Split chunk by lines since it's an SSE format and parse
-        const lines = chunkValue.split('\n');
+        const lines = chunkValue.split("\n");
         for (const line of lines) {
-            if (line.startsWith('data: ') && line !== 'data: [DONE]') {
-                try {
-                    const data = JSON.parse(line.slice(6));
-                    if (data.text) {
-                        setMessages((prev) => {
-                            const newMessages = [...prev];
-                            const lastIndex = newMessages.length - 1;
-                            newMessages[lastIndex] = {
-                                ...newMessages[lastIndex],
-                                content: newMessages[lastIndex].content + data.text
-                            };
-                            return newMessages;
-                        });
-                    }
-                } catch (err) {
-                    console.error('Error parsing stream data', err);
-                }
+          if (line.startsWith("data: ") && line !== "data: [DONE]") {
+            try {
+              const data = JSON.parse(line.slice(6));
+              if (data.text) {
+                setMessages((prev) => {
+                  const newMessages = [...prev];
+                  const lastIndex = newMessages.length - 1;
+                  newMessages[lastIndex] = {
+                    ...newMessages[lastIndex],
+                    content: newMessages[lastIndex].content + data.text,
+                  };
+                  return newMessages;
+                });
+              }
+            } catch (err) {
+              console.error("Error parsing stream data", err);
             }
+          }
         }
       }
     } catch (error) {
       console.error(error);
-      setMessages((prev) => [...prev, { role: "model", content: "Sorry, I encountered an error. Please contact us directly at contactdaniekeystudio@gmail.com!" }]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "model",
+          content:
+            "Sorry, I encountered an error. Please contact us directly at contactdaniekeystudio@gmail.com!",
+        },
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -101,12 +129,12 @@ export default function Chatbot() {
     // Basic markdown-like formatting for bold text
     const parts = text.split(/(\*\*.*?\*\*)/g);
     return parts.map((part, i) => {
-      if (part.startsWith('**') && part.endsWith('**')) {
+      if (part.startsWith("**") && part.endsWith("**")) {
         return <strong key={i}>{part.slice(2, -2)}</strong>;
       }
       return <span key={i}>{part}</span>;
     });
-  }
+  };
 
   return (
     <>
@@ -121,15 +149,18 @@ export default function Chatbot() {
           >
             {/* Header */}
             <div className="bg-neutral-900 border-b border-neutral-800 p-4 flex justify-between items-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-transparent pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-transparent pointer-events-none"></div>
               <div className="flex items-center gap-3 relative z-10">
                 <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white">
                   <Bot size={20} />
                 </div>
                 <div>
-                  <h3 className="text-white font-medium text-sm">Daniekeys Assistant</h3>
+                  <h3 className="text-white font-medium text-sm">
+                    Daniekeys Assistant
+                  </h3>
                   <p className="text-neutral-400 text-xs flex items-center gap-1">
-                    <span className="w-2 h-2 rounded-full bg-green-500 inline-block"></span> Online
+                    <span className="w-2 h-2 rounded-full bg-green-500 inline-block"></span>{" "}
+                    Online
                   </p>
                 </div>
               </div>
@@ -152,10 +183,16 @@ export default function Chatbot() {
                 >
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
-                      msg.role === "user" ? "bg-neutral-800 text-neutral-300" : "bg-orange-500 text-white"
+                      msg.role === "user"
+                        ? "bg-neutral-800 text-neutral-300"
+                        : "bg-orange-500 text-white"
                     }`}
                   >
-                    {msg.role === "user" ? <User size={16} /> : <Bot size={16} />}
+                    {msg.role === "user" ? (
+                      <User size={16} />
+                    ) : (
+                      <Bot size={16} />
+                    )}
                   </div>
                   <div
                     className={`p-3 rounded-2xl max-w-[80%] text-sm break-words whitespace-pre-wrap ${
@@ -172,7 +209,11 @@ export default function Chatbot() {
                         title="Copy message"
                         aria-label="Copy message"
                       >
-                        {copiedId === idx ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
+                        {copiedId === idx ? (
+                          <Check size={14} className="text-green-500" />
+                        ) : (
+                          <Copy size={14} />
+                        )}
                       </button>
                     )}
                   </div>
@@ -193,7 +234,10 @@ export default function Chatbot() {
 
             {/* Input Area */}
             <div className="p-3 bg-neutral-900 border-t border-neutral-800">
-              <form onSubmit={handleSubmit} className="relative flex items-center">
+              <form
+                onSubmit={handleSubmit}
+                className="relative flex items-center"
+              >
                 <input
                   type="text"
                   value={input}
@@ -205,9 +249,14 @@ export default function Chatbot() {
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="absolute right-2 p-2 bg-neutral-800 text-white rounded-full disabled:opacity-50 disabled:cursor-not-allowed hover:bg-neutral-700 transition-colors"
+                  className="absolute right-2 p-2 bg-neutral-800 !text-black rounded-full disabled:opacity-50 disabled:cursor-not-allowed hover:bg-neutral-700 transition-colors "
                 >
-                  <Send size={16} className={input.trim() ? "text-orange-500" : "text-neutral-400"} />
+                  <Send
+                    size={16}
+                    className={
+                      input.trim() ? "text-orange-500" : "text-neutral-400"
+                    }
+                  />
                 </button>
               </form>
             </div>

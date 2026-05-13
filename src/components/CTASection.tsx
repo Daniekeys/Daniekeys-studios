@@ -61,14 +61,16 @@ export default function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
-          >
+          > <a href="/contact">
+              
             <button className="group bg-accent-blue text-white px-12 py-6 text-lg font-medium hover:bg-accent-blue-light transition-all duration-300 hover-lift flex items-center gap-4 mx-auto rounded-full">
               Start a Project
               <ArrowRight
                 size={20}
                 className="group-hover:translate-x-2 transition-transform duration-300"
-              />
+                />
             </button>
+                </a>
           </motion.div>
 
           {/* Contact Info */}

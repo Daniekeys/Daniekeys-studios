@@ -1,7 +1,7 @@
 "use client";
 import { ThreeDMarquee } from "@/components/ui/3d-marquee";
 import { motion } from "framer-motion";
-import { Play, ArrowRight } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 
 export default function Hero3DMarquee() {
   // Base marquee images from marquee-pictures folder (14 images)
@@ -44,10 +44,10 @@ export default function Hero3DMarquee() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative z-20 mx-auto max-w-5xl text-center font-neue-montreal text-4xl font-bold text-balance text-primary-white md:text-6xl lg:text-hero"
+          className="relative z-20 mx-auto max-w-5xl text-center font-neue-montreal text-4xl font-bold text-balance text-primary-white md:text-6xl lg:text-hero mt-10"
         >
           Where Creativity Meets{" "}
-          <span className="relative z-20 inline-block rounded-xl bg-accent-blue/80 px-6 py-2 text-primary-white underline decoration-accent-blue-light decoration-[6px] underline-offset-[16px] backdrop-blur-sm">
+          <span className="relative z-20 inline-block rounded-xl bg-accent-blue/45 px-6 py-2 text-primary-white underline decoration-accent-blue-light decoration-[6px] underline-offset-[16px] backdrop-blur-sm">
             Technology
           </span>
         </motion.h1>
@@ -56,7 +56,7 @@ export default function Hero3DMarquee() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative z-20 mx-auto max-w-2xl py-8 text-center text-lg text-off-white md:text-xl"
+          className="relative z-20 mx-auto max-w-2xl py-8 text-center text-sm text-off-white md:text-lg font-normal"
         >
           We design and develop digital experiences that captivate audiences,
           drive engagement, and transform brands into unforgettable stories.
@@ -68,12 +68,12 @@ export default function Hero3DMarquee() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="relative z-20 flex flex-wrap items-center justify-center gap-6 pt-4"
         >
-          <button className="group flex items-center gap-3 rounded-lg bg-accent-blue px-8 py-4 text-base font-medium text-primary-white transition-all duration-300 hover:bg-accent-blue-light hover:shadow-lg hover:shadow-accent-blue/25 focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-primary focus:outline-none">
+          <button className="group flex items-center gap-3 rounded-full bg-accent-blue px-8 py-4 text-base font-medium text-primary-white transition-all duration-300 hover:bg-accent-blue-light hover:shadow-lg hover:shadow-accent-blue/25 focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-primary focus:outline-none">
             Start Your Project
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </button>
 
-          <button className="group flex items-center gap-3 rounded-lg border border-off-white/20 bg-primary-white/10 px-8 py-4 text-base font-medium text-primary-white backdrop-blur-sm transition-all duration-300 hover:bg-primary-white/20 hover:border-off-white/40 focus:ring-2 focus:ring-primary-white/20 focus:ring-offset-2 focus:ring-offset-primary focus:outline-none">
+          <button className="group flex items-center gap-3 rounded-full border border-off-white/20 bg-primary-white/10 px-8 py-4 text-base font-medium text-primary-white backdrop-blur-sm transition-all duration-300 hover:bg-primary-white/20 hover:border-off-white/40 focus:ring-2 focus:ring-primary-white/20 focus:ring-offset-2 focus:ring-offset-primary focus:outline-none">
             <Play className="h-5 w-5" />
             Watch Our Reel
           </button>

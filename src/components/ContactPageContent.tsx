@@ -13,7 +13,6 @@ import {
   Star,
 } from "lucide-react";
 import { useState } from "react";
-import { toast } from "sonner";
 
 const contactMethods = [
   {
@@ -36,7 +35,7 @@ const contactMethods = [
     icon: Instagram,
     title: "Instagram",
     value: "@daniekeys_studios",
-    href: "https://www.instagram.com/daniekeys_studios/",
+    href: "https://www.instagram.com/daniekeys_studios/", 
     description: "Follow our latest work and behind-the-scenes",
     gradient: "from-accent-blue-lighter to-primary",
   },
@@ -95,6 +94,8 @@ export default function ContactPageContent() {
     timeline: "",
   });
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   //   const handleSubmit = async (e: React.FormEvent) => {
@@ -141,23 +142,29 @@ export default function ContactPageContent() {
 
     setIsSubmitting(true);
 
-    try {
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          service: formData.service,
-          budget: formData.budget,
-          timeline: formData.timeline,
-          message: formData.message,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
-      );
+    // Create email body
+    const emailBody = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Service Interested: ${formData.service}
+Budget Range: ${formData.budget}
+Timeline: ${formData.timeline}
 
-      toast.success("Message sent successfully!");
+Message:
+${formData.message}
+    `;
+
+    // Open mailto link
+    window.open(
+      `mailto:starlordflash2@gmail.com?subject=New Project Inquiry from ${
+        formData.name
+      }&body=${encodeURIComponent(emailBody)}`,
+      "_blank",
+    );
+
+    setTimeout(() => {
+      setIsSubmitting(false);
       setFormData({
         name: "",
         email: "",
@@ -232,6 +239,18 @@ export default function ContactPageContent() {
                 <Mail className="w-4 h-4" />
                 Send Email
               </motion.a>
+            </div>
+            <div>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="mt-6 px-6 py-4 w-full max-w-[300px] text-sm text-gray-200 rounded-lg bg-accent-blue hover:bg-accent-blue-light hover:text-white transition-colors"
+              >
+                Book a Demo
+              </button>
+              <DemoPopupModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+              />
             </div>
           </motion.div>
         </div>
