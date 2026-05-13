@@ -47,7 +47,7 @@ export default function Hero3DMarquee() {
           className="relative z-20 mx-auto max-w-5xl text-center font-neue-montreal text-4xl font-bold text-balance text-primary-white md:text-6xl lg:text-hero"
         >
           Where Creativity Meets{" "}
-          <span className="relative z-20 inline-block rounded-xl bg-accent-blue/80 px-6 py-2 text-primary-white underline decoration-accent-blue-light decoration-[6px] underline-offset-[16px] backdrop-blur-sm">
+          <span className="relative z-20 inline-block rounded-xl bg-accent-blue/45 px-6 py-2 text-primary-white underline decoration-accent-blue-light decoration-[6px] underline-offset-[16px] backdrop-blur-sm">
             Technology
           </span>
         </motion.h1>

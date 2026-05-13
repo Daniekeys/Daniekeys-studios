@@ -12,7 +12,8 @@ import {
   Send,
   Star,
 } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
+import DemoPopupModal from "@/components/common/demoPopup";
 
 const contactMethods = [
   {
@@ -94,6 +95,8 @@ export default function ContactPageContent() {
     timeline: "",
   });
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -115,8 +118,7 @@ ${formData.message}
 
     // Open mailto link
     window.open(
-      `mailto:starlordflash2@gmail.com?subject=New Project Inquiry from ${
-        formData.name
+      `mailto:starlordflash2@gmail.com?subject=New Project Inquiry from ${formData.name
       }&body=${encodeURIComponent(emailBody)}`,
       "_blank",
     );
@@ -192,6 +194,18 @@ ${formData.message}
                 <Mail className="w-4 h-4" />
                 Send Email
               </motion.a>
+            </div>
+            <div>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="mt-6 px-6 py-4 w-full max-w-[300px] text-sm text-gray-200 rounded-lg bg-accent-blue hover:bg-accent-blue-light hover:text-white transition-colors"
+              >
+                Book a Demo
+              </button>
+              <DemoPopupModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+              />
             </div>
           </motion.div>
         </div>
