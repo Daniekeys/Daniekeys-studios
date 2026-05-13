@@ -1,5 +1,5 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { KNOWLEDGE_BASE } from '@/lib/knowledge';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Initialize the Google Generative AI with the API key
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
       systemInstruction: KNOWLEDGE_BASE,
       generationConfig: {
         maxOutputTokens: 800,
-        temperature: 0.7,
+        temperature: 0.4,
       },
     });
 

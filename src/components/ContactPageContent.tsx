@@ -36,7 +36,7 @@ const contactMethods = [
     icon: Instagram,
     title: "Instagram",
     value: "@daniekeys_studios",
-    href: "https://www.instagram.com/daniekeys_studios/",
+    href: "https://www.instagram.com/daniekeys_studios/", 
     description: "Follow our latest work and behind-the-scenes",
     gradient: "from-accent-blue-lighter to-primary",
   },
