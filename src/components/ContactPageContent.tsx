@@ -168,8 +168,8 @@ export default function ContactPageContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-hero-sm lg:text-hero font-bold mb-6">
-              Let's Create Something{" "}
+            <h1 className="text-hero-sm lg:text-hero font-bold mb-4">
+              Let's Create Something <br />
               <span className="text-accent-blue">Extraordinary</span>
             </h1>
             <p className="text-xl lg:text-2xl text-secondary leading-relaxed mb-8">
@@ -177,20 +177,33 @@ export default function ContactPageContent() {
               and bring your vision to life. Every great project starts with a
               conversation.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center mt-8">
+              {/* Primary CTA */}
+              <motion.button
+                onClick={() => setIsModalOpen(true)}
+                className="bg-accent-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-accent-blue-light transition-all duration-300 flex items-center gap-2 justify-center"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Book a Demo
+                <ArrowRight className="w-4 h-4" />
+              </motion.button>
+
+              {/* Secondary CTA */}
               <motion.a
                 href="tel:+2349030909624"
-                className="bg-accent-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-accent-blue-light transition-all duration-300 flex items-center gap-2 justify-center group"
+                className="border-2 border-accent-blue text-accent-blue px-8 py-4 rounded-lg font-medium hover:bg-accent-blue hover:text-white transition-all duration-300 flex items-center gap-2 justify-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Phone className="w-4 h-4" />
                 Call Now
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </motion.a>
+
+              {/* Tertiary CTA */}
               <motion.a
                 href="mailto:starlordflash2@gmail.com"
-                className="border-2 border-accent-blue text-accent-blue px-8 py-4 rounded-lg font-medium hover:bg-accent-blue hover:text-white transition-all duration-300 flex items-center gap-2 justify-center"
+                className="border border-white/20 text-white px-8 py-4 rounded-lg font-medium hover:bg-white/10 transition-all duration-300 flex items-center gap-2 justify-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -198,18 +211,11 @@ export default function ContactPageContent() {
                 Send Email
               </motion.a>
             </div>
-            <div>
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="mt-6 px-6 py-4 w-full max-w-[300px] text-sm text-gray-200 rounded-lg bg-accent-blue hover:bg-accent-blue-light hover:text-white transition-colors"
-              >
-                Book a Demo
-              </button>
-              <DemoPopupModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-              />
-            </div>
+
+            <DemoPopupModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+            />
           </motion.div>
         </div>
       </section>
