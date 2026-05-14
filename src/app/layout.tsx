@@ -5,7 +5,6 @@ import { Toaster } from "sonner";
 
 import "./globals.css";
 
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.daniekeysstudios.com/"),
 

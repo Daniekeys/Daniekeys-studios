@@ -1,4 +1,5 @@
 "use client";
+import DemoPopupModal from "@/components/common/demoPopup";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import {
@@ -12,7 +13,7 @@ import {
   Send,
   Star,
 } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 
 const contactMethods = [
@@ -95,46 +96,9 @@ export default function ContactPageContent() {
     timeline: "",
   });
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  //   const handleSubmit = async (e: React.FormEvent) => {
-  //     e.preventDefault();
-  //     setIsSubmitting(true);
-
-  //     // Create email body
-  //     const emailBody = `
-  // Name: ${formData.name}
-  // Email: ${formData.email}
-  // Phone: ${formData.phone}
-  // Service Interested: ${formData.service}
-  // Budget Range: ${formData.budget}
-  // Timeline: ${formData.timeline}
-
-  // Message:
-  // ${formData.message}
-  //     `;
-
-  //     // Open mailto link
-  //     window.open(
-  //       `mailto:starlordflash2@gmail.com?subject=New Project Inquiry from ${
-  //         formData.name
-  //       }&body=${encodeURIComponent(emailBody)}`,
-  //       "_blank",
-  //     );
-
-  //     setTimeout(() => {
-  //       setIsSubmitting(false);
-  //       setFormData({
-  //         name: "",
-  //         email: "",
-  //         phone: "",
-  //         service: "",
-  //         budget: "",
-  //         message: "",
-  //         timeline: "",
-  //       });
-  //     }, 2000);
-  //   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -158,6 +122,7 @@ export default function ContactPageContent() {
       );
 
       toast.success("Message sent successfully!");
+
       setFormData({
         name: "",
         email: "",
@@ -232,6 +197,18 @@ export default function ContactPageContent() {
                 <Mail className="w-4 h-4" />
                 Send Email
               </motion.a>
+            </div>
+            <div>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="mt-6 px-6 py-4 w-full max-w-[300px] text-sm text-gray-200 rounded-lg bg-accent-blue hover:bg-accent-blue-light hover:text-white transition-colors"
+              >
+                Book a Demo
+              </button>
+              <DemoPopupModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+              />
             </div>
           </motion.div>
         </div>
