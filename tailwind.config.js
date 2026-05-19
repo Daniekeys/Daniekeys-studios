@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,53 +8,53 @@ module.exports = {
     "./pfp/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      // Daniekeys Studios Brand Colors
-      primary: "#111111",
-      secondary: "#818181",
-      "primary-white": "#F9F9F9",
-      "off-white": "#F0F0F0",
-      // Accent Blues
-      "accent-blue": "#2B6BFF",
-      "accent-blue-light": "#5F8EFB",
-      "accent-blue-lighter": "#9DBAFF",
-      // Standard colors
-      white: "#FFFFFF",
-      black: "#000000",
-      transparent: "transparent",
-      current: "currentColor",
-      // Shadcn colors
-      background: "hsl(var(--background))",
-      foreground: "hsl(var(--foreground))",
-      card: {
-        DEFAULT: "hsl(var(--card))",
-        foreground: "hsl(var(--card-foreground))",
-      },
-      popover: {
-        DEFAULT: "hsl(var(--popover))",
-        foreground: "hsl(var(--popover-foreground))",
-      },
-      muted: {
-        DEFAULT: "hsl(var(--muted))",
-        foreground: "hsl(var(--muted-foreground))",
-      },
-      accent: {
-        DEFAULT: "hsl(var(--accent))",
-        foreground: "hsl(var(--accent-foreground))",
-      },
-      destructive: {
-        DEFAULT: "hsl(var(--destructive))",
-        foreground: "hsl(var(--destructive-foreground))",
-      },
-      border: "hsl(var(--border))",
-      input: "hsl(var(--input))",
-      ring: "hsl(var(--ring))",
-    },
     fontFamily: {
       sans: ["Neue Montreal", "system-ui", "sans-serif"],
       "neue-montreal": ["Neue Montreal", "system-ui", "sans-serif"],
     },
     extend: {
+      colors: {
+        // Daniekeys Studios Brand Colors
+        primary: "#111111",
+        secondary: "#818181",
+        "primary-white": "#F9F9F9",
+        "off-white": "#F0F0F0",
+        // Accent Blues
+        "accent-blue": "#2B6BFF",
+        "accent-blue-light": "#5F8EFB",
+        "accent-blue-lighter": "#9DBAFF",
+        // Standard colors
+        white: "#FFFFFF",
+        black: "#000000",
+        transparent: "transparent",
+        current: "currentColor",
+        // Shadcn colors
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

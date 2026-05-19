@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/logos/logo-alone.png",
+        url: "https://www.daniekeysstudios.com/images/logos/daniekeys-logo.png",
         width: 1200,
         height: 630,
         alt: "Daniekeys Studios Logo",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     creator: "@daniekeys",
     site: "@daniekeys",
     images: {
-      url: "/images/logos/logo-alone.png",
+      url: "https://www.daniekeysstudios.com/images/logos/daniekeys-logo.png",
       alt: "Daniekeys Studios",
     },
   },
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "google15ceedf174cb66b0",
+    google: "j13HwmdDfAyxcRgD-X_KTTXJfqM2zKsNh1gRP0APgXc",
   },
   category: "creative-services",
   appleWebApp: {
@@ -115,10 +115,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta
-          name="google-site-verification"
-          content="j13HwmdDfAyxcRgD-X_KTTXJfqM2zKsNh1gRP0APgXc"
-        />
         {/* Structured Data */}
         <Script
           id="organization-schema"

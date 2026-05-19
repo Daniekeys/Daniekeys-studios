@@ -151,7 +151,7 @@ Ready to get started?`,
             <div className="bg-neutral-900 border-b border-neutral-800 p-4 flex justify-between items-center relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-transparent pointer-events-none"></div>
               <div className="flex items-center gap-3 relative z-10">
-                <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white">
+                <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white">
                   <Bot size={20} />
                 </div>
                 <div>
@@ -185,7 +185,7 @@ Ready to get started?`,
                     className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
                       msg.role === "user"
                         ? "bg-neutral-800 text-neutral-300"
-                        : "bg-orange-500 text-white"
+                        : "bg-blue-500 text-white"
                     }`}
                   >
                     {msg.role === "user" ? (
@@ -221,7 +221,7 @@ Ready to get started?`,
               ))}
               {isLoading && (
                 <div className="flex gap-3">
-                  <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center shrink-0 text-white">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shrink-0 text-white">
                     <Bot size={16} />
                   </div>
                   <div className="p-3 rounded-2xl bg-neutral-950 border border-neutral-800 text-neutral-400 rounded-tl-none flex items-center gap-2">
@@ -243,7 +243,7 @@ Ready to get started?`,
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about our services..."
-                  className="w-full bg-neutral-950 border border-neutral-800 text-black rounded-full py-3 pl-4 pr-12 focus:outline-none focus:ring-1 focus:ring-orange-500/50 text-sm placeholder:text-neutral-500"
+                  className="w-full bg-neutral-950 border border-neutral-800 text-black rounded-full py-3 pl-4 pr-12 focus:outline-none focus:ring-1 focus:ring-blue-500/50 text-sm placeholder:text-neutral-500"
                   disabled={isLoading}
                 />
                 <button
@@ -254,7 +254,7 @@ Ready to get started?`,
                   <Send
                     size={16}
                     className={
-                      input.trim() ? "text-orange-500" : "text-neutral-400"
+                      input.trim() ? "text-blue-500" : "text-neutral-400"
                     }
                   />
                 </button>
@@ -269,7 +269,7 @@ Ready to get started?`,
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full shadow-lg shadow-orange-500/20 flex items-center justify-center text-white z-50 hover:shadow-orange-500/40 transition-shadow duration-300"
+        className="fixed bottom-6 right-6 w-14 h-14 shadow-lg  flex items-center justify-center text-white z-50  transition-shadow duration-300"
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
