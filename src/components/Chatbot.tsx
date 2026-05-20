@@ -243,7 +243,7 @@ Ready to get started?`,
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about our services..."
-                  className="w-full bg-neutral-950 border border-neutral-800 text-black rounded-full py-3 pl-4 pr-12 focus:outline-none focus:ring-1 focus:ring-blue-500/50 text-sm placeholder:text-neutral-500"
+                  className="w-full bg-neutral-950 border border-neutral-800 text-white rounded-full py-3 pl-4 pr-12 focus:outline-none focus:ring-1 focus:ring-blue-500/50 text-sm placeholder:text-neutral-500"
                   disabled={isLoading}
                 />
                 <button
