@@ -1,659 +1,879 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import {
-  Play,
-  Palette, Share2, Users,
-  Building2, ExternalLink,
-  ArrowRight,
-  Star,
-  Eye,
-  Award,
-  TrendingUp
-} from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 const categories = [
-  { id: "all", name: "All Projects", icon: Star },
-  { id: "motion", name: "Motion Graphics", icon: Play },
-  { id: "branding", name: "Branding", icon: Palette },
-  { id: "marketing", name: "Marketing", icon: Share2 },
-  { id: "events", name: "Events", icon: Building2 },
+  { id: "all", name: "All" },
+  { id: "branding", name: "Branding" },
+  { id: "motion", name: "Motion" },
+  { id: "web", name: "Web" },
+  { id: "marketing", name: "Marketing" },
+  { id: "events", name: "Events" },
+  { id: "ai", name: "AI" },
+];
+
+const featuredProjects = [
+  {
+    id: 1,
+    title: "Afriment — Complete Brand Identity System",
+    client: "Afriment",
+    year: "2024",
+    tags: ["Branding", "Identity System"],
+    description:
+      "Full visual identity for Afriment's internship platform — logo, colour system, typography, social templates, and brand guidelines.",
+    image: "/images/marquee-pictures/DK_Slide 12.png",
+    results: [
+      { label: "Brand Consistency", value: "✓ Achieved across all platforms" },
+      { label: "Delivery", value: "3 weeks" },
+      { label: "Service", value: "Full Brand Identity" },
+    ],
+    href: "/portfolio/afriment",
+  },
+  {
+    id: 2,
+    title: "Candexa — Modern Brand Redesign",
+    client: "Candexa",
+    year: "2024",
+    tags: ["Rebranding", "Visual Identity"],
+    description:
+      "A comprehensive rebrand for Candexa — clean aesthetics, modern typography, and a visual language that positions them for enterprise clients.",
+    image: "/images/samples/branding-b.png",
+    results: [
+      { label: "Visual Refresh", value: "Complete identity overhaul" },
+      { label: "Brand perception", value: "Significantly elevated" },
+      { label: "Service", value: "Rebranding + Brand Guidelines" },
+    ],
+    href: "/portfolio/candexa",
+  },
+  {
+    id: 3,
+    title: "My Lang Coach — Promotional Video Series",
+    client: "My Lang Coach",
+    year: "2024",
+    tags: ["Motion Graphics", "Video Production"],
+    description:
+      "Engaging explainer and promo videos that communicate the platform's value in under 60 seconds — designed for social media performance.",
+    image: "/images/samples/marketing-a.png",
+    results: [
+      { label: "Format", value: "Social-first short videos" },
+      { label: "Service", value: "Motion Graphics + Video Production" },
+    ],
+    href: "/portfolio/mylangcoach",
+  },
+  {
+    id: 4,
+    title: "Buymejollof — Brand Identity & Launch Assets",
+    client: "Buymejollof",
+    year: "2024",
+    tags: ["Branding", "Launch Campaign"],
+    description:
+      "Brand identity and launch campaign assets for Buymejollof — capturing the energy and warmth of the brand for a memorable market entry.",
+    image: "/images/samples/branding.jpg",
+    results: [
+      { label: "Service", value: "Brand Identity + Launch Campaign" },
+      { label: "Delivery", value: "Full brand asset suite" },
+    ],
+    href: "/portfolio/buymejollof",
+  },
 ];
 
 const portfolioItems = [
   {
     id: 1,
-    title: "Premium Brand Identity System",
+    title: "Full Brand Identity System",
     category: "branding",
-    description:
-      "Complete brand identity system for enterprise business including logo, color palette, and comprehensive brand guidelines.",
-    image: "/images/samples/branding.jpg",
-    client: "Enterprise Solutions Ltd",
+    client: "Afriment",
     year: "2024",
-    services: ["Brand Identity", "Logo Design", "Brand Guidelines"],
-    results: [
-      "400% increase in brand recognition",
-      "60% improvement in client trust",
-    ],
-    testimonial:
-      "Daniekeys Studios delivered a brand identity that perfectly captures our professional essence.",
+    image: "/images/marquee-pictures/DK_Slide 12.png",
     featured: true,
-    tags: ["Corporate", "Enterprise", "B2B"],
+    tags: ["Branding", "Identity System"],
   },
   {
     id: 2,
-    title: "Modern Brand Redesign",
+    title: "Modern Visual Rebrand",
     category: "branding",
-    description:
-      "Contemporary brand redesign featuring clean aesthetics and modern typography for tech startup.",
-    image: "/images/samples/branding-b.png",
-    client: "Innovation Hub Nigeria",
+    client: "Candexa",
     year: "2024",
-    services: ["Brand Redesign", "Visual Identity", "Typography"],
-    results: [
-      "250% brand recognition improvement",
-      "45% increase in investor interest",
-    ],
-    testimonial:
-      "The new brand identity elevated our startup to compete with established players.",
+    image: "/images/samples/branding-b.png",
     featured: true,
-    tags: ["Startup", "Technology", "Modern"],
+    tags: ["Rebranding", "Visual Identity"],
   },
   {
     id: 3,
-    title: "Promotional Video Campaign",
+    title: "Promotional Video Series",
     category: "motion",
-    description:
-      "High-impact promotional video campaign designed to increase brand awareness and drive engagement.",
-    image: "/images/samples/marketing-a.png",
-    video: "/videos/Ads-video.mp4",
-    client: "Digital Marketing Pro",
+    client: "My Lang Coach",
     year: "2024",
-    services: ["Motion Graphics", "Video Production", "Campaign Strategy"],
-    results: ["3M+ views across platforms", "200% increase in lead generation"],
-    testimonial:
-      "The promotional videos exceeded our expectations and delivered exceptional results.",
+    image: "/images/samples/marketing-a.png",
     featured: true,
-    tags: ["Advertising", "Promotion", "Digital"],
+    tags: ["Motion Graphics", "Video"],
   },
   {
     id: 4,
-    title: "Hero Video Production",
+    title: "Brand Launch Video",
     category: "motion",
-    description:
-      "Professional hero video production showcasing company values and core services for corporate website.",
-    image: "/images/samples/marketing-b.png",
-    video: "/videos/new-hero.mp4",
-    client: "Corporate Solutions Group",
+    client: "Buymejollof",
     year: "2024",
-    services: [
-      "Hero Video",
-      "Corporate Storytelling",
-      "Professional Production",
-    ],
-    results: [
-      "150% website engagement increase",
-      "80% improvement in conversion rate",
-    ],
-    testimonial:
-      "The hero video perfectly communicates our brand story and mission.",
-    featured: false,
-    tags: ["Corporate", "Hero Video", "Website"],
+    image: "/images/samples/marketing-b.png",
+    featured: true,
+    tags: ["Motion", "Brand Video"],
   },
   {
     id: 5,
-    title: "Brand Video Production",
+    title: "Company Identity Video",
     category: "motion",
-    description:
-      "Dynamic brand video production showcasing company identity and core values through engaging storytelling.",
-    image: "/images/samples/branding.jpg",
-    video: "/videos/brand-vid.mp4",
-    client: "Creative Studio Pro",
+    client: "Daniekeys Studios",
     year: "2024",
-    services: ["Brand Video", "Creative Direction", "Video Storytelling"],
-    results: ["250% brand awareness increase", "90% viewer engagement rate"],
-    testimonial:
-      "The brand video perfectly captured our essence and elevated our market presence.",
+    image: "/images/samples/branding.jpg",
     featured: false,
-    tags: ["Branding", "Video", "Creative"],
+    tags: ["Brand Video", "Identity"],
   },
   {
     id: 6,
-    title: "Marketing Campaign Design",
+    title: "Digital Campaign Assets",
     category: "marketing",
-    description:
-      "Comprehensive marketing campaign including social media assets, print materials, and digital advertisements.",
-    image: "/images/samples/marketing-c.png",
-    client: "Retail Excellence",
+    client: "[Client Name Confidential]",
     year: "2024",
-    services: ["Campaign Design", "Social Media", "Digital Marketing"],
-    results: ["300% social media engagement", "120% sales increase"],
-    testimonial:
-      "Their marketing campaign design drove unprecedented growth for our business.",
+    image: "/images/samples/marketing-c.png",
     featured: false,
-    tags: ["Retail", "Campaign", "Social Media"],
+    tags: ["Marketing", "Campaign"],
   },
   {
     id: 7,
-    title: "Digital Marketing Suite",
+    title: "Social Media Templates & Strategy",
     category: "marketing",
-    description:
-      "Complete digital marketing package including website banners, social media templates, and email campaigns.",
-    image: "/images/samples/marketing-d.png",
-    client: "E-commerce Plus",
+    client: "[Client Name Confidential]",
     year: "2024",
-    services: ["Digital Marketing", "Template Design", "Email Campaigns"],
-    results: ["250% email open rates", "180% click-through improvement"],
-    testimonial:
-      "The digital marketing suite transformed our online presence completely.",
+    image: "/images/samples/marketing-d.png",
     featured: false,
-    tags: ["E-commerce", "Digital", "Templates"],
+    tags: ["Social Media", "Templates"],
   },
   {
     id: 8,
-    title: "Social Media Strategy",
+    title: "Instagram Content Strategy",
     category: "marketing",
-    description:
-      "Strategic social media content design and planning for lifestyle brand targeting young professionals.",
-    image: "/images/samples/marketing-e.png",
-    client: "Lifestyle Brand Co",
+    client: "[Client Name Confidential]",
     year: "2024",
-    services: ["Social Strategy", "Content Design", "Brand Positioning"],
-    results: ["400% follower growth", "350% engagement increase"],
-    testimonial:
-      "Their social media strategy helped us connect with our target audience authentically.",
+    image: "/images/samples/marketing-e.png",
     featured: false,
-    tags: ["Lifestyle", "Social Media", "Content"],
+    tags: ["Instagram", "Content"],
   },
   {
     id: 9,
-    title: "Corporate Event Branding",
+    title: "Event Identity Package",
     category: "events",
-    description:
-      "Complete event branding package for major business conference including signage, materials, and digital assets.",
-    image: "/images/samples/events.png",
-    client: "Business Summit 2024",
+    client: "[Client Name Confidential]",
     year: "2024",
-    services: ["Event Branding", "Signage Design", "Conference Materials"],
-    results: ["500+ attendee satisfaction", "95% brand recall rate"],
-    testimonial:
-      "The event branding created a memorable and professional conference experience.",
-    featured: true,
-    tags: ["Corporate", "Conference", "Event"],
+    image: "/images/samples/events.png",
+    featured: false,
+    tags: ["Events", "Corporate"],
   },
   {
     id: 10,
-    title: "Cultural Event Promotion",
+    title: "Cultural Festival Branding",
     category: "events",
-    description:
-      "Vibrant promotional materials and branding for cultural festival celebrating Nigerian heritage and arts.",
-    image: "/images/samples/events-b.jpg",
-    client: "Heritage Cultural Festival",
+    client: "[Client Name Confidential]",
     year: "2024",
-    services: ["Event Promotion", "Cultural Branding", "Festival Marketing"],
-    results: ["10,000+ festival attendance", "80% ticket sales increase"],
-    testimonial:
-      "The promotional materials perfectly captured our cultural celebration spirit.",
+    image: "/images/samples/events-b.jpg",
     featured: false,
-    tags: ["Cultural", "Festival", "Heritage"],
+    tags: ["Events", "Cultural"],
   },
   {
     id: 11,
-    title: "Premium Launch Event",
+    title: "Product Launch Identity",
     category: "events",
-    description:
-      "Luxury event branding and promotional materials for high-end product launch targeting premium market segment.",
-    image: "/images/samples/event-c.jpg",
-    client: "Luxury Brands Ltd",
+    client: "[Client Name Confidential]",
     year: "2024",
-    services: ["Launch Event", "Luxury Branding", "Premium Marketing"],
-    results: ["200+ VIP attendance", "150% media coverage"],
-    testimonial:
-      "The event branding elevated our product launch to luxury standards.",
+    image: "/images/samples/event-c.jpg",
     featured: false,
-    tags: ["Luxury", "Product Launch", "Premium"],
+    tags: ["Launch", "Premium"],
   },
 ];
 
 const stats = [
-  { number: "50+", label: "Projects Completed", icon: Award },
-  { number: "30+", label: "Happy Clients", icon: Star },
-  { number: "2M+", label: "Video Views Generated", icon: Eye },
-  { number: "300%", label: "Average Growth Rate", icon: TrendingUp },
+  { number: "50+", label: "Projects" },
+  { number: "30+", label: "Happy Clients" },
+  { number: "4+", label: "Industries" },
+  { number: "5", label: "Service Areas" },
+];
+
+const clientLogos = [
+  { name: "Afriment", initial: "A" },
+  { name: "Candexa", initial: "C" },
+  { name: "My Lang Coach", initial: "M" },
+  { name: "Buymejollof", initial: "B" },
+];
+
+// Fixed positions to avoid hydration mismatch
+const particles = [
+  { id: 0, size: 3, left: 5, top: 10 },
+  { id: 1, size: 2, left: 12, top: 75 },
+  { id: 2, size: 4, left: 20, top: 30 },
+  { id: 3, size: 3, left: 28, top: 85 },
+  { id: 4, size: 2, left: 35, top: 20 },
+  { id: 5, size: 5, left: 42, top: 60 },
+  { id: 6, size: 2, left: 50, top: 15 },
+  { id: 7, size: 3, left: 58, top: 90 },
+  { id: 8, size: 4, left: 65, top: 40 },
+  { id: 9, size: 2, left: 72, top: 70 },
+  { id: 10, size: 3, left: 80, top: 25 },
+  { id: 11, size: 2, left: 88, top: 55 },
+  { id: 12, size: 4, left: 95, top: 80 },
+  { id: 13, size: 3, left: 8, top: 50 },
+  { id: 14, size: 2, left: 17, top: 95 },
+  { id: 15, size: 3, left: 45, top: 45 },
+  { id: 16, size: 2, left: 62, top: 5 },
+  { id: 17, size: 4, left: 75, top: 35 },
+  { id: 18, size: 3, left: 90, top: 15 },
+  { id: 19, size: 2, left: 32, top: 65 },
 ];
 
 export default function PortfolioPageContent() {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [, setSelectedItem] = useState<number | null>(null);
 
   const filteredItems =
     activeCategory === "all"
       ? portfolioItems
       : portfolioItems.filter((item) => item.category === activeCategory);
 
-  const featuredItems = portfolioItems.filter((item) => item.featured);
-
   return (
     <div className="bg-primary text-white">
-      {/* Hero Section */}
-      <section className="section-padding relative overflow-hidden">
-        {/* Background Video */}
-        <div className="absolute inset-0">
-          <video
-            className="hero-video opacity-20"
-            autoPlay
-            muted
-            loop
-            playsInline
-          >
-            <source src="/videos/hero-video.mp4" type="video/mp4" />
-            <div className="w-full h-full bg-gradient-to-br from-accent-blue/20 to-accent-blue-light/10"></div>
-          </video>
-
-          {/* Subtle atmospheric overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-primary/80"></div>
+      {/* ── Section 2: Hero ── */}
+      <section className="relative overflow-hidden py-32" style={{ background: "#111111" }}>
+        {/* CSS-only particles */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          {particles.map((p) => (
+            <span
+              key={p.id}
+              className="absolute rounded-full bg-white"
+              style={{
+                width: `${p.size}px`,
+                height: `${p.size}px`,
+                left: `${p.left}%`,
+                top: `${p.top}%`,
+                opacity: 0.15,
+                animation: `fadeIn ${3 + (p.id % 4)}s ease-in-out ${(p.id * 0.15) % 2}s infinite alternate`,
+              }}
+            />
+          ))}
         </div>
 
-        <div className="container-padding relative z-10">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
+        <div className="max-w-[1280px] mx-auto px-6 md:px-8 relative z-10">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="mb-8">
+            <ol className="flex items-center gap-2 text-sm" style={{ color: "#818181" }}>
+              <li>
+                <Link href="/" className="hover:text-white transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li className="text-white" aria-current="page">
+                Portfolio
+              </li>
+            </ol>
+          </nav>
+
+          {/* Badge */}
+          <div className="mb-6">
+            <span
+              className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase border"
+              style={{
+                color: "#9DBAFF",
+                borderColor: "#2B6BFF",
+                background: "rgba(43,107,255,0.08)",
+              }}
+            >
+              Our Work
+            </span>
+          </div>
+
+          {/* H1 */}
+          <motion.h1
+            className="font-extrabold leading-none mb-6"
+            style={{ fontSize: "clamp(44px, 6vw, 72px)", color: "#F9F9F9" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-hero-sm lg:text-hero font-bold mb-6">
-              Our <span className="text-accent-blue">Creative Portfolio</span>
-            </h1>
-            <p className="text-xl lg:text-2xl text-secondary leading-relaxed mb-8">
-              Discover how we've helped brands across Nigeria and Africa
-              transform their digital presence. Every project tells a story of
-              creativity, strategy, and measurable results.
-            </p>
-          </motion.div>
+            Work That Speaks
+            <br />
+            <span style={{ color: "#2B6BFF" }}>Before We Do.</span>
+          </motion.h1>
 
-          {/* Stats */}
-          <motion.div
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16"
-            initial={{ opacity: 0, y: 30 }}
+          {/* Subhead */}
+          <motion.p
+            className="text-lg mb-16 max-w-xl leading-relaxed"
+            style={{ color: "#818181" }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
           >
-            {stats.map((stat, index) => {
-              const IconComponent = stat.icon;
-              return (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-accent-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                    <IconComponent className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-3xl font-bold text-accent-blue mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-secondary text-sm">{stat.label}</div>
-                </div>
-              );
-            })}
+            Real projects. Real clients. Measurable results. Browse our work
+            across branding, web, motion, and AI.
+          </motion.p>
+
+          {/* Stats bar */}
+          <motion.div
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8 border-t pt-10"
+            style={{ borderColor: "#222" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            {stats.map((stat, i) => (
+              <div key={i} className="text-center">
+                <p
+                  className="font-extrabold leading-none mb-2"
+                  style={{ fontSize: "48px", color: "#2B6BFF" }}
+                >
+                  {stat.number}
+                </p>
+                <p
+                  className="font-medium uppercase tracking-wider"
+                  style={{ fontSize: "13px", color: "#818181" }}
+                >
+                  {stat.label}
+                </p>
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Featured Projects */}
-      <section className="section-padding">
-        <div className="container-padding">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-section-title-sm lg:text-section-title font-bold mb-4">
-              Featured <span className="text-accent-blue">Projects</span>
-            </h2>
-            <p className="text-secondary text-lg max-w-2xl mx-auto">
-              Our most impactful work showcasing creativity, strategy, and
-              measurable results
+      {/* ── Section 3: Featured Projects ── */}
+      <section className="py-24" style={{ background: "#0A0A0A" }}>
+        <div className="max-w-[1280px] mx-auto px-6 md:px-8">
+          <div className="mb-16">
+            <p
+              className="text-xs font-semibold tracking-widest uppercase mb-4"
+              style={{ color: "#9DBAFF" }}
+            >
+              Featured Work
             </p>
-          </motion.div>
+            <h2
+              className="font-bold"
+              style={{ fontSize: "clamp(32px, 4vw, 48px)", color: "#F9F9F9" }}
+            >
+              Our Most Impactful Projects
+            </h2>
+          </div>
 
           <div className="space-y-16">
-            {featuredItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "lg:grid-cols-2" : ""
+            {featuredProjects.map((project, index) => (
+              <motion.article
+                key={project.id}
+                className={`flex flex-col rounded-3xl overflow-hidden ${
+                  index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
                 }`}
+                style={{ background: "#111111" }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6 }}
               >
-                <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                  <div className="relative bg-secondary/10 rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 group">
-                    {/* Show video for Motion category, image for others */}
-                    {item.category === "motion" && item.video ? (
-                      <video
-                        className="w-full h-80 object-cover"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      >
-                        <source src={item.video} type="video/mp4" />
-                      </video>
-                    ) : (
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        width={600}
-                        height={320}
-                        className="w-full h-80 object-cover"
-                        loading="lazy"
-                      />
-                    )}
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-accent-blue text-white px-3 py-1 rounded-full text-xs font-semibold">
-                        {item.year}
-                      </span>
-                    </div>
-                  </div>
+                {/* Image — 55% */}
+                <div className="w-full lg:w-[55%] overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} — Daniekeys Studios`}
+                    width={800}
+                    height={500}
+                    className="w-full h-64 lg:h-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+                    style={{ minHeight: "360px" }}
+                  />
                 </div>
 
-                <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <div className="space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      {item.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="bg-secondary/20 text-accent-blue px-2 py-1 rounded text-xs"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <h3 className="text-2xl lg:text-3xl font-bold">
-                      {item.title}
-                    </h3>
-                    <p className="text-secondary leading-relaxed">
-                      {item.description}
-                    </p>
-
-                    <div>
-                      <h4 className="font-semibold mb-2 text-accent-blue">
-                        Services Provided:
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {item.services.map((service) => (
-                          <span
-                            key={service}
-                            className="bg-accent-blue/20 text-white px-3 py-1 rounded-full text-sm"
-                          >
-                            {service}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="font-semibold mb-2 text-accent-blue">
-                        Key Results:
-                      </h4>
-                      <ul className="space-y-1">
-                        {item.results.map((result, i) => (
-                          <li
-                            key={i}
-                            className="text-secondary text-sm flex items-start gap-2"
-                          >
-                            <Star className="w-4 h-4 text-accent-blue mt-0.5 flex-shrink-0" />
-                            {result}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <blockquote className="bg-secondary/10 p-4 rounded-lg border-l-4 border-accent-blue">
-                      <p className="text-white italic text-sm">
-                        "{item.testimonial}"
-                      </p>
-                      <cite className="text-secondary text-xs mt-2 block">
-                        - {item.client}
-                      </cite>
-                    </blockquote>
-
-                    <button
-                      className="bg-accent-blue text-white px-6 py-3 rounded-lg font-medium hover:bg-accent-blue-light transition-all duration-300 flex items-center gap-2 group"
-                      onClick={() => setSelectedItem(item.id)}
+                {/* Content — 45% */}
+                <div className="w-full lg:w-[45%] p-10 flex flex-col justify-center">
+                  {/* Year + tags */}
+                  <div className="flex items-center flex-wrap gap-2 mb-6">
+                    <span
+                      className="text-xs font-semibold px-3 py-1 rounded-full border"
+                      style={{
+                        color: "#9DBAFF",
+                        borderColor: "#2B6BFF",
+                        background: "rgba(43,107,255,0.1)",
+                      }}
                     >
-                      View Case Study
-                      <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio Grid */}
-      <section className="section-padding bg-secondary/5">
-        <div className="container-padding">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-section-title-sm lg:text-section-title font-bold mb-4">
-              All <span className="text-accent-blue">Projects</span>
-            </h2>
-            <p className="text-secondary text-lg max-w-2xl mx-auto">
-              Explore our complete portfolio across different service categories
-            </p>
-          </motion.div>
-
-          {/* Category Filter */}
-          <motion.div
-            className="flex flex-wrap justify-center gap-4 mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            {categories.map((category) => {
-              const IconComponent = category.icon;
-              return (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                    activeCategory === category.id
-                      ? "bg-accent-blue text-white"
-                      : "bg-secondary/10 text-secondary hover:text-white hover:bg-secondary/20"
-                  }`}
-                >
-                  <IconComponent className="w-4 h-4" />
-                  {category.name}
-                </button>
-              );
-            })}
-          </motion.div>
-
-          {/* Portfolio Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                className="bg-primary/50 rounded-2xl overflow-hidden border border-secondary/20 hover:border-accent-blue/30 transition-all duration-300 group"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="relative overflow-hidden">
-                  {/* Show video for Motion category, image for others */}
-                  {item.category === "motion" && item.video ? (
-                    <video
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                    >
-                      <source src={item.video} type="video/mp4" />
-                    </video>
-                  ) : (
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={400}
-                      height={200}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                  )}
-                  {item.featured && (
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-accent-blue text-white px-2 py-1 rounded text-xs font-semibold">
-                        Featured
-                      </span>
-                    </div>
-                  )}
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-black/60 text-white px-2 py-1 rounded text-xs">
-                      {item.year}
+                      {project.year}
                     </span>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <div className="flex flex-wrap gap-1 mb-3">
-                    {item.tags.slice(0, 2).map((tag) => (
+                    {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="bg-secondary/20 text-accent-blue px-2 py-1 rounded text-xs"
+                        className="text-xs px-3 py-1 rounded-full"
+                        style={{ background: "#1A1A1A", color: "#9DBAFF" }}
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-accent-blue transition-colors">
-                    {item.title}
+                  <h3
+                    className="font-bold mb-4 leading-tight"
+                    style={{
+                      fontSize: "clamp(20px, 2.5vw, 26px)",
+                      color: "#F9F9F9",
+                    }}
+                  >
+                    {project.title}
                   </h3>
-                  <p className="text-secondary text-sm mb-4 line-clamp-2">
-                    {item.description}
+
+                  <p
+                    className="text-base leading-relaxed mb-8"
+                    style={{ color: "#818181" }}
+                  >
+                    {project.description}
                   </p>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-secondary text-xs">
-                      {item.client}
+                  {/* Results table */}
+                  <div className="mb-8">
+                    {project.results.map((result, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center justify-between py-3"
+                        style={{
+                          borderBottom:
+                            i < project.results.length - 1
+                              ? "1px solid #222"
+                              : "none",
+                          fontSize: "13px",
+                        }}
+                      >
+                        <span style={{ color: "#818181" }}>{result.label}</span>
+                        <span
+                          className="font-medium text-right"
+                          style={{ color: "#F9F9F9" }}
+                        >
+                          {result.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-6 flex-wrap">
+                    <span className="text-sm" style={{ color: "#818181" }}>
+                      Client:{" "}
+                      <span style={{ color: "#F9F9F9" }}>{project.client}</span>
                     </span>
-                    <button
-                      className="text-accent-blue hover:text-accent-blue-light transition-colors flex items-center gap-1 group/btn"
-                      onClick={() => setSelectedItem(item.id)}
+                    <Link
+                      href={project.href}
+                      className="text-sm font-medium flex items-center gap-1 hover:underline transition-all"
+                      style={{ color: "#2B6BFF" }}
+                      aria-label={`View case study for ${project.title}`}
                     >
-                      <span className="text-sm font-medium">View</span>
-                      <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
+                      View Case Study <ArrowRight className="w-4 h-4" />
+                    </Link>
                   </div>
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process Showcase */}
-      <section className="section-padding">
-        <div className="container-padding">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-section-title-sm lg:text-section-title font-bold mb-6">
-              Why Our <span className="text-accent-blue">Portfolio</span> Stands
-              Out
+      {/* ── Section 4: All Projects Grid ── */}
+      <section id="all-projects" className="py-24" style={{ background: "#F9F9F9" }}>
+        <div className="max-w-[1280px] mx-auto px-6 md:px-8">
+          <div className="text-center mb-12">
+            <h2
+              className="font-bold"
+              style={{ fontSize: "clamp(32px, 4vw, 48px)", color: "#111111" }}
+            >
+              All Projects
             </h2>
+          </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mt-12">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-accent-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Award className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">100% Original</h3>
-                <p className="text-secondary text-sm">
-                  Every project is crafted from scratch with original creative
-                  concepts tailored to each client's unique vision.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-accent-blue-light rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Measurable Results</h3>
-                <p className="text-secondary text-sm">
-                  We track and deliver quantifiable outcomes that demonstrate
-                  real business impact and growth.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-accent-blue-lighter rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">
-                  Collaborative Process
-                </h3>
-                <p className="text-secondary text-sm">
-                  Transparent communication and collaborative approach ensuring
-                  clients are involved throughout the journey.
-                </p>
-              </div>
+          {/* Filter tabs — sticky */}
+          <div
+            className="sticky top-20 z-20 py-4 mb-12"
+            style={{ background: "#F9F9F9" }}
+          >
+            <div className="flex flex-wrap justify-center gap-3">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  aria-label={`Filter by ${cat.name}`}
+                  aria-pressed={activeCategory === cat.id}
+                  className="px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer"
+                  style={
+                    activeCategory === cat.id
+                      ? {
+                          background: "#2B6BFF",
+                          color: "#fff",
+                          border: "1px solid #2B6BFF",
+                        }
+                      : {
+                          background: "#111",
+                          color: "#818181",
+                          border: "1px solid #333",
+                        }
+                  }
+                >
+                  {cat.name}
+                </button>
+              ))}
             </div>
-          </motion.div>
+          </div>
+
+          {/* Masonry grid */}
+          <AnimatePresence mode="wait">
+            {filteredItems.length === 0 ? (
+              <motion.div
+                key="empty"
+                className="text-center py-20"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <p style={{ color: "#818181" }}>
+                  AI projects coming soon. Stay tuned.
+                </p>
+              </motion.div>
+            ) : (
+              <motion.div
+                key={activeCategory}
+                className="columns-1 md:columns-2 lg:columns-3"
+                style={{ columnGap: "1.25rem" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                {filteredItems.map((item, index) => (
+                  <motion.div
+                    key={item.id}
+                    className="break-inside-avoid mb-5 rounded-2xl overflow-hidden group cursor-pointer"
+                    style={{ background: "#fff", border: "1px solid #E5E5E5" }}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.04 }}
+                    whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  >
+                    {/* Image + hover overlay */}
+                    <div className="relative aspect-video overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={`${item.title} — ${item.client}`}
+                        width={500}
+                        height={280}
+                        className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50"
+                        loading="lazy"
+                      />
+                      {/* Overlay */}
+                      <div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end pb-5 gap-1"
+                        style={{
+                          background:
+                            "linear-gradient(to top, rgba(43,107,255,0.85), transparent)",
+                        }}
+                      >
+                        <span className="text-white font-semibold text-sm text-center px-3">
+                          {item.title}
+                        </span>
+                        <span className="text-white/80 text-xs flex items-center gap-1">
+                          View Project <ArrowRight className="w-3 h-3" />
+                        </span>
+                      </div>
+                      {/* Featured badge */}
+                      {item.featured && (
+                        <div className="absolute top-3 right-3">
+                          <span
+                            className="text-white font-semibold px-2 py-1 rounded-full"
+                            style={{ background: "#2B6BFF", fontSize: "10px" }}
+                          >
+                            Featured
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Card text */}
+                    <div className="p-5">
+                      <p
+                        className="uppercase tracking-wider mb-1"
+                        style={{ fontSize: "11px", color: "#818181" }}
+                      >
+                        {item.category} • {item.year}
+                      </p>
+                      <h3
+                        className="font-semibold mb-2"
+                        style={{ fontSize: "18px", color: "#111111" }}
+                      >
+                        {item.title}
+                      </h3>
+                      <div className="flex items-center justify-between">
+                        <span style={{ fontSize: "13px", color: "#818181" }}>
+                          {item.client}
+                        </span>
+                        <span
+                          className="text-xs font-medium flex items-center gap-1"
+                          style={{ color: "#2B6BFF" }}
+                          aria-hidden="true"
+                        >
+                          View <ArrowRight className="w-3 h-3" />
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding bg-secondary/5">
-        <div className="container-padding">
+      {/* ── Section 5: Why Our Work Stands Out ── */}
+      <section className="py-24" style={{ background: "#111111" }}>
+        <div className="max-w-[1280px] mx-auto px-6 md:px-8">
+          <div className="text-center mb-16">
+            <h2
+              className="font-bold leading-tight"
+              style={{ fontSize: "clamp(32px, 4vw, 48px)", color: "#F9F9F9" }}
+            >
+              Not Just Beautiful.
+              <br />
+              <span style={{ color: "#2B6BFF" }}>Actually Effective.</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Card 1: Strategy-First */}
+            <motion.div
+              className="rounded-2xl p-8 border border-[#222] hover:border-accent-blue transition-colors duration-300"
+              style={{ background: "#1A1A1A" }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="mb-6" aria-hidden="true">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect x="4" y="28" width="8" height="8" rx="1" fill="#2B6BFF" />
+                  <rect x="16" y="18" width="8" height="18" rx="1" fill="#2B6BFF" opacity="0.7" />
+                  <rect x="28" y="8" width="8" height="28" rx="1" fill="#2B6BFF" opacity="0.5" />
+                  <path d="M8 28L20 18L32 8" stroke="#2B6BFF" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+              <h3
+                className="font-semibold text-xl mb-4"
+                style={{ color: "#F9F9F9" }}
+              >
+                Strategy Before Aesthetics
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#818181" }}>
+                We don't start with 'what looks good.' We start with 'what does
+                this business need to achieve?' The visual comes last — the
+                thinking comes first.
+              </p>
+            </motion.div>
+
+            {/* Card 2: Results */}
+            <motion.div
+              className="rounded-2xl p-8 border border-[#222] hover:border-accent-blue transition-colors duration-300"
+              style={{ background: "#1A1A1A" }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="mb-6" aria-hidden="true">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 32L14 20L20 26L28 14L34 22"
+                    stroke="#2B6BFF"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M6 6V34H34"
+                    stroke="#2B6BFF"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <circle cx="34" cy="22" r="2.5" fill="#2B6BFF" />
+                </svg>
+              </div>
+              <h3
+                className="font-semibold text-xl mb-4"
+                style={{ color: "#F9F9F9" }}
+              >
+                Every Brief Has a Business Goal
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#818181" }}>
+                We don't deliver work without understanding what success looks
+                like for you. Every project has defined outcomes — and we track
+                them.
+              </p>
+            </motion.div>
+
+            {/* Card 3: Original */}
+            <motion.div
+              className="rounded-2xl p-8 border border-[#222] hover:border-accent-blue transition-colors duration-300"
+              style={{ background: "#1A1A1A" }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="mb-6" aria-hidden="true">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="20" cy="20" r="14" stroke="#2B6BFF" strokeWidth="2.5" />
+                  <circle cx="20" cy="20" r="9" stroke="#2B6BFF" strokeWidth="2.5" opacity="0.7" />
+                  <circle cx="20" cy="20" r="4" stroke="#2B6BFF" strokeWidth="2.5" opacity="0.5" />
+                  <circle cx="20" cy="20" r="1.5" fill="#2B6BFF" />
+                </svg>
+              </div>
+              <h3
+                className="font-semibold text-xl mb-4"
+                style={{ color: "#F9F9F9" }}
+              >
+                100% Original, Zero Templates
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#818181" }}>
+                Every concept is built from scratch. We don't buy templates and
+                swap colours. Your brand is unique — your work should be too.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 6: Client Logos ── */}
+      <section className="py-24" style={{ background: "#F9F9F9" }}>
+        <div className="max-w-[1280px] mx-auto px-6 md:px-8">
+          <div className="text-center mb-12">
+            <p
+              className="text-xs font-semibold tracking-widest uppercase"
+              style={{ color: "#818181" }}
+            >
+              Brands We&apos;ve Worked With
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-8">
+            {clientLogos.map((logo) => (
+              <div
+                key={logo.name}
+                className="flex items-center justify-center rounded-xl p-6 transition-all duration-300 group"
+                style={{
+                  background: "#fff",
+                  border: "1px solid #E5E5E5",
+                  minWidth: "140px",
+                }}
+              >
+                <div className="flex flex-col items-center gap-3">
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg transition-all duration-300"
+                    style={{ background: "#111", opacity: 0.55 }}
+                    aria-hidden="true"
+                  >
+                    {logo.initial}
+                  </div>
+                  <span
+                    className="text-sm font-medium transition-colors duration-300 group-hover:text-primary"
+                    style={{ color: "#818181" }}
+                  >
+                    {logo.name}
+                  </span>
+                </div>
+              </div>
+            ))}
+
+            {/* "Your Brand Here" conversion tactic */}
+            <div
+              className="flex items-center justify-center rounded-xl p-6 transition-all duration-300"
+              style={{
+                background: "transparent",
+                border: "2px dashed #E5E5E5",
+                minWidth: "140px",
+              }}
+            >
+              <div className="flex flex-col items-center gap-3">
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-light"
+                  style={{ background: "#F0F0F0", color: "#818181" }}
+                  aria-hidden="true"
+                >
+                  +
+                </div>
+                <span
+                  className="text-sm font-medium text-center"
+                  style={{ color: "#818181" }}
+                >
+                  Your Brand Here
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 8: CTA ── */}
+      <section className="py-24" style={{ background: "#2B6BFF" }}>
+        <div className="max-w-[1280px] mx-auto px-6 md:px-8 text-center">
           <motion.div
-            className="bg-gradient-to-r from-accent-blue to-accent-blue-light rounded-3xl p-12 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-section-title-sm lg:text-section-title font-bold mb-6 text-white">
-              Ready to Be Our Next Success Story?
+            <h2
+              className="font-extrabold leading-tight mb-6 text-white"
+              style={{ fontSize: "clamp(32px, 5vw, 48px)" }}
+            >
+              Ready to Be Our
+              <br />
+              Next Success Story?
             </h2>
-            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-              Join our growing portfolio of satisfied clients. Let's create
-              something extraordinary together that drives real results for your
-              business.
+            <p
+              className="text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
+              style={{ color: "rgba(255,255,255,0.85)" }}
+            >
+              Let&apos;s build something together that you&apos;ll be proud to show — and
+              that your customers can&apos;t ignore.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                className="bg-white text-accent-blue px-8 py-4 rounded-lg font-semibold hover:bg-off-white transition-all duration-300"
-                onClick={() => (window.location.href = "/contact")}
+              <Link
+                href="/contact"
+                className="bg-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-[#F0F0F0]"
+                style={{ color: "#2B6BFF" }}
+                aria-label="Start a project with Daniekeys Studios"
               >
-                Start Your Project
-              </button>
-              <button
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-accent-blue transition-all duration-300"
-                onClick={() => (window.location.href = "/services")}
+                Start a Project →
+              </Link>
+              <Link
+                href="/services"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white transition-all duration-300"
+                style={{}}
+                aria-label="See our services"
               >
-                View Our Services
-              </button>
+                See Our Services →
+              </Link>
             </div>
           </motion.div>
         </div>
