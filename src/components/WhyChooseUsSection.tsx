@@ -108,23 +108,23 @@ export default function WhyChooseUsSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <div className="text-center">
-            <div className="text-3xl font-bold text-primary mb-2">150+</div>
+            <div className="text-3xl font-bold text-primary mb-2">50+</div>
             <div className="text-sm text-secondary uppercase tracking-wide">
               Projects Delivered
             </div>
           </div>
 
           <div className="text-center">
-            <div className="text-3xl font-bold text-primary mb-2">10</div>
+            <div className="text-3xl font-bold text-primary mb-2">5+</div>
             <div className="text-sm text-secondary uppercase tracking-wide">
-              Years Experience
+              Years in Business
             </div>
           </div>
 
           <div className="text-center">
-            <div className="text-3xl font-bold text-primary mb-2">25+</div>
+            <div className="text-3xl font-bold text-primary mb-2">100%</div>
             <div className="text-sm text-secondary uppercase tracking-wide">
-              Team Members
+              On-Time Delivery Rate
             </div>
           </div>
 

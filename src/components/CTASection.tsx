@@ -86,14 +86,14 @@ export default function CTASection() {
                 <h4 className="text-accent-blue text-sm font-medium tracking-wider uppercase mb-2">
                   Email Us
                 </h4>
-                <p className="text-primary-white">starlordflash2@gmail.com</p>
+                <p className="text-primary-white">hello@daniekeysstudios.com</p>
               </div>
 
               <div>
                 <h4 className="text-accent-blue text-sm font-medium tracking-wider uppercase mb-2">
                   Call Us
                 </h4>
-                <p className="text-primary-white">+234 (0) 123 456 7890</p>
+                <p className="text-primary-white">+234 903 090 9624</p>
               </div>
 
               <div>
@@ -101,7 +101,7 @@ export default function CTASection() {
                   Visit Studio
                 </h4>
                 <p className="text-primary-white">
-                  Ilorin, Kwara state, Nigeria
+                  Nigeria
                 </p>
               </div>
             </div>

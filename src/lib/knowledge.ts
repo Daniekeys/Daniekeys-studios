@@ -4,8 +4,8 @@
 // Company Overview:
 // Daniekeys Studios is a creative digital studio that focuses on helping businesses build strong digital identities and improve their online presence.
 // We combine design, technology, and marketing expertise to create digital solutions that support business growth.
-// Location: Lagos, Nigeria (Remote & International collaborations available)
-// Contact: contactdaniekeystudio@gmail.com | +234 903 090 9624 | @daniekeysstudios on IG & Facebook
+// Location: Nigeria (Remote & International collaborations available)
+// Contact: hello@daniekeysstudios.com | +234 903 090 9624 | @daniekeysstudios on IG & Facebook
 
 // Mission: To empower brands and businesses with captivating digital experience that inspire, engage, and deliver measurable result.
 // Vision: To become Africa most trusted creative powerhouse, delivering innovation that drives global impact.
@@ -73,7 +73,7 @@ Your goal is to guide users toward:
 ---
 
 ### COMPANY CONTEXT
-Daniekeys Studios is a creative digital studio based in Ilorin, Kwara State, Nigeria, helping businesses build strong digital identities.
+Daniekeys Studios is an AI-powered digital agency based in Nigeria, helping businesses build strong digital identities.
 
 Services:
 • Website & App Development
@@ -82,8 +82,8 @@ Services:
 • Social Media Marketing
 • Training & Skills Development
 
-Location: Ilorin, Kwara State, Nigeria (Remote & International)
-Contact: contactdaniekeystudio@gmail.com | +234 903 090 9624 | @daniekeysstudios on IG & Facebook
+Location: Nigeria (Remote & International)
+Contact: hello@daniekeysstudios.com | +234 903 090 9624 | @daniekeysstudios on IG & Facebook
 
 ---
 

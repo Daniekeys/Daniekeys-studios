@@ -1,159 +1,109 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const navItems = [
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Process", href: "#process" },
-  { label: "About", href: "#about" },
+  { label: "About", href: "/#about" },
   { label: "Contact", href: "/contact" },
 ];
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const isActive = (href: string) => {
+    if (href === "/#about") return false;
+    return pathname === href;
+  };
 
   return (
     <>
-      {/* Desktop Navigation */}
-      <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, delay: 1.5 }}
-      >
-        {/* Sliding Background Panel */}
-        <div
-          className={`absolute inset-0 -z-10 bg-primary/95 backdrop-blur-md border-b border-secondary/10 transition-all duration-500 ease-in-out ${
-            isScrolled
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-full opacity-0"
-          }`}
-        />
-        <div className="container-padding">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <motion.a
-              href="/"
-              className="flex items-center"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400 }}
-            >
-              <Image
-                src="/images/logos/daniekeys-logo-light.png"
-                alt="Daniekeys Studios Logo"
-                width={140}
-                height={40}
-                className="h-8 w-auto"
-              />
-            </motion.a>
+      <div className="fixed left-0 right-0 top-0 z-50 h-[3px] overflow-hidden bg-accent-blue">
+        <div className="h-full w-[200%] animate-[topBarFlow_3s_linear_infinite] bg-gradient-to-r from-accent-blue via-accent-blue-light to-accent-blue" />
+      </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center space-x-8">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  className="text-primary-white text-xs font-normal tracking-wide uppercase relative"
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1.7 + index * 0.1 }}
-                  whileHover={{ y: -2 }}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  {item.label}
-                  <motion.div
-                    className="absolute  left-0 h-0.5 bg-accent-blue -bottom-1 rounded-full"
-                    initial={{ width: 0, height: 3 }}
-                    animate={{ width: hoveredIndex === index ? "100%" : 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.a>
-              ))}
-            </div>
+      <nav className="fixed left-0 right-0 top-[3px] z-50 border-b border-white/10 bg-primary/95 backdrop-blur-md">
+        <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6 md:px-8">
+          <Link href="/" className="flex items-center" aria-label="Daniekeys Studios home">
+            <Image
+              src="/images/logos/daniekeys-logo-light.png"
+              alt="Daniekeys Studios logo"
+              width={150}
+              height={42}
+              priority
+              className="h-9 w-auto"
+            />
+          </Link>
 
-            {/* CTA Button */}
-            <motion.a
-              href="/contact"
-              className="hidden lg:block bg-accent-blue text-white px-6 py-3 text-sm font-medium hover:bg-accent-blue-light transition-colors duration-300 rounded-full hover:border-2"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 2.2 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Let's Talk
-            </motion.a>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden text-white"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+          <div className="hidden items-center gap-8 lg:flex">
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`text-sm font-normal uppercase tracking-widest transition-colors hover:text-accent-blue ${
+                  isActive(item.href)
+                    ? "border-b border-accent-blue pb-0.5 text-accent-blue"
+                    : "text-primary-white"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
-        </div>
-      </motion.nav>
 
-      {/* Mobile Menu */}
-      <motion.div
-        className={`fixed inset-0 bg-primary/95 backdrop-blur-md z-40 lg:hidden ${
-          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+          <Link
+            href="/contact"
+            className="hidden rounded-lg bg-accent-blue px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-blue-light lg:inline-flex"
+          >
+            Start a Project →
+          </Link>
+
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/15 text-white lg:hidden"
+            aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMobileMenuOpen}
+            onClick={() => setIsMobileMenuOpen((open) => !open)}
+          >
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </nav>
+
+      <div
+        className={`fixed inset-0 z-40 bg-primary/98 backdrop-blur-md transition-opacity duration-300 lg:hidden ${
+          isMobileMenuOpen
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
         }`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isMobileMenuOpen ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
       >
-        <div className="flex flex-col items-center justify-center h-full space-y-8">
-          {navItems.map((item, index) => (
-            <motion.a
+        <div className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 pt-20">
+          {navItems.map((item) => (
+            <Link
               key={item.label}
               href={item.href}
-              className="text-white text-2xl font-light hover:text-accent-blue transition-colors duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: isMobileMenuOpen ? 1 : 0,
-                y: isMobileMenuOpen ? 0 : 20,
-              }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className="text-2xl font-normal uppercase tracking-widest text-primary-white transition-colors hover:text-accent-blue"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.label}
-            </motion.a>
+            </Link>
           ))}
-
-          <motion.a
+          <Link
             href="/contact"
-            className="bg-accent-blue text-white px-8 py-4 text-lg font-medium hover:bg-accent-blue-light transition-colors duration-300 mt-8 rounded-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{
-              opacity: isMobileMenuOpen ? 1 : 0,
-              y: isMobileMenuOpen ? 0 : 20,
-            }}
-            transition={{ duration: 0.3, delay: 0.5 }}
+            className="mt-4 rounded-lg bg-accent-blue px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-accent-blue-light"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Let's Talk
-          </motion.a>
+            Start a Project →
+          </Link>
         </div>
-      </motion.div>
+      </div>
     </>
   );
 }

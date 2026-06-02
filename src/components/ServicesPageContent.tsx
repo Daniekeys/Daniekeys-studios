@@ -1,562 +1,1028 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import {
-  Play,
+  Brain,
   Palette,
-  Share2,
+  Globe,
+  Film,
+  Bot,
+  BarChart3,
   RefreshCw,
   GraduationCap,
-  Film,
-  Users,
-  Building2,
-  Globe,
   Smartphone,
   ArrowRight,
-  Check,
-  Star,
-  Sparkles,
-  Target,
-  Zap,
+  Plus,
 } from "lucide-react";
 
-const mainServices = [
-  {
-    id: "motion-graphics",
-    title: "Motion Graphics & Video Creation",
-    description:
-      "Bring brands, events, and communities to life through motion visuals.",
-    icon: Play,
-    features: [
-      "Brand explainer videos",
-      "Animated ads & promos",
-      "Community awareness videos",
-      "Product or service demo videos",
-      "Animated intro's/outro's",
-      "Event highlight videos",
-    ],
-    targetClients: "Businesses, NGOs, Communities and Personal brands",
-    gradient: "from-accent-blue to-accent-blue-light",
-    video: "/videos/motion-graphics-demo.mp4",
-  },
-  {
-    id: "brand-identity",
-    title: "Brand Visual Identity Design",
-    description:
-      "Helping brands look professional and consistent across all platforms.",
-    icon: Palette,
-    features: [
-      "Logo design",
-      "Brand color palette & fonts",
-      "Social media kits",
-      "Flyer and poster design",
-      "Brand templates for posts",
-    ],
-    targetClients: "Start-ups, Small businesses, and Entrepreneurs",
-    gradient: "from-accent-blue-light to-accent-blue-lighter",
-    video: "/videos/branding-showcase.mp4",
-  },
-  {
-    id: "social-media",
-    title: "Social Media Marketing & Strategy",
-    description:
-      "Boosting your online presence and helping your audience connect with your brand.",
-    icon: Share2,
-    features: [
-      "Page setup & optimization",
-      "Social media content planning",
-      "Ad creatives & campaigns",
-      "Engagement management",
-    ],
-    targetClients:
-      "Business owners, Content creators, Coaches, and Communities",
-    gradient: "from-accent-blue-lighter to-primary",
-    video: "/videos/social-media-strategy.mp4",
-  },
-  {
-    id: "rebranding",
-    title: "Rebranding for Companies & Brands",
-    description:
-      "Transforming existing brands into something fresh, modern, and more appealing.",
-    icon: RefreshCw,
-    features: [
-      "Brand audit & redesign",
-      "Logo refresh",
-      "New brand voice and identity guide",
-      "Updated color palette and visual style",
-      "Rebranded motion intro & social templates",
-      "Announcement video for the rebrand",
-    ],
-    targetClients:
-      "Established businesses, Agencies, and Organizations that want to modernize or reposition their brand",
-    gradient: "from-primary to-accent-blue",
-    video: "/videos/rebranding-process.mp4",
-  },
-  {
-    id: "training",
-    title: "Training & Skills Development",
-    description:
-      "Empowering creatives and entrepreneurs with the skills to design & market themselves.",
-    icon: GraduationCap,
-    features: [
-      "Motion graphics training",
-      "Graphics design training",
-      "Social media management classes",
-      "Digital marketing & content strategy workshop",
-    ],
-    targetClients:
-      "Young professionals, Students, Freelancers, and Business owners",
-    gradient: "from-accent-blue to-secondary",
-    video: "/videos/training-programs.mp4",
-  },
-  {
-    id: "video-editing",
-    title: "Video Editing & Reels Creation",
-    description: "Turning raw clips into eye-catching, viral-quality videos.",
-    icon: Film,
-    features: [
-      "Professional video editing",
-      "Viral reel creation",
-      "Color correction & grading",
-      "Sound design & music integration",
-      "Motion graphics integration",
-      "Multi-platform optimization",
-    ],
-    targetClients: "Content creators, Coaches, Influencers, and Entrepreneurs",
-    gradient: "from-secondary to-accent-blue-light",
-    video: "/videos/video-editing-reel.mp4",
-  },
-  {
-    id: "community-campaigns",
-    title: "Community & Campaign Videos",
-    description:
-      "Creating visuals that give voice to social impact and community stories.",
-    icon: Users,
-    features: [
-      "Awareness videos (e.g., women empowerment, youth campaigns)",
-      "Storytelling for NGOs & community leaders",
-      "Motion design for events and advocacy",
-      "Social impact documentaries",
-    ],
-    targetClients: "NGOs, Churches, Social enterprises, and Advocacy groups",
-    gradient: "from-accent-blue-light to-primary",
-    video: "/videos/community-impact.mp4",
-  },
-  {
-    id: "business-branding",
-    title: "Business Branding Packages",
-    description: "Complete digital presence setup for growing businesses.",
-    icon: Building2,
-    features: [
-      "Google My Business setup",
-      "Logo + brand identity kit",
-      "Motion graphics intro video",
-      "Social media content plan",
-      "Business card design",
-      "Professional email setup",
-    ],
-    targetClients: "Small businesses, Startups, and New entrepreneurs",
-    gradient: "from-primary to-accent-blue-lighter",
-    video: "/videos/business-branding.mp4",
-  },
+const categories = [
+  { label: "AI Strategy", id: "ai-strategy" },
+  { label: "Brand & Identity", id: "brand-identity" },
+  { label: "Web & App Dev", id: "web-and-app" },
+  { label: "Motion & Video", id: "motion-video" },
+  { label: "AI Automation", id: "ai-automation" },
+  { label: "Digital Marketing", id: "digital-marketing" },
+  { label: "Training", id: "training" },
 ];
 
-const digitalServices = [
+const faqs = [
   {
-    id: "website-development",
-    title: "Website Creation",
-    description:
-      "We design and develop beautiful, functional websites that build credibility and attract customers.",
-    icon: Globe,
-    features: [
-      "Business & personal websites",
-      "Landing pages",
-      "E-commerce websites",
-      "Portfolio or booking sites",
-      "Website maintenance",
-      "SEO optimization",
-    ],
-    gradient: "from-accent-blue to-accent-blue-light",
+    q: "Do you work with businesses outside Nigeria?",
+    a: "Absolutely. We work with clients across Africa and internationally. Our entire process is remote-ready — strategy, design, revisions, and delivery all happen seamlessly online. We've delivered projects to clients in the UK, US, and across West Africa.",
   },
   {
-    id: "app-development",
-    title: "App Development",
-    description:
-      "We create interactive, high-performing apps that bring your brand closer to your audience.",
-    icon: Smartphone,
-    features: [
-      "Mobile app design (Android & iOS)",
-      "UI/UX improvement",
-      "Basic app management & updates",
-      "App store optimization",
-      "Cross-platform development",
-    ],
-    gradient: "from-accent-blue-light to-accent-blue-lighter",
+    q: "How long does a typical project take?",
+    a: "Brand identity: 2–3 weeks. Website: 3–5 weeks. Full rebrand + website: 6–8 weeks. Motion graphics: 1–2 weeks per video. AI automation setup: 2–4 weeks. Timelines are always confirmed in your proposal before we start.",
   },
-];
-
-const addOnServices = [
-  "Website landing page design",
-  "Voice-over integration",
-  "Presentation slides (animated)",
-  "Digital flyers & ad banners",
-  "SEO content writing",
-  "E-commerce integration",
+  {
+    q: "What if I don't like the first design concepts?",
+    a: "Every project includes two rounds of revisions as standard. If we're still not aligned after that, we'll have an honest conversation about why — and find a solution. We've never delivered a project a client wasn't happy with.",
+  },
+  {
+    q: "Can I pay in instalments?",
+    a: "Yes. We typically work on a 50% upfront, 50% on completion structure. For larger projects, we can discuss a 3-stage payment plan.",
+  },
+  {
+    q: "Do you offer monthly retainers?",
+    a: "Yes — digital marketing, social media management, AI maintenance, and content production are all available as monthly retainers. Most retainer clients start from ₦120,000/month. Contact us to discuss what a retainer looks like for your business.",
+  },
+  {
+    q: "What is an AI-powered agency?",
+    a: "An AI-powered agency uses artificial intelligence tools to deliver better, faster, and more scalable results. At Daniekeys Studios, our founder is an AI engineer. That means we use AI for content generation, strategy analysis, chatbot deployment, design assistance, and performance analytics — passing the time and cost savings directly to our clients.",
+  },
 ];
 
 const processSteps = [
   {
     step: "01",
-    title: "Discover",
-    description: "We listen, research, and understand your goals.",
-    icon: Target,
+    label: "Free Discovery Call",
+    copy: "30 minutes. No pitch. Just listening. We learn exactly what your business needs.",
   },
   {
     step: "02",
-    title: "Design",
-    description: "We craft creative concepts, tailored to your vision.",
-    icon: Palette,
+    label: "Proposal & Strategy",
+    copy: "A tailored scope, timeline, and pricing document — delivered within 48 hours of your call.",
   },
   {
     step: "03",
-    title: "Develop",
-    description: "We bring your ideas to life with precision and passion.",
-    icon: Zap,
+    label: "Creative Production",
+    copy: "Design, development, and content creation. Progress updates every 3 days.",
   },
   {
     step: "04",
-    title: "Deliver",
-    description: "We deliver excellence, on time, every time.",
-    icon: Sparkles,
+    label: "Revisions & Refinement",
+    copy: "Two full rounds of revisions included. We don't submit final work until you love it.",
+  },
+  {
+    step: "05",
+    label: "Launch & 30-Day Support",
+    copy: "Go live with confidence. We monitor, support, and optimise for 30 days post-delivery.",
   },
 ];
 
-export default function ServicesPageContent() {
+function ServiceDeliverables({ items }: { items: string[] }) {
   return (
-    <div className="bg-primary text-white">
-      {/* Hero Section */}
-      <section className="section-padding relative overflow-hidden">
-        {/* Background Video */}
-        <div className="absolute inset-0">
-          <video
-            className="hero-video opacity-20"
-            autoPlay
-            muted
-            loop
-            playsInline
-          >
-            <source src="/videos/hero-video.mp4" type="video/mp4" />
-            <div className="w-full h-full bg-gradient-to-br from-accent-blue/20 to-accent-blue-light/10"></div>
-          </video>
+    <ul className="space-y-2">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-2 text-[14px] text-[#555]">
+          <ArrowRight className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-[#2B6BFF]" />
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-          {/* Subtle atmospheric overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-primary/80"></div>
+function ServiceTags({ tags }: { tags: string[] }) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span
+          key={tag}
+          className="rounded-full bg-[#F0F0F0] px-3 py-1 text-[12px] text-[#444]"
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+export default function ServicesPageContent() {
+  const [activeCategory, setActiveCategory] = useState("");
+  const [showCategoryNav, setShowCategoryNav] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const heroBottom = heroRef.current.getBoundingClientRect().bottom;
+        setShowCategoryNav(heroBottom <= 83);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = categories.map((c) => c.id).concat(["web-and-app"]);
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActiveCategory(id);
+          });
+        },
+        { threshold: 0.25, rootMargin: "-83px 0px -40% 0px" }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const offset = 83 + 56;
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: "smooth" });
+  };
+
+  return (
+    <div className="bg-[#F9F9F9]">
+
+      {/* ── SECTION 3: STICKY CATEGORY NAV ─────────────── */}
+      <div
+        className={`fixed left-0 right-0 top-[83px] z-40 border-b border-[#2a2a2a] bg-[#1A1A1A] transition-all duration-300 ${
+          showCategoryNav
+            ? "opacity-100 translate-y-0"
+            : "pointer-events-none -translate-y-2 opacity-0"
+        }`}
+      >
+        <div className="mx-auto max-w-[1280px] overflow-x-auto">
+          <div className="flex items-center gap-1 whitespace-nowrap px-6 py-3 md:px-8">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => scrollToSection(cat.id)}
+                className={`rounded-full px-4 py-1.5 text-[13px] font-medium transition-colors ${
+                  activeCategory === cat.id
+                    ? "bg-[#2B6BFF] text-white"
+                    : "text-[#818181] hover:text-white"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
         </div>
+      </div>
 
-        <div className="container-padding relative z-10">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
+      {/* ── SECTION 2: PAGE HERO ────────────────────────── */}
+      <section ref={heroRef} className="bg-[#111111] px-6 py-32 md:px-8">
+        <div className="mx-auto max-w-[1280px]">
+          {/* Breadcrumb */}
+          <nav className="mb-6 flex items-center gap-2" aria-label="Breadcrumb">
+            <Link
+              href="/"
+              className="text-[13px] text-[#818181] transition-colors hover:text-white"
+            >
+              Home
+            </Link>
+            <span className="text-[13px] text-[#818181]">›</span>
+            <span className="text-[13px] text-[#818181]">Services</span>
+          </nav>
+
+          {/* Tag badge */}
+          <div className="mb-6 inline-flex items-center rounded-full border border-[#2B6BFF] bg-[rgba(43,107,255,0.08)] px-4 py-1.5">
+            <span className="text-[12px] font-medium uppercase tracking-wider text-[#9DBAFF]">
+              WHAT WE OFFER
+            </span>
+          </div>
+
+          {/* H1 */}
+          <motion.h1
+            className="mb-6 text-[44px] font-extrabold leading-[1.1] text-[#F9F9F9] lg:text-[72px]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
-            <h1 className="text-hero-sm lg:text-hero font-bold mb-6">
-              Our <span className="text-accent-blue">Creative Services</span>
-            </h1>
-            <p className="text-xl lg:text-2xl text-secondary leading-relaxed mb-8">
-              From visuals to strategy, we create brands that move people.
-              Comprehensive creative solutions for every stage of your business
-              journey.
-            </p>
-            <motion.button
-              className="bg-accent-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-accent-blue-light transition-all duration-300 flex items-center gap-2 mx-auto group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            Every Service We Offer
+            <br />
+            Is Designed to Grow
+            <br />
+            <span className="text-[#2B6BFF]">Your Business.</span>
+          </motion.h1>
+
+          {/* Subhead */}
+          <motion.p
+            className="mb-8 max-w-[620px] text-[18px] leading-[1.7] text-[#818181]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            We don&apos;t sell services. We solve problems. Whether you need a brand that
+            commands attention, a website that converts, or AI systems that run while
+            you sleep — we have the team, the tools, and the track record to deliver.
+          </motion.p>
+
+          {/* Stats row */}
+          <motion.div
+            className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] text-[#818181]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <span>50+ Projects</span>
+            <span className="text-[#444]">|</span>
+            <span>8 Service Areas</span>
+            <span className="text-[#444]">|</span>
+            <span>AI-Powered</span>
+            <span className="text-[#444]">|</span>
+            <span>Pan-African Reach</span>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── SECTION 4: CORE SERVICES GRID ───────────────── */}
+      <section className="bg-[#F9F9F9] px-6 py-16 md:px-8 md:py-24">
+        <div className="mx-auto max-w-[1280px]">
+          {/* Section label + rule */}
+          <div className="mb-5 flex items-center gap-4">
+            <h2 className="text-[12px] font-semibold uppercase tracking-widest text-[#818181]">
+              CORE SERVICES
+            </h2>
+            <div className="h-px flex-1 bg-[#E5E5E5]" />
+          </div>
+
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+
+            {/* ── SERVICE 1: AI Digital Strategy — featured full-width ── */}
+            <motion.div
+              id="ai-strategy"
+              className="scroll-mt-[140px] md:col-span-2 lg:col-span-3 rounded-2xl border border-[#222] border-l-[3px] border-l-[#2B6BFF] bg-[#111111] p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/40"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              Get Started Today
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Main Services Grid */}
-      <section className="section-padding">
-        <div className="container-padding">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-section-title-sm lg:text-section-title font-bold mb-4">
-              Core Creative <span className="text-accent-blue">Services</span>
-            </h2>
-            <p className="text-secondary text-lg max-w-2xl mx-auto">
-              Our comprehensive range of creative services designed to elevate
-              your brand
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            {mainServices.map((service, index) => {
-              const IconComponent = service.icon;
-              return (
-                <motion.div
-                  key={service.id}
-                  className="bg-secondary/5 rounded-2xl p-8 border border-secondary/20 hover:border-accent-blue/30 transition-all duration-300 group"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="flex items-start gap-6">
-                    <div
-                      className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.gradient} flex items-center justify-center flex-shrink-0`}
-                    >
-                      <IconComponent className="w-8 h-8 text-white" />
-                    </div>
-
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-3 group-hover:text-accent-blue transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-secondary mb-4 leading-relaxed">
-                        {service.description}
-                      </p>
-
-                      {/* Features */}
-                      <div className="space-y-2 mb-4">
-                        {service.features.map((feature, featureIndex) => (
-                          <div
-                            key={featureIndex}
-                            className="flex items-start gap-2"
-                          >
-                            <Check className="w-4 h-4 text-accent-blue mt-1 flex-shrink-0" />
-                            <span className="text-sm text-secondary">
-                              {feature}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Target Clients */}
-                      <div className="bg-secondary/5 rounded-lg p-3 border border-secondary/10">
-                        <p className="text-xs text-accent-blue font-medium mb-1">
-                          Target Clients:
-                        </p>
-                        <p className="text-sm text-secondary">
-                          {service.targetClients}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Digital Services */}
-      <section className="section-padding bg-secondary/5">
-        <div className="container-padding">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-section-title-sm lg:text-section-title font-bold mb-4">
-              Website & App{" "}
-              <span className="text-accent-blue">Development</span>
-            </h2>
-            <p className="text-secondary text-lg max-w-2xl mx-auto">
-              We help brands go digital with user-friendly, mobile-optimized
-              platforms that reflect their identity and goals.
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            {digitalServices.map((service, index) => {
-              const IconComponent = service.icon;
-              return (
-                <motion.div
-                  key={service.id}
-                  className="bg-primary/50 rounded-2xl p-8 border border-secondary/20 hover:border-accent-blue/30 transition-all duration-300"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  whileHover={{ y: -5 }}
-                >
-                  <div
-                    className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.gradient} flex items-center justify-center mb-6`}
-                  >
-                    <IconComponent className="w-8 h-8 text-white" />
+              <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
+                <div className="flex-1">
+                  {/* AI-Powered badge */}
+                  <div className="mb-5 inline-flex items-center rounded-full border border-[#2B6BFF] bg-[rgba(43,107,255,0.1)] px-3 py-1">
+                    <span className="text-[12px] font-semibold text-[#9DBAFF]">
+                      AI-Powered
+                    </span>
                   </div>
 
-                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                  <p className="text-secondary mb-6 leading-relaxed">
-                    {service.description}
+                  <Brain className="mb-5 h-12 w-12 text-[#2B6BFF]" aria-hidden="true" />
+
+                  <h3 className="mb-3 text-[22px] font-bold text-[#F9F9F9]">
+                    AI Digital Strategy & Consulting
+                  </h3>
+                  <div className="mb-5 h-px bg-[#222]" />
+
+                  <p className="mb-6 text-[15px] leading-[1.7] text-[#818181]">
+                    Your competitors are already adopting AI. We help you do it right — with a
+                    clear roadmap, the right tools, and an implementation partner who actually
+                    understands your business.
                   </p>
 
-                  <div className="space-y-3">
-                    {service.features.map((feature, featureIndex) => (
-                      <div
-                        key={featureIndex}
-                        className="flex items-center gap-3"
+                  <p className="mb-3 text-[13px] font-semibold uppercase tracking-wider text-[#818181]">
+                    What&apos;s included:
+                  </p>
+                  <ul className="mb-6 space-y-2">
+                    {[
+                      "AI readiness audit for your business",
+                      "Custom AI roadmap (3-month implementation plan)",
+                      "Tool recommendation & setup (chatbots, automation, content AI)",
+                      "Staff training on AI tools",
+                      "Monthly strategy review calls",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2 text-[15px] text-[#818181]"
                       >
-                        <Check className="w-4 h-4 text-accent-blue flex-shrink-0" />
-                        <span className="text-secondary">{feature}</span>
-                      </div>
+                        <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#2B6BFF]" />
+                        {item}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
 
-                  <p className="text-sm text-accent-blue mt-6">
-                    <strong>Target:</strong> Startups, businesses, and
-                    organizations ready to expand.
+                  <p className="mb-1 text-[13px] text-[#818181]">
+                    <span className="text-[#F9F9F9] font-medium">Best for:</span>{" "}
+                    SMEs, startups, and growing businesses ready to work smarter.
                   </p>
-                </motion.div>
-              );
-            })}
+                  <p className="mb-6 text-[13px] font-semibold text-[#2B6BFF]">
+                    Starts from: ₦350,000
+                  </p>
+
+                  <Link
+                    href="/contact?service=ai-strategy"
+                    className="inline-flex items-center gap-2 rounded-lg bg-[#2B6BFF] px-6 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#5F8EFB]"
+                    aria-label="Book a strategy session for AI Digital Strategy"
+                  >
+                    Book a Strategy Session <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* ── SERVICE 2: Brand Identity ── */}
+            <motion.div
+              id="brand-identity"
+              className="scroll-mt-[140px] rounded-2xl border border-[#E8E8E8] bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#2B6BFF] hover:shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+            >
+              <Palette className="mb-5 h-12 w-12 text-[#2B6BFF]" aria-hidden="true" />
+              <h3 className="mb-3 text-[22px] font-bold text-[#111]">
+                Brand Identity & Design
+              </h3>
+              <div className="mb-4 h-px bg-[#E8E8E8]" />
+              <p className="mb-5 text-[15px] leading-[1.7] text-[#555]">
+                Your brand is the first thing people judge you by. We make sure that
+                judgement works in your favour — every single time.
+              </p>
+              <p className="mb-3 text-[12px] font-semibold uppercase tracking-wider text-[#818181]">
+                Deliverables:
+              </p>
+              <div className="mb-5">
+                <ServiceDeliverables
+                  items={[
+                    "Logo design (primary + variations)",
+                    "Brand colour palette & typography system",
+                    "Brand guidelines document (20+ pages)",
+                    "Social media kit (templates for 5 platforms)",
+                    "Business card & stationery design",
+                    "Flyer and poster design templates",
+                  ]}
+                />
+              </div>
+              <div className="mb-4">
+                <ServiceTags tags={["New Business", "Rebranding", "Startup"]} />
+              </div>
+              <p className="mb-1 text-[12px] text-[#555]">
+                <span className="font-medium text-[#111]">Best for:</span>{" "}
+                New businesses, rebranding companies, startups seeking investment.
+              </p>
+              <p className="mb-4 text-[13px] font-semibold text-[#2B6BFF]">
+                Starts from: ₦120,000
+              </p>
+              <Link
+                href="/contact?service=brand-identity"
+                className="text-[14px] font-medium text-[#2B6BFF] hover:underline"
+              >
+                Learn More & Get a Quote →
+              </Link>
+            </motion.div>
+
+            {/* ── SERVICE 3: Website & App Development ── */}
+            <motion.div
+              className="rounded-2xl border border-[#E8E8E8] bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#2B6BFF] hover:shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <Globe className="mb-5 h-12 w-12 text-[#2B6BFF]" aria-hidden="true" />
+              <h3 className="mb-3 text-[22px] font-bold text-[#111]">
+                Website & App Development
+              </h3>
+              <div className="mb-4 h-px bg-[#E8E8E8]" />
+              <p className="mb-5 text-[15px] leading-[1.7] text-[#555]">
+                We build websites that look like they cost 10× more than they do — and
+                perform like revenue machines from day one.
+              </p>
+              <p className="mb-3 text-[12px] font-semibold uppercase tracking-wider text-[#818181]">
+                Deliverables:
+              </p>
+              <div className="mb-5">
+                <ServiceDeliverables
+                  items={[
+                    "Custom business / portfolio / e-commerce website",
+                    "Mobile-first, speed-optimised development",
+                    "SEO foundations baked in from build",
+                    "CMS setup so you can update content yourself",
+                    "Contact forms, booking systems, payment integration",
+                    "30-day post-launch support",
+                  ]}
+                />
+              </div>
+              <div className="mb-4">
+                <ServiceTags tags={["Web Dev", "E-Commerce", "Mobile App"]} />
+              </div>
+              <p className="mb-1 text-[12px] text-[#555]">
+                <span className="font-medium text-[#111]">Best for:</span>{" "}
+                Businesses without a website, those with outdated sites, startups launching.
+              </p>
+              <p className="mb-4 text-[13px] font-semibold text-[#2B6BFF]">
+                Starts from: ₦180,000
+              </p>
+              <Link
+                href="#web-and-app"
+                onClick={(e) => { e.preventDefault(); scrollToSection("web-and-app"); }}
+                className="text-[14px] font-medium text-[#2B6BFF] hover:underline"
+              >
+                Learn More & Get a Quote →
+              </Link>
+            </motion.div>
+
+            {/* ── SERVICE 4: Motion Graphics & Video ── */}
+            <motion.div
+              id="motion-video"
+              className="scroll-mt-[140px] rounded-2xl border border-[#E8E8E8] bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#2B6BFF] hover:shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+            >
+              <Film className="mb-5 h-12 w-12 text-[#2B6BFF]" aria-hidden="true" />
+              <h3 className="mb-3 text-[22px] font-bold text-[#111]">
+                Motion Graphics & Video Production
+              </h3>
+              <div className="mb-4 h-px bg-[#E8E8E8]" />
+              <p className="mb-5 text-[15px] leading-[1.7] text-[#555]">
+                In a world of infinite scroll, motion is the only language that makes
+                people stop. We create video content that earns views and drives action.
+              </p>
+              <p className="mb-3 text-[12px] font-semibold uppercase tracking-wider text-[#818181]">
+                What we produce:
+              </p>
+              <div className="mb-5">
+                <ServiceDeliverables
+                  items={[
+                    "Brand intro / logo reveal animations",
+                    "Promotional and ad videos",
+                    "Explainer videos for products / services",
+                    "Social media reels (30s, 60s, 90s)",
+                    "Event highlight videos",
+                    "Community and NGO awareness films",
+                  ]}
+                />
+              </div>
+              <div className="mb-4">
+                <ServiceTags tags={["Motion", "Video", "Reels", "Events"]} />
+              </div>
+              <p className="mb-1 text-[12px] text-[#555]">
+                <span className="font-medium text-[#111]">Best for:</span>{" "}
+                Businesses launching products, brands building social presence, events.
+              </p>
+              <p className="mb-4 text-[13px] font-semibold text-[#2B6BFF]">
+                Starts from: ₦80,000 per video
+              </p>
+              <Link
+                href="/contact?service=motion-video"
+                className="text-[14px] font-medium text-[#2B6BFF] hover:underline"
+              >
+                Learn More & Get a Quote →
+              </Link>
+            </motion.div>
+
+            {/* ── SERVICE 5: AI Chatbots & Automation — NEW highlight ── */}
+            <motion.div
+              id="ai-automation"
+              className="scroll-mt-[140px] rounded-2xl border border-[#2B6BFF]/30 bg-gradient-to-br from-[#2B6BFF]/5 to-[#2B6BFF]/10 p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:shadow-[#2B6BFF]/10"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              {/* NEW badge */}
+              <div className="mb-4 inline-flex items-center rounded-full bg-[#2B6BFF] px-3 py-1">
+                <span className="text-[11px] font-bold text-white">NEW</span>
+              </div>
+              <Bot className="mb-5 h-12 w-12 text-[#2B6BFF]" aria-hidden="true" />
+              <h3 className="mb-3 text-[22px] font-bold text-[#111]">
+                AI Chatbots & Business Automation
+              </h3>
+              <div className="mb-4 h-px bg-[#2B6BFF]/20" />
+              <p className="mb-5 text-[15px] leading-[1.7] text-[#555]">
+                Imagine having a team member who works 24/7, never sleeps, answers every
+                customer question, and books appointments — without a salary. That&apos;s
+                what we build for you.
+              </p>
+              <p className="mb-3 text-[12px] font-semibold uppercase tracking-wider text-[#818181]">
+                What we deploy:
+              </p>
+              <div className="mb-5">
+                <ServiceDeliverables
+                  items={[
+                    "Website AI chat assistant (answers FAQs, qualifies leads)",
+                    "WhatsApp Business AI bot (handles enquiries, sends quotes)",
+                    "Instagram DM automation (auto-replies, story responses)",
+                    "Lead capture and CRM integration",
+                    "AI-powered email response systems",
+                  ]}
+                />
+              </div>
+              <div className="mb-4">
+                <ServiceTags tags={["E-Commerce", "Clinics", "Real Estate", "Restaurants"]} />
+              </div>
+              <p className="mb-1 text-[12px] text-[#555]">
+                <span className="font-medium text-[#111]">Best for:</span>{" "}
+                E-commerce, service businesses, clinics, restaurants, real estate.
+              </p>
+              <p className="mb-4 text-[13px] font-semibold text-[#2B6BFF]">
+                Starts from: ₦150,000 + ₦50,000/month maintenance
+              </p>
+              <Link
+                href="/contact?service=ai-automation"
+                className="text-[14px] font-medium text-[#2B6BFF] hover:underline"
+              >
+                Learn More & Get a Quote →
+              </Link>
+            </motion.div>
+
+            {/* ── SERVICE 6: Digital Marketing ── */}
+            <motion.div
+              id="digital-marketing"
+              className="scroll-mt-[140px] rounded-2xl border border-[#E8E8E8] bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#2B6BFF] hover:shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+            >
+              <BarChart3 className="mb-5 h-12 w-12 text-[#2B6BFF]" aria-hidden="true" />
+              <h3 className="mb-3 text-[22px] font-bold text-[#111]">
+                Digital Marketing & Social Media Management
+              </h3>
+              <div className="mb-4 h-px bg-[#E8E8E8]" />
+              <p className="mb-5 text-[15px] leading-[1.7] text-[#555]">
+                Being online isn&apos;t enough. Being found — by the right people, at the
+                right time, saying the right thing — is what drives growth.
+              </p>
+              <p className="mb-3 text-[12px] font-semibold uppercase tracking-wider text-[#818181]">
+                Services:
+              </p>
+              <div className="mb-5">
+                <ServiceDeliverables
+                  items={[
+                    "Social media content creation & scheduling",
+                    "Community management & engagement",
+                    "Paid social advertising (Meta, TikTok, LinkedIn)",
+                    "Google Ads management",
+                    "SEO (on-page, technical, content)",
+                    "Email marketing campaigns",
+                    "Monthly performance analytics report",
+                  ]}
+                />
+              </div>
+              <div className="mb-4">
+                <ServiceTags tags={["Meta Ads", "SEO", "Email", "Analytics"]} />
+              </div>
+              <p className="mb-1 text-[12px] text-[#555]">
+                <span className="font-medium text-[#111]">Best for:</span>{" "}
+                Businesses wanting consistent online growth without doing it themselves.
+              </p>
+              <p className="mb-4 text-[13px] font-semibold text-[#2B6BFF]">
+                Starts from: ₦120,000/month (retainer)
+              </p>
+              <Link
+                href="/contact?service=digital-marketing"
+                className="text-[14px] font-medium text-[#2B6BFF] hover:underline"
+              >
+                Learn More & Get a Quote →
+              </Link>
+            </motion.div>
+
+            {/* ── SERVICE 7: Rebranding ── */}
+            <motion.div
+              className="rounded-2xl border border-[#E8E8E8] bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#2B6BFF] hover:shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <RefreshCw className="mb-5 h-12 w-12 text-[#2B6BFF]" aria-hidden="true" />
+              <h3 className="mb-3 text-[22px] font-bold text-[#111]">Rebranding</h3>
+              <div className="mb-4 h-px bg-[#E8E8E8]" />
+              <p className="mb-5 text-[15px] leading-[1.7] text-[#555]">
+                Your brand built you this far. Now it needs to take you further.
+                Rebranding isn&apos;t admitting failure — it&apos;s strategic evolution.
+              </p>
+              <p className="mb-3 text-[12px] font-semibold uppercase tracking-wider text-[#818181]">
+                What we do:
+              </p>
+              <div className="mb-5">
+                <ServiceDeliverables
+                  items={[
+                    "Brand audit (current perception vs. desired positioning)",
+                    "Competitive landscape analysis",
+                    "New visual identity system",
+                    "Brand voice & messaging refresh",
+                    "Launch strategy & announcement assets",
+                    "Updated motion intro + social templates",
+                  ]}
+                />
+              </div>
+              <div className="mb-4">
+                <ServiceTags tags={["Brand Audit", "Identity", "Strategy", "Launch"]} />
+              </div>
+              <p className="mb-1 text-[12px] text-[#555]">
+                <span className="font-medium text-[#111]">Best for:</span>{" "}
+                Businesses that have grown but whose brand hasn&apos;t kept up.
+              </p>
+              <p className="mb-4 text-[13px] font-semibold text-[#2B6BFF]">
+                Starts from: ₦250,000
+              </p>
+              <Link
+                href="/contact?service=rebranding"
+                className="text-[14px] font-medium text-[#2B6BFF] hover:underline"
+              >
+                Learn More & Get a Quote →
+              </Link>
+            </motion.div>
+
+            {/* ── SERVICE 8: Training ── */}
+            <motion.div
+              id="training"
+              className="scroll-mt-[140px] rounded-2xl border border-[#E8E8E8] bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#2B6BFF] hover:shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+            >
+              <GraduationCap className="mb-5 h-12 w-12 text-[#2B6BFF]" aria-hidden="true" />
+              <h3 className="mb-3 text-[22px] font-bold text-[#111]">
+                Training & AI Upskilling
+              </h3>
+              <div className="mb-4 h-px bg-[#E8E8E8]" />
+              <p className="mb-5 text-[15px] leading-[1.7] text-[#555]">
+                The biggest barrier to AI adoption in African businesses isn&apos;t tools —
+                it&apos;s knowledge. We fix that.
+              </p>
+              <p className="mb-3 text-[12px] font-semibold uppercase tracking-wider text-[#818181]">
+                Programmes:
+              </p>
+              <div className="mb-5">
+                <ServiceDeliverables
+                  items={[
+                    "AI Tools for Business Owners (1-day workshop)",
+                    "Social Media Marketing Masterclass (2-day)",
+                    "Canva & Graphic Design for Non-Designers (online)",
+                    "Motion Graphics Fundamentals (4-week course)",
+                    "Corporate AI Upskilling (custom, for teams of 5+)",
+                  ]}
+                />
+              </div>
+              <div className="mb-4">
+                <ServiceTags tags={["Workshops", "Online", "Corporate", "AI"]} />
+              </div>
+              <p className="mb-1 text-[12px] text-[#555]">
+                <span className="font-medium text-[#111]">Best for:</span>{" "}
+                Entrepreneurs, marketing teams, young professionals, NGO staff.
+              </p>
+              <p className="mb-4 text-[13px] font-semibold text-[#2B6BFF]">
+                Starts from: ₦45,000 per person
+              </p>
+              <Link
+                href="/contact?service=training"
+                className="text-[14px] font-medium text-[#2B6BFF] hover:underline"
+              >
+                Learn More & Get a Quote →
+              </Link>
+            </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* Add-on Services */}
-      <section className="section-padding">
-        <div className="container-padding">
-          <motion.div
-            className="max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="text-center mb-12">
-              <h2 className="text-section-title-sm lg:text-section-title font-bold mb-4">
-                Optional <span className="text-accent-blue">Add-ons</span>
-              </h2>
-              <p className="text-secondary text-lg">
-                Enhance your project with these additional services
-              </p>
-            </div>
+      {/* ── SECTION 5: WEB & APP DEVELOPMENT ───────────── */}
+      <section id="web-and-app" className="scroll-mt-[140px] bg-[#111111] px-6 py-16 md:px-8 md:py-24">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="mb-5 flex items-center gap-4">
+            <span className="text-[12px] font-semibold uppercase tracking-widest text-[#818181]">
+              DIGITAL DEVELOPMENT
+            </span>
+            <div className="h-px flex-1 bg-[#222]" />
+          </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {addOnServices.map((addon, index) => (
+          <h2 className="mb-12 text-[32px] font-bold leading-[1.2] text-[#F9F9F9] lg:text-[48px]">
+            Your Business Deserves
+            <br />
+            <span className="text-[#2B6BFF]">a Website That Actually Works.</span>
+          </h2>
+
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+            {/* Card: Website Development */}
+            <motion.div
+              className="rounded-2xl border border-[#222] bg-[#1A1A1A] p-8"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              {/* CSS laptop frame */}
+              <div className="mb-8 flex justify-center">
+                <div className="w-full max-w-[260px]">
+                  <div className="rounded-lg border-2 border-[#2a2a2a] bg-[#0D0D0D] p-2 shadow-2xl shadow-[#2B6BFF]/10">
+                    <div className="mb-2 flex items-center gap-1.5 px-2">
+                      <div className="h-2 w-2 rounded-full bg-[#FF5F57]" />
+                      <div className="h-2 w-2 rounded-full bg-[#FEBC2E]" />
+                      <div className="h-2 w-2 rounded-full bg-[#28C840]" />
+                    </div>
+                    <div className="flex h-28 items-center justify-center rounded bg-gradient-to-br from-[#0f1628] to-[#0d1829]">
+                      <Globe className="h-10 w-10 text-[#2B6BFF] opacity-50" aria-hidden="true" />
+                    </div>
+                  </div>
+                  <div className="mx-auto h-2 w-14 rounded-b bg-[#222]" />
+                  <div className="mx-auto h-1 w-20 rounded bg-[#333]" />
+                </div>
+              </div>
+
+              <h3 className="mb-3 text-[22px] font-bold text-[#F9F9F9]">
+                Websites That Convert
+              </h3>
+              <p className="mb-6 text-[15px] leading-[1.7] text-[#818181]">
+                Every website we build is mobile-first, SEO-optimised, and designed
+                around one goal: turning visitors into customers.
+              </p>
+              <div className="mb-6 flex flex-wrap gap-2">
+                {["Custom Design", "Fast Loading", "SEO Ready", "CMS Integration", "E-Commerce"].map(
+                  (f) => (
+                    <span
+                      key={f}
+                      className="rounded-full border border-[#2a2a2a] bg-[#111] px-3 py-1 text-[12px] text-[#818181]"
+                    >
+                      {f}
+                    </span>
+                  )
+                )}
+              </div>
+              <Link
+                href="/portfolio?filter=web"
+                className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#2B6BFF] hover:underline"
+              >
+                See Website Projects <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
+
+            {/* Card: App Development */}
+            <motion.div
+              className="rounded-2xl border border-[#222] bg-[#1A1A1A] p-8"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              {/* CSS phone frame */}
+              <div className="mb-8 flex justify-center">
+                <div className="w-[96px]">
+                  <div className="rounded-[18px] border-2 border-[#2a2a2a] bg-[#0D0D0D] px-2 pb-3 pt-2 shadow-2xl shadow-[#2B6BFF]/10">
+                    <div className="mx-auto mb-2 h-1 w-8 rounded bg-[#2a2a2a]" />
+                    <div className="flex h-36 items-center justify-center rounded-xl bg-gradient-to-br from-[#0f1628] to-[#0d1829]">
+                      <Smartphone className="h-10 w-10 text-[#2B6BFF] opacity-50" aria-hidden="true" />
+                    </div>
+                    <div className="mx-auto mt-2 h-3 w-3 rounded-full border border-[#2a2a2a]" />
+                  </div>
+                </div>
+              </div>
+
+              <h3 className="mb-3 text-[22px] font-bold text-[#F9F9F9]">
+                Apps That Perform
+              </h3>
+              <p className="mb-6 text-[15px] leading-[1.7] text-[#818181]">
+                Mobile apps that bring your brand closer to your customers — built for
+                Android and iOS, designed for real users.
+              </p>
+              <div className="mb-6 flex flex-wrap gap-2">
+                {["Android & iOS", "UI/UX Design", "ASO", "Cross-Platform"].map((f) => (
+                  <span
+                    key={f}
+                    className="rounded-full border border-[#2a2a2a] bg-[#111] px-3 py-1 text-[12px] text-[#818181]"
+                  >
+                    {f}
+                  </span>
+                ))}
+              </div>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#2B6BFF] hover:underline"
+              >
+                Discuss Your App <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 6: ADD-ON SERVICES ───────────────────── */}
+      <section className="bg-[#F9F9F9] px-6 py-16 md:px-8 md:py-24">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="mb-5 flex items-center gap-4">
+            <span className="text-[12px] font-semibold uppercase tracking-widest text-[#818181]">
+              OPTIONAL ADD-ONS
+            </span>
+            <div className="h-px flex-1 bg-[#E5E5E5]" />
+          </div>
+          <h2 className="mb-8 text-[32px] font-bold text-[#111111] lg:text-[48px]">
+            Need Something Extra?
+            <br />
+            <span className="text-[#2B6BFF]">We&apos;ve Got You.</span>
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {[
+              "Voice-over Integration",
+              "Presentation Slides (Animated)",
+              "Digital Flyers & Ad Banners",
+              "SEO Content Writing",
+              "E-Commerce Integration",
+              "Landing Page Design",
+              "WhatsApp Business Setup",
+              "AI Content Calendar",
+              "Photography Direction",
+            ].map((addon) => (
+              <span
+                key={addon}
+                className="cursor-default rounded-full border border-[#E0E0E0] bg-white px-5 py-2.5 text-[14px] text-[#333] transition-colors hover:border-[#2B6BFF] hover:text-[#2B6BFF]"
+              >
+                {addon}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 7: PROCESS ───────────────────────────── */}
+      <section id="process" className="scroll-mt-20 bg-[#0A0A0A] px-6 py-16 md:px-8 md:py-24">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="mb-16">
+            <h2 className="text-[32px] font-bold leading-[1.2] text-[#F9F9F9] lg:text-[48px]">
+              How We Work —
+              <br />
+              <span className="text-[#2B6BFF]">From First Hello to Final Launch</span>
+            </h2>
+          </div>
+
+          <div className="relative">
+            {/* Connector line — desktop only, sits at centre of step dots */}
+            <div
+              className="absolute left-[calc(10%_-_12px)] right-[calc(10%_-_12px)] hidden border-t border-dashed border-[#333] lg:block"
+              style={{ top: "calc(72px + 24px)" }}
+            />
+
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-8">
+              {processSteps.map((step, i) => (
                 <motion.div
-                  key={index}
-                  className="bg-secondary/5 rounded-lg p-6 border border-secondary/20 hover:border-accent-blue/30 transition-all duration-300 text-center"
+                  key={step.step}
+                  className="flex flex-col lg:items-center lg:text-center"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ y: -3 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
-                  <Star className="w-8 h-8 text-accent-blue mx-auto mb-3" />
-                  <p className="text-white font-medium">{addon}</p>
+                  {/* Large faded step number */}
+                  <span
+                    className="select-none text-[72px] font-extrabold leading-none text-[#2B6BFF]"
+                    style={{ opacity: 0.18 }}
+                    aria-hidden="true"
+                  >
+                    {step.step}
+                  </span>
+
+                  {/* Small step dot — aligns with connector line */}
+                  <div className="relative z-10 mt-4 mb-5 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[#2B6BFF] bg-[#0A0A0A] lg:mx-auto">
+                    <div className="h-2 w-2 rounded-full bg-[#2B6BFF]" />
+                  </div>
+
+                  <h3 className="mb-2 text-[15px] font-bold text-[#F9F9F9]">
+                    {step.label}
+                  </h3>
+                  <p className="text-[13px] leading-[1.7] text-[#818181]">{step.copy}</p>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Our Process */}
-      <section className="section-padding bg-secondary/5">
-        <div className="container-padding">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-section-title-sm lg:text-section-title font-bold mb-4">
-              Our Creative <span className="text-accent-blue">Process</span>
-            </h2>
-            <p className="text-secondary text-lg max-w-2xl mx-auto">
-              We don't just deliver projects, we create experiences that move
-              people
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => {
-              const IconComponent = step.icon;
-              return (
-                <motion.div
-                  key={index}
-                  className="text-center"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                >
-                  <div className="relative">
-                    <div className="w-20 h-20 bg-accent-blue rounded-full flex items-center justify-center mx-auto mb-6 relative">
-                      <IconComponent className="w-10 h-10 text-white" />
-                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-white text-accent-blue rounded-full flex items-center justify-center text-sm font-bold">
-                        {step.step}
-                      </div>
-                    </div>
-                    {index < processSteps.length - 1 && (
-                      <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-accent-blue/20"></div>
-                    )}
-                  </div>
-
-                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                  <p className="text-secondary">{step.description}</p>
-                </motion.div>
-              );
-            })}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding">
-        <div className="container-padding">
+      {/* ── SECTION 8: FAQ ───────────────────────────────── */}
+      <section className="bg-[#F9F9F9] px-6 py-16 md:px-8 md:py-24">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[360px_1fr]">
+            {/* Left: headline */}
+            <div className="lg:sticky lg:top-[140px] lg:self-start">
+              <div className="mb-4 inline-flex items-center rounded-full border border-[#E5E5E5] bg-white px-3 py-1">
+                <span className="text-[12px] font-semibold uppercase tracking-wider text-[#818181]">
+                  FAQ
+                </span>
+              </div>
+              <h2 className="mb-4 text-[32px] font-bold text-[#111111] lg:text-[48px]">
+                Common Questions,
+                <br />
+                <span className="text-[#2B6BFF]">Honest Answers.</span>
+              </h2>
+              <p className="mb-6 text-[15px] leading-[1.7] text-[#818181]">
+                Everything you need to know before we get started.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-1 text-[14px] font-semibold text-[#2B6BFF] hover:underline"
+              >
+                Have a different question? Ask us <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            {/* Right: accordion */}
+            <div className="divide-y divide-[#E5E5E5]">
+              {faqs.map((faq, i) => (
+                <div key={i} className="py-5">
+                  <button
+                    className="flex w-full items-start justify-between gap-4 text-left"
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    aria-expanded={openFaq === i}
+                    aria-controls={`faq-answer-${i}`}
+                  >
+                    <span
+                      className={`text-[16px] font-semibold leading-[1.5] transition-colors ${
+                        openFaq === i ? "text-[#2B6BFF]" : "text-[#111]"
+                      }`}
+                    >
+                      {faq.q}
+                    </span>
+                    <span
+                      className={`mt-0.5 flex-shrink-0 transition-transform duration-300 ${
+                        openFaq === i ? "rotate-45" : ""
+                      }`}
+                    >
+                      <Plus className="h-5 w-5 text-[#818181]" aria-hidden="true" />
+                    </span>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {openFaq === i && (
+                      <motion.div
+                        id={`faq-answer-${i}`}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <p className="pt-3 text-[15px] leading-[1.8] text-[#555]">
+                          {faq.a}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 9: CTA ───────────────────────────────── */}
+      <section className="bg-[#2B6BFF] px-6 py-16 md:px-8 md:py-24">
+        <div className="mx-auto max-w-[1280px] text-center">
           <motion.div
-            className="bg-gradient-to-r from-accent-blue to-accent-blue-light rounded-3xl p-12 text-center"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-section-title-sm lg:text-section-title font-bold mb-6 text-white">
-              Ready to Transform Your Brand?
+            <h2 className="mb-4 text-[32px] font-extrabold leading-[1.2] text-white lg:text-[48px]">
+              Not Sure Which Service You Need?
+              <br />
+              Let&apos;s Figure It Out Together.
             </h2>
-            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-              At Daniekeys Studios, your brand's success is our mission. Let's
-              create something extraordinary together.
+            <p className="mx-auto mb-8 max-w-[560px] text-[16px] leading-[1.7] text-white/80">
+              Book a free 30-minute discovery call. We&apos;ll ask the right questions,
+              understand your business, and tell you honestly what will move the needle.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                className="bg-white text-accent-blue px-8 py-4 rounded-lg font-semibold hover:bg-off-white transition-all duration-300"
-                onClick={() =>
-                  window.open(
-                    "mailto:starlordflash2@gmail.com?subject=Service Inquiry&body=Hi! I'm interested in your creative services. Please send me more information.",
-                    "_blank"
-                  )
-                }
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="/contact"
+                className="rounded-lg bg-white px-8 py-3.5 text-[15px] font-semibold text-[#2B6BFF] transition-colors hover:bg-[#F0F0F0]"
+                aria-label="Book a free discovery call"
               >
-                Get Started Now
-              </button>
-              <button
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-accent-blue transition-all duration-300"
-                onClick={() => (window.location.href = "/pricing")}
+                Book Free Discovery Call →
+              </Link>
+              <Link
+                href="/pricing"
+                className="rounded-lg border-2 border-white px-8 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-white/10"
+                aria-label="See our pricing"
               >
-                View Pricing
-              </button>
+                See Pricing →
+              </Link>
             </div>
           </motion.div>
         </div>
       </section>
+
     </div>
   );
 }

@@ -75,10 +75,10 @@ const defaultCompanies = [
 ];
 
 const defaultAchievements = [
-  { label: "Projects Delivered", value: "150+" },
-  { label: "Years Experience", value: "10" },
-  { label: "Team Members", value: "25+" },
-  { label: "Happy Clients", value: "99%" },
+  { label: "Projects Delivered", value: "50+" },
+  { label: "Years in Business", value: "5+" },
+  { label: "Average Client Revenue Growth", value: "3×" },
+  { label: "On-Time Delivery Rate", value: "100%" },
 ];
 
 export const About3 = ({
@@ -107,7 +107,7 @@ export const About3 = ({
   achievementsDescription = "Creativity should build credibility. Design should inspire action. And your brand should feel unforgettable.",
   achievements = defaultAchievements,
   videoSrc = "/videos/motion-vids5.mp4",
-  // videoCaption = "Behind the scenes at our Lagos studio, where creativity and technology converge to create extraordinary experiences.",
+  // videoCaption = "Behind the scenes at our Nigeria studio, where creativity and technology converge to create extraordinary experiences.",
 }: About3Props = {}) => {
   return (
     <section className="py-32 bg-primary text-white">

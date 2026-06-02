@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import {
   Facebook,
   Instagram,
@@ -12,14 +9,25 @@ import {
   Youtube,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const services = [
-  "Motion Graphics & Video Creation",
-  "Brand Visual Identity Design",
-  "Social Media Marketing & Strategy",
-  "Website & App Development",
-  "Rebranding Services",
-  "Training & Skills Development",
+  "AI Digital Strategy",
+  "Brand Identity Design",
+  "Website Development",
+  "Motion Graphics & Video",
+  "AI Chatbot & Automation",
+  "Digital Marketing",
+];
+
+const companyLinks = [
+  { label: "About Us", href: "/#about" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Services", href: "/services" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Process", href: "/services#process" },
+  { label: "Contact", href: "/contact" },
+  { label: "Careers", href: "/careers" },
 ];
 
 const socialLinks = [
@@ -30,7 +38,7 @@ const socialLinks = [
   },
   {
     icon: Linkedin,
-    href: "https://www.linkedin.com/company/daniekeys-studios/about/",
+    href: "https://www.linkedin.com/company/daniekeys-studios/",
     label: "LinkedIn",
   },
   {
@@ -47,220 +55,144 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-white">
-      <div className="container-padding py-16">
-        <div className="grid lg:grid-cols-4 gap-12">
-          {/* Logo and Description */}
-          <motion.div
-            className="lg:col-span-1"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="mb-4">
-              <Image
-                src="/images/logos/daniekeys-logo-light.png"
-                alt="Daniekeys Studios Logo"
-                width={160}
-                height={45}
-                className="h-10 w-auto"
-              />
-            </div>
-            <p className="text-secondary text-sm leading-relaxed mb-6">
-              Where creativity meets technology. Crafting exceptional digital
-              experiences for world-class brands.
+    <footer className="bg-[#0A0A0A] text-white">
+      <div className="mx-auto max-w-[1280px] px-6 py-16 md:px-8 lg:py-20">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <Image
+              src="/images/logos/daniekeys-logo-light.png"
+              alt="Daniekeys Studios logo"
+              width={165}
+              height={46}
+              className="h-10 w-auto"
+            />
+            <p className="mt-5 max-w-xs text-sm leading-7 text-secondary">
+              Africa&apos;s AI-Powered Digital Agency
             </p>
 
-            {/* Social Links */}
-            <div className="flex gap-4">
+            <div className="mt-7 flex gap-3">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
-                  className="w-10 h-10 border border-secondary/30 rounded-lg text-secondary hover:border-accent-blue transition-colors duration-300 flex items-center justify-center group"
                   aria-label={label}
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-white transition-colors hover:border-accent-blue hover:text-accent-blue"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  <Icon
-                    size={16}
-                    className="text-secondary group-hover:text-accent-blue transition-colors"
-                  />
+                  <Icon size={17} />
                 </a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Services */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <h4 className="text-white font-semibold mb-6 uppercase tracking-wide text-sm">
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-white">
               Services
-            </h4>
-            <ul className="space-y-3">
+            </h2>
+            <ul className="mt-6 space-y-3">
               {services.map((service) => (
                 <li key={service}>
-                  <a
+                  <Link
                     href="/services"
-                    className="text-secondary hover:text-accent-blue transition-colors duration-300 text-sm"
+                    className="text-sm text-secondary transition-colors hover:text-accent-blue"
                   >
                     {service}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h4 className="text-white font-semibold mb-6 uppercase tracking-wide text-sm">
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-white">
               Company
-            </h4>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#about"
-                  className="text-secondary hover:text-accent-blue transition-colors duration-300 text-sm"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/portfolio"
-                  className="text-secondary hover:text-accent-blue transition-colors duration-300 text-sm"
-                >
-                  Portfolio
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/services"
-                  className="text-secondary hover:text-accent-blue transition-colors duration-300 text-sm"
-                >
-                  Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/pricing"
-                  className="text-secondary hover:text-accent-blue transition-colors duration-300 text-sm"
-                >
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#process"
-                  className="text-secondary hover:text-accent-blue transition-colors duration-300 text-sm"
-                >
-                  Our Process
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/contact"
-                  className="text-secondary hover:text-accent-blue transition-colors duration-300 text-sm"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h4 className="text-white font-semibold mb-6 uppercase tracking-wide text-sm">
-              Get in Touch
-            </h4>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Mail size={16} className="text-accent-blue mt-1" />
-                <div>
-                  <p className="text-secondary text-sm">Email</p>
-                  <a
-                    href="mailto:starlordflash2@gmail.com"
-                    className="text-white hover:text-accent-blue transition-colors text-sm"
+            </h2>
+            <ul className="mt-6 space-y-3">
+              {companyLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-secondary transition-colors hover:text-accent-blue"
                   >
-                    starlordflash2@gmail.com
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-white">
+              Contact
+            </h2>
+            <div className="mt-6 space-y-5">
+              <div className="flex gap-3">
+                <Mail size={17} className="mt-1 text-accent-blue" />
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-secondary">
+                    Email
+                  </p>
+                  <a
+                    href="mailto:hello@daniekeysstudios.com"
+                    className="text-sm text-white transition-colors hover:text-accent-blue"
+                  >
+                    hello@daniekeysstudios.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <Phone size={16} className="text-accent-blue mt-1" />
+              <div className="flex gap-3">
+                <Phone size={17} className="mt-1 text-accent-blue" />
                 <div>
-                  <p className="text-secondary text-sm">Phone</p>
+                  <p className="text-xs uppercase tracking-widest text-secondary">
+                    Phone
+                  </p>
                   <a
                     href="tel:+2349030909624"
-                    className="text-white hover:text-accent-blue transition-colors text-sm"
+                    className="text-sm text-white transition-colors hover:text-accent-blue"
                   >
                     +234 903 090 9624
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <MapPin size={16} className="text-accent-blue mt-1" />
+              <div className="flex gap-3">
+                <MapPin size={17} className="mt-1 text-accent-blue" />
                 <div>
-                  <p className="text-secondary text-sm">Studio</p>
-                  <p className="text-white text-sm">
-                    Ilorin, Kwara state, Nigeria
+                  <p className="text-xs uppercase tracking-widest text-secondary">
+                    Location
+                  </p>
+                  <p className="text-sm text-white">
+                    Nigeria (serving Pan-Africa & globally)
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <Share2 size={16} className="text-accent-blue mt-1" />
+              <div className="flex gap-3">
+                <Share2 size={17} className="mt-1 text-accent-blue" />
                 <div>
-                  <p className="text-secondary text-sm">Social Media</p>
-                  <p className="text-white text-sm">@daniekeysstudios</p>
+                  <p className="text-xs uppercase tracking-widest text-secondary">
+                    Hours
+                  </p>
+                  <p className="text-sm text-white">Mon-Fri 9am-6pm WAT</p>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Bottom Bar */}
-        <motion.div
-          className="border-t border-secondary/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <p className="text-secondary text-sm">
-            © {new Date().getFullYear()} Daniekeys Studios. All rights reserved.
-          </p>
-
+        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 text-sm text-secondary md:flex-row md:items-center md:justify-between">
+          <p>© 2026 Daniekeys Studios. All rights reserved.</p>
           <div className="flex gap-6">
-            <a
-              href="#"
-              className="text-secondary hover:text-accent-blue transition-colors text-sm"
-            >
+            <Link href="/privacy" className="transition-colors hover:text-accent-blue">
               Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="text-secondary hover:text-accent-blue transition-colors text-sm"
-            >
+            </Link>
+            <Link href="/terms" className="transition-colors hover:text-accent-blue">
               Terms of Service
-            </a>
+            </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

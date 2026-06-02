@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.daniekeysstudios.com/"),
 
   title:
-    "Daniekeys Studios - Premium Creative Studio | Motion Graphics & Web Design",
+    "Daniekeys Studios — Daniekeys Studios | AI Digital Strategy, Branding & Web Nigeria",
   description:
-    "Award-winning creative studio based in Ilorin, Kwara State, specializing in motion graphics, website development, branding, and digital marketing. We create cinematic visuals and cutting-edge digital experiences for world-class brands.",
+    "Daniekeys Studios is Africa's AI-powered digital agency for brand identity, web development, motion graphics, and automation in Nigeria.",
   keywords: [
     "creative studio Nigeria",
     "motion graphics agency",
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     "web design",
     "UI/UX design",
     "digital transformation",
-    "creative services Ilorin",
-    "creative agency Kwara State",
+    "AI agency Nigeria",
+    "AI automation Nigeria",
   ],
   authors: [{ name: "Daniekeys Studios" }],
   creator: "Daniekeys Studios",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Daniekeys Studios - Premium Creative Studio",
     description:
-      "Where creativity meets technology. Premium motion graphics, branding, and digital experiences.",
+      "AI engineering + creative excellence + growth strategy - all in one studio.",
     creator: "@daniekeys",
     site: "@daniekeys",
     images: {
@@ -126,60 +126,19 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Daniekeys Studios",
               url: "https://www.daniekeysstudios.com/",
-              logo: "https://www.daniekeysstudios.com/images/logos/logo-alone.png",
-              description:
-                "Premium creative studio specializing in motion graphics, website development, branding, and digital marketing.",
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "NG",
-                addressRegion: "Kwara State",
-                addressLocality: "Ilorin",
-              },
+              logo:
+                "https://www.daniekeysstudios.com/images/logos/daniekeys-logo.png",
               sameAs: [
-                "https://www.linkedin.com/company/daniekeys-studios/about/",
-                "https://www.facebook.com/profile.php?id=61583310572575",
                 "https://www.instagram.com/daniekeys_studios/",
+                "https://www.linkedin.com/company/daniekeys-studios/",
                 "https://www.youtube.com/@Danieskeys",
+                "https://www.facebook.com/profile.php?id=61583310572575",
               ],
               contactPoint: {
                 "@type": "ContactPoint",
-                contactType: "Business Inquiry",
-                url: "https://www.daniekeysstudios.com/contact",
+                telephone: "+2349030909624",
+                contactType: "customer service",
               },
-            }),
-          }}
-        />
-        <Script
-          id="service-schema"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: "Daniekeys Studios",
-              description:
-                "Creative studio offering motion graphics, web design, branding, and digital marketing services based in Ilorin, Kwara State",
-              url: "https://www.daniekeysstudios.com/",
-              image:
-                "https://www.daniekeysstudios.com/images/logos/logo-alone.png",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "Ilorin",
-                addressLocality: "Ilorin",
-                addressRegion: "Kwara State",
-                postalCode: "",
-                addressCountry: "NG",
-              },
-              priceRange: "$$",
-              areaServed: ["NG", "US", "UK", "CA"],
-              serviceType: [
-                "Motion Graphics",
-                "Web Design",
-                "Branding",
-                "Digital Marketing",
-                "Video Production",
-              ],
             }),
           }}
         />

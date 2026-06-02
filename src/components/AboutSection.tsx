@@ -85,7 +85,7 @@ export default function AboutSection() {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <div className="text-3xl font-bold text-accent-blue mb-2">
-                  150+
+                  50+
                 </div>
                 <div className="text-sm text-secondary uppercase tracking-wide">
                   Projects Delivered
@@ -99,10 +99,10 @@ export default function AboutSection() {
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
                 <div className="text-3xl font-bold text-accent-blue mb-2">
-                  10
+                  5+
                 </div>
                 <div className="text-sm text-secondary uppercase tracking-wide">
-                  Years Experience
+                  Years in Business
                 </div>
               </motion.div>
 
@@ -113,10 +113,10 @@ export default function AboutSection() {
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
                 <div className="text-3xl font-bold text-accent-blue mb-2">
-                  25+
+                  100%
                 </div>
                 <div className="text-sm text-secondary uppercase tracking-wide">
-                  Team Members
+                  On-Time Delivery Rate
                 </div>
               </motion.div>
             </div>
@@ -153,7 +153,7 @@ export default function AboutSection() {
               {/* Video caption */}
               <div className="absolute bottom-6 left-6 right-6 z-10">
                 <p className="text-primary-white text-sm font-light">
-                  Behind the scenes at our Lagos studio, where creativity and
+                  Behind the scenes at our Nigeria studio, where creativity and
                   technology converge to create extraordinary experiences.
                 </p>
               </div>
