@@ -205,7 +205,7 @@ export default function HomepageRevamp() {
 
   return (
     <>
-      <section className="relative min-h-screen overflow-hidden bg-primary pt-24">
+      <section className="relative min-h-screen overflow-hidden bg-primary pt-12  lg:pt-16">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:48px_48px]" />
         <div className="absolute inset-y-0 right-0 hidden w-[52%] lg:block">
           <Image
@@ -302,7 +302,7 @@ export default function HomepageRevamp() {
           </p>
         </div>
         <div className="mt-8 flex gap-5 overflow-hidden">
-          <div className="flex min-w-full animate-[marquee_24s_linear_infinite] gap-5">
+          <div className="flex min-w-full animate-[marquee_5s_linear_infinite] gap-5">
             {[...marqueeImages, ...marqueeImages].map((src, index) => (
               <div
                 key={`${src}-${index}`}
@@ -323,7 +323,7 @@ export default function HomepageRevamp() {
           {clientLogos.map((logo) => (
             <div
               key={logo.name}
-              className="flex h-20 items-center justify-center rounded-2xl border border-white/10 bg-[#1A1A1A] px-5 grayscale transition hover:grayscale-0"
+              className="flex h-20 items-center justify-center rounded-2xl border border-white/10 bg-[#3f3f3f] px-5 grayscale transition hover:grayscale-0"
             >
               {logo.src ? (
                 <Image
@@ -334,7 +334,7 @@ export default function HomepageRevamp() {
                   className="max-h-9 w-auto object-contain"
                 />
               ) : (
-                <span className="text-sm font-semibold text-primary-white">
+                <span className="text-sm font-semibold text-primary-white hover:text-accent-blue">
                   {logo.text}
                 </span>
               )}
