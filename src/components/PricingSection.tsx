@@ -140,8 +140,8 @@ export default function PricingSection() {
   return (
     <>
       {/* ── SECTION 2: PAGE HERO ── */}
-      <section className="bg-[#111111] px-6 py-28 md:px-8">
-        <div className="mx-auto max-w-[1280px]">
+      <section className="bg-[#111111] px-2 py-32 md:px-8">
+        <div className="mx-auto max-w-[1280px] px-6 md:px-8">
           <nav className="mb-8" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-sm text-[#818181]">
               <li>
@@ -153,7 +153,7 @@ export default function PricingSection() {
                 </Link>
               </li>
               <li>/</li>
-              <li className="text-[#9DBAFF]">Pricing</li>
+              <li className="text-white">Pricing</li>
             </ol>
           </nav>
 
