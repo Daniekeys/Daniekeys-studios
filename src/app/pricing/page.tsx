@@ -115,7 +115,7 @@ export default function PricingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navigation />
-      <main className="pt-[83px]">
+      <main className="">
         <PricingSection />
       </main>
       <Footer />
