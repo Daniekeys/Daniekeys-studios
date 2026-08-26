@@ -105,7 +105,7 @@ export default function PortfolioPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioSchema) }}
       />
       <Navigation />
-      <main className="pt-20">
+      <main className="">
         <PortfolioPageContent />
       </main>
       <Footer />

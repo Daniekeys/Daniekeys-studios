@@ -189,8 +189,8 @@ export default function ServicesPageContent() {
       </div>
 
       {/* ── SECTION 2: PAGE HERO ────────────────────────── */}
-      <section ref={heroRef} className="bg-[#111111] px-6 py-32 md:px-8">
-        <div className="mx-auto max-w-[1280px]">
+      <section ref={heroRef} className="bg-[#111111] py-32 md:px-8">
+        <div className="mx-auto max-w-[1280px] px-6 md:px-8">
           {/* Breadcrumb */}
           <nav className="mb-6 flex items-center gap-2" aria-label="Breadcrumb">
             <Link
@@ -200,7 +200,7 @@ export default function ServicesPageContent() {
               Home
             </Link>
             <span className="text-[13px] text-[#818181]">›</span>
-            <span className="text-[13px] text-[#818181]">Services</span>
+            <span className="text-[13px] text-white">Services</span>
           </nav>
 
           {/* Tag badge */}

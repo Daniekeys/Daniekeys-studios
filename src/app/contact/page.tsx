@@ -102,7 +102,7 @@ export default function ContactPage() {
       />
       <div className="min-h-screen bg-primary">
         <Navigation />
-        <main className="pt-20">
+        <main className="">
           <ContactPageContent />
         </main>
         <Footer />

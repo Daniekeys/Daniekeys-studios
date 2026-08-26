@@ -257,9 +257,9 @@ export default function ContactPageContent() {
     "https://wa.me/2349030909624?text=Hello!%20I%27d%20like%20to%20discuss%20a%20project%20with%20Daniekeys%20Studios.";
 
   return (
-    <div className="bg-primary text-white">
+    <div className="bg-primary text-white ">
       {/* ── SECTION 2: HERO ───────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-primary py-24 px-6 md:px-8 min-h-[600px] flex items-center">
+      <section className="relative overflow-hidden bg-primary py-32 px-6 md:px-8 min-h-[600px] flex items-center">
         {/* Subtle grid overlay — matches homepage */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:48px_48px]" />
 
@@ -277,7 +277,7 @@ export default function ContactPageContent() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary/10" />
         </div>
 
-        <div className="relative z-10 max-w-[1280px] mx-auto w-full">
+        <div className="relative z-10 max-w-[1280px] mx-auto w-full  px-2 md:px-8">
           {/* Breadcrumb */}
           <nav
             className="text-sm text-secondary mb-8"
