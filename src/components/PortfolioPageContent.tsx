@@ -8,9 +8,8 @@ import { useState } from "react";
 
 const categories = [
   { id: "all", name: "All" },
-  { id: "branding", name: "Branding" },
-  { id: "motion", name: "Motion" },
   { id: "web", name: "Web" },
+  { id: "motion", name: "Motion" },
   { id: "marketing", name: "Marketing" },
   { id: "events", name: "Events" },
   { id: "ai", name: "AI" },
@@ -19,178 +18,191 @@ const categories = [
 const featuredProjects = [
   {
     id: 1,
-    title: "Afriment — Complete Brand Identity System",
+    title: "Afriment — Website Design & Development",
     client: "Afriment",
     year: "2024",
-    tags: ["Branding", "Identity System"],
+    tags: ["Web Design", "UI/UX"],
     description:
-      "Full visual identity for Afriment's internship platform — logo, colour system, typography, social templates, and brand guidelines.",
+      "Full website design and development for Afriment's internship platform — clean UI, responsive layouts, and a seamless experience for both students and employers.",
     image: "/images/marquee-pictures/DK_Slide 12.png",
     results: [
-      { label: "Brand Consistency", value: "✓ Achieved across all platforms" },
-      { label: "Delivery", value: "3 weeks" },
-      { label: "Service", value: "Full Brand Identity" },
+      { label: "Design", value: "Custom UI/UX" },
+      { label: "Responsive", value: "✓ Mobile-first" },
+      { label: "Service", value: "Website Design & Development" },
     ],
-    href: "/portfolio/afriment",
+    href: "https://www.afriment.com/",
   },
   {
     id: 2,
-    title: "Candexa — Modern Brand Redesign",
+    title: "Candexa — Website Design",
     client: "Candexa",
     year: "2024",
-    tags: ["Rebranding", "Visual Identity"],
+    tags: ["Web Design", "UI/UX"],
     description:
-      "A comprehensive rebrand for Candexa — clean aesthetics, modern typography, and a visual language that positions them for enterprise clients.",
+      "A clean, modern website design for Candexa — structured for enterprise clients with clear messaging, strong visuals, and a seamless user journey.",
     image: "/images/samples/branding-b.png",
     results: [
-      { label: "Visual Refresh", value: "Complete identity overhaul" },
-      { label: "Brand perception", value: "Significantly elevated" },
-      { label: "Service", value: "Rebranding + Brand Guidelines" },
+      { label: "Design", value: "Clean, enterprise-ready UI" },
+      { label: "Responsive", value: "✓ Fully responsive" },
+      { label: "Service", value: "Website Design" },
     ],
-    href: "/portfolio/candexa",
+    href: "https://www.candexa.ai/",
   },
   {
     id: 3,
-    title: "My Lang Coach — Promotional Video Series",
+    title: "My Lang Coach — Website Design",
     client: "My Lang Coach",
     year: "2024",
-    tags: ["Motion Graphics", "Video Production"],
+    tags: ["Web Design", "UI/UX"],
     description:
-      "Engaging explainer and promo videos that communicate the platform's value in under 60 seconds — designed for social media performance.",
+      "Website design for My Lang Coach's language learning platform — intuitive navigation, engaging layouts, and a design that converts visitors into learners.",
     image: "/images/samples/marketing-a.png",
     results: [
-      { label: "Format", value: "Social-first short videos" },
-      { label: "Service", value: "Motion Graphics + Video Production" },
+      { label: "Design", value: "Conversion-focused UI" },
+      { label: "Responsive", value: "✓ Mobile-first" },
+      { label: "Service", value: "Website Design" },
     ],
-    href: "/portfolio/mylangcoach",
+    href: "https://www.mylangcoach.com/",
   },
   {
     id: 4,
-    title: "Buymejollof — Brand Identity & Launch Assets",
+    title: "Buymejollof — Website Design",
     client: "Buymejollof",
     year: "2024",
-    tags: ["Branding", "Launch Campaign"],
+    tags: ["Web Design", "UI/UX"],
     description:
-      "Brand identity and launch campaign assets for Buymejollof — capturing the energy and warmth of the brand for a memorable market entry.",
+      "Website design for Buymejollof — capturing the platform's energy and warmth through a visually engaging, easy-to-navigate experience.",
     image: "/images/samples/branding.jpg",
     results: [
-      { label: "Service", value: "Brand Identity + Launch Campaign" },
-      { label: "Delivery", value: "Full brand asset suite" },
+      { label: "Design", value: "Brand-aligned UI" },
+      { label: "Responsive", value: "✓ Fully responsive" },
+      { label: "Service", value: "Website Design" },
     ],
-    href: "/portfolio/buymejollof",
+    href: "https://buymejollof.com/",
   },
 ];
 
 const portfolioItems = [
   {
     id: 1,
-    title: "Full Brand Identity System",
-    category: "branding",
+    title: "Website Design & Development",
+    category: "web",
     client: "Afriment",
     year: "2024",
     image: "/images/marquee-pictures/DK_Slide 12.png",
     featured: true,
-    tags: ["Branding", "Identity System"],
+    tags: ["Web Design", "UI/UX"],
+    href: "https://www.afriment.com/",
   },
   {
     id: 2,
-    title: "Modern Visual Rebrand",
-    category: "branding",
+    title: "Website Design",
+    category: "web",
     client: "Candexa",
     year: "2024",
     image: "/images/samples/branding-b.png",
     featured: true,
-    tags: ["Rebranding", "Visual Identity"],
+    tags: ["Web Design", "UI/UX"],
+    href: "https://www.candexa.ai/",
   },
   {
     id: 3,
-    title: "Promotional Video Series",
-    category: "motion",
+    title: "Website Design",
+    category: "web",
     client: "My Lang Coach",
     year: "2024",
     image: "/images/samples/marketing-a.png",
     featured: true,
-    tags: ["Motion Graphics", "Video"],
+    tags: ["Web Design", "UI/UX"],
+    href: "https://www.mylangcoach.com/",
   },
   {
     id: 4,
-    title: "Brand Launch Video",
-    category: "motion",
+    title: "Website Design",
+    category: "web",
     client: "Buymejollof",
     year: "2024",
     image: "/images/samples/marketing-b.png",
     featured: true,
-    tags: ["Motion", "Brand Video"],
+    tags: ["Web Design", "UI/UX"],
+    href: "https://buymejollof.com/",
   },
   {
     id: 5,
-    title: "Company Identity Video",
-    category: "motion",
-    client: "Daniekeys Studios",
+    title: "Website Design",
+    category: "web",
+    client: "PhotoMaster Studios",
     year: "2024",
     image: "/images/samples/branding.jpg",
     featured: false,
-    tags: ["Brand Video", "Identity"],
+    tags: ["Web Design", "UI/UX"],
+    href: "https://www.photomasterstudios.com/",
   },
   {
     id: 6,
-    title: "Digital Campaign Assets",
-    category: "marketing",
-    client: "[Client Name Confidential]",
+    title: "Website Design & Development",
+    category: "web",
+    client: "Nexus",
     year: "2024",
     image: "/images/samples/marketing-c.png",
     featured: false,
-    tags: ["Marketing", "Campaign"],
+    tags: ["Web Design", "UI/UX"],
+    href: "https://nexus-ihez.vercel.app/",
   },
   {
     id: 7,
-    title: "Social Media Templates & Strategy",
-    category: "marketing",
-    client: "[Client Name Confidential]",
+    title: "Website Design & Development",
+    category: "web",
+    client: "Ghost AI",
     year: "2024",
     image: "/images/samples/marketing-d.png",
     featured: false,
-    tags: ["Social Media", "Templates"],
+    tags: ["Web Design", "UI/UX"],
+    href: "https://ghost-ai-henna.vercel.app/",
   },
   {
     id: 8,
-    title: "Instagram Content Strategy",
-    category: "marketing",
-    client: "[Client Name Confidential]",
+    title: "Website Design & Development",
+    category: "web",
+    client: "Flux AI",
     year: "2024",
     image: "/images/samples/marketing-e.png",
     featured: false,
-    tags: ["Instagram", "Content"],
+    tags: ["Web Design", "UI/UX"],
+    href: "https://fluxai-eosin.vercel.app/",
   },
   {
     id: 9,
-    title: "Event Identity Package",
-    category: "events",
-    client: "[Client Name Confidential]",
+    title: "Website Design",
+    category: "web",
+    client: "Sqod",
     year: "2024",
     image: "/images/samples/events.png",
     featured: false,
-    tags: ["Events", "Corporate"],
+    tags: ["Web Design", "UI/UX"],
+    href: "https://sqod-u.vercel.app/",
   },
   {
     id: 10,
-    title: "Cultural Festival Branding",
-    category: "events",
-    client: "[Client Name Confidential]",
+    title: "Website Design",
+    category: "web",
+    client: "Daniekeys Studios",
     year: "2024",
     image: "/images/samples/events-b.jpg",
     featured: false,
-    tags: ["Events", "Cultural"],
+    tags: ["Web Design", "UI/UX"],
+    href: "https://www.daniekeysstudios.com/",
   },
   {
     id: 11,
-    title: "Product Launch Identity",
-    category: "events",
-    client: "[Client Name Confidential]",
+    title: "Website Design",
+    category: "web",
+    client: "Lawploy",
     year: "2024",
     image: "/images/samples/event-c.jpg",
     featured: false,
-    tags: ["Launch", "Premium"],
+    tags: ["Web Design", "UI/UX"],
+    href: "https://lawploy.com/",
   },
 ];
 
@@ -202,10 +214,10 @@ const stats = [
 ];
 
 const clientLogos = [
-  { name: "Afriment", initial: "A" },
-  { name: "Candexa", initial: "C" },
-  { name: "My Lang Coach", initial: "M" },
-  { name: "Buymejollof", initial: "B" },
+  { name: "Afriment", image: "/images/logos/AFRIMENT logo.jpg", initial: "A" },
+  { name: "Candexa", image: "/images/logos/candexa-logo.png", initial: "C" },
+  { name: "My Lang Coach", image: "/images/logos/my-lang-coach-logo.svg", initial: "M" },
+  { name: "Buymejollof", image: null, initial: "B" },
 ];
 
 // Fixed positions to avoid hydration mismatch
@@ -462,11 +474,13 @@ export default function PortfolioPageContent() {
                     </span>
                     <Link
                       href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-sm font-medium flex items-center gap-1 hover:underline transition-all"
                       style={{ color: "#2B6BFF" }}
-                      aria-label={`View case study for ${project.title}`}
+                      aria-label={`Visit ${project.client} website`}
                     >
-                      View Case Study <ArrowRight className="w-4 h-4" />
+                      Visit Website <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>
                 </div>
@@ -532,7 +546,7 @@ export default function PortfolioPageContent() {
                 exit={{ opacity: 0 }}
               >
                 <p style={{ color: "#818181" }}>
-                  AI projects coming soon. Stay tuned.
+                  No projects in this category yet — check back soon.
                 </p>
               </motion.div>
             ) : (
@@ -546,81 +560,89 @@ export default function PortfolioPageContent() {
                 transition={{ duration: 0.25 }}
               >
                 {filteredItems.map((item, index) => (
-                  <motion.div
+                  <Link
                     key={item.id}
-                    className="break-inside-avoid mb-5 rounded-2xl overflow-hidden group cursor-pointer"
-                    style={{ background: "#fff", border: "1px solid #E5E5E5" }}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.04 }}
-                    whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="break-inside-avoid mb-5 block"
+                    aria-label={`Visit ${item.client} website`}
                   >
-                    {/* Image + hover overlay */}
-                    <div className="relative aspect-video overflow-hidden">
-                      <Image
-                        src={item.image}
-                        alt={`${item.title} — ${item.client}`}
-                        width={500}
-                        height={280}
-                        className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50"
-                        loading="lazy"
-                      />
-                      {/* Overlay */}
-                      <div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end pb-5 gap-1"
-                        style={{
-                          background:
-                            "linear-gradient(to top, rgba(43,107,255,0.85), transparent)",
-                        }}
-                      >
-                        <span className="text-white font-semibold text-sm text-center px-3">
-                          {item.title}
-                        </span>
-                        <span className="text-white/80 text-xs flex items-center gap-1">
-                          View Project <ArrowRight className="w-3 h-3" />
-                        </span>
-                      </div>
-                      {/* Featured badge */}
-                      {item.featured && (
-                        <div className="absolute top-3 right-3">
-                          <span
-                            className="text-white font-semibold px-2 py-1 rounded-full"
-                            style={{ background: "#2B6BFF", fontSize: "10px" }}
-                          >
-                            Featured
+                    <motion.div
+                      className="rounded-2xl overflow-hidden group cursor-pointer"
+                      style={{ background: "#fff", border: "1px solid #E5E5E5" }}
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.04 }}
+                      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                    >
+                      {/* Image + hover overlay */}
+                      <div className="relative aspect-video overflow-hidden">
+                        <Image
+                          src={item.image}
+                          alt={`${item.title} — ${item.client}`}
+                          width={500}
+                          height={280}
+                          className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50"
+                          loading="lazy"
+                        />
+                        {/* Overlay */}
+                        <div
+                          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end pb-5 gap-1"
+                          style={{
+                            background:
+                              "linear-gradient(to top, rgba(43,107,255,0.85), transparent)",
+                          }}
+                        >
+                          <span className="text-white font-semibold text-sm text-center px-3">
+                            {item.title}
+                          </span>
+                          <span className="text-white/80 text-xs flex items-center gap-1">
+                            Visit Website <ArrowRight className="w-3 h-3" />
                           </span>
                         </div>
-                      )}
-                    </div>
-
-                    {/* Card text */}
-                    <div className="p-5">
-                      <p
-                        className="uppercase tracking-wider mb-1"
-                        style={{ fontSize: "11px", color: "#818181" }}
-                      >
-                        {item.category} • {item.year}
-                      </p>
-                      <h3
-                        className="font-semibold mb-2"
-                        style={{ fontSize: "18px", color: "#111111" }}
-                      >
-                        {item.title}
-                      </h3>
-                      <div className="flex items-center justify-between">
-                        <span style={{ fontSize: "13px", color: "#818181" }}>
-                          {item.client}
-                        </span>
-                        <span
-                          className="text-xs font-medium flex items-center gap-1"
-                          style={{ color: "#2B6BFF" }}
-                          aria-hidden="true"
-                        >
-                          View <ArrowRight className="w-3 h-3" />
-                        </span>
+                        {/* Featured badge */}
+                        {item.featured && (
+                          <div className="absolute top-3 right-3">
+                            <span
+                              className="text-white font-semibold px-2 py-1 rounded-full"
+                              style={{ background: "#2B6BFF", fontSize: "10px" }}
+                            >
+                              Featured
+                            </span>
+                          </div>
+                        )}
                       </div>
-                    </div>
-                  </motion.div>
+
+                      {/* Card text */}
+                      <div className="p-5">
+                        <p
+                          className="uppercase tracking-wider mb-1"
+                          style={{ fontSize: "11px", color: "#818181" }}
+                        >
+                          {item.category} • {item.year}
+                        </p>
+                        <h3
+                          className="font-semibold mb-2"
+                          style={{ fontSize: "18px", color: "#111111" }}
+                        >
+                          {item.title}
+                        </h3>
+                        <div className="flex items-center justify-between">
+                          <span style={{ fontSize: "13px", color: "#818181" }}>
+                            {item.client}
+                          </span>
+                          <span
+                            className="text-xs font-medium flex items-center gap-1"
+                            style={{ color: "#2B6BFF" }}
+                            aria-hidden="true"
+                          >
+                            View <ArrowRight className="w-3 h-3" />
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </Link>
                 ))}
               </motion.div>
             )}
@@ -779,28 +801,48 @@ export default function PortfolioPageContent() {
             {clientLogos.map((logo) => (
               <div
                 key={logo.name}
-                className="flex items-center justify-center rounded-xl p-6 transition-all duration-300 group"
+                className="flex items-center justify-center rounded-xl p-6 transition-all duration-300 group cursor-pointer"
                 style={{
                   background: "#fff",
                   border: "1px solid #E5E5E5",
                   minWidth: "140px",
                 }}
               >
-                <div className="flex flex-col items-center gap-3">
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg transition-all duration-300"
-                    style={{ background: "#111", opacity: 0.55 }}
-                    aria-hidden="true"
-                  >
-                    {logo.initial}
+                {logo.image ? (
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="relative w-28 h-12 flex items-center justify-center">
+                      <Image
+                        src={logo.image}
+                        alt={`${logo.name} logo`}
+                        width={112}
+                        height={48}
+                        className="object-contain grayscale opacity-60 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                      />
+                    </div>
+                    <span
+                      className="text-sm font-medium transition-colors duration-300"
+                      style={{ color: "#818181" }}
+                    >
+                      {logo.name}
+                    </span>
                   </div>
-                  <span
-                    className="text-sm font-medium transition-colors duration-300 group-hover:text-primary"
-                    style={{ color: "#818181" }}
-                  >
-                    {logo.name}
-                  </span>
-                </div>
+                ) : (
+                  <div className="flex flex-col items-center gap-3">
+                    <div
+                      className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg grayscale opacity-60 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                      style={{ background: "#111" }}
+                      aria-hidden="true"
+                    >
+                      {logo.initial}
+                    </div>
+                    <span
+                      className="text-sm font-medium transition-colors duration-300"
+                      style={{ color: "#818181" }}
+                    >
+                      {logo.name}
+                    </span>
+                  </div>
+                )}
               </div>
             ))}
 
