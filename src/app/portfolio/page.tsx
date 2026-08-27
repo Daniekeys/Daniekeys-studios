@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import PortfolioPageContent from "../../components/PortfolioPageContent";
+import { portfolioProjects } from "../../lib/portfolio-projects";
 
 export const metadata: Metadata = {
   title:
@@ -53,55 +55,38 @@ const organizationSchema = {
   },
 };
 
+// Mirrors the 6 real projects rendered by PortfolioPageContent (single source
+// in lib/portfolio-projects.ts) so the structured data can't drift from the
+// visible grid.
 const portfolioSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "Daniekeys Studios Portfolio",
   description:
-    "Creative and AI projects across branding, web development, motion graphics, and digital marketing",
-  itemListElement: [
-    {
-      "@type": "CreativeWork",
-      position: 1,
-      name: "Afriment Website Design & Development",
-      description:
-        "Website design and development for Afriment's internship platform",
-      creator: { "@type": "Organization", name: "Daniekeys Studios" },
-    },
-    {
-      "@type": "CreativeWork",
-      position: 2,
-      name: "Candexa Website Design",
-      description: "Clean, modern website design for Candexa",
-      creator: { "@type": "Organization", name: "Daniekeys Studios" },
-    },
-    {
-      "@type": "CreativeWork",
-      position: 3,
-      name: "My Lang Coach Website Design",
-      description:
-        "Website design for My Lang Coach's language learning platform",
-      creator: { "@type": "Organization", name: "Daniekeys Studios" },
-    },
-    {
-      "@type": "CreativeWork",
-      position: 4,
-      name: "Buymejollof Website Design",
-      description: "Website design for Buymejollof's platform",
-      creator: { "@type": "Organization", name: "Daniekeys Studios" },
-    },
-  ],
+    "Creative and AI projects across branding, motion graphics, web development, and digital marketing",
+  itemListElement: portfolioProjects.map((project, index) => ({
+    "@type": "CreativeWork",
+    position: index + 1,
+    name: project.title,
+    description: project.blurb,
+    url: `https://www.daniekeysstudios.com/portfolio/${project.slug}`,
+    creator: { "@type": "Organization", name: "Daniekeys Studios" },
+  })),
 };
 
 export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-primary">
-      <script
+      <Script
+        id="portfolio-organization-schema"
         type="application/ld+json"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
-      <script
+      <Script
+        id="portfolio-itemlist-schema"
         type="application/ld+json"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioSchema) }}
       />
       <Navigation />
