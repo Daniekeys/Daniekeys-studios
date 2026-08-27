@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
-import PricingSection from "../../components/PricingSection";
+import PricingPageContent from "../../components/PricingPageContent";
 
 export const metadata: Metadata = {
   title:
@@ -46,6 +46,11 @@ const productSchema = {
   },
 };
 
+// Answer text mirrors the DRAFT answers rendered in PricingPageContent's FAQ
+// accordion (kept in sync so the structured data matches the visible copy).
+// Both are placeholders pending Daniel's real answers — see 00-OVERVIEW.md
+// open items ("FAQ answer copy on the Services and Pricing pages"); confirm
+// before launch.
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -55,7 +60,7 @@ const faqSchema = {
       name: "Why is there a price range instead of a fixed price?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Because every project is different. A logo for a solo coach and a logo for a 50-person company have very different requirements. Ranges let you know the ballpark — your exact quote is confirmed before we start, with full itemisation.",
+        text: "Every project's final cost depends on complexity, number of pages/deliverables, and revision rounds — the range reflects standard scope so you can budget accurately before we confirm an exact number.",
       },
     },
     {
@@ -63,7 +68,7 @@ const faqSchema = {
       name: "What happens if my project goes over scope?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We agree on scope before we begin. If you request additions beyond the agreed brief, we'll send a change request with the cost — no surprises, no invoice shock.",
+        text: "We'll flag it before doing any extra work and agree on a fair additional cost together — no surprise invoices.",
       },
     },
     {
@@ -71,7 +76,7 @@ const faqSchema = {
       name: "Are revisions included?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Starter includes 2 rounds. Business includes 2 rounds. Premium includes 3 rounds. Retainer clients have unlimited minor revisions on monthly deliverables.",
+        text: "Yes — every package includes 2–3 rounds of revisions depending on the tier, detailed above.",
       },
     },
     {
@@ -79,7 +84,7 @@ const faqSchema = {
       name: "Can I start with a small package and upgrade later?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Absolutely — and many of our best long-term clients started with the Starter Package. All previous work is considered when upgrading so we build on it, not restart.",
+        text: "Absolutely — many clients start with Starter and move to Business or a retainer as they grow.",
       },
     },
     {
@@ -87,7 +92,7 @@ const faqSchema = {
       name: "Do you offer discounts for NGOs or nonprofits?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — we offer 15% discounts for registered NGOs and community organisations. Mention this when you contact us.",
+        text: "Yes — reach out and we'll discuss a scope that fits your budget.",
       },
     },
     {
@@ -95,7 +100,7 @@ const faqSchema = {
       name: "What's the minimum project budget you'll take on?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our minimum project value is ₦45,000 (single logo design). For new clients, we recommend the Starter Package at ₦95,000+ to get meaningful results.",
+        text: "Our Starter Package begins at ₦95,000 — for anything smaller, let's talk and we'll see what's possible.",
       },
     },
   ],
@@ -116,7 +121,7 @@ export default function PricingPage() {
       />
       <Navigation />
       <main className="">
-        <PricingSection />
+        <PricingPageContent />
       </main>
       <Footer />
     </div>
