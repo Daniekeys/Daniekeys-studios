@@ -1,7 +1,7 @@
 "use client";
 
 import { Star } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import Button from "@/components/shared/Button";
 import Eyebrow from "@/components/shared/Eyebrow";
@@ -17,16 +17,22 @@ const plans = [
 ];
 
 export default function PricingTeaserSection() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section className="relative overflow-hidden bg-off-white py-space-8 lg:py-space-10">
       <GridOverlay />
 
       <motion.div
         className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6"
-        initial={{ opacity: 0, y: 24 }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={
+          prefersReducedMotion
+            ? { duration: 0 }
+            : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+        }
       >
         <Eyebrow theme="light">{"// Investment"}</Eyebrow>
         <div className="mt-space-3 flex flex-col gap-space-4 lg:flex-row lg:items-end lg:justify-between">

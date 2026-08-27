@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import AvatarGroup from "@/components/shared/AvatarGroup";
 import Button from "@/components/shared/Button";
@@ -52,6 +52,8 @@ const pillars: PillarItem[] = [
 // via a fixed-width label column sized to the ~17.5%-of-container band the
 // mockup's grid lines mark out, rather than a fluid fraction.
 export default function WhoWeAreSection() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section className="relative overflow-hidden bg-off-white pt-space-8 pb-space-6 lg:pt-space-10 lg:pb-space-7">
       <GridOverlay />
@@ -59,10 +61,14 @@ export default function WhoWeAreSection() {
 
       <motion.div
         className="relative z-10 mx-auto grid max-w-[1280px] gap-space-6 px-space-4 md:px-space-6 lg:grid-cols-[220px_1fr] lg:gap-space-8"
-        initial={{ opacity: 0, y: 24 }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={
+          prefersReducedMotion
+            ? { duration: 0 }
+            : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+        }
       >
         <Eyebrow theme="light">{"// Who We Are"}</Eyebrow>
 

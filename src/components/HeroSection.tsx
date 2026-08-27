@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 import AvatarGroup from "@/components/shared/AvatarGroup";
@@ -31,6 +31,8 @@ const founderAvatars = [
 ];
 
 export default function HeroSection() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section className="relative overflow-hidden bg-primary pb-space-9 pt-24 lg:pt-32">
       <GridOverlay />
@@ -92,9 +94,13 @@ export default function HeroSection() {
           <AwardBadges className="hidden lg:flex lg:justify-end" />
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={
+              prefersReducedMotion
+                ? { duration: 0 }
+                : { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+            }
           >
             <FeaturedWorkCard
               imageSrc="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80"

@@ -25,8 +25,6 @@ const services = [
   "Digital Marketing",
 ];
 
-// About and Careers point ahead to routes built in later batches
-// (see docs/revamp/90-BUILD-PLAN-BATCHES.md — Batch 8 for /about).
 const companyLinks = [
   { label: "About Us", href: "/about" },
   { label: "Portfolio", href: "/portfolio" },
@@ -34,7 +32,6 @@ const companyLinks = [
   { label: "Pricing", href: "/pricing" },
   { label: "Process", href: "/services#process" },
   { label: "Contact", href: "/contact" },
-  { label: "Careers", href: "/careers" },
 ];
 
 const socialLinks = [

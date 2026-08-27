@@ -1,7 +1,7 @@
 "use client";
 
 import { useId } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -25,6 +25,7 @@ export default function ModeToggle({
   const inactiveText = "text-light-dark";
   const activeText = "text-white";
   const layoutId = useId();
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div
@@ -52,7 +53,11 @@ export default function ModeToggle({
             {isActive && (
               <motion.span
                 layoutId={`mode-toggle-active-${layoutId}`}
-                transition={{ duration: 0.25, ease: "easeInOut" }}
+                transition={
+                  prefersReducedMotion
+                    ? { duration: 0 }
+                    : { duration: 0.25, ease: "easeInOut" }
+                }
                 className="absolute inset-0 -z-10 rounded-radius-full bg-dk-blue-1"
               />
             )}

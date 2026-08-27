@@ -76,14 +76,17 @@ export default function TestimonialCard(props: TestimonialCardProps) {
   const { avatarSrc, name, company, quote, index, total, onPrev, onNext, className } =
     props;
 
-  const crossfade = prefersReducedMotion
-    ? { initial: false, animate: {}, exit: {} }
-    : {
-        initial: { opacity: 0 },
-        animate: { opacity: 1 },
-        exit: { opacity: 0 },
-        transition: { duration: 0.4 },
-      };
+  // `animate` must stay pointed at the visible state unconditionally — same
+  // fix pattern as ProcessStep / ProjectCard. useReducedMotion() resolves
+  // after first paint, so swapping in `animate: {}` when reduced strands the
+  // keyed crossfade child at opacity 0 (the blank-featured-quote defect,
+  // 00-OVERVIEW.md). Gate only `initial` and the transition duration.
+  const crossfade = {
+    initial: prefersReducedMotion ? false : { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: { duration: prefersReducedMotion ? 0 : 0.4 },
+  };
 
   return (
     <div className={cn("relative grid gap-space-6 md:grid-cols-[auto_1fr]", className)}>

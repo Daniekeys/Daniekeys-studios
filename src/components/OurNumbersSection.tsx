@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import Eyebrow from "@/components/shared/Eyebrow";
 import GridOverlay from "@/components/shared/GridOverlay";
@@ -21,16 +21,22 @@ const stats = [
 // "Who We Are" instead. Kept on --off-white per the spec's own recommendation
 // (thematically one unit with Who We Are; the next dark break is Services).
 export default function OurNumbersSection() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section className="relative overflow-hidden bg-off-white pt-space-6 pb-space-8 lg:pt-space-7 lg:pb-space-10">
       <GridOverlay />
 
       <motion.div
         className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6"
-        initial={{ opacity: 0, y: 24 }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={
+          prefersReducedMotion
+            ? { duration: 0 }
+            : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+        }
       >
         <Eyebrow theme="light">{"// The Numbers"}</Eyebrow>
         <h3 className="mt-space-3 max-w-2xl text-ds-h4 text-primary">

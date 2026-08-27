@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import Button from "@/components/shared/Button";
 import Eyebrow from "@/components/shared/Eyebrow";
@@ -12,12 +12,18 @@ import NumberedAccordion, {
 import ProcessStep from "@/components/shared/ProcessStep";
 import WatermarkGlyph from "@/components/shared/WatermarkGlyph";
 
-const fadeUp = {
-  initial: { opacity: 0, y: 24 },
+// Scroll-reveal config. Under prefers-reduced-motion the reveal target stays
+// (content must never be stranded — see the TestimonialCard defect in
+// 00-OVERVIEW.md); only the entrance offset and duration are dropped so the
+// content snaps straight to its final state. 05-ANIMATIONS-AND-INTERACTIONS.md §Reduced Motion.
+const buildFadeUp = (reduced: boolean | null) => ({
+  initial: reduced ? false : { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
-};
+  transition: reduced
+    ? { duration: 0 }
+    : { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+});
 
 // All 8 services, verbatim from 21-PAGE-services.md — deliverables, tags,
 // "Best for" lines, and "Starts from" prices (Naira, exact spec figures, not
@@ -294,6 +300,8 @@ const faqs: FaqItem[] = [
 ];
 
 export default function ServicesPageContent() {
+  const fadeUp = buildFadeUp(useReducedMotion());
+
   return (
     <>
       {/* Page header — compact (eyebrow + H1 + one-liner + stat strip), not a

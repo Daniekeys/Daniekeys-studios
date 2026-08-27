@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import ClientLogoStrip from "@/components/shared/ClientLogoStrip";
 import { cn } from "@/lib/utils";
@@ -26,13 +26,19 @@ interface TrustBarProps {
 // as one, and it was previously (incorrectly) rendered full-width/centered
 // after the hero.
 export default function TrustBar({ className }: TrustBarProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <motion.div
       className={cn("max-w-xl", className)}
-      initial={{ opacity: 0, y: 24 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      transition={
+        prefersReducedMotion
+          ? { duration: 0 }
+          : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+      }
     >
       <p className="text-ds-small uppercase tracking-wide text-light-dark">
         Trusted by Ambitious Brands Across Nigeria and Africa

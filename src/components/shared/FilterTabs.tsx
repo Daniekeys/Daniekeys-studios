@@ -1,7 +1,7 @@
 "use client";
 
 import { useId } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -23,6 +23,7 @@ export default function FilterTabs({
   const inactiveText = "text-light-dark";
   const activeText = theme === "dark" ? "text-primary-white" : "text-primary";
   const layoutId = useId();
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div
@@ -47,7 +48,7 @@ export default function FilterTabs({
             {isActive && (
               <motion.span
                 layoutId={`filter-tab-underline-${layoutId}`}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
                 className="absolute inset-x-0 bottom-0 h-0.5 bg-dk-blue-1"
               />
             )}

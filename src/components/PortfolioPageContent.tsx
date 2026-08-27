@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import Button from "@/components/shared/Button";
 import Eyebrow from "@/components/shared/Eyebrow";
@@ -14,15 +14,22 @@ import {
   portfolioProjects,
 } from "@/lib/portfolio-projects";
 
-const fadeUp = {
-  initial: { opacity: 0, y: 24 },
+// Scroll-reveal config. Under prefers-reduced-motion the reveal target stays
+// (content must never be stranded — see the TestimonialCard defect in
+// 00-OVERVIEW.md); only the entrance offset and duration are dropped so the
+// content snaps straight to its final state. 05-ANIMATIONS-AND-INTERACTIONS.md §Reduced Motion.
+const buildFadeUp = (reduced: boolean | null) => ({
+  initial: reduced ? false : { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
-};
+  transition: reduced
+    ? { duration: 0 }
+    : { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+});
 
 export default function PortfolioPageContent() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
+  const fadeUp = buildFadeUp(useReducedMotion());
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === "All") return portfolioProjects;
