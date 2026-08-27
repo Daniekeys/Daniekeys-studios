@@ -188,7 +188,20 @@ Spec lives in docs/revamp/. Read docs/revamp/00-OVERVIEW.md and
 docs/revamp/90-BUILD-PLAN-BATCHES.md before any revamp-related work.
 Follow the batch sequence exactly — one batch per session, run each
 batch's checklist before moving to the next. Ignore this section once
-the revamp is complete and remove it. 
+the revamp is complete and remove it.
+
+Verification viewports: screenshot/QA every revamp page at 1440px
+(desktop) and 390px (mobile) via CDP device-metrics emulation
+(setDeviceMetricsOverride), not --window-size. Batch 14's 375px mobile
+pass still applies as an extra narrow check.
+
+Clean rebuild before every batch's verification pass: before the
+final verification / screenshot / interaction pass of any batch, do a
+clean rebuild — delete .next/, run a fresh `next build`, then a fresh
+`next start` — rather than reusing a possibly-stale .next/ or dev-cache
+state. A stale build artifact has now produced a false verification
+result twice (Batch 10 cache corruption, Batch 12 ChunkLoadError /
+React #423). This is a required checklist step, not a reactive fix.
 
 ## Mockup Reference Rule (always active during the Daniekeys revamp)
 The folder /reference contains desktop-mockup.jpeg and mobile-mockup-view.jpg —
@@ -208,4 +221,4 @@ For every task in this revamp:
    any layout mismatch before moving on. Don't just say "done" — show the
    comparison.
 5. If something in the mockup is ambiguous or cut off, say so rather than
-   guessing silently.
+   guessing silently. 

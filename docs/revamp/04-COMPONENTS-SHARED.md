@@ -31,6 +31,8 @@ Pill switch, `--dk-blue-1` filled active segment, ~250ms slide. On the landing t
 - Variant A — quote card: small avatar, name, company, 5-star row (`--dk-blue-1`), quote paragraph. (No real video testimonials exist yet for Daniekeys — **drop the mockup's video-testimonial variant entirely** for this build; all testimonial cards are text/quote style.)
 - Variant B — featured large quote: oversized quote-mark glyph (`--dk-blue-1`), pull-quote (`--text-h3`), "FEATURED REVIEW" vertical label, pagination + prev/next arrows if more than one quote is cycling, client name/company/photo. With only 3 real quotes available, pagination reads "01/03" and cycles all 3 — the secondary row below can reuse the same 3 quotes in card format (see `00-OVERVIEW.md` open items).
 
+**Pull-quote alignment convention (established Batch 8 — do not re-litigate).** Every large pull-quote / `<blockquote>` sitewide is **left-aligned**, including the `/about` "Founder's Words" quote. This is a deliberate divergence from the mockup, whose Founder's Words block is right-aligned — left wins for readability and for consistency with Variant A / TestimonialCard. Any later batch that adds or touches a quote component (pricing testimonials, case-study pull-quotes, etc.) follows the left-aligned convention; don't reopen the mockup comparison on this point.
+
 ## Avatar Group
 3 overlapping circular photos + caption, used for founder credit (landing hero) and any "trusted by X clients" trust line.
 
