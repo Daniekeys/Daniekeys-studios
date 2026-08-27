@@ -42,63 +42,12 @@ const contactPageSchema = {
   },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What happens after I fill in the form?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A real person (not a bot) will read your project details and send you a personalised response within 24 hours. If your project is urgent, mention it and we'll prioritise your reply.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do I need to know exactly what I want before reaching out?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Not at all. Many of our best clients came to us saying \"I know I need help, I'm just not sure with what.\" We'll ask the right questions on the discovery call and figure it out together.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is the discovery call really free?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Completely. It's a 30-minute conversation — no agenda except understanding your business. We don't charge for the call, and there's no obligation to hire us afterwards.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How long does it take to get a proposal after the call?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We deliver a written proposal within 48 hours of your discovery call. It includes a clear scope, timeline, and final price — no vague estimates.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do you sign NDAs?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. We're happy to sign a mutual NDA before sharing sensitive business information. Just let us know when you reach out.",
-      },
-    },
-  ],
-};
-
 export default function ContactPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="min-h-screen bg-primary">
         <Navigation />
