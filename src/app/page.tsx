@@ -1,6 +1,14 @@
+import AIAdvantageSection from "@/components/AIAdvantageSection";
+import FeaturedWorkSection from "@/components/FeaturedWorkSection";
 import Footer from "@/components/Footer";
-import HomepageRevamp from "@/components/HomepageRevamp";
+import HeroSection from "@/components/HeroSection";
 import Navigation from "@/components/Navigation";
+import OurNumbersSection from "@/components/OurNumbersSection";
+import PricingTeaserSection from "@/components/PricingTeaserSection";
+import ProcessSection from "@/components/ProcessSection";
+import ServicesTeaserSection from "@/components/ServicesTeaserSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import WhoWeAreSection from "@/components/WhoWeAreSection";
 import type { Metadata } from "next";
 import Script from "next/script";
 
@@ -113,7 +121,15 @@ export default function Home() {
         }}
       />
       <Navigation />
-      <HomepageRevamp />
+      <HeroSection />
+      <WhoWeAreSection />
+      <OurNumbersSection />
+      <ServicesTeaserSection />
+      <FeaturedWorkSection />
+      <AIAdvantageSection />
+      <ProcessSection />
+      <TestimonialsSection />
+      <PricingTeaserSection />
       <Footer />
     </main>
   );

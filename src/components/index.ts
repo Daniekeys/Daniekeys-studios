@@ -9,7 +9,6 @@ export { default as PortfolioSection } from "./PortfolioSection";
 export { default as WhyChooseUsSection } from "./WhyChooseUsSection";
 export { default as WhyChooseUsHero } from "./WhyChooseUsHero";
 export { default as TestimonialsSection } from "./TestimonialsSection";
-export { default as PricingSection } from "./PricingSection";
 export { default as CTASection } from "./CTASection";
 export { default as Footer } from "./Footer";
 export { default as OurServices } from "./OurServices";

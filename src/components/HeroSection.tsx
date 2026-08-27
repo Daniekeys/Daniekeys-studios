@@ -1,119 +1,109 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ArrowUpRight } from "lucide-react";
 
-const headlines = [
-  "Where Creativity Meets Technology.",
-  "Building Brands That Move People.",
-  "Design. Motion. Strategy. Impact.",
-  "We Create Digital Experiences That Sell.",
+import AvatarGroup from "@/components/shared/AvatarGroup";
+import AwardBadges from "@/components/shared/AwardBadges";
+import Button from "@/components/shared/Button";
+import Eyebrow from "@/components/shared/Eyebrow";
+import FeaturedWorkCard from "@/components/shared/FeaturedWorkCard";
+import GridOverlay from "@/components/shared/GridOverlay";
+import TrustBar from "@/components/TrustBar";
+
+const proofPoints = ["3× Brand Lift", "+64% Lead Flow", "24/7 Automation"];
+
+// Placeholder headshots — no real founder photos supplied yet. Swap once
+// Daniel confirms the founder name/photos (see the "Founded by" note below).
+const founderAvatars = [
+  {
+    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80",
+    alt: "Placeholder founder headshot",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80",
+    alt: "Placeholder founder headshot",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80",
+    alt: "Placeholder founder headshot",
+  },
 ];
 
 export default function HeroSection() {
-  const [currentHeadline, setCurrentHeadline] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentHeadline((prev) => (prev + 1) % headlines.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-primary">
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/images/hero-poster.jpg"
-        >
-          <source src="/videos/new-hero.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+    <section className="relative overflow-hidden bg-primary pb-space-9 pt-24 lg:pt-32">
+      <GridOverlay />
+      <div className="relative z-10 mx-auto grid max-w-[1280px] gap-space-8 px-space-4 md:px-space-6 lg:grid-cols-[60fr_35fr] lg:items-start lg:gap-space-9">
+        <div>
+          <Eyebrow theme="dark">{"// Meet Daniekeys Studios"}</Eyebrow>
+          <h1 className="mt-space-4 text-ds-hero font-heading text-primary-white">
+            Africa&apos;s Most Ambitious Brands Don&apos;t Just Look Good.
+            <br />
+            They Grow.
+          </h1>
+          <p className="mt-space-5 max-w-xl text-ds-body-lg text-light-dark">
+            Daniekeys Studios combines AI engineering, world-class creative design,
+            and strategic marketing to help businesses across Africa build brands
+            that convert, scale, and dominate their market.
+          </p>
 
-        {/* Video Overlay */}
-        <div className="absolute inset-0 bg-primary/40 z-10" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-20 flex h-full items-center">
-        <div className="container-padding w-full">
-          <div className="max-w-4xl">
-            {/* Rotating Headlines */}
-            <motion.h1
-              className="display-1 text-white mb-8 text-reveal min-h-[200px] lg:min-h-[240px]"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+          <div className="mt-space-6 flex flex-col gap-space-4 sm:flex-row sm:items-center">
+            <Button variant="primary" href="/contact" className="w-full justify-between sm:w-auto">
+              Start a Project
+            </Button>
+            <Button
+              variant="text-link"
+              href="/portfolio"
+              icon={ArrowUpRight}
+              className="justify-center text-primary-white sm:justify-start"
             >
-              <motion.span
-                key={currentHeadline}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="block"
-              >
-                {headlines[currentHeadline]}
-              </motion.span>
-            </motion.h1>
-
-            {/* Sub-headline */}
-            <motion.p
-              className="body-large text-primary-white mb-12 max-w-3xl leading-relaxed"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            >
-              We help businesses look world-class with branding, websites,
-              motion graphics, and digital storytelling that attract customers
-              and build trust.
-            </motion.p>
-
-            {/* Call-to-Action Buttons */}
-            <motion.div
-              className="flex flex-col sm:flex-row gap-6"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            >
-              <button className="btn-primary hover-lift">
-                Start Your Project
-              </button>
-
-              <button className="btn-secondary hover-lift group flex items-center gap-3">
-                <Play
-                  size={20}
-                  className="group-hover:scale-110 transition-transform"
-                />
-                View Our Work
-              </button>
-            </motion.div>
+              View Our Work
+            </Button>
           </div>
+
+          <div className="mt-space-6 flex flex-wrap gap-space-3">
+            {proofPoints.map((point) => (
+              <span
+                key={point}
+                className="rounded-radius-full border border-dk-blue-3/40 bg-dk-blue-1/10 px-space-4 py-space-2 text-ds-small font-medium text-primary-white"
+              >
+                {point}
+              </span>
+            ))}
+          </div>
+
+          <AwardBadges className="mt-space-6 justify-center lg:hidden" />
+
+          {/* Founder name + photos unconfirmed — see 00-OVERVIEW.md open
+              items. Do not ship real names/photos here until Daniel confirms. */}
+          <div className="mt-space-6">
+            <AvatarGroup
+              avatars={founderAvatars}
+              caption="Founded by [Founder Name — TBD]"
+              theme="dark"
+            />
+          </div>
+
+          <TrustBar className="mt-space-6" />
+        </div>
+
+        <div className="flex flex-col gap-space-6">
+          <AwardBadges className="hidden lg:flex lg:justify-end" />
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <FeaturedWorkCard
+              imageSrc="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80"
+              imageAlt="Daniekeys Studios team member reviewing an AI-powered brand dashboard in a modern office"
+              caption="Afriment — Brand Identity System"
+            />
+          </motion.div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-primary-white text-sm font-light tracking-wider uppercase">
-            Scroll to Explore
-          </span>
-          <div className="w-px h-12 bg-gradient-to-b from-primary-white to-transparent"></div>
-        </div>
-      </motion.div>
     </section>
   );
 }

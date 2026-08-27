@@ -1,157 +1,118 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Quote, Star } from "lucide-react";
+import { useEffect, useState } from "react";
 
+import Eyebrow from "@/components/shared/Eyebrow";
+import GridOverlay from "@/components/shared/GridOverlay";
+import TestimonialCard from "@/components/shared/TestimonialCard";
+
+// The only 3 real client quotes that exist (per 00-OVERVIEW.md) — reused
+// across the featured slot and the secondary row rather than inventing more.
+// Avatars are neutral professional-headshot stock placeholders (no real
+// client photos available yet), per 03-IMAGE-SOURCING-GUIDE.md.
 const testimonials = [
   {
-    id: 1,
-    name: "Jane Adebayo",
-    position: "Business Owner",
-    company: "Lagos Retail Co.",
-    content:
-      "Professional, modern, and very quick delivery. Our brand looks 10× better. Customer trust has increased dramatically since the rebrand.",
-    rating: 5,
-    image: "/images/testimonial-1.jpg",
+    name: "Afriment",
+    company: "Verified client",
+    quote:
+      "The new brand system made us look sharper immediately. More importantly, customers understood what we offered faster.",
+    avatarSrc:
+      "https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=200&q=80",
   },
   {
-    id: 2,
-    name: "David Okafor",
-    position: "CEO",
-    company: "Tech Innovations",
-    content:
-      "Their motion graphics helped us increase engagement massively. Social media interactions went up 400% after implementing their video strategy.",
-    rating: 5,
-    image: "/images/testimonial-2.jpg",
+    name: "Candexa",
+    company: "Verified client",
+    quote:
+      "Daniekeys Studios gave us structure, better visuals, and a launch plan that felt practical from day one.",
+    avatarSrc:
+      "https://images.unsplash.com/photo-1616805765352-beedbad46b2a?auto=format&fit=crop&w=200&q=80",
   },
   {
-    id: 3,
-    name: "Chidi Emeka",
-    position: "Founder",
-    company: "Digital Solutions Ltd",
-    content:
-      "The website they built for us has transformed how customers perceive our business. We look like a Fortune 500 company now, and conversions have tripled.",
-    rating: 5,
-    image: "/images/testimonial-3.jpg",
-  },
-  {
-    id: 4,
-    name: "Fatima Hassan",
-    position: "Marketing Director",
-    company: "Growth Partners",
-    content:
-      "Daniekeys doesn't just deliver great design — they understand business. Every recommendation they made directly improved our bottom line.",
-    rating: 5,
-    image: "/images/testimonial-4.jpg",
+    name: "Lagos Business Owner",
+    company: "Verified client",
+    quote:
+      "The ROI was visible within 30 days. Not just better design — actually more customers coming through the door.",
+    avatarSrc:
+      "https://images.unsplash.com/photo-1614023342667-6f060e9d1e04?auto=format&fit=crop&w=200&q=80",
   },
 ];
 
 export default function TestimonialsSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % testimonials.length);
+    }, 6000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const goPrev = () =>
+    setActiveIndex((current) => (current - 1 + testimonials.length) % testimonials.length);
+  const goNext = () => setActiveIndex((current) => (current + 1) % testimonials.length);
+  const active = testimonials[activeIndex];
+
   return (
-    <section className="section-padding bg-primary">
-      <div className="container-padding">
-        {/* Section Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="text-accent-blue text-sm font-medium tracking-wider uppercase mb-4 block">
-            Testimonials
-          </span>
-          <h2 className="display-2 text-white mb-8">
-            What Our Clients Say About
-            <span className="text-accent-blue"> Our Work</span>
+    <section className="relative overflow-hidden bg-primary py-space-8 lg:py-space-10">
+      <GridOverlay />
+
+      <motion.div
+        className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <Eyebrow theme="dark">{"// Testimonials"}</Eyebrow>
+        <div className="mt-space-3 flex flex-col gap-space-4 lg:flex-row lg:items-end lg:justify-between">
+          <h2 className="max-w-2xl text-ds-h2 font-heading text-primary-white">
+            Don&apos;t Take Our Word for It. Take Theirs.
           </h2>
-          <p className="body-large text-secondary max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what industry leaders and
-            visionary brands have to say about working with Daniekeys Studios.
-          </p>
-        </motion.div>
-
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.id}
-              className="bg-white p-8 lg:p-10 relative group hover-lift"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+          <div className="flex flex-wrap items-center gap-space-2 text-ds-body text-primary-white">
+            <span className="text-dk-blue-1">★★★★★</span>
+            <span>Rated 5.0 by 30+ clients on Google</span>
+            <a
+              href="https://www.google.com/search?q=Daniekeys+Studios+reviews"
+              target="_blank"
+              rel="noreferrer"
+              className="text-dk-blue-1 underline underline-offset-4"
             >
-              {/* Quote Icon */}
-              <div className="absolute top-6 right-6 text-accent-blue/20">
-                <Quote size={32} />
-              </div>
-
-              {/* Star Rating */}
-              <div className="flex gap-1 mb-6">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    size={16}
-                    className="text-accent-blue fill-current"
-                  />
-                ))}
-              </div>
-
-              {/* Testimonial Content */}
-              <blockquote className="text-primary text-lg leading-relaxed mb-8 font-light">
-                "{testimonial.content}"
-              </blockquote>
-
-              {/* Client Info */}
-              <div className="flex items-center gap-4">
-                {/* Avatar Placeholder */}
-                <div className="w-12 h-12 bg-accent-blue/10 rounded-full flex items-center justify-center">
-                  <span className="text-accent-blue font-semibold text-lg">
-                    {testimonial.name.charAt(0)}
-                  </span>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-primary">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-secondary text-sm">
-                    {testimonial.position}
-                  </p>
-                  <p className="text-accent-blue text-sm font-medium">
-                    {testimonial.company}
-                  </p>
-                </div>
-              </div>
-
-              {/* Decorative border */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue via-accent-blue-light to-accent-blue-lighter transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-            </motion.div>
-          ))}
+              Read Reviews ↗
+            </a>
+          </div>
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          className="text-center mt-16 pt-16 border-t border-secondary/10"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <h3 className="text-2xl font-semibold text-primary mb-4">
-            Ready to Join Our Success Stories?
-          </h3>
-          <p className="text-secondary mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can help your brand achieve extraordinary
-            results through premium design and cutting-edge technology.
-          </p>
+        <div className="mt-space-8 rounded-radius-xl border border-white/[0.08] p-space-6 lg:p-space-8">
+          <TestimonialCard
+            variant="featured"
+            theme="dark"
+            avatarSrc={active.avatarSrc}
+            name={active.name}
+            company={active.company}
+            quote={active.quote}
+            index={activeIndex}
+            total={testimonials.length}
+            onPrev={goPrev}
+            onNext={goNext}
+          />
+        </div>
 
-          <button className="bg-accent-blue text-white px-8 py-4 font-medium hover:bg-accent-blue-light transition-colors duration-300 hover-lift">
-            Start Your Project
-          </button>
-        </motion.div>
-      </div>
+        <div className="mt-space-6 grid gap-space-5 lg:grid-cols-3">
+          {testimonials.map((testimonial) => (
+            <TestimonialCard
+              key={testimonial.name}
+              variant="quote"
+              theme="dark"
+              avatarSrc={testimonial.avatarSrc}
+              name={testimonial.name}
+              company={testimonial.company}
+              quote={testimonial.quote}
+            />
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 }

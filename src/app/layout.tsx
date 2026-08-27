@@ -1,9 +1,28 @@
 import Chatbot from "@/components/Chatbot";
+import NavGridLine from "@/components/shared/NavGridLine";
 import type { Metadata, Viewport } from "next";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { Toaster } from "sonner";
 
 import "./globals.css";
+
+// 01-DESIGN-SYSTEM.md typography pairing. Exposed as CSS variables only —
+// the live body font stays Neue Montreal until each component is rebuilt
+// per the revamp batches and opts into font-heading/font-body.
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.daniekeysstudios.com/"),
@@ -113,7 +132,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${plusJakartaSans.variable} ${inter.variable}`}>
       <head>
         {/* Structured Data */}
         <Script
@@ -144,6 +163,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-neue-montreal antialiased text-white">
+        <NavGridLine />
         {children}
         <Toaster position="top-right" richColors />
 

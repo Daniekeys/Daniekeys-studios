@@ -84,6 +84,10 @@ const serviceSchema = {
   },
 };
 
+// Answer text mirrors the DRAFT answers rendered in ServicesPageContent's FAQ
+// accordion (kept in sync so the structured data matches the visible copy).
+// Both are placeholders pending Daniel's real answers — see 00-OVERVIEW.md
+// open items; confirm before launch.
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -93,7 +97,7 @@ const faqSchema = {
       name: "Do you work with businesses outside Nigeria?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Absolutely. We work with clients across Africa and internationally. Our entire process is remote-ready — strategy, design, revisions, and delivery all happen seamlessly online. We've delivered projects to clients in the UK, US, and across West Africa.",
+        text: "Yes — we work with clients across Africa and internationally. We accept payment via Wise, PayPal, and direct bank transfer in USD, GBP, EUR, and NGN.",
       },
     },
     {
@@ -101,7 +105,7 @@ const faqSchema = {
       name: "How long does a typical project take?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Brand identity: 2–3 weeks. Website: 3–5 weeks. Full rebrand + website: 6–8 weeks. Motion graphics: 1–2 weeks per video. AI automation setup: 2–4 weeks. Timelines are always confirmed in your proposal before we start.",
+        text: "Most projects take 1–10 weeks depending on scope — a Starter package is 1–2 weeks, a full Premium transformation is 6–10 weeks.",
       },
     },
     {
@@ -109,7 +113,7 @@ const faqSchema = {
       name: "What if I don't like the first design concepts?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Every project includes two rounds of revisions as standard. If we're still not aligned after that, we'll have an honest conversation about why — and find a solution. We've never delivered a project a client wasn't happy with.",
+        text: "Every project includes two full rounds of revisions. We don't submit final work until you're happy with it.",
       },
     },
     {
@@ -117,7 +121,7 @@ const faqSchema = {
       name: "Can I pay in instalments?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. We typically work on a 50% upfront, 50% on completion structure. For larger projects, we can discuss a 3-stage payment plan.",
+        text: "Yes — most projects use a 50% upfront / 50% on delivery split. Larger projects above ₦500,000 can use a 3-stage payment plan.",
       },
     },
     {
@@ -125,7 +129,7 @@ const faqSchema = {
       name: "Do you offer monthly retainers?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — digital marketing, social media management, AI maintenance, and content production are all available as monthly retainers. Most retainer clients start from ₦120,000/month. Contact us to discuss what a retainer looks like for your business.",
+        text: "Yes — see our Retainer plans on the Pricing page for ongoing content, marketing, and AI automation support.",
       },
     },
     {
@@ -133,7 +137,7 @@ const faqSchema = {
       name: "What is an AI-powered agency?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "An AI-powered agency uses artificial intelligence tools to deliver better, faster, and more scalable results. At Daniekeys Studios, our founder is an AI engineer. That means we use AI for content generation, strategy analysis, chatbot deployment, design assistance, and performance analytics — passing the time and cost savings directly to our clients.",
+        text: "It means AI isn't a buzzword we mention — it's built into how we deliver: from AI content pipelines to chatbot automation, we use AI to work faster and smarter for you.",
       },
     },
   ],
