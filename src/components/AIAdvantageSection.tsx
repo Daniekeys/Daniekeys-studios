@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
 import Image from "next/image";
 
@@ -18,16 +18,22 @@ const bullets = [
 // 12-LANDING-services-work-ai.md. Supporting visual is a placeholder abstract
 // stock image per 03-IMAGE-SOURCING-GUIDE.md ("AI technology abstract").
 export default function AIAdvantageSection() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section className="relative overflow-hidden bg-primary py-space-8 lg:py-space-10">
       <GridOverlay />
 
       <motion.div
         className="relative z-10 mx-auto grid max-w-[1280px] gap-space-8 px-space-4 md:px-space-6 lg:grid-cols-[55fr_40fr] lg:items-center lg:gap-space-9"
-        initial={{ opacity: 0, y: 24 }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={
+          prefersReducedMotion
+            ? { duration: 0 }
+            : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+        }
       >
         <div>
           <Eyebrow theme="dark">{"// AI-Powered Agency"}</Eyebrow>

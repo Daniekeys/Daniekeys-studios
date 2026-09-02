@@ -68,15 +68,23 @@ export default function NumberedAccordion(props: NumberedAccordionProps) {
   const hairline = useHairline(theme);
   const dimmedText = "text-light-dark";
   const fullContrastText = theme === "dark" ? "text-primary-white" : "text-primary";
+  // Expanded-panel reading copy. The design system reserves --light-dark for
+  // "dimmed accordion rows" (i.e. the collapsed headers), not the open answer
+  // body — and --light-dark on --black is only ~4.85:1, the borderline dark-FAQ
+  // contrast flagged in Batch 9 (00-OVERVIEW.md). Answer bodies take full
+  // contrast, matching the service-detail deliverables list.
+  const panelBodyText = fullContrastText;
 
-  const expandAnimation = prefersReducedMotion
-    ? { initial: false, animate: {}, exit: {} }
-    : {
-        initial: { height: 0, opacity: 0 },
-        animate: { height: "auto", opacity: 1 },
-        exit: { height: 0, opacity: 0 },
-        transition: EXPAND_TRANSITION,
-      };
+  // `animate` must stay pointed at the open state unconditionally — same fix
+  // pattern as ProcessStep / TestimonialCard. Swapping in `animate: {}` when
+  // reduced can leave the panel collapsed at height 0 (the strand-at-initial
+  // bug class in 00-OVERVIEW.md). Gate only `initial` and the duration.
+  const expandAnimation = {
+    initial: prefersReducedMotion ? false : { height: 0, opacity: 0 },
+    animate: { height: "auto", opacity: 1 },
+    exit: { height: 0, opacity: 0 },
+    transition: prefersReducedMotion ? { duration: 0 } : EXPAND_TRANSITION,
+  };
 
   return (
     <div className={cn("divide-y", hairline)}>
@@ -194,19 +202,19 @@ export default function NumberedAccordion(props: NumberedAccordionProps) {
                 >
                   <div className="pb-space-6">
                     {variant === "pillars" && (
-                      <p className={cn("max-w-2xl text-ds-body", dimmedText)}>
+                      <p className={cn("max-w-2xl text-ds-body", panelBodyText)}>
                         {(item as PillarItem).description}
                       </p>
                     )}
 
                     {variant === "faq" && (
-                      <p className={cn("max-w-2xl text-ds-body", dimmedText)}>
+                      <p className={cn("max-w-2xl text-ds-body", panelBodyText)}>
                         {(item as FaqItem).answer}
                       </p>
                     )}
 
                     {variant === "trust-table" && (
-                      <p className={cn("max-w-2xl text-ds-body", dimmedText)}>
+                      <p className={cn("max-w-2xl text-ds-body", panelBodyText)}>
                         {(item as TrustTableItem).description}
                       </p>
                     )}
@@ -216,7 +224,7 @@ export default function NumberedAccordion(props: NumberedAccordionProps) {
                         const detail = item as ServiceDetailItem;
                         return (
                           <div className="space-y-space-5">
-                            <p className={cn("max-w-2xl text-ds-body", dimmedText)}>
+                            <p className={cn("max-w-2xl text-ds-body", panelBodyText)}>
                               {detail.description}
                             </p>
                             <div className="grid gap-space-6 md:grid-cols-[1fr_auto] md:items-start">

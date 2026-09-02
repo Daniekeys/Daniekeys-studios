@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Quote } from "lucide-react";
 
 import Button from "@/components/shared/Button";
@@ -16,12 +16,18 @@ import TimelineEntry from "@/components/shared/TimelineEntry";
 import WatermarkGlyph from "@/components/shared/WatermarkGlyph";
 import { cn } from "@/lib/utils";
 
-const fadeUp = {
-  initial: { opacity: 0, y: 24 },
+// Scroll-reveal config. Under prefers-reduced-motion the reveal target stays
+// (content must never be stranded — see the TestimonialCard defect in
+// 00-OVERVIEW.md); only the entrance offset and duration are dropped so the
+// content snaps straight to its final state. 05-ANIMATIONS-AND-INTERACTIONS.md §Reduced Motion.
+const buildFadeUp = (reduced: boolean | null) => ({
+  initial: reduced ? false : { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
-};
+  transition: reduced
+    ? { duration: 0 }
+    : { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+});
 
 // Same four pillars as the landing WhoWeAreSection — 20-PAGE-about.md says to
 // reuse them verbatim, no expanded copy is available from source content.
@@ -114,6 +120,8 @@ const trustRows: TrustTableItem[] = [
 ];
 
 export default function AboutPageContent() {
+  const fadeUp = buildFadeUp(useReducedMotion());
+
   return (
     <>
       {/* Page header — compact (eyebrow + H1 + one-liner), not a full hero, per

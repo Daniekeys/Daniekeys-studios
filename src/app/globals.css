@@ -502,3 +502,25 @@ img {
   width: var(--size);
   height: var(--size);
 }
+
+/* Reduced motion — 05-ANIMATIONS-AND-INTERACTIONS.md §Reduced Motion.
+   Blanket safety net for CSS-driven motion (Tailwind `transition-*`,
+   `@keyframes`, smooth scroll). Framer Motion components additionally
+   guard themselves with useReducedMotion(). No JS in this codebase
+   listens for transitionend/animationend, so near-zeroing durations is
+   safe. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html,
+  body {
+    scroll-behavior: auto !important;
+  }
+}
