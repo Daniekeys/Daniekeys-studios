@@ -1,18 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 import Button from "@/components/shared/Button";
 import Eyebrow from "@/components/shared/Eyebrow";
-import FilterTabs from "@/components/shared/FilterTabs";
 import GridOverlay from "@/components/shared/GridOverlay";
-import ProjectCard from "@/components/shared/ProjectCard";
+import ShowreelSection from "@/components/ShowreelSection";
 import WatermarkGlyph from "@/components/shared/WatermarkGlyph";
-import {
-  PORTFOLIO_CATEGORIES,
-  portfolioProjects,
-} from "@/lib/portfolio-projects";
+import { graphicSamples, showreelClips } from "@/lib/showreel";
 
 // Scroll-reveal config. Under prefers-reduced-motion the reveal target stays
 // (content must never be stranded — see the TestimonialCard defect in
@@ -28,15 +23,7 @@ const buildFadeUp = (reduced: boolean | null) => ({
 });
 
 export default function PortfolioPageContent() {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
   const fadeUp = buildFadeUp(useReducedMotion());
-
-  const filteredProjects = useMemo(() => {
-    if (activeCategory === "All") return portfolioProjects;
-    return portfolioProjects.filter((project) =>
-      project.categories.includes(activeCategory)
-    );
-  }, [activeCategory]);
 
   return (
     <>
@@ -56,67 +43,16 @@ export default function PortfolioPageContent() {
         </div>
       </section>
 
-      {/* Filter tabs + project grid. Client-side filter, no page reload — the
-          FilterTabs component (Batch 3) drives local state. Grid is 3-up on
-          desktop, 1-up on mobile, matching the mockup's work-section card
-          proportions (landscape image, radius-lg, tag + title + text-link). */}
-      <section className="relative overflow-hidden bg-off-white py-space-8 lg:py-space-10">
-        <GridOverlay />
-
-        <div className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6">
-          <motion.div {...fadeUp}>
-            <Eyebrow theme="light">{"// The Portfolio"}</Eyebrow>
-            <div className="mt-space-3 flex flex-col gap-space-4 lg:flex-row lg:items-end lg:justify-between">
-              <h2 className="max-w-2xl text-ds-h2 font-heading text-primary">
-                Six Projects. One Standard.
-              </h2>
-              <p className="max-w-md text-ds-body text-light-dark">
-                Filter by discipline — branding, motion, web, and marketing.
-              </p>
-            </div>
-
-            {/* Horizontal-scroll row on mobile if the 5 tabs don't fit; wraps
-                otherwise (FilterTabs uses flex-wrap). */}
-            <div className="mt-space-7 -mx-space-4 overflow-x-auto px-space-4 md:mx-0 md:px-0">
-              <FilterTabs
-                tabs={[...PORTFOLIO_CATEGORIES]}
-                active={activeCategory}
-                onChange={setActiveCategory}
-                theme="light"
-                className="flex-nowrap md:flex-wrap"
-              />
-            </div>
-          </motion.div>
-
-          {/* Plain grid — filtering just re-renders the list (no page reload),
-              same approach as the landing FeaturedWorkSection. ProjectCard owns
-              its own mount animation and prefers-reduced-motion handling. */}
-          <div className="mt-space-8 grid gap-x-space-6 gap-y-space-8 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredProjects.map((project, index) => (
-              <div
-                key={project.slug}
-                data-project-card
-                data-title={project.title}
-                data-category={project.categories.join(",")}
-              >
-                <ProjectCard
-                  image={project.image}
-                  category={project.categories[0]}
-                  title={project.title}
-                  href={`/portfolio/${project.slug}`}
-                  delay={index * 0.08}
-                />
-              </div>
-            ))}
-          </div>
-
-          {filteredProjects.length === 0 && (
-            <p className="mt-space-8 text-ds-body text-light-dark">
-              No projects in this category yet.
-            </p>
-          )}
-        </div>
-      </section>
+      {/* Motion reel + graphics — real client work hosted on Cloudinary. Clips
+          autoplay muted and looped while in view; "View video" opens the
+          fullscreen player with sound. Single source: lib/showreel.ts. */}
+      <ShowreelSection
+        eyebrow="// Motion Reel"
+        heading="Motion That Earns Attention."
+        intro={"Every clip plays silent. Hit “View video” for the full cut with sound."}
+        clips={showreelClips}
+        graphics={graphicSamples}
+      />
 
       {/* CTA band — compact sign-off routing to /contact. Same pattern as the
           /about and /services CTA bands; the large recurring CTA lives in the

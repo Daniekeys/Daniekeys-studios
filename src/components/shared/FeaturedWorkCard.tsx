@@ -1,13 +1,20 @@
+"use client";
+
 import { Zap } from "lucide-react";
 import Image from "next/image";
+import { useReducedMotion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
 interface FeaturedWorkCardProps {
   label?: string;
-  imageSrc: string;
+  imageSrc?: string;
   imageAlt: string;
   caption: string;
+  // When set, a muted looping clip replaces the still. Falls back to the
+  // poster frame under prefers-reduced-motion.
+  videoSrc?: string;
+  posterSrc?: string;
   className?: string;
 }
 
@@ -21,8 +28,12 @@ export default function FeaturedWorkCard({
   imageSrc,
   imageAlt,
   caption,
+  videoSrc,
+  posterSrc,
   className,
 }: FeaturedWorkCardProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <div className={cn("flex flex-col", className)}>
       <div className="flex items-center gap-2 text-ds-h4 font-heading text-primary-white">
@@ -30,8 +41,30 @@ export default function FeaturedWorkCard({
         <span>{label}</span>
       </div>
 
-      <div className="relative mt-space-3 aspect-[4/5] w-full overflow-hidden rounded-radius-lg">
-        <Image src={imageSrc} alt={imageAlt} fill sizes="(min-width: 1024px) 35vw, 100vw" className="object-cover" />
+      <div className="relative mt-space-3 aspect-[4/5] w-full overflow-hidden rounded-radius-lg bg-primary">
+        {videoSrc ? (
+          <video
+            src={videoSrc}
+            poster={posterSrc}
+            autoPlay={!prefersReducedMotion}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={imageAlt}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          imageSrc && (
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              sizes="(min-width: 1024px) 35vw, 100vw"
+              className="object-cover"
+            />
+          )
+        )}
       </div>
 
       <p className="mt-space-4 text-ds-small text-light-dark">{caption}</p>
