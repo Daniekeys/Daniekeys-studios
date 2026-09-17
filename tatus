@@ -1,0 +1,19 @@
+[1mdiff --git a/src/app/page.tsx b/src/app/page.tsx[m
+[1mindex d274d14..8b123e3 100644[m
+[1m--- a/src/app/page.tsx[m
+[1m+++ b/src/app/page.tsx[m
+[36m@@ -9,9 +9,14 @@[m [mimport ProcessSection from "@/components/ProcessSection";[m
+ import ServicesTeaserSection from "@/components/ServicesTeaserSection";[m
+ import TestimonialsSection from "@/components/TestimonialsSection";[m
+ import WhoWeAreSection from "@/components/WhoWeAreSection";[m
+[32m+[m[32mimport DaniekeysstudiosLandingPage from "@/components/DaniekeysstudiosLandingPage";[m
+ import type { Metadata } from "next";[m
+ import Script from "next/script";[m
+ [m
+[32m+[m[32mexport default function Home(){[m
+[32m+[m[32m  return <DaniekeysstudiosLandingPage />;[m
+[32m+[m[32m  }[m
+[32m+[m
+ export const metadata: Metadata = {[m
+   title:[m
+     "Daniekeys Studios — AI-Powered Digital Agency in Nigeria | Brand Design, Web & AI Automation",[m
