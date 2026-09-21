@@ -4,6 +4,7 @@ import Script from "next/script";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AboutPageContent from "@/components/AboutPageContent";
+import { getImageUrl } from "@/lib/cloudinary";
 
 export const metadata: Metadata = {
   title:

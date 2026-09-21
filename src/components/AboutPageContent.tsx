@@ -11,6 +11,7 @@ import ImageAccordion, { type ImageAccordionItem } from "@/components/shared/Ima
 import StatCounter from "@/components/shared/StatCounter";
 import TimelineEntry from "@/components/shared/TimelineEntry";
 import WatermarkGlyph from "@/components/shared/WatermarkGlyph";
+import { getImageUrl } from "@/lib/cloudinary";
 import { cn } from "@/lib/utils";
 
 // Scroll-reveal config. Under prefers-reduced-motion the reveal target stays
@@ -28,9 +29,9 @@ const buildFadeUp = (reduced: boolean | null) => ({
 
 // Same four pillars as the landing WhoWeAreSection — 20-PAGE-about.md says to
 // reuse them verbatim, no expanded copy is available from source content.
-// Three of the four carry a supplied image; "Pan-African" has no matching
-// supplied image, so per the "leave it without an image rather than reusing
-// another item's" rule it stays image-less — ImageAccordion renders that fine.
+// All four now carry an image — Pan-African previously shipped without one
+// because nothing in the first supplied batch fit; this uses a dedicated
+// image instead of reusing another pillar's.
 const pillars: ImageAccordionItem[] = [
   {
     title: "Creative Excellence",
@@ -50,6 +51,7 @@ const pillars: ImageAccordionItem[] = [
   {
     title: "Pan-African",
     description: "Built in Africa, built for Africa — and the world.",
+    image: "who-we-are/pan-african",
   },
 ];
 
@@ -179,8 +181,8 @@ export default function AboutPageContent() {
 
             <div className="relative mt-space-7 aspect-[16/9] w-full overflow-hidden rounded-radius-lg">
               <Image
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1400&q=80"
-                alt="Daniekeys Studios team in a working session around a table in a creative agency office"
+                src={getImageUrl("about/who-we-are-hero")}
+                alt="Daniekeys Studios team member reviewing delivered project results"
                 fill
                 sizes="(min-width: 1024px) 900px, 100vw"
                 className="object-cover"
