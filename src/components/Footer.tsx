@@ -13,6 +13,7 @@ import Link from "next/link";
 
 import Button from "@/components/shared/Button";
 import RotatingBadge from "@/components/shared/RotatingBadge";
+import { getImageUrl } from "@/lib/cloudinary";
 import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 import WatermarkGlyph from "@/components/shared/WatermarkGlyph";
 
@@ -105,7 +106,7 @@ export default function Footer() {
 
             <div className="relative mx-auto hidden aspect-[4/5] w-full max-w-sm overflow-hidden rounded-radius-xl lg:block">
               <Image
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80"
+                src={getImageUrl("cta/build-something")}
                 alt="Daniekeys Studios creative team mapping out a brand strategy session"
                 fill
                 sizes="400px"

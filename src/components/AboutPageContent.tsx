@@ -7,10 +7,7 @@ import { Quote } from "lucide-react";
 import Button from "@/components/shared/Button";
 import Eyebrow from "@/components/shared/Eyebrow";
 import GridOverlay from "@/components/shared/GridOverlay";
-import NumberedAccordion, {
-  type PillarItem,
-  type TrustTableItem,
-} from "@/components/shared/NumberedAccordion";
+import ImageAccordion, { type ImageAccordionItem } from "@/components/shared/ImageAccordion";
 import StatCounter from "@/components/shared/StatCounter";
 import TimelineEntry from "@/components/shared/TimelineEntry";
 import WatermarkGlyph from "@/components/shared/WatermarkGlyph";
@@ -31,18 +28,24 @@ const buildFadeUp = (reduced: boolean | null) => ({
 
 // Same four pillars as the landing WhoWeAreSection — 20-PAGE-about.md says to
 // reuse them verbatim, no expanded copy is available from source content.
-const pillars: PillarItem[] = [
+// Three of the four carry a supplied image; "Pan-African" has no matching
+// supplied image, so per the "leave it without an image rather than reusing
+// another item's" rule it stays image-less — ImageAccordion renders that fine.
+const pillars: ImageAccordionItem[] = [
   {
     title: "Creative Excellence",
     description: "World-class design rooted in strategy and storytelling.",
+    image: "who-we-are/creative-excellence",
   },
   {
     title: "AI-Powered",
     description: "We use AI to deliver faster, smarter, and more scalable results.",
+    image: "who-we-are/ai-powered",
   },
   {
     title: "Growth-Focused",
     description: "Every deliverable is tied to a business outcome.",
+    image: "who-we-are/growth-focused",
   },
   {
     title: "Pan-African",
@@ -88,34 +91,37 @@ const historyEntries = [
 ];
 
 // Real proof points, not invented awards — the mockup's "awards table" pattern
-// repurposed to trust metrics per 20-PAGE-about.md.
-const trustRows: TrustTableItem[] = [
+// repurposed to trust metrics per 20-PAGE-about.md. Each row's supplied
+// image is the closest literal match: the wall display reading "50+
+// Projects Delivered" for that row, a revenue/reporting dashboard for the
+// growth row, and so on.
+const trustRows: ImageAccordionItem[] = [
   {
-    metaLeft: "// 01",
     title: "5.0 Rating on Google",
     description:
       "Rated by 30+ verified clients — see for yourself, we don't hide our reviews.",
     metaRight: "30+ reviews",
+    image: "trust/rating-5-0",
   },
   {
-    metaLeft: "// 02",
     title: "100% On-Time Delivery",
     description: "Every project, every deadline, no exceptions.",
     metaRight: "100%",
+    image: "trust/on-time-delivery",
   },
   {
-    metaLeft: "// 03",
     title: "50+ Projects Delivered",
     description:
       "From startups finding their identity to established businesses scaling across Africa.",
     metaRight: "50+",
+    image: "trust/projects-delivered",
   },
   {
-    metaLeft: "// 04",
     title: "3× Average Revenue Growth",
     description:
       "Our clients don't just get better design — they get better business results.",
     metaRight: "3×",
+    image: "trust/revenue-growth",
   },
 ];
 
@@ -182,7 +188,7 @@ export default function AboutPageContent() {
             </div>
 
             <div className="mt-space-8">
-              <NumberedAccordion variant="pillars" theme="light" items={pillars} />
+              <ImageAccordion items={pillars} theme="light" />
             </div>
           </div>
         </motion.div>
@@ -326,7 +332,7 @@ export default function AboutPageContent() {
               <span>No. — Trust Signal</span>
               <span>Proof</span>
             </div>
-            <NumberedAccordion variant="trust-table" theme="light" items={trustRows} />
+            <ImageAccordion items={trustRows} theme="light" />
           </div>
         </motion.div>
       </section>
