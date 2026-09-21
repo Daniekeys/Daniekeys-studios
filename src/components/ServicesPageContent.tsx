@@ -9,7 +9,10 @@ import NumberedAccordion, {
   type FaqItem,
   type ServiceDetailItem,
 } from "@/components/shared/NumberedAccordion";
-import ProcessStep from "@/components/shared/ProcessStep";
+import StackingImageScroll, {
+  StackingImageScrollMobile,
+  type StackingImageScrollItem,
+} from "@/components/shared/StackingImageScroll";
 import WatermarkGlyph from "@/components/shared/WatermarkGlyph";
 
 // Scroll-reveal config. Under prefers-reduced-motion the reveal target stays
@@ -224,41 +227,36 @@ const addOns = [
 // per 21-PAGE-services.md. Images are hot-linked Unsplash placeholders reused
 // from IDs already validated in earlier batches — flagged for fresh per-step
 // sourcing + localization before launch (see 00-OVERVIEW.md open items).
-const processSteps = [
+const processSteps: StackingImageScrollItem[] = [
   {
-    heading: "Free Discovery Call",
+    title: "Free Discovery Call",
     description:
       "30 minutes. No pitch. Just listening. We learn exactly what your business needs.",
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80",
+    image: "process/discovery-call",
   },
   {
-    heading: "Proposal & Strategy",
+    title: "Proposal & Strategy",
     description:
       "A tailored scope, timeline, and pricing document — delivered within 48 hours of your call.",
-    image:
-      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80",
+    image: "process/proposal-strategy",
   },
   {
-    heading: "Creative Production",
+    title: "Creative Production",
     description:
       "Design, development, and content creation. Progress updates every 3 days.",
-    image:
-      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
+    image: "process/creative-production",
   },
   {
-    heading: "Revisions & Refinement",
+    title: "Revisions & Refinement",
     description:
       "Two full rounds of revisions included. We don't submit final work until you love it.",
-    image:
-      "https://images.unsplash.com/photo-1717994818194-5760d533cab6?auto=format&fit=crop&w=600&q=80",
+    image: "process/revisions-refinement",
   },
   {
-    heading: "Launch & 30-Day Support",
+    title: "Launch & 30-Day Support",
     description:
       "Go live with confidence. We monitor, support, and optimise for 30 days post-delivery.",
-    image:
-      "https://images.unsplash.com/photo-1635360381874-edd74cbd57f3?auto=format&fit=crop&w=600&q=80",
+    image: "process/launch-support",
   },
 ];
 
@@ -425,9 +423,10 @@ export default function ServicesPageContent() {
         </motion.div>
       </section>
 
-      {/* Process — full 5-step treatment with per-step imagery (shared
-          ProcessStep component), unlike the landing's condensed version.
-          id="process" is the target of the Footer's "Process" nav link. */}
+      {/* Process — Stacking Image Scroll (EFFECT 2): image 01 holds while
+          02-05 progressively join as the user scrolls, unlike the landing's
+          condensed version. id="process" is the target of the Footer's
+          "Process" nav link. */}
       <section
         id="process"
         className="relative scroll-mt-24 overflow-hidden bg-off-white py-space-8 lg:py-space-10"
@@ -448,19 +447,8 @@ export default function ServicesPageContent() {
             </div>
           </motion.div>
 
-          <div className="mt-space-8">
-            {processSteps.map((step, index) => (
-              <ProcessStep
-                key={step.heading}
-                number={index + 1}
-                image={step.image}
-                heading={step.heading}
-                description={step.description}
-                isLast={index === processSteps.length - 1}
-                theme="light"
-              />
-            ))}
-          </div>
+          <StackingImageScroll items={processSteps} />
+          <StackingImageScrollMobile items={processSteps} />
 
           <motion.div className="mt-space-6" {...fadeUp}>
             <Button variant="primary" href="/contact">
