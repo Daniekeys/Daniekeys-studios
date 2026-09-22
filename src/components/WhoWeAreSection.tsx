@@ -27,10 +27,10 @@ const clientAvatars = [
   },
 ];
 
-// Copy is unchanged from the original pillars list. Three of the four carry
-// a supplied image; "Pan-African" has no matching supplied image, so per
-// the "leave it without an image rather than reusing another item's" rule
-// it stays image-less — ImageAccordion renders that fine.
+// Copy is unchanged from the original pillars list. All four now carry an
+// image — Pan-African previously shipped without one because nothing in
+// the first supplied batch fit; this uses a dedicated image instead of
+// reusing another pillar's.
 const pillars: ImageAccordionItem[] = [
   {
     title: "Creative Excellence",
@@ -50,6 +50,7 @@ const pillars: ImageAccordionItem[] = [
   {
     title: "Pan-African",
     description: "Built in Africa, built for Africa — and the world.",
+    image: "who-we-are/pan-african",
   },
 ];
 

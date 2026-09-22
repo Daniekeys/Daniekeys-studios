@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AboutPageContent from "@/components/AboutPageContent";
 
+
 export const metadata: Metadata = {
   title:
     "About Daniekeys Studios — Africa's AI-Powered Digital Agency | Our Story, Team & Track Record",
