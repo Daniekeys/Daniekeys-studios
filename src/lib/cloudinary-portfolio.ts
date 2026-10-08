@@ -24,6 +24,9 @@ cloudinary.config({
   secure: true,
 });
 
+// The configured SDK, for the other server-only callers (webhook, /api/studio).
+export { cloudinary };
+
 export type PortfolioOrientation = "landscape" | "square" | "portrait";
 
 export type PortfolioAsset = {
