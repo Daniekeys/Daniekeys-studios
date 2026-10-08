@@ -5,9 +5,9 @@ import { motion, useReducedMotion } from "framer-motion";
 import Button from "@/components/shared/Button";
 import Eyebrow from "@/components/shared/Eyebrow";
 import GridOverlay from "@/components/shared/GridOverlay";
-import ShowreelSection from "@/components/ShowreelSection";
+import PortfolioGrid from "@/components/shared/PortfolioGrid";
 import WatermarkGlyph from "@/components/shared/WatermarkGlyph";
-import { graphicSamples, showreelClips } from "@/lib/showreel";
+import type { PortfolioSection } from "@/lib/cloudinary-portfolio";
 
 // Scroll-reveal config. Under prefers-reduced-motion the reveal target stays
 // (content must never be stranded — see the TestimonialCard defect in
@@ -22,7 +22,13 @@ const buildFadeUp = (reduced: boolean | null) => ({
     : { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
 });
 
-export default function PortfolioPageContent() {
+interface PortfolioPageContentProps {
+  sections: PortfolioSection[];
+}
+
+export default function PortfolioPageContent({
+  sections,
+}: PortfolioPageContentProps) {
   const fadeUp = buildFadeUp(useReducedMotion());
 
   return (
@@ -43,16 +49,42 @@ export default function PortfolioPageContent() {
         </div>
       </section>
 
-      {/* Motion reel + graphics — real client work hosted on Cloudinary. Clips
-          autoplay muted and looped while in view; "View video" opens the
-          fullscreen player with sound. Single source: lib/showreel.ts. */}
-      <ShowreelSection
-        eyebrow="// Motion Reel"
-        heading="Motion That Earns Attention."
-        intro={"Every clip plays silent. Hit “View video” for the full cut with sound."}
-        clips={showreelClips}
-        graphics={graphicSamples}
-      />
+      {/* The work — one section per Cloudinary folder, straight from the
+          account (lib/cloudinary-portfolio.ts). Videos preview silently on
+          hover; clicking any tile opens the fullscreen player with sound. An
+          empty list means Cloudinary couldn't be reached. */}
+      <div className="relative overflow-hidden bg-off-white py-space-8 lg:py-space-10">
+        <GridOverlay />
+        <div className="relative z-10 mx-auto flex max-w-[1280px] flex-col gap-space-9 px-space-4 md:px-space-6">
+          {sections.length === 0 && (
+            <p className="max-w-xl text-ds-body-lg text-light-dark">
+              We couldn&apos;t load our work just now. Refresh in a moment, or
+              get in touch and we&apos;ll send it over.
+            </p>
+          )}
+
+          {sections.map((section) => (
+            <section key={section.slug} id={section.slug}>
+              <motion.div
+                className="flex items-end justify-between gap-space-4"
+                {...fadeUp}
+              >
+                <h2 className="text-ds-h2 font-heading text-primary">
+                  {section.label}
+                </h2>
+                <p className="flex-none text-ds-small text-light-dark">
+                  {section.assets.length}{" "}
+                  {section.assets.length === 1 ? "piece" : "pieces"}
+                </p>
+              </motion.div>
+
+              <div className="mt-space-6">
+                <PortfolioGrid assets={section.assets} />
+              </div>
+            </section>
+          ))}
+        </div>
+      </div>
 
       {/* CTA band — compact sign-off routing to /contact. Same pattern as the
           /about and /services CTA bands; the large recurring CTA lives in the

@@ -3,6 +3,7 @@ import Script from "next/script";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import PortfolioPageContent from "../../components/PortfolioPageContent";
+import { getPortfolioSections } from "../../lib/cloudinary-portfolio";
 import { portfolioProjects } from "../../lib/portfolio-projects";
 
 export const metadata: Metadata = {
@@ -74,7 +75,9 @@ const portfolioSchema = {
   })),
 };
 
-export default function PortfolioPage() {
+export default async function PortfolioPage() {
+  const sections = await getPortfolioSections();
+
   return (
     <div className="min-h-screen bg-primary">
       <Script
@@ -91,7 +94,7 @@ export default function PortfolioPage() {
       />
       <Navigation />
       <main className="">
-        <PortfolioPageContent />
+        <PortfolioPageContent sections={sections} />
       </main>
       <Footer />
     </div>

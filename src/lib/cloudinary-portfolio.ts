@@ -31,7 +31,7 @@ export type PortfolioAsset = {
   publicId: string;
   type: "video" | "image";
   url: string; // delivery URL with f_auto,q_auto
-  posterUrl?: string; // video only: JPG frame at ~2s, same aspect ratio as the video
+  posterUrl?: string; // video only: JPG frame at ~6s, same aspect ratio as the video
   width: number;
   height: number;
   aspectRatio: number; // exact width / height
@@ -134,8 +134,9 @@ function toAsset(resource: SearchResource): PortfolioAsset {
       ? cloudinary.url(resource.public_id, {
           ...delivery,
           format: "jpg",
-          // A clip shorter than the offset has no frame at 2s.
-          start_offset: resource.duration && resource.duration > 2 ? 2 : 0,
+          // 6s in: at 2s and 4s some videos are still on a blank intro frame.
+          // Short clips use their midpoint instead.
+          start_offset: Math.min(6, Math.round((resource.duration ?? 0) * 5) / 10),
         })
       : undefined,
     width: resource.width,
