@@ -1,5 +1,6 @@
 import Button from "@/components/shared/Button";
 import Eyebrow from "@/components/shared/Eyebrow";
+import StudioUploader from "@/components/StudioUploader";
 
 import { logout } from "./actions";
 
@@ -17,6 +18,10 @@ export default function StudioPage() {
             Log Out
           </Button>
         </form>
+      </div>
+
+      <div className="mt-space-8">
+        <StudioUploader apiKey={process.env.CLOUDINARY_API_KEY ?? ""} />
       </div>
     </div>
   );
