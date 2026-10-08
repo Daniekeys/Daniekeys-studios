@@ -8,12 +8,12 @@ import Eyebrow from "@/components/shared/Eyebrow";
 import GridOverlay from "@/components/shared/GridOverlay";
 import { cn } from "@/lib/utils";
 
-// Teaser only — name + starting price, no toggle, no feature lists. The full
-// Packages/Retainers grid (PackageCard, ModeToggle) is Batch 11's /pricing.
+// Teaser only — one entry point per pricing group, no toggle, no feature
+// lists. The full packages, monthly plans and video projects live on /pricing.
 const plans = [
-  { name: "Starter", from: "₦95,000" },
-  { name: "Business", from: "₦250,000", isRecommended: true },
-  { name: "Premium", from: "₦700,000" },
+  { name: "Websites", from: "₦500,000" },
+  { name: "Monthly Video Plans", from: "₦500,000/month", isRecommended: true },
+  { name: "Single Videos", from: "₦150,000" },
 ];
 
 export default function PricingTeaserSection() {

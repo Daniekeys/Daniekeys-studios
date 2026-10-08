@@ -28,162 +28,178 @@ const buildFadeUp = (reduced: boolean | null) => ({
     : { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
 });
 
-// All 8 services, verbatim from 21-PAGE-services.md — deliverables, tags,
-// "Best for" lines, and "Starts from" prices (Naira, exact spec figures, not
-// rounded). NEW badge only on AI Digital Strategy (1) and AI Chatbots &
-// Automation (5). First row opens by default (NumberedAccordion default).
+// All 7 services, verbatim from
+// src/specs/daniekeys-website-update-services-pricing.md section 5: deliverables,
+// tags, "Best for" lines, and "Starts from" prices (Naira, exact spec figures,
+// not rounded). First row opens by default (NumberedAccordion default). Each id
+// is the row's anchor, used by the jump nav below and the footer.
 const services: ServiceDetailItem[] = [
   {
-    title: "AI Digital Strategy & Consulting",
-    isNew: true,
-    hook: "Your competitors are already adopting AI. We help you do it right.",
+    id: "motion-ads",
+    title: "Motion Graphics & Animated Ads",
+    badge: "Popular",
+    hook: "In a world of infinite scroll, motion is the only language that makes people stop.",
     description:
-      "We help you do it right — with a clear roadmap, the right tools, and an implementation partner who actually understands your business.",
+      "We design animated ads and launch videos that earn attention and drive action, built for both vertical and widescreen from day one.",
     tags: [],
     deliverables: [
-      "AI readiness audit for your business",
-      "Custom AI roadmap (3-month implementation plan)",
-      "Tool recommendation & setup (chatbots, automation, content AI)",
-      "Staff training on AI tools",
-      "Monthly strategy review calls",
+      "Animated ads for Meta, TikTok and YouTube",
+      "Product and app launch videos",
+      "App promo videos built from your real UI",
+      "Logo reveal and brand intro animations",
+      "Event teasers and highlight reels",
+      "Every video delivered in 9:16 and 16:9",
     ],
-    bestFor: "SMEs, startups, and growing businesses ready to work smarter.",
-    priceFrom: "₦350,000",
-    ctaLabel: "Book a Strategy Session",
-    ctaHref: "/contact?service=ai-strategy",
+    bestFor:
+      "Startups launching an app or product, brands running paid ads, businesses with events.",
+    priceFrom: "₦150,000 per video",
+    ctaLabel: "Get a Quote",
+    ctaHref: "/contact?service=motion-ads",
   },
   {
-    title: "Brand Identity & Design",
-    hook: "Your brand is the first thing people judge you by.",
+    id: "ai-video",
+    title: "AI Video: UGC Ads & Animation",
+    badge: "New",
+    hook: "Real-looking creator ads and animated characters, without the shoot.",
     description:
-      "We make sure that judgement works in your favour — every single time.",
-    tags: ["New Business", "Rebranding", "Startup"],
+      "We use AI to produce UGC-style ads and original animated content that would normally need actors, a set and an animation team.",
+    tags: [],
     deliverables: [
-      "Logo design (primary + variations)",
-      "Brand colour palette & typography system",
-      "Brand guidelines document (20+ pages)",
-      "Social media kit (templates for 5 platforms)",
-      "Business card & stationery design",
-      "Flyer and poster design templates",
+      "AI-generated UGC video ads for paid campaigns",
+      "Product demo and testimonial-style ads",
+      "Original animated brand characters",
+      "Short animated series and episodes for social",
+      "AI voiceover or your own recorded voice, cleaned and mixed",
+      "Captions, music and sound design",
     ],
-    bestFor: "New businesses, rebranding companies, startups seeking investment.",
-    priceFrom: "₦120,000",
-    ctaLabel: "Learn More & Get a Quote",
-    ctaHref: "/contact?service=brand-identity",
+    bestFor:
+      "E-commerce and consumer brands, fintech and crypto apps, distributors and FMCG brands running TikTok and Meta ads.",
+    priceFrom: "₦150,000 per video",
+    ctaLabel: "Get a Quote",
+    ctaHref: "/contact?service=ai-video",
   },
   {
+    id: "story-video",
+    title: "Story & Explainer Videos",
+    badge: "New",
+    hook: "People forget features. They remember stories.",
+    description:
+      "We turn your photos, footage and milestones into story-led videos that make people understand what you do and why it matters.",
+    tags: [],
+    deliverables: [
+      "Brand story films",
+      "Founder and personal story videos",
+      "Impact and year-in-review films (for companies and NGOs)",
+      "Product and service explainers",
+      "Event recap stories built from your photos",
+      "Speaker quote and stats videos",
+    ],
+    bestFor:
+      "Founders building a personal brand, NGOs speaking to funders, companies with events and milestones to show off.",
+    priceFrom: "₦150,000 per video",
+    priceNote: "Signature story films from ₦950,000",
+    ctaLabel: "Get a Quote",
+    ctaHref: "/contact?service=story-video",
+  },
+  {
+    id: "web-app",
     title: "Website & App Development",
     hook: "We build websites that look like they cost 10× more than they do.",
     description: "And perform like revenue machines from day one.",
-    tags: ["Web Dev", "E-Commerce", "Mobile App"],
+    tags: ["Web Dev", "E-Commerce", "Web Apps", "Mobile Apps"],
     deliverables: [
-      "Custom business / portfolio / e-commerce website",
-      "Mobile-first, speed-optimised development",
-      "SEO foundations baked in from build",
+      "Custom business, portfolio and e-commerce websites",
+      "Web apps and platforms (booking, marketplaces, dashboards)",
+      "Mobile apps for Android and iOS",
+      "Mobile-first, speed-optimised builds",
+      "SEO foundations baked in",
       "CMS setup so you can update content yourself",
-      "Contact forms, booking systems, payment integration",
+      "Payment, booking and form integrations",
       "30-day post-launch support",
     ],
     bestFor:
-      "Businesses without a website, those with outdated sites, startups launching.",
-    priceFrom: "₦180,000",
-    ctaLabel: "Learn More & Get a Quote",
+      "Businesses without a website, companies with outdated sites, startups launching a product.",
+    priceFrom: "₦500,000 for websites",
+    priceNote:
+      "Web apps and mobile apps are custom quoted after a free scoping call.",
+    ctaLabel: "Get a Quote",
     ctaHref: "/contact?service=web-app",
   },
   {
-    title: "Motion Graphics & Video Production",
-    hook: "In a world of infinite scroll, motion is the only language that makes people stop.",
-    description: "We create video content that earns views and drives action.",
-    tags: ["Motion", "Video", "Reels", "Events"],
-    deliverables: [
-      "Brand intro / logo reveal animations",
-      "Promotional and ad videos",
-      "Explainer videos for products/services",
-      "Social media reels (30s, 60s, 90s)",
-      "Event highlight videos",
-      "Community and NGO awareness films",
-    ],
-    bestFor:
-      "Businesses launching products, brands building social presence, events.",
-    priceFrom: "₦80,000 per video",
-    ctaLabel: "Learn More & Get a Quote",
-    ctaHref: "/contact?service=motion-video",
-  },
-  {
-    title: "AI Chatbots & Business Automation",
-    isNew: true,
-    hook: "Imagine a team member who works 24/7 and never asks for a salary.",
-    description: "That's what we build for you.",
-    tags: ["E-Commerce", "Clinics", "Real Estate", "Restaurants"],
-    deliverables: [
-      "Website AI chat assistant (answers FAQs, qualifies leads)",
-      "WhatsApp Business AI bot (handles enquiries, sends quotes)",
-      "Instagram DM automation (auto-replies, story responses)",
-      "Lead capture and CRM integration",
-      "AI-powered email response systems",
-    ],
-    bestFor:
-      "E-commerce, service businesses, clinics, restaurants, real estate.",
-    priceFrom: "₦150,000 + ₦50,000/month maintenance",
-    ctaLabel: "Learn More & Get a Quote",
-    ctaHref: "/contact?service=ai-automation",
-  },
-  {
-    title: "Digital Marketing & Social Media Management",
-    hook: "Being online isn't enough. Being found is.",
+    id: "brand-graphics",
+    title: "Brand Identity & Graphics",
+    hook: "Your brand is the first thing people judge you by.",
     description:
-      "By the right people, at the right time, saying the right thing — that's what drives growth.",
-    tags: ["Meta Ads", "SEO", "Email", "Analytics"],
+      "We make sure that judgement works in your favour, every single time.",
+    tags: ["New Business", "Rebranding", "Graphics"],
     deliverables: [
-      "Social media content creation & scheduling",
-      "Community management & engagement",
-      "Paid social advertising (Meta, TikTok, LinkedIn)",
-      "Google Ads management",
-      "SEO (on-page, technical, content)",
-      "Email marketing campaigns",
-      "Monthly performance analytics report",
+      "Logo design (primary + variations)",
+      "Colour palette and typography system",
+      "Brand guidelines document",
+      "Animated brand kit (logo animation, lower thirds)",
+      "Social media templates",
+      "Flyers, carousels, speaker cards and quote cards",
+      "Rebrands for businesses that have outgrown their look",
     ],
     bestFor:
-      "Businesses wanting consistent online growth without doing it themselves.",
-    priceFrom: "₦120,000/month (retainer)",
-    ctaLabel: "Learn More & Get a Quote",
-    ctaHref: "/contact?service=digital-marketing",
+      "New businesses, growing brands that need a refresh, startups preparing to raise.",
+    priceFrom: "₦120,000",
+    priceNote: "Rebrands from ₦250,000, animated brand kit ₦400,000",
+    ctaLabel: "Get a Quote",
+    ctaHref: "/contact?service=brand-graphics",
   },
   {
-    title: "Rebranding",
-    hook: "Your brand built you this far. Now it needs to take you further.",
-    description: "Rebranding isn't admitting failure — it's strategic evolution.",
-    tags: ["Brand Audit", "Identity", "Strategy", "Launch"],
+    id: "social-media",
+    title: "Social Media & Content Management",
+    hook: "Being online isn't enough. Being seen every week is.",
+    description:
+      "You send us your photos and updates. We turn them into a steady flow of videos and graphics, and we can post them for you too.",
+    tags: [],
     deliverables: [
-      "Brand audit (current perception vs. desired positioning)",
-      "Competitive landscape analysis",
-      "New visual identity system",
-      "Brand voice & messaging refresh",
-      "Launch strategy & announcement assets",
-      "Updated motion intro + social templates",
+      "Monthly content calendar",
+      "Story-led videos and graphics every month",
+      "Scheduling and posting",
+      "Monthly performance report",
+      "Monthly strategy call (on higher plans)",
     ],
-    bestFor: "Businesses that have grown but whose brand hasn't kept up.",
-    priceFrom: "₦250,000",
-    ctaLabel: "Learn More & Get a Quote",
-    ctaHref: "/contact?service=rebranding",
+    bestFor:
+      "Busy businesses and NGOs whose channels go quiet between events and launches.",
+    priceFrom: "₦500,000/month",
+    priceNote: "See Monthly Plans on the Pricing page. NGO rates available.",
+    ctaLabel: "See Monthly Plans",
+    ctaHref: "/pricing#monthly-plans",
   },
   {
-    title: "Training & AI Upskilling",
-    hook: "The biggest barrier to AI adoption isn't tools — it's knowledge.",
-    description: "We fix that.",
-    tags: ["Workshops", "Online", "Corporate", "AI"],
+    id: "training",
+    title: "AI Creative Training",
+    hook: "The biggest barrier to using AI well isn't the tools. It's knowing how.",
+    description:
+      "We train founders, executives and teams to create content with AI themselves.",
+    tags: ["Workshops", "Corporate", "1-on-1", "AI Video"],
     deliverables: [
-      "AI Tools for Business Owners (1-day workshop)",
-      "Social Media Marketing Masterclass (2-day)",
-      "Canva & Graphic Design for Non-Designers (online)",
-      "Motion Graphics Fundamentals (4-week course)",
-      "Corporate AI Upskilling (custom, for teams of 5+)",
+      "AI video creation for founders and executives (1-on-1 or small group)",
+      "Corporate AI upskilling for teams of 5+",
+      "Motion graphics and AI video fundamentals",
+      "Custom workshops for organisations",
     ],
-    bestFor: "Entrepreneurs, marketing teams, young professionals, NGO staff.",
+    bestFor:
+      "Founders and C-suite who want to show up on video, marketing teams, organisations adopting AI.",
     priceFrom: "₦45,000 per person",
-    ctaLabel: "Learn More & Get a Quote",
+    priceNote: "Corporate and 1-on-1 sessions custom quoted",
+    ctaLabel: "Get a Quote",
     ctaHref: "/contact?service=training",
   },
+];
+
+// In-page jump nav: each tab scrolls to (and opens) its accordion row.
+const jumpNav = [
+  { label: "Motion & Ads", id: "motion-ads" },
+  { label: "AI Video", id: "ai-video" },
+  { label: "Story & Explainers", id: "story-video" },
+  { label: "Web & App Dev", id: "web-app" },
+  { label: "Brand & Graphics", id: "brand-graphics" },
+  { label: "Social Media", id: "social-media" },
+  { label: "Training", id: "training" },
 ];
 
 // Two-column feature, NOT part of the accordion (21-PAGE-services.md).
@@ -211,15 +227,15 @@ const spotlight = [
 ];
 
 const addOns = [
-  "Voice-over Integration",
-  "Presentation Slides (Animated)",
-  "Digital Flyers & Ad Banners",
-  "SEO Content Writing",
-  "E-Commerce Integration",
-  "Landing Page Design",
-  "WhatsApp Business Setup",
-  "AI Content Calendar",
-  "Photography Direction",
+  "Rush delivery (48 to 72 hours)",
+  "Extra aspect ratio or cut-down versions",
+  "Human voice-over artist",
+  "Second language version (e.g. French, Yoruba, Hausa)",
+  "Animated presentation slides",
+  "Digital flyers and ad banners",
+  "SEO content writing",
+  "Landing page design",
+  "Photography direction",
 ];
 
 // Full 5-step process with per-step imagery (unlike the landing's condensed,
@@ -288,12 +304,17 @@ const faqs: FaqItem[] = [
   {
     question: "Do you offer monthly retainers?",
     answer:
-      "Yes — see our Retainer plans on the Pricing page for ongoing content, marketing, and AI automation support.",
+      "Yes. Our Monthly Video & Content Plans give you a set number of videos and graphics every month. See the Pricing page.",
   },
   {
-    question: "What is an AI-powered agency?",
+    question: "What is an AI-powered studio?",
     answer:
-      "It means AI isn't a buzzword we mention — it's built into how we deliver: from AI content pipelines to chatbot automation, we use AI to work faster and smarter for you.",
+      "It means AI is built into how we produce. We use it to make UGC ads, animation and motion content faster and at lower cost than a traditional studio, while our team handles the story, design and final quality.",
+  },
+  {
+    question: "How fast can you deliver a video?",
+    answer:
+      "Your first video is usually ready within 7 working days of a confirmed brief. Rush delivery is available as an add-on.",
   },
 ];
 
@@ -314,17 +335,31 @@ export default function ServicesPageContent() {
           </h1>
           <p className="mt-space-5 max-w-2xl text-ds-body-lg text-light-dark">
             We don&apos;t sell services. We solve problems. Whether you need a
-            brand that commands attention, a website that converts, or AI systems
-            that run while you sleep — we have the team, the tools, and the track
+            video that stops the scroll, a brand that commands attention or a
+            website that converts, we have the team, the tools and the track
             record to deliver.
           </p>
           <p className="mt-space-6 text-ds-small text-light-dark">
-            50+ Projects · 8 Service Areas · AI-Powered · Pan-African Reach
+            50+ Projects · 7 Service Areas · AI-Powered · Pan-African Reach
           </p>
+          <nav
+            aria-label="Jump to a service"
+            className="mt-space-6 flex flex-wrap gap-space-3"
+          >
+            {jumpNav.map((tab) => (
+              <a
+                key={tab.id}
+                href={`#${tab.id}`}
+                className="rounded-radius-full border border-dk-blue-3/40 bg-dk-blue-1/10 px-space-4 py-space-2 text-ds-small font-medium text-primary-white transition-colors duration-200 hover:bg-dk-blue-1/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dk-blue-1"
+              >
+                {tab.label}
+              </a>
+            ))}
+          </nav>
         </div>
       </section>
 
-      {/* Core Services — all 8 rows in the shared Numbered Accordion,
+      {/* Core Services — all 7 rows in the shared Numbered Accordion,
           variant="service-detail". First row open by default. */}
       <section className="relative overflow-hidden bg-off-white py-space-8 lg:py-space-10">
         <GridOverlay />
@@ -335,7 +370,7 @@ export default function ServicesPageContent() {
         >
           <Eyebrow theme="light">{"// Core Services"}</Eyebrow>
           <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary">
-            Eight Service Areas. One Standard: Work That Grows Your Business.
+            Seven Service Areas. One Standard: Work That Grows Your Business.
           </h2>
 
           <div className="mt-space-8">

@@ -6,29 +6,29 @@ import ServicesPageContent from "../../components/ServicesPageContent";
 
 export const metadata: Metadata = {
   title:
-    "Our Services — Daniekeys Studios | AI Strategy, Brand Design, Web Dev & Motion Graphics Nigeria",
+    "Our Services | Daniekeys Studios | Motion Ads, AI Video, Websites & Apps Nigeria",
   description:
-    "Daniekeys Studios offers AI consulting, brand identity design, website development, motion graphics, AI chatbots, and digital marketing for businesses across Nigeria and Africa. Transparent pricing from ₦80,000.",
+    "Daniekeys Studios offers motion graphics ads, AI UGC videos, story and explainer videos, websites and apps, brand identity and social media management for businesses across Nigeria and Africa.",
   keywords: [
     "digital agency services Nigeria",
     "branding agency Nigeria",
     "AI agency services",
     "motion graphics Nigeria",
     "website design agency Nigeria",
-    "AI chatbot Nigeria",
+    "AI UGC ads Nigeria",
     "brand identity design Lagos",
     "how much does a website cost in Nigeria",
     "best digital agency in Nigeria",
-    "AI automation for small business Nigeria",
+    "explainer video production Nigeria",
   ],
   alternates: {
     canonical: "https://www.daniekeysstudios.com/services",
   },
   openGraph: {
     title:
-      "Our Services — Daniekeys Studios | AI Strategy, Brand Design, Web Dev Nigeria",
+      "Our Services | Daniekeys Studios | Motion Ads, AI Video, Websites & Apps Nigeria",
     description:
-      "From brand identity to AI automation — we have the team, tools, and track record to grow your business. Serving Nigeria and Africa.",
+      "From scroll-stopping video to websites that convert, we have the team, the tools and the track record to grow your business. Serving Nigeria and Africa.",
     type: "website",
     url: "https://www.daniekeysstudios.com/services",
     siteName: "Daniekeys Studios",
@@ -46,39 +46,31 @@ const serviceSchema = {
     itemListElement: [
       {
         "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "AI Digital Strategy & Consulting",
-        },
+        itemOffered: { "@type": "Service", name: "Motion Graphics & Animated Ads" },
       },
       {
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Brand Identity Design" },
+        itemOffered: { "@type": "Service", name: "AI Video: UGC Ads & Animation" },
       },
       {
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Website Development" },
+        itemOffered: { "@type": "Service", name: "Story & Explainer Videos" },
       },
       {
         "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Motion Graphics & Video Production",
-        },
+        itemOffered: { "@type": "Service", name: "Website & App Development" },
       },
       {
         "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "AI Chatbots & Business Automation",
-        },
+        itemOffered: { "@type": "Service", name: "Brand Identity & Graphics" },
       },
       {
         "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Digital Marketing & Social Media",
-        },
+        itemOffered: { "@type": "Service", name: "Social Media & Content Management" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "AI Creative Training" },
       },
     ],
   },
@@ -129,15 +121,23 @@ const faqSchema = {
       name: "Do you offer monthly retainers?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — see our Retainer plans on the Pricing page for ongoing content, marketing, and AI automation support.",
+        text: "Yes. Our Monthly Video & Content Plans give you a set number of videos and graphics every month. See the Pricing page.",
       },
     },
     {
       "@type": "Question",
-      name: "What is an AI-powered agency?",
+      name: "What is an AI-powered studio?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "It means AI isn't a buzzword we mention — it's built into how we deliver: from AI content pipelines to chatbot automation, we use AI to work faster and smarter for you.",
+        text: "It means AI is built into how we produce. We use it to make UGC ads, animation and motion content faster and at lower cost than a traditional studio, while our team handles the story, design and final quality.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How fast can you deliver a video?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Your first video is usually ready within 7 working days of a confirmed brief. Rush delivery is available as an add-on.",
       },
     },
   ],

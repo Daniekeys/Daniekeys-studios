@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title:
     "Pricing — Daniekeys Studios | Brand Design, Web Dev & AI Services Nigeria",
   description:
-    "Transparent pricing for branding, website development, motion graphics, AI chatbots, and digital marketing. Packages from ₦95,000. No hidden fees. Serving Nigeria and Africa.",
+    "Transparent pricing for websites and apps, monthly video and content plans, and one-off video projects. Packages from ₦95,000. No hidden fees. Serving Nigeria and Africa.",
   keywords: [
     "digital agency pricing Nigeria",
     "branding cost Nigeria",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title:
       "Pricing — Daniekeys Studios | Brand Design, Web Dev & AI Services Nigeria",
     description:
-      "Transparent pricing for branding, website development, motion graphics, AI chatbots, and digital marketing. Packages from ₦95,000. No hidden fees.",
+      "Transparent pricing for websites and apps, monthly video and content plans, and one-off video projects. Packages from ₦95,000. No hidden fees.",
     type: "website",
     url: "https://www.daniekeysstudios.com/pricing",
   },
@@ -92,7 +92,7 @@ const faqSchema = {
       name: "Do you offer discounts for NGOs or nonprofits?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — reach out and we'll discuss a scope that fits your budget.",
+        text: "Yes. We have dedicated NGO rates for monthly content and storytelling. Reach out and we'll share them.",
       },
     },
     {
@@ -100,7 +100,15 @@ const faqSchema = {
       name: "What's the minimum project budget you'll take on?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our Starter Package begins at ₦95,000 — for anything smaller, let's talk and we'll see what's possible.",
+        text: "Our Starter Package begins at ₦95,000 and single videos start at ₦150,000. For anything smaller, let's talk.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I switch between monthly plans?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. You can move up or down a plan at the end of any month after your first 3 months.",
       },
     },
   ],

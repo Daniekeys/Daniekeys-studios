@@ -4,16 +4,25 @@ import GridOverlay from "@/components/shared/GridOverlay";
 import PortfolioGrid from "@/components/shared/PortfolioGrid";
 import { getPortfolioSections } from "@/lib/cloudinary-portfolio";
 
-// Homepage teaser — the six newest videos in the Cloudinary portfolio (already
-// deduplicated by the data layer). The full body of work lives on /portfolio.
+const FEATURED_FOLDERS = [
+  "motion-ads",
+  "ugc-ads",
+  "ai-animation",
+  "explainers-and-stories",
+];
+
+// Homepage teaser — the newest video from each of the four video folders in
+// the Cloudinary portfolio (a folder with no video is skipped). The full body
+// of work lives on /portfolio.
 // Renders nothing if Cloudinary can't be reached, so the homepage never breaks.
 export default async function FeaturedWorkSection() {
   const sections = await getPortfolioSections();
-  const videos = sections
-    .flatMap((section) => section.assets)
-    .filter((asset) => asset.type === "video")
-    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-    .slice(0, 6);
+  const videos = FEATURED_FOLDERS.flatMap(
+    (slug) =>
+      sections
+        .find((section) => section.slug === slug)
+        ?.assets.find((asset) => asset.type === "video") ?? []
+  );
 
   if (videos.length === 0) return null;
 
@@ -38,7 +47,7 @@ export default async function FeaturedWorkSection() {
 
         <div className="mt-space-8 flex justify-center lg:justify-start">
           <Button variant="secondary" href="/portfolio">
-            View All Work
+            See All Projects
           </Button>
         </div>
       </div>

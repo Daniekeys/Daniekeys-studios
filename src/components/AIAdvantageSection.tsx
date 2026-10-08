@@ -8,16 +8,32 @@ import Button from "@/components/shared/Button";
 import Eyebrow from "@/components/shared/Eyebrow";
 import GridOverlay from "@/components/shared/GridOverlay";
 
+import type { PortfolioAsset } from "@/lib/cloudinary-portfolio";
+
 const bullets = [
-  { title: "AI Chatbots", copy: "deployed on WhatsApp, website & Instagram" },
-  { title: "AI Content Pipelines", copy: "30 days of content, 48-hour turnaround" },
-  { title: "AI Brand Analytics", copy: "real-time insights, not monthly PDFs" },
+  {
+    title: "AI UGC Ads",
+    copy: "real-looking creator ads for TikTok, Instagram and Meta campaigns",
+  },
+  {
+    title: "AI Animation",
+    copy: "original characters and short animated series for your brand",
+  },
+  {
+    title: "Fast Turnaround",
+    copy: "your first video within 7 working days of a confirmed brief",
+  },
 ];
 
+interface AIAdvantageSectionProps {
+  // A featured clip from the Cloudinary portfolio. The stock image only stands
+  // in when Cloudinary can't be reached.
+  video?: PortfolioAsset;
+}
+
 // Unique to Daniekeys — no Clonix mockup equivalent for this section, per
-// 12-LANDING-services-work-ai.md. Supporting visual is a placeholder abstract
-// stock image per 03-IMAGE-SOURCING-GUIDE.md ("AI technology abstract").
-export default function AIAdvantageSection() {
+// 12-LANDING-services-work-ai.md.
+export default function AIAdvantageSection({ video }: AIAdvantageSectionProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -36,17 +52,17 @@ export default function AIAdvantageSection() {
         }
       >
         <div>
-          <Eyebrow theme="dark">{"// AI-Powered Agency"}</Eyebrow>
+          <Eyebrow theme="dark">{"// AI-Powered Studio"}</Eyebrow>
           <h2 className="mt-space-3 text-ds-h2 font-heading text-primary-white">
-            Your Competitors Are Still Doing This Manually. You Don&apos;t Have To.
+            Studio-Quality Video Without the Studio Price Tag.
           </h2>
           <p className="mt-space-5 max-w-2xl text-ds-body-lg text-light-dark">
-            Our founder is an AI engineer. That means we don&apos;t just talk
-            about using AI — we actually build it into your brand systems.
-            From AI chatbots that handle your DMs, to content pipelines that
-            produce 30 days of material in 48 hours, to strategy tools that
-            predict what your audience wants next — we give your brand AI
-            superpowers.
+            Our founder is an AI engineer and a creative director. That means
+            we don&apos;t just talk about AI, we use it inside every
+            production. UGC ads without hiring a crowd of creators, animated
+            characters without a full animation team, and finished motion ads
+            in days instead of weeks. You get the quality of a big studio at
+            the speed of a startup.
           </p>
 
           <ul className="mt-space-6 space-y-space-4">
@@ -54,28 +70,42 @@ export default function AIAdvantageSection() {
               <li key={bullet.title} className="flex items-start gap-space-3">
                 <Check className="mt-1 h-5 w-5 flex-none text-dk-blue-1" />
                 <span className="text-ds-body text-primary-white">
-                  <strong className="font-semibold">{bullet.title}</strong> —{" "}
+                  <strong className="font-semibold">{bullet.title}</strong>:{" "}
                   {bullet.copy}
                 </span>
               </li>
             ))}
           </ul>
 
-          <Button variant="primary" href="/services#ai" className="mt-space-7">
-            Explore AI Services
+          <Button variant="primary" href="/portfolio" className="mt-space-7">
+            See Our Video Work
           </Button>
         </div>
 
         <div className="relative">
           <div className="absolute inset-0 -z-10 rounded-radius-xl bg-dk-blue-1/25 blur-3xl" />
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-radius-xl lg:aspect-square">
-            <Image
-              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80"
-              alt="Abstract visualization representing AI-driven automation"
-              fill
-              sizes="(min-width: 1024px) 40vw, 100vw"
-              className="object-cover"
-            />
+            {video ? (
+              <video
+                src={video.url}
+                poster={video.posterUrl}
+                autoPlay={!prefersReducedMotion}
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={`${video.title}, silent preview`}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <Image
+                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80"
+                alt="Abstract visualization representing AI-powered video production"
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
+              />
+            )}
           </div>
         </div>
       </motion.div>

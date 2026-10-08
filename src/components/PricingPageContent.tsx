@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Check, Globe, Puzzle } from "lucide-react";
+import { Check, Globe, Puzzle, Smartphone } from "lucide-react";
 
 import Button from "@/components/shared/Button";
 import Eyebrow from "@/components/shared/Eyebrow";
 import GridOverlay from "@/components/shared/GridOverlay";
+import ModeToggle from "@/components/shared/ModeToggle";
 import NumberedAccordion, {
   type FaqItem,
 } from "@/components/shared/NumberedAccordion";
@@ -20,9 +21,17 @@ const trustChips = [
   "Free first consultation",
 ];
 
+// The three pricing groups. Each hash is an anchor other pages link to
+// (e.g. /pricing#monthly-plans), which also selects that tab.
+const tabs = [
+  { label: "Website & App Packages", hash: "packages" },
+  { label: "Monthly Video & Content Plans", hash: "monthly-plans" },
+  { label: "One-off Video Projects", hash: "video-projects" },
+];
+
 // All figures, deliverables, "Best for" lines and timelines are verbatim from
-// 23-PAGE-pricing.md. Naira ranges are the exact spec numbers — never rounded,
-// never converted to USD.
+// src/specs/daniekeys-website-update-services-pricing.md section 6. Naira
+// figures are the exact spec numbers — never rounded, never converted to USD.
 const packages = [
   {
     planName: "Starter Package",
@@ -30,37 +39,36 @@ const packages = [
     price: { mode: "range", low: "₦95,000", high: "₦180,000" } as const,
     priceNote: "One-time · Final price depends on scope",
     features: [
-      "Brand touch-up (logo refinement)",
+      "Logo refinement",
+      "Landing page consultation",
       "6 social media post designs",
       "1 motion graphics video (30s)",
-      "Basic page optimisation",
       "Caption writing for posts",
       "Light content strategy guide",
-      "Landing page consultation (advisory only)",
     ],
     bestFor: "New businesses, side projects, personal brands starting out.",
-    timeline: "1–2 weeks",
+    timeline: "1 to 2 weeks",
     ctaHref: "/contact?package=starter",
   },
   {
     planName: "Business Package",
-    description: "Complete digital package that drives real results.",
+    description: "A complete online presence that drives real results.",
     price: { mode: "range", low: "₦250,000", high: "₦650,000" } as const,
     priceNote: "One-time · Final price depends on scope",
     isRecommended: true,
     features: [
-      "Landing page website (custom design)",
-      "10–15 social media post designs",
-      "3–5 motion graphics videos",
+      "Custom landing page website",
       "Starter brand kit (logo, colours, fonts)",
-      "Social media optimisation (all platforms)",
+      "10 to 15 social media post designs",
+      "3 to 5 motion graphics videos",
+      "Social media profile optimisation",
       "30-day content calendar",
-      "Hashtag & SEO research",
+      "Hashtag and SEO research",
       "2 rounds of revisions",
       "30-day post-delivery support",
     ],
     bestFor: "Established small businesses, funded startups, growing brands.",
-    timeline: "3–4 weeks",
+    timeline: "3 to 4 weeks",
     ctaHref: "/contact?package=business",
   },
   {
@@ -69,93 +77,131 @@ const packages = [
     price: { mode: "range", low: "₦700,000", high: "₦3,000,000" } as const,
     priceNote: "One-time · Final price depends on scope",
     features: [
-      "Full website (5–7 pages, custom)",
-      "E-commerce integration (if needed)",
-      "Complete brand identity system",
-      "20–30 social media posts",
-      "6 motion graphics videos",
-      "Marketing strategy document",
-      "SEO setup (on-page + technical)",
-      "Website copywriting",
+      "Full custom website (5 to 7 pages)",
+      "E-commerce or booking integration (if needed)",
       "UI/UX design system",
-      "AI chatbot setup (WhatsApp / Website)",
+      "Complete brand identity system",
+      "Animated brand kit (logo animation, lower thirds)",
+      "20 to 30 social media posts",
+      "6 motion graphics videos",
+      "Website copywriting",
+      "SEO setup (on-page + technical)",
+      "Marketing strategy document",
       "60-day post-delivery support",
       "3 rounds of revisions",
     ],
     bestFor:
       "Established businesses, corporate rebrands, investor-facing startups.",
-    timeline: "6–10 weeks",
+    timeline: "6 to 10 weeks",
     ctaHref: "/contact?package=premium",
   },
 ];
 
-const retainers = [
+// Dashed callouts under the package cards. text-link CTAs (not filled
+// buttons) since filled --black secondary buttons disappear on the --black
+// section — same choice as the /services dark sections.
+const callouts = [
   {
-    planName: "Content Starter",
-    price: { mode: "recurring", amount: "₦120,000", period: "/month" } as const,
-    features: [
-      "12 social media posts/month",
-      "Caption writing & hashtag strategy",
-      "1 short motion graphics video/month",
-      "Monthly performance report",
-    ],
-    bestFor: "Businesses wanting consistent online presence.",
-    ctaHref: "/contact?retainer=content-starter",
+    icon: Smartphone,
+    title: "Building a Web App or Mobile App?",
+    copy: "Platforms, marketplaces, booking systems and mobile apps are scoped individually. Book a free scoping call and we'll send a clear quote and timeline.",
+    ctaLabel: "Book a Scoping Call",
+    ctaHref: "/contact?service=web-app",
   },
   {
-    planName: "Growth Partner",
-    price: { mode: "recurring", amount: "₦250,000", period: "/month" } as const,
-    isRecommended: true,
-    features: [
-      "20 social media posts/month",
-      "3 short videos/reels/month",
-      "Paid ads management (Meta + Google)",
-      "SEO monitoring & updates",
-      "AI content pipeline setup",
-      "Weekly strategy call (30 min)",
-      "Monthly analytics & recommendations report",
-    ],
-    bestFor: "Growing businesses ready to scale their online presence.",
-    ctaHref: "/contact?retainer=growth-partner",
+    icon: Puzzle,
+    title: "Need Something Bespoke?",
+    copy: "Every business is different. If none of these fit your goals, we'll build you a custom scope from scratch. No obligation. No hard sell.",
+    ctaLabel: "Get Custom Quote",
+    ctaHref: "/contact?type=custom",
   },
+];
+
+const monthlyPlans = [
   {
-    planName: "Agency Partner",
+    planName: "Lite",
     price: { mode: "recurring", amount: "₦500,000", period: "/month" } as const,
     features: [
-      "Full content production (30 posts/month)",
-      "5 videos/month",
-      "Multi-platform ad campaigns",
-      "AI chatbot maintenance",
-      "Full SEO management",
-      "Bi-weekly strategy calls",
-      "Dedicated account manager",
-      "Priority turnaround on all requests",
+      "4 videos a month",
+      "Story-led videos from your photos and footage",
+      "Every video in 9:16 and 16:9",
+      "Captions, music and sound design",
     ],
-    bestFor:
-      "Established businesses, funded startups, companies preparing for scale.",
-    ctaHref: "/contact?retainer=agency-partner",
+    bestFor: "Businesses that want a steady video presence.",
+    ctaHref: "/contact?plan=lite",
+  },
+  {
+    planName: "Pro",
+    price: { mode: "recurring", amount: "₦800,000", period: "/month" } as const,
+    compareAtPrice: "₦1,000,000",
+    priceNote: "Introductory rate for your first 3 months",
+    isRecommended: true,
+    features: [
+      "8 videos a month: 1 signature storyline film, 3 event or update recaps, 2 quote videos, 2 stats or teaser videos",
+      "Monthly content calendar",
+      "72-hour turnaround after events",
+      "Monthly performance report",
+    ],
+    bestFor: "Brands with regular events, launches or news to share.",
+    ctaHref: "/contact?plan=pro",
+  },
+  {
+    planName: "Premium",
+    price: {
+      mode: "recurring",
+      amount: "₦1,200,000",
+      period: "/month",
+    } as const,
+    features: [
+      "20 pieces of content a month: the full Pro video mix plus 12 graphics (flyers, carousels, speaker cards, quote cards)",
+      "We schedule and post for you",
+      "Monthly strategy call",
+      "Free animated brand kit (logo animation, lower thirds) in month one",
+    ],
+    bestFor: "Companies that want their social media fully handled.",
+    ctaHref: "/contact?plan=premium",
+  },
+];
+
+const videoProjects = [
+  {
+    project:
+      "Single video (motion ad, UGC ad, explainer, story video or event reel)",
+    price: "from ₦150,000",
+  },
+  {
+    project:
+      "Animated brand kit (logo animation, lower thirds, brand motion elements)",
+    price: "₦400,000",
+  },
+  {
+    project:
+      "Signature story or impact film (60 to 90 seconds, fully scripted and voiced)",
+    price: "₦950,000",
   },
 ];
 
 const paymentOptions = [
   {
     option: "50/50",
-    how: "50% upfront to begin, 50% on final delivery — standard for most projects.",
+    how: "50% upfront to begin, 50% on final delivery, standard for most projects.",
   },
   {
     option: "3-Stage",
-    how: "For projects above ₦500,000: 40% start / 30% midpoint / 30% delivery.",
+    how: "For projects above ₦500,000, 40% at start, 30% at midpoint, 30% on delivery.",
   },
   {
-    option: "Retainer",
-    how: "Monthly billing, due on the 1st of each month.",
+    option: "Monthly Plans",
+    how: "Billed monthly in advance, 3-month minimum term.",
   },
 ];
 
-// DRAFT answers, straight from 23-PAGE-pricing.md. The real site's FAQ answers
-// were not captured — these are placeholders pending Daniel's actual wording
-// (see 00-OVERVIEW.md open items, "FAQ answer copy on the Services and Pricing
-// pages"). The FAQPage JSON-LD in app/pricing/page.tsx mirrors these.
+// DRAFT answers, straight from 23-PAGE-pricing.md, with the NGO, minimum
+// budget and plan-switching answers from the October 2026 update brief. The
+// real site's FAQ answers were not captured — the rest are placeholders
+// pending Daniel's actual wording (see 00-OVERVIEW.md open items, "FAQ answer
+// copy on the Services and Pricing pages"). The FAQPage JSON-LD in
+// app/pricing/page.tsx mirrors these.
 const faqs: FaqItem[] = [
   {
     question: "Why is there a price range instead of a fixed price?",
@@ -180,17 +226,52 @@ const faqs: FaqItem[] = [
   {
     question: "Do you offer discounts for NGOs or nonprofits?",
     answer:
-      "Yes — reach out and we'll discuss a scope that fits your budget.",
+      "Yes. We have dedicated NGO rates for monthly content and storytelling. Reach out and we'll share them.",
   },
   {
     question: "What's the minimum project budget you'll take on?",
     answer:
-      "Our Starter Package begins at ₦95,000 — for anything smaller, let's talk and we'll see what's possible.",
+      "Our Starter Package begins at ₦95,000 and single videos start at ₦150,000. For anything smaller, let's talk.",
+  },
+  {
+    question: "Can I switch between monthly plans?",
+    answer:
+      "Yes. You can move up or down a plan at the end of any month after your first 3 months.",
   },
 ];
 
 export default function PricingPageContent() {
   const prefersReducedMotion = useReducedMotion();
+  const [activeTab, setActiveTab] = useState(tabs[0].label);
+  const tabRowRef = useRef<HTMLDivElement>(null);
+
+  // A URL hash matching a tab's anchor selects that tab. The anchors themselves
+  // sit just above the tab row, so the browser handles the scrolling.
+  useEffect(() => {
+    const selectFromHash = () => {
+      const match = tabs.find((tab) => tab.hash === window.location.hash.slice(1));
+      if (match) setActiveTab(match.label);
+    };
+
+    selectFromHash();
+    window.addEventListener("hashchange", selectFromHash);
+    return () => window.removeEventListener("hashchange", selectFromHash);
+  }, []);
+
+  // On narrow screens the tab row scrolls sideways; bring the selected tab
+  // into view (it can start off-screen when a hash selects it).
+  useEffect(() => {
+    const row = tabRowRef.current;
+    const selected = row?.querySelector<HTMLElement>('[aria-selected="true"]');
+    if (row && selected) row.scrollLeft = selected.offsetLeft;
+  }, [activeTab]);
+
+  // Keeps the URL shareable without the page jumping on every tab click.
+  const selectTab = (label: string) => {
+    setActiveTab(label);
+    const hash = tabs.find((tab) => tab.label === label)?.hash;
+    window.history.replaceState(null, "", `#${hash}`);
+  };
 
   // Same scroll-reveal as the other sub-pages (05-ANIMATIONS-AND-INTERACTIONS.md
   // global pattern). Reduced-motion: render final state immediately, no
@@ -247,7 +328,8 @@ export default function PricingPageContent() {
         </div>
       </section>
 
-      {/* Complete Packages — tab pair + 3 cards + bespoke callout + fine print.
+      {/* The three pricing groups behind one tab row: Website & App Packages
+          (default), Monthly Video & Content Plans, One-off Video Projects.
           On --black, matching the mockup's dark pricing block. */}
       <section className="relative overflow-hidden bg-primary py-space-8 lg:py-space-10">
         <GridOverlay />
@@ -256,100 +338,176 @@ export default function PricingPageContent() {
           className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6"
           {...reveal()}
         >
-          <Eyebrow theme="dark">{"// Complete Packages"}</Eyebrow>
-          <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary-white">
-            Three Packages. One Honest Price Range Each.
-          </h2>
+          {tabs.map((tab) => (
+            <span key={tab.hash} id={tab.hash} className="block scroll-mt-28" />
+          ))}
 
-          {/* Tab pair — deliberately NOT the shared ModeToggle. ModeToggle
-              swaps two in-place content panels via value/onChange; here the
-              second tab is a cross-page link to /services (23-PAGE-pricing.md:
-              the pricing page focuses on packages/retainers, not a third copy
-              of the per-service price list, which /services already owns).
-              Force-fitting ModeToggle would mean firing navigation from
-              onChange and an "active" state that never lands on the second
-              option — different interaction semantics. This keeps ModeToggle's
-              pill shape without bending its contract. */}
-          <div className="mt-space-6 -mx-space-4 overflow-x-auto px-space-4 md:mx-0 md:overflow-visible md:px-0">
-            <div className="inline-flex rounded-radius-full bg-white/[0.08] p-space-1 text-ds-small font-semibold">
-              <span
-                aria-current="page"
-                className="whitespace-nowrap rounded-radius-full bg-dk-blue-1 px-space-4 py-space-2 text-white md:px-space-5"
-              >
-                Complete Packages
-              </span>
-              <Link
-                href="/services"
-                className="group inline-flex items-center gap-space-2 whitespace-nowrap rounded-radius-full px-space-4 py-space-2 text-light-dark transition-colors duration-200 hover:text-primary-white md:px-space-5"
-              >
-                Individual Services
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1" />
-              </Link>
-            </div>
+          {/* Scrolls sideways on narrow screens, where the three labels don't
+              fit on one row. */}
+          <div
+            ref={tabRowRef}
+            className="-mx-space-4 overflow-x-auto px-space-4 md:mx-0 md:overflow-visible md:px-0"
+          >
+            <ModeToggle
+              theme="dark"
+              options={tabs.map((tab) => tab.label)}
+              value={activeTab}
+              onChange={selectTab}
+            />
           </div>
 
-          <div className="mt-space-8 grid gap-space-6 lg:grid-cols-3">
-            {packages.map((pkg, index) => (
-              <motion.div
-                key={pkg.planName}
-                className="h-full"
-                {...reveal(index * 0.08)}
-              >
-                <PackageCard
-                  planName={pkg.planName}
-                  description={pkg.description}
-                  features={pkg.features}
-                  price={pkg.price}
-                  priceNote={pkg.priceNote}
-                  bestFor={pkg.bestFor}
-                  timeline={pkg.timeline}
-                  ctaLabel="Get Started"
-                  ctaHref={pkg.ctaHref}
-                  isRecommended={pkg.isRecommended}
-                  className="h-full"
-                />
-              </motion.div>
-            ))}
-          </div>
+          {activeTab === tabs[0].label && (
+            <div role="tabpanel" className="mt-space-7">
+              <Eyebrow theme="dark">{"// Complete Packages"}</Eyebrow>
+              <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary-white">
+                Three Packages. One Honest Price Range Each.
+              </h2>
 
-          {/* "Need Something Bespoke?" callout. text-link CTA (not a filled
-              button) since filled --black secondary buttons disappear on the
-              --black section — same choice as the /services dark sections. */}
-          <div className="mt-space-6 flex flex-col gap-space-5 rounded-radius-lg border border-dashed border-white/[0.18] p-space-6 md:flex-row md:items-center">
-            <div className="flex h-14 w-14 flex-none items-center justify-center rounded-radius-lg bg-white/[0.06]">
-              <Puzzle className="h-6 w-6 text-dk-blue-1" />
-            </div>
-            <div className="flex-1 space-y-space-3">
-              <h3 className="text-ds-h4 text-primary-white">
-                Need Something Bespoke?
-              </h3>
-              <p className="text-ds-body text-light-dark">
-                Every business is different. If none of these fit your goals,
-                we&apos;ll build you a custom scope from scratch. No obligation.
-                No hard sell.
+              <div className="mt-space-8 grid gap-space-6 lg:grid-cols-3">
+                {packages.map((pkg, index) => (
+                  <motion.div
+                    key={pkg.planName}
+                    className="h-full"
+                    {...reveal(index * 0.08)}
+                  >
+                    <PackageCard
+                      planName={pkg.planName}
+                      description={pkg.description}
+                      features={pkg.features}
+                      price={pkg.price}
+                      priceNote={pkg.priceNote}
+                      bestFor={pkg.bestFor}
+                      timeline={pkg.timeline}
+                      ctaLabel="Get Started"
+                      ctaHref={pkg.ctaHref}
+                      isRecommended={pkg.isRecommended}
+                      className="h-full"
+                    />
+                  </motion.div>
+                ))}
+              </div>
+
+              {callouts.map((callout) => (
+                <div
+                  key={callout.title}
+                  className="mt-space-6 flex flex-col gap-space-5 rounded-radius-lg border border-dashed border-white/[0.18] p-space-6 md:flex-row md:items-center"
+                >
+                  <div className="flex h-14 w-14 flex-none items-center justify-center rounded-radius-lg bg-white/[0.06]">
+                    <callout.icon className="h-6 w-6 text-dk-blue-1" />
+                  </div>
+                  <div className="flex-1 space-y-space-3">
+                    <h3 className="text-ds-h4 text-primary-white">
+                      {callout.title}
+                    </h3>
+                    <p className="text-ds-body text-light-dark">
+                      {callout.copy}
+                    </p>
+                    <Button
+                      variant="text-link"
+                      href={callout.ctaHref}
+                      className="text-dk-blue-1"
+                    >
+                      {callout.ctaLabel}
+                    </Button>
+                  </div>
+                </div>
+              ))}
+
+              <p className="mt-space-5 max-w-3xl text-ds-micro text-light-dark">
+                Final pricing depends on project complexity, number of revisions,
+                and timeline. Ranges shown represent standard scope. We&apos;ll
+                confirm your exact price before any work begins.
               </p>
+            </div>
+          )}
+
+          {activeTab === tabs[1].label && (
+            <div role="tabpanel" className="mt-space-7">
+              <Eyebrow theme="dark">{"// Monthly Plans"}</Eyebrow>
+              <div className="mt-space-3 flex flex-col gap-space-4 lg:flex-row lg:items-end lg:justify-between">
+                <h2 className="max-w-2xl text-ds-h2 font-heading text-primary-white">
+                  Show Up Every Week. Pay Monthly.
+                </h2>
+                <p className="max-w-md text-ds-body text-light-dark">
+                  You send us your photos, footage and updates. We send a script
+                  within 48 hours, then ready-to-post videos and graphics, so
+                  your audience sees your work every week.
+                </p>
+              </div>
+
+              <div className="mt-space-8 grid gap-space-6 lg:grid-cols-3">
+                {monthlyPlans.map((plan, index) => (
+                  <motion.div
+                    key={plan.planName}
+                    className="h-full"
+                    {...reveal(index * 0.08)}
+                  >
+                    <PackageCard
+                      planName={plan.planName}
+                      features={plan.features}
+                      price={plan.price}
+                      compareAtPrice={plan.compareAtPrice}
+                      priceNote={plan.priceNote}
+                      bestFor={plan.bestFor}
+                      ctaLabel="Get Started"
+                      ctaHref={plan.ctaHref}
+                      isRecommended={plan.isRecommended}
+                      className="h-full"
+                    />
+                  </motion.div>
+                ))}
+              </div>
+
+              <p className="mt-space-6 text-ds-small text-light-dark">
+                Plans are billed monthly with a 3-month minimum term. NGOs and
+                nonprofits can ask about our NGO rates.
+              </p>
+            </div>
+          )}
+
+          {activeTab === tabs[2].label && (
+            <div role="tabpanel" className="mt-space-7">
+              <Eyebrow theme="dark">{"// Video Projects"}</Eyebrow>
+              <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary-white">
+                One-off Video Projects
+              </h2>
+
+              <dl className="mt-space-8 divide-y divide-white/[0.08] border-y border-white/[0.08]">
+                {videoProjects.map((row) => (
+                  <div
+                    key={row.project}
+                    className="grid gap-space-1 py-space-5 md:grid-cols-[1fr_200px] md:items-center md:gap-space-6"
+                  >
+                    <dt className="text-ds-body text-primary-white">
+                      {row.project}
+                    </dt>
+                    <dd className="text-ds-h4 text-primary-white md:text-right">
+                      {row.price}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              <p className="mt-space-6 max-w-2xl text-ds-small text-light-dark">
+                Every video is delivered in 9:16 and 16:9. Your first video is
+                usually ready within 7 working days of a confirmed brief.
+              </p>
+
               <Button
-                variant="text-link"
-                href="/contact?type=custom"
-                className="text-dk-blue-1"
+                variant="primary"
+                href="/contact?service=video-project"
+                className="mt-space-6"
               >
-                Get Custom Quote
+                Start a Video Project
               </Button>
             </div>
-          </div>
-
-          <p className="mt-space-5 max-w-3xl text-ds-micro text-light-dark">
-            Final pricing depends on project complexity, number of revisions, and
-            timeline. Ranges shown represent standard scope. We&apos;ll confirm
-            your exact price before any work begins.
-          </p>
+          )}
         </motion.div>
       </section>
 
-      {/* Monthly Retainers — its own clearly-labelled section, not behind the
-          tab pair (23-PAGE-pricing.md). On --off-white to separate it from the
-          packages block; the dark PackageCards get the soft lift shadow that
-          01-DESIGN-SYSTEM.md specifies for pricing cards on an off-white bg. */}
+      {/* Payment Flexibility — a simple label/value list, not a card grid
+          (23-PAGE-pricing.md). Collapses to stacked label-over-value on mobile.
+          On --off-white to break up the dark pricing block above. */}
       <section className="relative overflow-hidden bg-off-white py-space-8 lg:py-space-10">
         <GridOverlay />
 
@@ -357,66 +515,18 @@ export default function PricingPageContent() {
           className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6"
           {...reveal()}
         >
-          <Eyebrow theme="light">{"// Monthly Retainers"}</Eyebrow>
-          <div className="mt-space-3 flex flex-col gap-space-4 lg:flex-row lg:items-end lg:justify-between">
-            <h2 className="max-w-2xl text-ds-h2 font-heading text-primary">
-              Grow Consistently. Pay Monthly.
-            </h2>
-            <p className="max-w-md text-ds-body text-light-dark">
-              For businesses that want reliable, ongoing results without managing
-              it themselves.
-            </p>
-          </div>
-
-          <div className="mt-space-8 grid gap-space-6 lg:grid-cols-3">
-            {retainers.map((retainer, index) => (
-              <motion.div
-                key={retainer.planName}
-                className="h-full"
-                {...reveal(index * 0.08)}
-              >
-                <PackageCard
-                  planName={retainer.planName}
-                  features={retainer.features}
-                  price={retainer.price}
-                  bestFor={retainer.bestFor}
-                  ctaLabel="Get Started"
-                  ctaHref={retainer.ctaHref}
-                  isRecommended={retainer.isRecommended}
-                  className="h-full shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
-                />
-              </motion.div>
-            ))}
-          </div>
-
-          <p className="mt-space-6 text-ds-small text-light-dark">
-            All retainer packages are billed monthly, cancel anytime after 3
-            months. Minimum initial term: 3 months.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* Payment Flexibility — a simple label/value list, not a card grid
-          (23-PAGE-pricing.md). Collapses to stacked label-over-value on mobile. */}
-      <section className="relative overflow-hidden bg-primary py-space-8 lg:py-space-10">
-        <GridOverlay />
-
-        <motion.div
-          className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6"
-          {...reveal()}
-        >
-          <Eyebrow theme="dark">{"// Payment Flexibility"}</Eyebrow>
-          <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary-white">
+          <Eyebrow theme="light">{"// Payment Flexibility"}</Eyebrow>
+          <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary">
             Flexible Payment — So Cash Flow Never Slows Your Growth.
           </h2>
 
-          <dl className="mt-space-8 divide-y divide-white/[0.08] border-y border-white/[0.08]">
+          <dl className="mt-space-8 divide-y divide-primary/[0.08] border-y border-primary/[0.08]">
             {paymentOptions.map((row) => (
               <div
                 key={row.option}
                 className="grid gap-space-1 py-space-5 md:grid-cols-[200px_1fr] md:gap-space-6"
               >
-                <dt className="text-ds-h4 text-primary-white">{row.option}</dt>
+                <dt className="text-ds-h4 text-primary">{row.option}</dt>
                 <dd className="text-ds-body text-light-dark">{row.how}</dd>
               </div>
             ))}
@@ -425,20 +535,21 @@ export default function PricingPageContent() {
           <div className="mt-space-6 flex items-start gap-space-3">
             <Globe className="mt-1 h-4 w-4 flex-none text-dk-blue-1" />
             <p className="max-w-2xl text-ds-small text-light-dark">
-              <span className="font-semibold text-primary-white">
+              <span className="font-semibold text-primary">
                 International clients:
               </span>{" "}
-              We accept payment via Wise (TransferWise), PayPal, and direct bank
-              transfer in USD, GBP, EUR, and NGN.
+              We accept payment via Wise, PayPal and direct bank transfer in
+              USD, GBP, EUR and NGN.
             </p>
           </div>
         </motion.div>
       </section>
 
       {/* Pricing FAQ — shared Numbered Accordion, variant="faq". Sticky left
-          headline column + right accordion, same layout as the /services FAQ.
-          Answers are DRAFTS pending Daniel's confirmation. */}
-      <section className="relative overflow-hidden bg-off-white py-space-8 lg:py-space-10">
+          headline column + right accordion, same layout (and --black
+          background) as the /services FAQ. Answers are DRAFTS pending Daniel's
+          confirmation. */}
+      <section className="relative overflow-hidden bg-primary py-space-8 lg:py-space-10">
         <GridOverlay />
 
         <motion.div
@@ -446,8 +557,8 @@ export default function PricingPageContent() {
           {...reveal()}
         >
           <div className="lg:sticky lg:top-32 lg:self-start">
-            <Eyebrow theme="light">{"// Pricing FAQ"}</Eyebrow>
-            <h2 className="mt-space-3 text-ds-h2 font-heading text-primary">
+            <Eyebrow theme="dark">{"// Pricing FAQ"}</Eyebrow>
+            <h2 className="mt-space-3 text-ds-h2 font-heading text-primary-white">
               Questions About Pricing
             </h2>
             <p className="mt-space-4 max-w-sm text-ds-body text-light-dark">
@@ -465,7 +576,7 @@ export default function PricingPageContent() {
             </div>
           </div>
 
-          <NumberedAccordion variant="faq" theme="light" items={faqs} />
+          <NumberedAccordion variant="faq" theme="dark" items={faqs} />
         </motion.div>
       </section>
 

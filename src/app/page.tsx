@@ -9,6 +9,7 @@ import ProcessSection from "@/components/ProcessSection";
 import ServicesTeaserSection from "@/components/ServicesTeaserSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import WhoWeAreSection from "@/components/WhoWeAreSection";
+import { getPortfolioSections } from "@/lib/cloudinary-portfolio";
 import type { Metadata } from "next";
 import Script from "next/script";
 
@@ -101,7 +102,20 @@ const faqSchema = {
   ],
 };
 
-export default function Home() {
+export default async function Home() {
+  const sections = await getPortfolioSections();
+  const videosIn = (slug: string) =>
+    sections
+      .find((section) => section.slug === slug)
+      ?.assets.filter((asset) => asset.type === "video") ?? [];
+  // Featured Work shows the newest video of each folder, so the AI Advantage
+  // visual takes the next one where a folder has more than one.
+  const aiVideo =
+    videosIn("ai-animation")[1] ??
+    videosIn("ugc-ads")[1] ??
+    videosIn("ai-animation")[0] ??
+    videosIn("ugc-ads")[0];
+
   return (
     <main className="min-h-screen bg-primary">
       <Script
@@ -126,7 +140,7 @@ export default function Home() {
       <OurNumbersSection />
       <ServicesTeaserSection />
       <FeaturedWorkSection />
-      <AIAdvantageSection />
+      <AIAdvantageSection video={aiVideo} />
       <ProcessSection />
       <TestimonialsSection />
       <PricingTeaserSection />
