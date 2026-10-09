@@ -12,8 +12,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Button from "@/components/shared/Button";
-import RotatingBadge from "@/components/shared/RotatingBadge";
+import LoopingVideo from "@/components/shared/LoopingVideo";
 import { getImageUrl } from "@/lib/cloudinary";
+import { getPortfolioSections } from "@/lib/cloudinary-portfolio";
 import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 import WatermarkGlyph from "@/components/shared/WatermarkGlyph";
 
@@ -59,7 +60,13 @@ const socialLinks = [
   },
 ];
 
-export default function Footer() {
+export default async function Footer() {
+  // The reel in the CTA block: Daniel's pick, looked up by Cloudinary file
+  // name (the last segment of the public_id), as in FeaturedWorkSection.
+  const ctaVideo = (await getPortfolioSections())
+    .flatMap((section) => section.assets)
+    .find((asset) => asset.publicId.endsWith("/Oyeleke_Emik_SaaS_16x9_swgzuw"));
+
   return (
     <footer className="bg-primary text-white">
       {/* CTA block — doubles as the landing page's Final CTA per
@@ -75,7 +82,7 @@ export default function Footer() {
             className="h-8 w-auto"
           />
 
-          <div className="mt-space-8 grid gap-space-8 lg:grid-cols-[60fr_40fr] lg:items-center">
+          <div className="mt-space-8 grid gap-space-8 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="text-ds-h2 font-heading text-primary-white">
                 Ready to Build Something
@@ -104,15 +111,26 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="relative mx-auto hidden aspect-[4/5] w-full max-w-sm overflow-hidden rounded-radius-xl lg:block">
-              <Image
-                src={getImageUrl("cta/build-something")}
-                alt="Daniekeys Studios creative team mapping out a brand strategy session"
-                fill
-                sizes="400px"
-                className="object-cover"
-              />
-              <RotatingBadge className="absolute -bottom-6 -left-6 h-24 w-24" />
+            {/* Landscape (16:9) to match the reel. The still only stands in
+                when Cloudinary can't be reached or the video is removed. */}
+            <div className="relative aspect-video w-full overflow-hidden rounded-radius-xl bg-primary">
+              {ctaVideo ? (
+                <LoopingVideo
+                  // Cloudinary caps the width; the frame is never wider than this.
+                  src={ctaVideo.url.replace("/upload/", "/upload/c_limit,w_1280/")}
+                  poster={ctaVideo.posterUrl?.replace("/upload/", "/upload/c_limit,w_1280/")}
+                  label={ctaVideo.title}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <Image
+                  src={getImageUrl("cta/build-something")}
+                  alt="Daniekeys Studios creative team mapping out a brand strategy session"
+                  fill
+                  sizes="(min-width: 1024px) 600px, 100vw"
+                  className="object-cover"
+                />
+              )}
             </div>
           </div>
         </div>
