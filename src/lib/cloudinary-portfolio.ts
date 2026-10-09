@@ -110,6 +110,23 @@ function toSlug(value: string): string {
     .replace(/^-|-$/g, "");
 }
 
+// Label and slug for a direct subfolder of the root, by folder name.
+function describeFolder(name: string) {
+  return {
+    slug: toSlug(name),
+    label:
+      SECTIONS.find((section) => section.folder === name)?.label ?? toWords(name),
+  };
+}
+
+const sectionPosition = (name: string) => {
+  const index = SECTIONS.findIndex((section) => section.folder === name);
+  return index === -1 ? SECTIONS.length : index;
+};
+
+const bySectionOrder = (a: { name: string }, b: { name: string }) =>
+  sectionPosition(a.name) - sectionPosition(b.name) || a.name.localeCompare(b.name);
+
 function getOrientation(aspectRatio: number): PortfolioOrientation {
   if (Math.abs(aspectRatio - 1) <= SQUARE_TOLERANCE) return "square";
   return aspectRatio > 1 ? "landscape" : "portrait";
@@ -209,21 +226,10 @@ async function fetchPortfolioSections(): Promise<PortfolioSection[]> {
   const { folders } = await cloudinary.api.sub_folders(ROOT_FOLDER, { max_results: 500 });
   const subfolders: { name: string; path: string }[] = folders;
 
-  const position = (name: string) => {
-    const index = SECTIONS.findIndex((section) => section.folder === name);
-    return index === -1 ? SECTIONS.length : index;
-  };
-
   const sources = [
     ...subfolders
-      .sort((a, b) => position(a.name) - position(b.name) || a.name.localeCompare(b.name))
-      .map((folder) => ({
-        folder: folder.path,
-        slug: toSlug(folder.name),
-        label:
-          SECTIONS.find((section) => section.folder === folder.name)?.label ??
-          toWords(folder.name),
-      })),
+      .sort(bySectionOrder)
+      .map((folder) => ({ folder: folder.path, ...describeFolder(folder.name) })),
     { folder: ROOT_FOLDER, slug: toSlug(ROOT_SECTION_LABEL), label: ROOT_SECTION_LABEL },
   ];
 
@@ -262,4 +268,54 @@ export async function getPortfolioSections(): Promise<PortfolioSection[]> {
     console.error("Cloudinary portfolio fetch failed:", error);
     return [];
   }
+}
+
+export type UploadFolder = {
+  folder: string; // full folder path, the value the upload is signed for
+  slug: string; // the section's anchor on /portfolio
+  label: string;
+};
+
+/**
+ * Where the studio may upload to: the root plus every direct subfolder that
+ * already holds at least one asset. Read live (uncached) on every call — it is
+ * both the dropdown's contents and the whitelist the sign endpoint enforces.
+ * Throws if Cloudinary can't be reached.
+ */
+export async function getUploadFolders(): Promise<UploadFolder[]> {
+  if (!ROOT_FOLDER) throw new Error("CLOUDINARY_FOLDER is not set");
+
+  const [{ folders }, populated] = await Promise.all([
+    cloudinary.api.sub_folders(ROOT_FOLDER, { max_results: 500 }),
+    populatedFolders(),
+  ]);
+  const subfolders: { name: string; path: string }[] = folders;
+
+  return [
+    ...subfolders
+      .filter((folder) => populated.has(folder.path))
+      .sort(bySectionOrder)
+      .map((folder) => ({ folder: folder.path, ...describeFolder(folder.name) })),
+    { folder: ROOT_FOLDER, slug: toSlug(ROOT_SECTION_LABEL), label: ROOT_SECTION_LABEL },
+  ];
+}
+
+// Direct subfolders of the root with at least one asset somewhere inside them.
+async function populatedFolders(): Promise<Set<string>> {
+  const populated = new Set<string>();
+  let cursor: string | undefined;
+
+  do {
+    let search = cloudinary.search.expression(`folder:"${ROOT_FOLDER}/*"`).max_results(500);
+    if (cursor) search = search.next_cursor(cursor);
+
+    const result = await search.execute();
+    for (const resource of result.resources as SearchResource[]) {
+      const [name] = resource.folder.slice(ROOT_FOLDER.length + 1).split("/");
+      if (name) populated.add(`${ROOT_FOLDER}/${name}`);
+    }
+    cursor = result.next_cursor;
+  } while (cursor);
+
+  return populated;
 }
