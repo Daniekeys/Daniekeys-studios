@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ["images.unsplash.com", "res.cloudinary.com"],
   },
   // Legal pages moved to their sitemap paths (docs/revamp/02-SITEMAP-AND-PAGE-PLAN.md).
   // Keep the old flat URLs working for existing links / bookmarks.

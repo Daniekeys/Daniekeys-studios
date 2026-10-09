@@ -461,10 +461,11 @@ export default function ServicesPageContent() {
       {/* Process — Stacking Image Scroll (EFFECT 2): image 01 holds while
           02-05 progressively join as the user scrolls, unlike the landing's
           condensed version. id="process" is the target of the Footer's
-          "Process" nav link. */}
+          "Process" nav link. overflow-clip (not hidden) so the sticky frame
+          inside StackingImageScroll can pin. */}
       <section
         id="process"
-        className="relative scroll-mt-24 overflow-hidden bg-off-white py-space-8 lg:py-space-10"
+        className="relative scroll-mt-24 overflow-clip bg-off-white py-space-8 lg:py-space-10"
       >
         <GridOverlay />
 
