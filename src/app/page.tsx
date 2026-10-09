@@ -108,13 +108,23 @@ export default async function Home() {
     sections
       .find((section) => section.slug === slug)
       ?.assets.filter((asset) => asset.type === "video") ?? [];
-  // Featured Work shows the newest video of each folder, so the AI Advantage
-  // visual takes the next one where a folder has more than one.
+  // Hand-picked videos are looked up by Cloudinary file name (the last segment
+  // of the public_id), as in FeaturedWorkSection.
+  const assets = sections.flatMap((section) => section.assets);
+  // The AI Advantage visual: Daniel's pick, the real-estate video. If it is
+  // ever removed, his second pick, the Digital Ninja motion ad, then the newest
+  // AI animation, else the newest UGC ad.
   const aiVideo =
-    videosIn("ai-animation")[1] ??
-    videosIn("ugc-ads")[1] ??
+    assets.find((asset) => asset.publicId.endsWith("/real-estate")) ??
+    assets.find((asset) =>
+      asset.publicId.endsWith("/DigitalNinja_MotionAd_45s_idbqtr")
+    ) ??
     videosIn("ai-animation")[0] ??
     videosIn("ugc-ads")[0];
+  // The reel that plays beside the How We Work steps.
+  const processVideo = assets.find((asset) =>
+    asset.publicId.endsWith("/afriment_welcome_motion_reel_video_b39krc")
+  );
 
   return (
     <main className="min-h-screen bg-primary">
@@ -141,7 +151,7 @@ export default async function Home() {
       <ServicesTeaserSection />
       <FeaturedWorkSection />
       <AIAdvantageSection video={aiVideo} />
-      <ProcessSection />
+      <ProcessSection video={processVideo} />
       <TestimonialsSection />
       <PricingTeaserSection />
       <Footer />

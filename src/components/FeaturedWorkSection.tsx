@@ -4,24 +4,27 @@ import GridOverlay from "@/components/shared/GridOverlay";
 import PortfolioGrid from "@/components/shared/PortfolioGrid";
 import { getPortfolioSections } from "@/lib/cloudinary-portfolio";
 
-const FEATURED_FOLDERS = [
-  "motion-ads",
-  "ugc-ads",
-  "ai-animation",
-  "explainers-and-stories",
+// The videos Daniel picked for the homepage, in his order, by Cloudinary file
+// name (the last segment of the public_id, so moving one between folders
+// doesn't drop it). Edit this list to change what is featured.
+const FEATURED_VIDEOS = [
+  "afriment_welcome_motion_reel_video_b39krc",
+  "DigitalNinja_MotionAd_45s_idbqtr",
+  "Pastel_teen_assassin_anime_sequence_202609010007_uucaex",
+  "AI_CREATIVE_MOTION_VIDEO_ADS_tljyla",
+  "CHOWDECK-ADS_ve2n1a",
+  "NIVEA_MOTION_COMMERCIAL_ADS_cugnlo",
 ];
 
-// Homepage teaser — the newest video from each of the four video folders in
-// the Cloudinary portfolio (a folder with no video is skipped). The full body
-// of work lives on /portfolio.
+// Homepage teaser — a hand-picked set of videos from the Cloudinary portfolio
+// (one that has been deleted from Cloudinary is skipped). The full body of
+// work lives on /portfolio.
 // Renders nothing if Cloudinary can't be reached, so the homepage never breaks.
 export default async function FeaturedWorkSection() {
   const sections = await getPortfolioSections();
-  const videos = FEATURED_FOLDERS.flatMap(
-    (slug) =>
-      sections
-        .find((section) => section.slug === slug)
-        ?.assets.find((asset) => asset.type === "video") ?? []
+  const assets = sections.flatMap((section) => section.assets);
+  const videos = FEATURED_VIDEOS.flatMap(
+    (name) => assets.find((asset) => asset.publicId.endsWith(`/${name}`)) ?? []
   );
 
   if (videos.length === 0) return null;

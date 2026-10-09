@@ -41,7 +41,7 @@ export default function AIAdvantageSection({ video }: AIAdvantageSectionProps) {
       <GridOverlay />
 
       <motion.div
-        className="relative z-10 mx-auto grid max-w-[1280px] gap-space-8 px-space-4 md:px-space-6 lg:grid-cols-[55fr_40fr] lg:items-center lg:gap-space-9"
+        className="relative z-10 mx-auto grid max-w-[1280px] gap-space-8 px-space-4 md:px-space-6 lg:grid-cols-2 lg:items-center lg:gap-space-9"
         initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -84,7 +84,7 @@ export default function AIAdvantageSection({ video }: AIAdvantageSectionProps) {
 
         <div className="relative">
           <div className="absolute inset-0 -z-10 rounded-radius-xl bg-dk-blue-1/25 blur-3xl" />
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-radius-xl lg:aspect-square">
+          <div className="relative aspect-video w-full overflow-hidden rounded-radius-xl">
             {video ? (
               <video
                 src={video.url}
