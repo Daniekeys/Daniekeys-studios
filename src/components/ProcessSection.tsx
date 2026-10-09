@@ -1,9 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
 import {
-  AnimatePresence,
   motion,
   useMotionValueEvent,
   useReducedMotion,
@@ -15,39 +13,29 @@ import Eyebrow from "@/components/shared/Eyebrow";
 import GridOverlay from "@/components/shared/GridOverlay";
 import { cn } from "@/lib/utils";
 
-interface Step {
-  title: string;
-  copy: string;
-  image: string;
-}
+import type { PortfolioAsset } from "@/lib/cloudinary-portfolio";
 
-// Copy is unchanged from the original processSteps list. Each step now
-// carries an image for the sequential scroll story.
-const processSteps: Step[] = [
+// Copy is unchanged from 13-LANDING-process-testimonials-cta.md.
+const processSteps = [
   {
     title: "Discovery Call (Free)",
     copy: "30 minutes to understand your business, your goals, and what success looks like for you. No jargon. No hard sell.",
-    image: "/images/how-we-work/discovery-call.png",
   },
   {
     title: "Strategy & Proposal",
     copy: "We map out a precise creative and technical strategy, and send you a transparent proposal with clear deliverables and timelines.",
-    image: "/images/how-we-work/strategy-proposal.png",
   },
   {
     title: "Create & Build",
     copy: "Our team gets to work. You get progress updates every 3 days — not radio silence.",
-    image: "/images/how-we-work/create-build.png",
   },
   {
     title: "Review & Refine",
     copy: "Two rounds of revisions are included. We don't stop until the work is right.",
-    image: "/images/how-we-work/review-refine.png",
   },
   {
     title: "Launch & Support",
     copy: "We go live together. Then we stay close — monitoring, supporting, and optimising for 30 days post-launch.",
-    image: "/images/how-we-work/launch-support.jpg",
   },
 ];
 
@@ -55,22 +43,27 @@ function pad(index: number) {
   return String(index + 1).padStart(2, "0");
 }
 
-// Cronix-style SEQUENTIAL PROCESS interaction — deliberately different from
-// WhoWeAreSection's text/image alignment: here the image and its text
-// change together as one "chapter", pinned in a single sticky frame, rather
-// than an independently-scrolling text list beside a static visual. Desktop
-// only; mobile falls back to a plain stacked list (see ProcessMobileStack).
-function ProcessScrollStory({
-  prefersReducedMotion,
-}: {
-  prefersReducedMotion: boolean | null;
-}) {
-  const containerRef = useRef<HTMLDivElement>(null);
+interface ProcessSectionProps {
+  // The reel from the Cloudinary portfolio that plays beside the steps. If
+  // Cloudinary can't be reached the steps render on their own.
+  video?: PortfolioAsset;
+}
+
+// One finished piece of work plays in a pinned frame while the five steps
+// that produce it light up, one by one, as a timeline scrolled past it: the
+// rule fills in blue and the frame's chip names the step you are on. No
+// per-step imagery. The section is as tall as its content (no artificial
+// scroll track), and on mobile the frame simply sits above the timeline.
+export default function ProcessSection({ video }: ProcessSectionProps) {
+  const prefersReducedMotion = useReducedMotion();
+  const listRef = useRef<HTMLOListElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // 0 when the top of the list reaches 65% down the viewport, 1 when its
+  // bottom does.
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
+    target: listRef,
+    offset: ["start 0.65", "end 0.65"],
   });
 
   useMotionValueEvent(scrollYProgress, "change", (value) => {
@@ -81,141 +74,26 @@ function ProcessScrollStory({
     setActiveIndex((current) => (current === next ? current : next));
   });
 
-  const activeStep = processSteps[activeIndex];
-
   return (
-    <div
-      ref={containerRef}
-      className="relative hidden lg:block"
-      style={{ height: `${processSteps.length * 90}vh` }}
-    >
-      <div className="sticky top-24 flex h-[calc(100vh-8rem)] max-h-[680px] flex-col justify-center">
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-radius-lg">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={prefersReducedMotion ? "static-image" : activeStep.image}
-              className="absolute inset-0"
-              initial={prefersReducedMotion ? false : { opacity: 0, scale: 1.06 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={prefersReducedMotion ? undefined : { opacity: 0, scale: 0.97 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <Image
-                src={activeStep.image}
-                alt={activeStep.title}
-                fill
-                sizes="(min-width: 1024px) 900px, 100vw"
-                className="object-cover"
-                priority={activeIndex === 0}
-              />
-            </motion.div>
-          </AnimatePresence>
-
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/[0.9] via-primary/[0.35] to-transparent p-space-6">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={prefersReducedMotion ? "static-text" : activeStep.title}
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <div className="flex items-center gap-space-4">
-                  <span className="flex h-10 w-10 flex-none items-center justify-center rounded-radius-full bg-dk-blue-1 text-ds-small font-semibold text-white">
-                    {pad(activeIndex)}
-                  </span>
-                  <h3 className="text-ds-h3 text-primary-white">{activeStep.title}</h3>
-                </div>
-                <p className="mt-space-3 max-w-lg text-ds-body text-light-dark">
-                  {activeStep.copy}
-                </p>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-
-        <div className="mt-space-5 flex gap-space-2">
-          {processSteps.map((step, index) => (
-            <span
-              key={step.title}
-              className={cn(
-                "h-1 flex-1 rounded-radius-full transition-colors duration-300",
-                index === activeIndex ? "bg-dk-blue-1" : "bg-primary/[0.08]"
-              )}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ProcessMobileStack({
-  prefersReducedMotion,
-}: {
-  prefersReducedMotion: boolean | null;
-}) {
-  return (
-    <div className="mt-space-8 flex flex-col gap-space-7 lg:hidden">
-      {processSteps.map((step, index) => (
-        <motion.div
-          key={step.title}
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={
-            prefersReducedMotion
-              ? { duration: 0 }
-              : { duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }
-          }
-        >
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-radius-lg">
-            <Image
-              src={step.image}
-              alt={step.title}
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="mt-space-4 flex items-center gap-space-4">
-            <span className="flex h-10 w-10 flex-none items-center justify-center rounded-radius-full bg-dk-blue-1 text-ds-small font-semibold text-white">
-              {pad(index)}
-            </span>
-            <h3 className="text-ds-h4 text-primary">{step.title}</h3>
-          </div>
-          <p className="mt-space-3 max-w-2xl text-ds-body text-light-dark">{step.copy}</p>
-        </motion.div>
-      ))}
-    </div>
-  );
-}
-
-// Landing version is the condensed take: numbered text rows + connecting
-// rule only, no per-step imagery or per-step CTA (that fuller treatment,
-// via the shared ProcessStep component, is reserved for /services in
-// Batch 9). See 13-LANDING-process-testimonials-cta.md.
-export default function ProcessSection() {
-  const prefersReducedMotion = useReducedMotion();
-
-  return (
-    <section className="relative overflow-hidden bg-off-white py-space-8 lg:py-space-10">
+    // overflow-clip, not overflow-hidden: hidden makes the section a scroll
+    // container and the sticky video frame never pins.
+    <section className="relative overflow-clip bg-primary py-space-8 lg:py-space-10">
       <GridOverlay />
 
       <motion.div
         className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6"
         initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={
           prefersReducedMotion
             ? { duration: 0 }
             : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
         }
       >
-        <Eyebrow theme="light">{"// How We Work"}</Eyebrow>
+        <Eyebrow theme="dark">{"// How We Work"}</Eyebrow>
         <div className="mt-space-3 flex flex-col gap-space-4 lg:flex-row lg:items-end lg:justify-between">
-          <h2 className="max-w-2xl text-ds-h2 font-heading text-primary">
+          <h2 className="max-w-2xl text-ds-h2 font-heading text-primary-white">
             From First Call to Final Delivery — Here&apos;s Exactly How We Work
           </h2>
           <p className="max-w-md text-ds-body text-light-dark">
@@ -223,10 +101,97 @@ export default function ProcessSection() {
           </p>
         </div>
 
-        <ProcessScrollStory prefersReducedMotion={prefersReducedMotion} />
-        <ProcessMobileStack prefersReducedMotion={prefersReducedMotion} />
+        <div
+          className={cn(
+            "mt-space-8 grid gap-space-8 lg:gap-space-9",
+            video && "lg:grid-cols-[1.25fr_1fr]"
+          )}
+        >
+          {video && (
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <div className="relative">
+                <div className="absolute inset-0 -z-10 rounded-radius-xl bg-dk-blue-1/25 blur-3xl" />
+                <div className="relative aspect-video w-full overflow-hidden rounded-radius-xl border border-white/10">
+                  <video
+                    src={video.url}
+                    poster={video.posterUrl}
+                    autoPlay={!prefersReducedMotion}
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label={`${video.title}, silent preview`}
+                    className="h-full w-full object-cover"
+                  />
+                  {/* Only meaningful while the frame is pinned beside the
+                      timeline, so desktop only. */}
+                  {!prefersReducedMotion && (
+                    <div
+                      className="absolute bottom-space-4 left-space-4 hidden items-center gap-space-3 rounded-radius-full bg-primary/80 py-space-2 pl-space-2 pr-space-4 backdrop-blur lg:flex"
+                      aria-hidden="true"
+                    >
+                      <span className="flex h-7 w-7 items-center justify-center rounded-radius-full bg-dk-blue-1 text-ds-micro text-white">
+                        {pad(activeIndex)}
+                      </span>
+                      <span className="text-ds-small text-primary-white">
+                        {processSteps[activeIndex].title}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <p className="mt-space-4 text-ds-small text-light-dark">
+                Every project we ship follows these five steps, this one
+                included.
+              </p>
+            </div>
+          )}
 
-        <div className="mt-space-6 flex justify-center lg:justify-start">
+          <ol ref={listRef} className="relative max-w-2xl">
+            <span
+              className="absolute bottom-0 left-5 top-5 w-px -translate-x-1/2 bg-white/10"
+              aria-hidden="true"
+            />
+            <motion.span
+              className="absolute bottom-0 left-5 top-5 w-px -translate-x-1/2 origin-top bg-dk-blue-1"
+              style={{ scaleY: prefersReducedMotion ? 1 : scrollYProgress }}
+              aria-hidden="true"
+            />
+
+            {processSteps.map((step, index) => {
+              const reached = prefersReducedMotion || index <= activeIndex;
+
+              return (
+                <li
+                  key={step.title}
+                  className="relative flex gap-space-5 pb-space-7 last:pb-0 lg:pb-space-8"
+                >
+                  <span
+                    className={cn(
+                      "relative flex h-10 w-10 flex-none items-center justify-center rounded-radius-full text-ds-small font-semibold transition-colors duration-300",
+                      reached
+                        ? "bg-dk-blue-1 text-white"
+                        : "border border-white/20 bg-primary text-light-dark"
+                    )}
+                  >
+                    {pad(index)}
+                  </span>
+                  <div
+                    className={cn(
+                      "pt-1 transition-opacity duration-300",
+                      reached ? "opacity-100" : "opacity-40"
+                    )}
+                  >
+                    <h3 className="text-ds-h3 text-primary-white">{step.title}</h3>
+                    <p className="mt-space-3 text-ds-body text-light-dark">{step.copy}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+
+        <div className="mt-space-8 flex justify-center lg:justify-start">
           <Button variant="primary" href="/contact">
             Book a Free Discovery Call
           </Button>

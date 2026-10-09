@@ -11,44 +11,48 @@ interface ServiceTeaser {
   title: string;
   description: string;
   tags?: string[];
-  isNew?: boolean;
+  badge?: "Popular" | "New";
 }
 
 const services: ServiceTeaser[] = [
   {
-    title: "AI Digital Strategy",
+    title: "Motion Graphics & Animated Ads",
     description:
-      "We use AI to audit, plan, and execute digital strategies that give your business an unfair advantage over competitors still doing things manually.",
-    isNew: true,
+      "Animated ads, product launch videos and app promos built to stop the scroll and make people remember your brand.",
+    tags: ["Motion Ads", "Product Launch", "App Promo"],
+    badge: "Popular",
   },
   {
-    title: "Brand Identity & Design",
+    title: "AI Video: UGC Ads & Animation",
     description:
-      "Logos, visual systems, colour palettes, and brand guidelines that make your business look like it belongs at the top.",
-    tags: ["Logo Design", "Visual Identity", "Brand Guidelines"],
+      "AI-generated UGC ads and animated characters that look like a full production shoot, at a fraction of the cost and time.",
+    tags: ["UGC Ads", "AI Animation", "Characters"],
+    badge: "New",
+  },
+  {
+    title: "Story & Explainer Videos",
+    description:
+      "Brand stories, founder stories, impact films and explainers that make people understand you and trust you fast.",
+    tags: ["Brand Story", "Explainers", "Impact Films"],
+    badge: "New",
   },
   {
     title: "Website & App Development",
     description:
-      "Fast, beautiful, mobile-first websites and apps that don't just look impressive — they convert visitors into paying customers.",
+      "Fast, beautiful, mobile-first websites and apps that don't just look impressive. They turn visitors into paying customers.",
     tags: ["Web Design", "E-Commerce", "UI/UX", "App Dev"],
   },
   {
-    title: "Motion Graphics & Video",
+    title: "Brand Identity & Graphics",
     description:
-      "Animated ads, brand videos, explainer reels, and motion graphics that stop the scroll and build instant brand recall.",
-    tags: ["Brand Video", "Animated Ads", "Explainer Videos"],
+      "Logos, brand kits, flyers, carousels and social graphics that make your business look like it belongs at the top.",
+    tags: ["Logo Design", "Brand Kit", "Social Graphics"],
   },
   {
-    title: "AI Chatbots & Automation",
+    title: "Social Media & Content Management",
     description:
-      "Deploy AI agents on your website, WhatsApp, and Instagram that handle enquiries, qualify leads, and book appointments — 24/7 without extra headcount.",
-    isNew: true,
-  },
-  {
-    title: "Digital Marketing & Social Media",
-    description:
-      "AI-enhanced content strategies, social media management, SEO, and ad campaigns that build audiences and drive consistent revenue.",
+      "We plan, create and post video-first content every month, so your channels never go quiet between big moments.",
+    tags: ["Content Calendar", "Posting", "Storytelling"],
   },
 ];
 
@@ -79,8 +83,8 @@ export default function ServicesTeaserSection() {
             Six Ways We Help Your Business Win Online.
           </h2>
           <p className="max-w-md text-ds-body text-light-dark">
-            From brand identity to AI automation — every service is built to
-            deliver a measurable return on your investment.
+            From scroll-stopping video to websites that convert, every service
+            is built to deliver a measurable return on your investment.
           </p>
         </div>
 
@@ -91,9 +95,9 @@ export default function ServicesTeaserSection() {
               className="flex flex-col rounded-radius-lg border border-white/[0.08] p-space-6"
             >
               <div className="flex h-space-6 items-center">
-                {service.isNew && (
+                {service.badge && (
                   <span className="rounded-radius-full bg-dk-blue-1 px-space-3 py-space-1 text-ds-micro uppercase tracking-wide text-white">
-                    New
+                    {service.badge}
                   </span>
                 )}
               </div>

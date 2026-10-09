@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Check, Plus } from "lucide-react";
@@ -23,8 +23,12 @@ export interface ServiceDetailItem {
   priceFrom: string;
   ctaLabel: string;
   ctaHref: string;
-  isNew?: boolean;
+  badge?: "Popular" | "New";
   image?: string;
+  // Anchor for the row. A URL hash matching it scrolls to the row and opens it.
+  id?: string;
+  // Small print under the "Starts from" line.
+  priceNote?: string;
 }
 
 export interface TrustTableItem {
@@ -65,6 +69,35 @@ export default function NumberedAccordion(props: NumberedAccordionProps) {
   const [openIndex, setOpenIndex] = useState(0);
   const prefersReducedMotion = useReducedMotion();
 
+  // A row with an id opens when the URL hash points at it (the /services jump
+  // nav, links from other pages). The browser's own jump lands before the
+  // previously open row has collapsed, so the row is re-aligned afterwards.
+  useEffect(() => {
+    const openFromHash = () => {
+      const id = window.location.hash.slice(1);
+      const index = items.findIndex(
+        (item) => id !== "" && (item as ServiceDetailItem).id === id
+      );
+      if (index === -1) return;
+      setOpenIndex(index);
+      return window.setTimeout(
+        () => document.getElementById(id)?.scrollIntoView(),
+        EXPAND_TRANSITION.duration * 1000 + 50
+      );
+    };
+
+    let timer = openFromHash();
+    const onHashChange = () => {
+      window.clearTimeout(timer);
+      timer = openFromHash();
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, [items]);
+
   const hairline = useHairline(theme);
   const dimmedText = "text-light-dark";
   const fullContrastText = theme === "dark" ? "text-primary-white" : "text-primary";
@@ -100,7 +133,11 @@ export default function NumberedAccordion(props: NumberedAccordionProps) {
         );
 
         return (
-          <div key={heading} className={cn("border-t first:border-t-0", hairline)}>
+          <div
+            key={heading}
+            id={(item as ServiceDetailItem).id}
+            className={cn("scroll-mt-24 border-t first:border-t-0", hairline)}
+          >
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? -1 : index)}
@@ -151,9 +188,9 @@ export default function NumberedAccordion(props: NumberedAccordionProps) {
                       >
                         {heading}
                       </span>
-                      {(item as ServiceDetailItem).isNew && (
+                      {(item as ServiceDetailItem).badge && (
                         <span className="rounded-radius-sm bg-dk-blue-1 px-space-2 py-space-1 text-ds-micro uppercase tracking-wide text-white">
-                          New
+                          {(item as ServiceDetailItem).badge}
                         </span>
                       )}
                     </span>
@@ -282,6 +319,11 @@ export default function NumberedAccordion(props: NumberedAccordionProps) {
                                 <p className={cn("text-ds-h4", fullContrastText)}>
                                   Starts from {detail.priceFrom}
                                 </p>
+                                {detail.priceNote && (
+                                  <p className={cn("text-ds-small", dimmedText)}>
+                                    {detail.priceNote}
+                                  </p>
+                                )}
                                 <Button variant="primary" href={detail.ctaHref}>
                                   {detail.ctaLabel}
                                 </Button>

@@ -14,7 +14,7 @@ import { showreelClips } from "@/lib/showreel";
 // The lone portrait clip from the reel — used as the hero's Featured Work card.
 const heroClip = showreelClips.find((clip) => clip.orientation === "portrait");
 
-const proofPoints = ["3× Brand Lift", "+64% Lead Flow", "24/7 Automation"];
+const proofPoints = ["3× Brand Lift", "+64% Lead Flow", "First Video in 7 Days"];
 
 export default function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
@@ -31,9 +31,9 @@ export default function HeroSection() {
             They Grow.
           </h1>
           <p className="mt-space-5 max-w-xl text-ds-body-lg text-light-dark">
-            Daniekeys Studios combines AI engineering, world-class creative design,
-            and strategic marketing to help businesses across Africa build brands
-            that convert, scale, and dominate their market.
+            Daniekeys Studios combines AI, standout motion design and solid
+            engineering to help businesses across Africa launch faster, look
+            premium and grow.
           </p>
 
           <div className="mt-space-6 flex flex-col gap-space-4 sm:flex-row sm:items-center">

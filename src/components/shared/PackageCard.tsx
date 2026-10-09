@@ -18,6 +18,8 @@ interface PackageCardProps {
   // Qualifier shown directly under the price (e.g. "One-time · Final price
   // depends on scope") — the price row is a flexible slot, not number-only.
   priceNote?: string;
+  // Original price, shown struck through before a recurring price.
+  compareAtPrice?: string;
   bestFor: string;
   timeline?: string;
   ctaLabel: string;
@@ -27,17 +29,29 @@ interface PackageCardProps {
   className?: string;
 }
 
-function PriceRow({ price }: { price: PriceDisplay }) {
+function PriceRow({
+  price,
+  compareAtPrice,
+}: {
+  price: PriceDisplay;
+  compareAtPrice?: string;
+}) {
   if (price.mode === "range") {
     return (
       <p className="text-ds-h3 text-primary-white">
-        {price.low} <span className="text-light-dark">–</span> {price.high}
+        {price.low} <span className="text-light-dark">to</span> {price.high}
       </p>
     );
   }
 
   return (
     <p className="flex flex-wrap items-baseline gap-space-1 text-ds-h2 font-heading text-primary-white">
+      {compareAtPrice && (
+        <s className="mr-space-1 text-ds-h4 font-normal text-light-dark">
+          <span className="sr-only">Was </span>
+          {compareAtPrice}
+        </s>
+      )}
       {price.amount}
       {price.period && (
         <span className="text-ds-body text-light-dark">{price.period}</span>
@@ -53,6 +67,7 @@ export default function PackageCard({
   features,
   price,
   priceNote,
+  compareAtPrice,
   bestFor,
   timeline,
   ctaLabel,
@@ -107,7 +122,7 @@ export default function PackageCard({
       </div>
 
       <div className="relative mt-auto space-y-space-1">
-        <PriceRow price={price} />
+        <PriceRow price={price} compareAtPrice={compareAtPrice} />
         {priceNote && (
           <p className="text-ds-small text-light-dark">{priceNote}</p>
         )}

@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface ModeToggleProps {
-  options: [string, string];
+  options: string[];
   value: string;
   onChange: (value: string) => void;
   theme?: "light" | "dark";
@@ -46,7 +46,7 @@ export default function ModeToggle({
             aria-selected={isActive}
             onClick={() => onChange(option)}
             className={cn(
-              "relative z-10 rounded-radius-full px-space-5 py-space-2 text-ds-small font-semibold transition-colors duration-200",
+              "relative z-10 whitespace-nowrap rounded-radius-full px-space-5 py-space-2 text-ds-small font-semibold transition-colors duration-200",
               isActive ? activeText : inactiveText
             )}
           >

@@ -148,16 +148,15 @@ function Tile({ asset, sizes, onOpen }: TileProps) {
           />
         )}
 
-        <span className="pointer-events-none absolute inset-x-0 bottom-0 block bg-gradient-to-t from-primary/80 via-primary/20 to-transparent p-space-4">
-          {asset.client && (
+        {/* No title on the tile: most assets only have a filename-derived
+            one. It still names the tile for screen readers and the lightbox. */}
+        {asset.client && (
+          <span className="pointer-events-none absolute inset-x-0 bottom-0 block bg-gradient-to-t from-primary/80 via-primary/20 to-transparent p-space-4">
             <span className="block text-ds-micro uppercase tracking-wide text-dk-blue-3">
               {asset.client}
             </span>
-          )}
-          <span className="mt-space-1 block text-ds-small text-primary-white">
-            {asset.title}
           </span>
-        </span>
+        )}
 
         {isVideo && (
           <span className="absolute right-space-3 top-space-3 inline-flex h-9 w-9 items-center justify-center rounded-radius-full bg-primary-white/95 text-primary ring-1 ring-primary/20 transition-colors group-hover:bg-dk-blue-1 group-hover:text-white">
