@@ -52,7 +52,7 @@ const packages = [
   },
   {
     planName: "Business Package",
-    description: "A complete online presence that drives real results.",
+    description: "A complete online presence that gets real results.",
     price: { mode: "range", low: "₦250,000", high: "₦650,000" } as const,
     priceNote: "One-time · Final price depends on scope",
     isRecommended: true,
@@ -73,7 +73,7 @@ const packages = [
   },
   {
     planName: "Premium Package",
-    description: "Full-scale transformation for serious growth.",
+    description: "A full-scale makeover for serious growth.",
     price: { mode: "range", low: "₦700,000", high: "₦3,000,000" } as const,
     priceNote: "One-time · Final price depends on scope",
     features: [
@@ -104,14 +104,14 @@ const callouts = [
   {
     icon: Smartphone,
     title: "Building a Web App or Mobile App?",
-    copy: "Platforms, marketplaces, booking systems and mobile apps are scoped individually. Book a free scoping call and we'll send a clear quote and timeline.",
+    copy: "Platforms, marketplaces, booking systems and mobile apps are each scoped individually. Book a free scoping call and we'll send you a clear quote and timeline.",
     ctaLabel: "Book a Scoping Call",
     ctaHref: "/contact?service=web-app",
   },
   {
     icon: Puzzle,
     title: "Need Something Bespoke?",
-    copy: "Every business is different. If none of these fit your goals, we'll build you a custom scope from scratch. No obligation. No hard sell.",
+    copy: "Every business is different. If none of these fit your goals, we'll build a custom scope for you from scratch. No obligation and no hard sell.",
     ctaLabel: "Get Custom Quote",
     ctaHref: "/contact?type=custom",
   },
@@ -184,15 +184,15 @@ const videoProjects = [
 const paymentOptions = [
   {
     option: "50/50",
-    how: "50% upfront to begin, 50% on final delivery, standard for most projects.",
+    how: "50% upfront to get started and 50% on final delivery. This works for most projects.",
   },
   {
     option: "3-Stage",
-    how: "For projects above ₦500,000, 40% at start, 30% at midpoint, 30% on delivery.",
+    how: "For projects above ₦500,000: 40% at the start, 30% at the midpoint and 30% on delivery.",
   },
   {
     option: "Monthly Plans",
-    how: "Billed monthly in advance, 3-month minimum term.",
+    how: "Billed monthly in advance, with a 3 month minimum.",
   },
 ];
 
@@ -206,37 +206,37 @@ const faqs: FaqItem[] = [
   {
     question: "Why is there a price range instead of a fixed price?",
     answer:
-      "Every project's final cost depends on complexity, number of pages/deliverables, and revision rounds — the range reflects standard scope so you can budget accurately before we confirm an exact number.",
+      "The final cost of a project depends on how complex it is, how many pages or deliverables it has and how many revision rounds you need. The range covers standard scope, so you can budget before we confirm an exact number.",
   },
   {
     question: "What happens if my project goes over scope?",
     answer:
-      "We'll flag it before doing any extra work and agree on a fair additional cost together — no surprise invoices.",
+      "We'll tell you before doing any extra work and agree on a fair extra cost together. No surprise invoices.",
   },
   {
     question: "Are revisions included?",
     answer:
-      "Yes — every package includes 2–3 rounds of revisions depending on the tier, detailed above.",
+      "Yes. Every package includes 2 to 3 rounds of revisions depending on the tier, as listed above.",
   },
   {
     question: "Can I start with a small package and upgrade later?",
     answer:
-      "Absolutely — many clients start with Starter and move to Business or a retainer as they grow.",
+      "Absolutely. Plenty of clients start with Starter and move up to Business or a retainer as they grow.",
   },
   {
     question: "Do you offer discounts for NGOs or nonprofits?",
     answer:
-      "Yes. We have dedicated NGO rates for monthly content and storytelling. Reach out and we'll share them.",
+      "Yes. We have dedicated NGO rates for monthly content and storytelling. Just reach out and we'll share them.",
   },
   {
     question: "What's the minimum project budget you'll take on?",
     answer:
-      "Our Starter Package begins at ₦95,000 and single videos start at ₦150,000. For anything smaller, let's talk.",
+      "Our Starter Package begins at ₦95,000 and single videos start at ₦150,000. If your budget is smaller than that, let's talk anyway.",
   },
   {
     question: "Can I switch between monthly plans?",
     answer:
-      "Yes. You can move up or down a plan at the end of any month after your first 3 months.",
+      "Yes. After your first 3 months you can move up or down a plan at the end of any month.",
   },
 ];
 
@@ -309,10 +309,10 @@ export default function PricingPageContent() {
             Honest Prices. No Hidden Fees. No Surprises.
           </h1>
           <p className="mt-space-5 max-w-2xl text-ds-body-lg text-light-dark">
-            We publish our prices because we respect your time. Most agencies
-            make you jump on a call just to tell you it&apos;s expensive. We
-            don&apos;t do that. Here&apos;s exactly what things cost — and what
-            you get for every naira.
+            We put our prices out in the open because we respect your time. Most
+            agencies make you jump on a call just to tell you it&apos;s
+            expensive. We don&apos;t do that. Here&apos;s what things cost and
+            what you get for every naira.
           </p>
           <ul className="mt-space-6 flex flex-wrap items-center gap-x-space-5 gap-y-space-2">
             {trustChips.map((chip) => (
@@ -360,7 +360,7 @@ export default function PricingPageContent() {
             <div role="tabpanel" className="mt-space-7">
               <Eyebrow theme="dark">{"// Complete Packages"}</Eyebrow>
               <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary-white">
-                Three Packages. One Honest Price Range Each.
+                Three Packages, One Honest Price Range Each
               </h2>
 
               <div className="mt-space-8 grid gap-space-6 lg:grid-cols-3">
@@ -414,9 +414,10 @@ export default function PricingPageContent() {
               ))}
 
               <p className="mt-space-5 max-w-3xl text-ds-micro text-light-dark">
-                Final pricing depends on project complexity, number of revisions,
-                and timeline. Ranges shown represent standard scope. We&apos;ll
-                confirm your exact price before any work begins.
+                Final pricing depends on how complex the project is, how many
+                revisions you need and your timeline. The ranges shown cover
+                standard scope, and we&apos;ll confirm your exact price before any
+                work begins.
               </p>
             </div>
           )}
@@ -426,12 +427,12 @@ export default function PricingPageContent() {
               <Eyebrow theme="dark">{"// Monthly Plans"}</Eyebrow>
               <div className="mt-space-3 flex flex-col gap-space-4 lg:flex-row lg:items-end lg:justify-between">
                 <h2 className="max-w-2xl text-ds-h2 font-heading text-primary-white">
-                  Show Up Every Week. Pay Monthly.
+                  Show Up Every Week, Pay Monthly
                 </h2>
                 <p className="max-w-md text-ds-body text-light-dark">
                   You send us your photos, footage and updates. We send a script
                   within 48 hours, then ready-to-post videos and graphics, so
-                  your audience sees your work every week.
+                  your audience sees you every week.
                 </p>
               </div>
 
@@ -459,8 +460,8 @@ export default function PricingPageContent() {
               </div>
 
               <p className="mt-space-6 text-ds-small text-light-dark">
-                Plans are billed monthly with a 3-month minimum term. NGOs and
-                nonprofits can ask about our NGO rates.
+                Plans are billed monthly with a 3 month minimum. NGOs and nonprofits
+                can ask us about our NGO rates.
               </p>
             </div>
           )}
@@ -517,7 +518,7 @@ export default function PricingPageContent() {
         >
           <Eyebrow theme="light">{"// Payment Flexibility"}</Eyebrow>
           <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary">
-            Flexible Payment — So Cash Flow Never Slows Your Growth.
+            Flexible Payment, So Cash Flow Never Slows You Down
           </h2>
 
           <dl className="mt-space-8 divide-y divide-primary/[0.08] border-y border-primary/[0.08]">
@@ -538,8 +539,8 @@ export default function PricingPageContent() {
               <span className="font-semibold text-primary">
                 International clients:
               </span>{" "}
-              We accept payment via Wise, PayPal and direct bank transfer in
-              USD, GBP, EUR and NGN.
+              You can pay through Wise, PayPal or direct bank transfer in USD,
+              GBP, EUR or NGN.
             </p>
           </div>
         </motion.div>
@@ -562,8 +563,8 @@ export default function PricingPageContent() {
               Questions About Pricing
             </h2>
             <p className="mt-space-4 max-w-sm text-ds-body text-light-dark">
-              The answers below are drafts — final wording is being confirmed
-              before launch.
+              The answers below are drafts for now. We&apos;re confirming the final
+              wording before launch.
             </p>
             <div className="mt-space-5">
               <Button
@@ -596,12 +597,12 @@ export default function PricingPageContent() {
         >
           <Eyebrow theme="light">{"// Let's Talk"}</Eyebrow>
           <h2 className="max-w-2xl text-ds-h3 font-heading text-primary">
-            Not Sure Which Package Is Right? Let&apos;s Talk — It&apos;s Free.
+            Not Sure Which Package Is Right? Let&apos;s Talk, It&apos;s Free
           </h2>
           <p className="max-w-xl text-ds-body text-light-dark">
-            Book a 30-minute discovery call. We&apos;ll understand your goals,
-            recommend the right solution, and give you an exact quote — no
-            obligation, no pressure.
+            Book a 30 minute discovery call. We&apos;ll get to know your goals,
+            suggest the right solution and give you an exact quote. No
+            obligation and no pressure.
           </p>
           <div className="flex flex-col gap-space-4 sm:flex-row">
             <Button variant="primary" href="/contact">

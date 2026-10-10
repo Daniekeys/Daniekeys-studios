@@ -13,7 +13,7 @@ import type { PortfolioAsset } from "@/lib/cloudinary-portfolio";
 const bullets = [
   {
     title: "AI UGC Ads",
-    copy: "real-looking creator ads for TikTok, Instagram and Meta campaigns",
+    copy: "creator-style ads that look real, for TikTok, Instagram and Meta",
   },
   {
     title: "AI Animation",
@@ -54,15 +54,14 @@ export default function AIAdvantageSection({ video }: AIAdvantageSectionProps) {
         <div>
           <Eyebrow theme="dark">{"// AI-Powered Studio"}</Eyebrow>
           <h2 className="mt-space-3 text-ds-h2 font-heading text-primary-white">
-            Studio-Quality Video Without the Studio Price Tag.
+            Studio-Quality Video Without the Studio Price Tag
           </h2>
           <p className="mt-space-5 max-w-2xl text-ds-body-lg text-light-dark">
-            Our founder is an AI engineer and a creative director. That means
-            we don&apos;t just talk about AI, we use it inside every
-            production. UGC ads without hiring a crowd of creators, animated
-            characters without a full animation team, and finished motion ads
-            in days instead of weeks. You get the quality of a big studio at
-            the speed of a startup.
+            Our founder is both an AI engineer and a creative director, so we
+            don&apos;t just talk about AI, we use it on every production. You
+            get UGC ads without hiring a crowd of creators, animated characters
+            without a full animation team, and finished motion ads in days
+            instead of weeks. Big studio quality, startup speed.
           </p>
 
           <ul className="mt-space-6 space-y-space-4">

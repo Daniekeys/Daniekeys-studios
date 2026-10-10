@@ -4,17 +4,17 @@ import Footer from "../../components/Footer";
 import ContactPageContent from "../../components/ContactPageContent";
 
 export const metadata: Metadata = {
-  title: "Contact Daniekeys Studios — Book a Free Discovery Call | Nigeria's AI Digital Agency",
+  title: "Contact Daniekeys Studios - Book a Free Discovery Call | Nigeria's AI Digital Agency",
   description:
-    "Get in touch with Daniekeys Studios to discuss your branding, website, motion graphics, or AI project. Free discovery call. Response within 24 hours. Serving Nigeria and Africa.",
+    "Get in touch with Daniekeys Studios to talk about your branding, website, motion graphics or AI project. The discovery call is free and we reply within 24 hours. We work with clients in Nigeria and across Africa.",
   alternates: {
     canonical: "https://www.daniekeysstudios.com/contact",
   },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Contact Daniekeys Studios — Book a Free Discovery Call",
+    title: "Contact Daniekeys Studios - Book a Free Discovery Call",
     description:
-      "Get in touch to discuss your branding, website, or AI project. Free discovery call. Response within 24 hours.",
+      "Get in touch to talk about your branding, website or AI project. The discovery call is free and we reply within 24 hours.",
     type: "website",
     url: "https://www.daniekeysstudios.com/contact",
   },
@@ -25,7 +25,7 @@ const contactPageSchema = {
   "@type": "ContactPage",
   name: "Contact Daniekeys Studios",
   description:
-    "Contact form for project enquiries, discovery call bookings, and service information.",
+    "Contact form for project enquiries, discovery call bookings and service information.",
   url: "https://www.daniekeysstudios.com/contact",
   mainEntity: {
     "@type": "Organization",

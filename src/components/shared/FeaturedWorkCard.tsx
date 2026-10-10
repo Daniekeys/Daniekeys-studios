@@ -20,7 +20,7 @@ interface FeaturedWorkCardProps {
 
 // Traced from /reference/desktop-mockup.jpeg's "Featured Work" element:
 // label sits flush with the card's left edge, ~11px above it; the card is a
-// borderless ~4:5 portrait image (radius-lg per spec); caption sits ~12px
+// borderless 9:16 portrait video (was ~4:5) (radius-lg per spec); caption sits ~12px
 // below, not overlaid. See the Batch 4 side-by-side report for exact
 // pixel measurements and the deviations called out there.
 export default function FeaturedWorkCard({
@@ -41,7 +41,7 @@ export default function FeaturedWorkCard({
         <span>{label}</span>
       </div>
 
-      <div className="relative mt-space-3 aspect-[4/5] w-full overflow-hidden rounded-radius-lg bg-primary">
+      <div className="relative mt-space-3 aspect-[9/16] w-full overflow-hidden rounded-radius-lg bg-primary">
         {videoSrc ? (
           <video
             src={videoSrc}

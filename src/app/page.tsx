@@ -15,18 +15,18 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title:
-    "Daniekeys Studios — AI-Powered Digital Agency in Nigeria | Brand Design, Web & AI Automation",
+    "Daniekeys Studios - AI-Powered Digital Agency in Nigeria | Brand Design, Web & AI Automation",
   description:
-    "Daniekeys Studios is Nigeria's leading AI-powered digital agency. We help ambitious brands with professional web design, brand identity, motion graphics, and AI automation. Serving Nigeria and Africa.",
+    "Daniekeys Studios is an AI-powered digital agency in Nigeria. We help ambitious brands with web design, brand identity, motion graphics and AI automation, across Nigeria and the rest of Africa.",
   keywords:
     "digital agency Nigeria, AI agency Nigeria, branding agency Nigeria, web design Nigeria, motion graphics Nigeria, AI automation Nigeria, brand identity Lagos, website design Nigeria",
   alternates: {
     canonical: "https://www.daniekeysstudios.com/",
   },
   openGraph: {
-    title: "Daniekeys Studios — Africa's AI-Powered Digital Agency",
+    title: "Daniekeys Studios - Africa's AI-Powered Digital Agency",
     description:
-      "From brand identity to AI automation — we help African businesses build brands that convert, scale, and dominate their market.",
+      "From brand identity to AI automation, we help African businesses build brands that convert, scale and own their market.",
     url: "https://www.daniekeysstudios.com/",
     siteName: "Daniekeys Studios",
     type: "website",
@@ -96,7 +96,7 @@ const faqSchema = {
       name: "Is Daniekeys Studios an AI agency?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Daniekeys Studios is founded by an AI engineer and integrates AI tools into brand strategy, content creation, chatbot deployment, and digital marketing — making it one of Nigeria's few truly AI-native digital agencies.",
+        text: "Yes. Daniekeys Studios is founded by an AI engineer and integrates AI tools into brand strategy, content creation, chatbot deployment and digital marketing. That makes us one of the few truly AI-native digital agencies in Nigeria.",
       },
     },
   ],
@@ -126,6 +126,11 @@ export default async function Home() {
     asset.publicId.endsWith("/afriment_welcome_motion_reel_video_b39krc")
   );
 
+  // The hero's portrait (9:16) reel: the BGR 2026 "So Far" cut.
+  const heroVideo = assets.find((asset) =>
+    asset.publicId.endsWith("/BGR_2026_SoFar_9x16_e2kx9s")
+  );
+
   return (
     <main className="min-h-screen bg-primary">
       <Script
@@ -145,7 +150,7 @@ export default async function Home() {
         }}
       />
       <Navigation />
-      <HeroSection />
+      <HeroSection video={heroVideo} />
       <WhoWeAreSection />
       <OurNumbersSection />
       <ServicesTeaserSection />

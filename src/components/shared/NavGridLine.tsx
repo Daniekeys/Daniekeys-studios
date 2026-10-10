@@ -1,5 +1,3 @@
-import { GridTicks } from "@/components/shared/GridPrimitives";
-
 // Fixed, page-level hairline directly under the navbar (h-16 mobile / h-20
 // desktop, matching Navigation.tsx's own height), present on every route
 // regardless of scroll position — mounted once in the root layout, separate
@@ -12,7 +10,6 @@ export default function NavGridLine() {
       aria-hidden="true"
     >
       <div className="h-px w-full bg-light-dark/20" />
-      <GridTicks />
     </div>
   );
 }

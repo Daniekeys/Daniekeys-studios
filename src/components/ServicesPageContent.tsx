@@ -38,9 +38,9 @@ const services: ServiceDetailItem[] = [
     id: "motion-ads",
     title: "Motion Graphics & Animated Ads",
     badge: "Popular",
-    hook: "In a world of infinite scroll, motion is the only language that makes people stop.",
+    hook: "With endless scrolling everywhere, motion is what makes people actually stop.",
     description:
-      "We design animated ads and launch videos that earn attention and drive action, built for both vertical and widescreen from day one.",
+      "We design animated ads and launch videos that grab attention and get people to act. They're built for both vertical and widescreen from day one.",
     tags: [],
     deliverables: [
       "Animated ads for Meta, TikTok and YouTube",
@@ -60,9 +60,9 @@ const services: ServiceDetailItem[] = [
     id: "ai-video",
     title: "AI Video: UGC Ads & Animation",
     badge: "New",
-    hook: "Real-looking creator ads and animated characters, without the shoot.",
+    hook: "Creator-style ads and animated characters that look real, without the shoot.",
     description:
-      "We use AI to produce UGC-style ads and original animated content that would normally need actors, a set and an animation team.",
+      "We use AI to make UGC-style ads and original animated content that would normally need actors, a set and a whole animation team.",
     tags: [],
     deliverables: [
       "AI-generated UGC video ads for paid campaigns",
@@ -82,9 +82,9 @@ const services: ServiceDetailItem[] = [
     id: "story-video",
     title: "Story & Explainer Videos",
     badge: "New",
-    hook: "People forget features. They remember stories.",
+    hook: "People forget features, but they remember stories.",
     description:
-      "We turn your photos, footage and milestones into story-led videos that make people understand what you do and why it matters.",
+      "We turn your photos, footage and milestones into story-led videos, so people get what you do and why it matters.",
     tags: [],
     deliverables: [
       "Brand story films",
@@ -105,7 +105,7 @@ const services: ServiceDetailItem[] = [
     id: "web-app",
     title: "Website & App Development",
     hook: "We build websites that look like they cost 10× more than they do.",
-    description: "And perform like revenue machines from day one.",
+    description: "And they work hard for your revenue from day one.",
     tags: ["Web Dev", "E-Commerce", "Web Apps", "Mobile Apps"],
     deliverables: [
       "Custom business, portfolio and e-commerce websites",
@@ -130,7 +130,7 @@ const services: ServiceDetailItem[] = [
     title: "Brand Identity & Graphics",
     hook: "Your brand is the first thing people judge you by.",
     description:
-      "We make sure that judgement works in your favour, every single time.",
+      "We make sure that judgement goes your way, every time.",
     tags: ["New Business", "Rebranding", "Graphics"],
     deliverables: [
       "Logo design (primary + variations)",
@@ -151,7 +151,7 @@ const services: ServiceDetailItem[] = [
   {
     id: "social-media",
     title: "Social Media & Content Management",
-    hook: "Being online isn't enough. Being seen every week is.",
+    hook: "Being online isn't enough. You need to be seen every week.",
     description:
       "You send us your photos and updates. We turn them into a steady flow of videos and graphics, and we can post them for you too.",
     tags: [],
@@ -172,7 +172,7 @@ const services: ServiceDetailItem[] = [
   {
     id: "training",
     title: "AI Creative Training",
-    hook: "The biggest barrier to using AI well isn't the tools. It's knowing how.",
+    hook: "The tools aren't what stops people from using AI well. Not knowing how is.",
     description:
       "We train founders, executives and teams to create content with AI themselves.",
     tags: ["Workshops", "Corporate", "1-on-1", "AI Video"],
@@ -206,7 +206,7 @@ const jumpNav = [
 const spotlight = [
   {
     title: "Websites That Convert",
-    copy: "Every website we build is mobile-first, SEO-optimised, and designed around one goal: turning visitors into customers.",
+    copy: "Every website we build is mobile-first, SEO-optimised and designed around one goal, turning visitors into customers.",
     tags: [
       "Custom Design",
       "Fast Loading",
@@ -219,7 +219,7 @@ const spotlight = [
   },
   {
     title: "Apps That Perform",
-    copy: "Mobile apps that bring your brand closer to your customers — built for Android and iOS, designed for real users.",
+    copy: "Mobile apps that bring your brand closer to your customers. We build for Android and iOS, with real users in mind.",
     tags: ["Android & iOS", "UI/UX Design", "ASO", "Cross-Platform"],
     ctaLabel: "Discuss Your App",
     ctaHref: "/contact",
@@ -247,31 +247,31 @@ const processSteps: StackingImageScrollItem[] = [
   {
     title: "Free Discovery Call",
     description:
-      "30 minutes. No pitch. Just listening. We learn exactly what your business needs.",
+      "30 minutes, no pitch. We just listen and work out what your business really needs.",
     image: "process/discovery-call",
   },
   {
     title: "Proposal & Strategy",
     description:
-      "A tailored scope, timeline, and pricing document — delivered within 48 hours of your call.",
+      "A tailored scope, timeline and price, sent within 48 hours of your call.",
     image: "process/proposal-strategy",
   },
   {
     title: "Creative Production",
     description:
-      "Design, development, and content creation. Progress updates every 3 days.",
+      "Design, development and content creation, with a progress update every 3 days.",
     image: "process/creative-production",
   },
   {
     title: "Revisions & Refinement",
     description:
-      "Two full rounds of revisions included. We don't submit final work until you love it.",
+      "Two full rounds of revisions are included, and we won't send final work until you love it.",
     image: "process/revisions-refinement",
   },
   {
     title: "Launch & 30-Day Support",
     description:
-      "Go live with confidence. We monitor, support, and optimise for 30 days post-delivery.",
+      "Go live with confidence. We monitor, support and tweak things for 30 days after delivery.",
     image: "process/launch-support",
   },
 ];
@@ -284,37 +284,37 @@ const faqs: FaqItem[] = [
   {
     question: "Do you work with businesses outside Nigeria?",
     answer:
-      "Yes — we work with clients across Africa and internationally. We accept payment via Wise, PayPal, and direct bank transfer in USD, GBP, EUR, and NGN.",
+      "Yes, we work with clients across Africa and internationally. You can pay through Wise, PayPal or direct bank transfer in USD, GBP, EUR or NGN.",
   },
   {
     question: "How long does a typical project take?",
     answer:
-      "Most projects take 1–10 weeks depending on scope — a Starter package is 1–2 weeks, a full Premium transformation is 6–10 weeks.",
+      "Most projects take 1 to 10 weeks depending on scope. A Starter package is about 1 to 2 weeks, and a full Premium transformation is 6 to 10 weeks.",
   },
   {
     question: "What if I don't like the first design concepts?",
     answer:
-      "Every project includes two full rounds of revisions. We don't submit final work until you're happy with it.",
+      "Every project includes two full rounds of revisions, and we won't hand over final work until you're happy with it.",
   },
   {
     question: "Can I pay in instalments?",
     answer:
-      "Yes — most projects use a 50% upfront / 50% on delivery split. Larger projects above ₦500,000 can use a 3-stage payment plan.",
+      "Yes. Most projects are split 50% upfront and 50% on delivery. For bigger projects above ₦500,000 we can do a 3-stage payment plan.",
   },
   {
     question: "Do you offer monthly retainers?",
     answer:
-      "Yes. Our Monthly Video & Content Plans give you a set number of videos and graphics every month. See the Pricing page.",
+      "Yes. Our Monthly Video & Content Plans give you a set number of videos and graphics every month. Have a look at the Pricing page.",
   },
   {
     question: "What is an AI-powered studio?",
     answer:
-      "It means AI is built into how we produce. We use it to make UGC ads, animation and motion content faster and at lower cost than a traditional studio, while our team handles the story, design and final quality.",
+      "It means AI is part of how we produce. We use it to make UGC ads, animation and motion content faster and cheaper than a traditional studio, while our team takes care of the story, the design and the final quality.",
   },
   {
     question: "How fast can you deliver a video?",
     answer:
-      "Your first video is usually ready within 7 working days of a confirmed brief. Rush delivery is available as an add-on.",
+      "Your first video is usually ready within 7 working days of a confirmed brief. If you need it sooner, rush delivery is available as an add-on.",
   },
 ];
 
@@ -331,13 +331,13 @@ export default function ServicesPageContent() {
         <div className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6">
           <Eyebrow theme="dark">{"// What We Offer"}</Eyebrow>
           <h1 className="mt-space-4 max-w-4xl text-ds-hero font-heading text-primary-white">
-            Every Service We Offer Is Designed to Grow Your Business.
+            Everything We Offer Is Built to Grow Your Business
           </h1>
           <p className="mt-space-5 max-w-2xl text-ds-body-lg text-light-dark">
-            We don&apos;t sell services. We solve problems. Whether you need a
-            video that stops the scroll, a brand that commands attention or a
-            website that converts, we have the team, the tools and the track
-            record to deliver.
+            We don&apos;t just sell services, we solve problems. Whether you need a
+            video that stops the scroll, a brand that gets noticed or a website
+            that converts, we&apos;ve got the team, the tools and the track
+            record to get it done.
           </p>
           <p className="mt-space-6 text-ds-small text-light-dark">
             50+ Projects · 7 Service Areas · AI-Powered · Pan-African Reach
@@ -370,7 +370,7 @@ export default function ServicesPageContent() {
         >
           <Eyebrow theme="light">{"// Core Services"}</Eyebrow>
           <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary">
-            Seven Service Areas. One Standard: Work That Grows Your Business.
+            Seven Service Areas, One Standard: Work That Grows Your Business
           </h2>
 
           <div className="mt-space-8">
@@ -394,7 +394,7 @@ export default function ServicesPageContent() {
         >
           <Eyebrow theme="dark">{"// Digital Development"}</Eyebrow>
           <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary-white">
-            Your Business Deserves a Website That Actually Works.
+            Your Business Deserves a Website That Actually Works
           </h2>
 
           <div className="mt-space-8 grid gap-space-5 lg:grid-cols-2">
@@ -442,7 +442,7 @@ export default function ServicesPageContent() {
         >
           <Eyebrow theme="light">{"// Optional Add-Ons"}</Eyebrow>
           <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary">
-            Need Something Extra? We&apos;ve Got You.
+            Need Something Extra? We&apos;ve Got You
           </h2>
 
           <div className="mt-space-7 flex flex-wrap gap-space-3">
@@ -474,11 +474,10 @@ export default function ServicesPageContent() {
             <Eyebrow theme="light">{"// How We Work"}</Eyebrow>
             <div className="mt-space-3 flex flex-col gap-space-4 lg:flex-row lg:items-end lg:justify-between">
               <h2 className="max-w-2xl text-ds-h2 font-heading text-primary">
-                From First Hello to Final Launch — Here&apos;s Exactly How We
-                Work
+                From First Hello to Final Launch, Here&apos;s How We Work
               </h2>
               <p className="max-w-md text-ds-body text-light-dark">
-                Five steps. No jargon. No radio silence.
+                Five steps, no jargon and no radio silence.
               </p>
             </div>
           </motion.div>
@@ -507,11 +506,11 @@ export default function ServicesPageContent() {
           <div className="lg:sticky lg:top-32 lg:self-start">
             <Eyebrow theme="dark">{"// FAQ"}</Eyebrow>
             <h2 className="mt-space-3 text-ds-h2 font-heading text-primary-white">
-              Common Questions, Honest Answers.
+              Common Questions, Honest Answers
             </h2>
             <p className="mt-space-4 max-w-sm text-ds-body text-light-dark">
-              Everything you need to know before we get started. Answers below
-              are drafts — final wording is being confirmed before launch.
+              Everything you need to know before we get started. These answers are
+              drafts for now, and we&apos;re confirming the final wording before launch.
             </p>
             <div className="mt-space-5">
               <Button
@@ -543,11 +542,11 @@ export default function ServicesPageContent() {
         >
           <Eyebrow theme="light">{"// Let's Talk"}</Eyebrow>
           <h2 className="max-w-2xl text-ds-h3 font-heading text-primary">
-            Not Sure Which Service You Need? Let&apos;s Figure It Out Together.
+            Not Sure Which Service You Need? Let&apos;s Figure It Out Together
           </h2>
           <p className="max-w-xl text-ds-body text-light-dark">
-            Book a free 30-minute discovery call. We&apos;ll ask the right
-            questions, understand your business, and tell you honestly what will
+            Book a free 30 minute discovery call. We&apos;ll ask the right
+            questions, get to know your business and tell you honestly what will
             move the needle.
           </p>
           <div className="flex flex-col gap-space-4 sm:flex-row">

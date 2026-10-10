@@ -37,10 +37,10 @@ export default async function FeaturedWorkSection() {
         <Eyebrow theme="light">{"// Our Work"}</Eyebrow>
         <div className="mt-space-3 flex flex-col gap-space-4 lg:flex-row lg:items-end lg:justify-between">
           <h2 className="max-w-2xl text-ds-h2 font-heading text-primary">
-            Work That Speaks Louder Than Pitches.
+            Our Work Does the Talking
           </h2>
           <p className="max-w-md text-ds-body text-light-dark">
-            Real projects. Real clients. Real results.
+            Real projects, real clients and real results.
           </p>
         </div>
 

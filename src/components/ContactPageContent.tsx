@@ -44,8 +44,8 @@ const SERVICE_OPTIONS = [
 // Budget ranges from 24-PAGE-contact.md — matched to the real pricing tiers.
 const BUDGET_OPTIONS = [
   "Under ₦100,000",
-  "₦100,000–₦300,000",
-  "₦300,000–₦700,000",
+  "₦100,000 to ₦300,000",
+  "₦300,000 to ₦700,000",
   "₦700,000+",
   "Let's Discuss",
 ].map((range) => ({ value: range, label: range }));
@@ -80,13 +80,13 @@ const INFO_ROWS = [
   {
     icon: MapPin,
     label: "Location",
-    value: "Nigeria (serving Pan-Africa & globally)",
+    value: "Nigeria, serving Africa and the world",
     href: null,
   },
   {
     icon: Clock,
     label: "Hours",
-    value: "Mon–Fri 9am–6pm WAT",
+    value: "Mon-Fri, 9am-6pm WAT",
     href: null,
   },
 ];
@@ -168,11 +168,11 @@ export default function ContactPageContent() {
     const type = params.get("type");
     let intro = "";
     if (pkg && PACKAGE_LABELS[pkg]) {
-      intro = `Hi — I'd like to discuss the ${PACKAGE_LABELS[pkg]}.`;
+      intro = `Hi, I'd like to discuss the ${PACKAGE_LABELS[pkg]}.`;
     } else if (retainer && RETAINER_LABELS[retainer]) {
-      intro = `Hi — I'd like to discuss the ${RETAINER_LABELS[retainer]}.`;
+      intro = `Hi, I'd like to discuss the ${RETAINER_LABELS[retainer]}.`;
     } else if (type === "custom") {
-      intro = "Hi — I'd like to discuss a custom scope for my project.";
+      intro = "Hi, I'd like to discuss a custom scope for my project.";
     }
     if (intro) {
       setForm((prev) =>
@@ -208,9 +208,9 @@ export default function ContactPageContent() {
         {
           name: form.name,
           email: form.email,
-          phone: form.phone || "—",
+          phone: form.phone || "Not provided",
           service: serviceLabel,
-          budget: form.budget || "—",
+          budget: form.budget || "Not provided",
           message: form.message,
         },
         EMAILJS_PUBLIC_KEY!,
@@ -264,12 +264,12 @@ export default function ContactPageContent() {
         <div className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6">
           <Eyebrow theme="dark">{"// Get In Touch"}</Eyebrow>
           <h1 className="mt-space-4 max-w-4xl text-ds-hero font-heading text-primary-white">
-            Not Sure Which Service You Need? Let&apos;s Figure It Out Together.
+            Not Sure Which Service You Need? Let&apos;s Figure It Out Together
           </h1>
           <p className="mt-space-5 max-w-2xl text-ds-body-lg text-light-dark">
-            Book a free 30-minute discovery call. No jargon. No hard sell. Just an
-            honest conversation about your business and what will actually move
-            the needle.
+            Book a free 30 minute discovery call. No jargon and no hard sell, just
+            an honest chat about your business and what will actually move the
+            needle.
           </p>
         </div>
       </section>
@@ -289,7 +289,7 @@ export default function ContactPageContent() {
                 Send Us a Message
               </h2>
               <p className="mt-space-3 max-w-lg text-ds-body text-light-dark">
-                Tell us a little about your project and we&apos;ll get back to you
+                Tell us a bit about your project and we&apos;ll get back to you
                 within one business day.
               </p>
 
@@ -302,11 +302,11 @@ export default function ContactPageContent() {
                     <Check className="h-5 w-5 text-dk-blue-1" />
                   </span>
                   <h3 className="mt-space-4 text-ds-h4 text-primary">
-                    Message sent — thanks, {firstName}.
+                    Message sent, thanks {firstName}!
                   </h3>
                   <p className="mt-space-2 text-ds-body text-light-dark">
                     We&apos;ve got your details and will reply within one business
-                    day. If it&apos;s urgent, WhatsApp us on +234 903 090 9624.
+                    day. If it&apos;s urgent, just WhatsApp us on +234 903 090 9624.
                   </p>
                 </motion.div>
               ) : (
@@ -379,7 +379,7 @@ export default function ContactPageContent() {
                     label="Message"
                     required
                     rows={6}
-                    placeholder="Tell us about your business and what you're looking to achieve..."
+                    placeholder="Tell us about your business and what you want to achieve..."
                     className="bg-white"
                     value={form.message}
                     onChange={(e) => setField("message")(e.target.value)}
@@ -394,7 +394,7 @@ export default function ContactPageContent() {
                     >
                       {status.type === "unconfigured" ? (
                         <>
-                          This form isn&apos;t connected to a mailbox yet. Please
+                          This form isn&apos;t connected to a mailbox yet, so please
                           email{" "}
                           <a
                             href="mailto:hello@daniekeysstudios.com"

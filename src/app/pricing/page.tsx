@@ -6,9 +6,9 @@ import PricingPageContent from "../../components/PricingPageContent";
 
 export const metadata: Metadata = {
   title:
-    "Pricing — Daniekeys Studios | Brand Design, Web Dev & AI Services Nigeria",
+    "Pricing - Daniekeys Studios | Brand Design, Web Dev & AI Services Nigeria",
   description:
-    "Transparent pricing for websites and apps, monthly video and content plans, and one-off video projects. Packages from ₦95,000. No hidden fees. Serving Nigeria and Africa.",
+    "Clear pricing for websites and apps, monthly video and content plans, and one-off video projects. Packages from ₦95,000 with no hidden fees, for clients in Nigeria and across Africa.",
   keywords: [
     "digital agency pricing Nigeria",
     "branding cost Nigeria",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "Pricing — Daniekeys Studios | Brand Design, Web Dev & AI Services Nigeria",
+      "Pricing - Daniekeys Studios | Brand Design, Web Dev & AI Services Nigeria",
     description:
-      "Transparent pricing for websites and apps, monthly video and content plans, and one-off video projects. Packages from ₦95,000. No hidden fees.",
+      "Clear pricing for websites and apps, monthly video and content plans, and one-off video projects. Packages from ₦95,000 with no hidden fees.",
     type: "website",
     url: "https://www.daniekeysstudios.com/pricing",
   },
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "Business Package — Daniekeys Studios",
+  name: "Business Package - Daniekeys Studios",
   description:
-    "Complete digital package including landing page website, social media designs, motion graphics, and brand kit.",
+    "A complete digital package with a landing page website, social media designs, motion graphics and a brand kit.",
   offers: {
     "@type": "Offer",
     priceCurrency: "NGN",
@@ -60,7 +60,7 @@ const faqSchema = {
       name: "Why is there a price range instead of a fixed price?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Every project's final cost depends on complexity, number of pages/deliverables, and revision rounds — the range reflects standard scope so you can budget accurately before we confirm an exact number.",
+        text: "The final cost of a project depends on how complex it is, how many pages or deliverables it has and how many revision rounds you need. The range covers standard scope, so you can budget before we confirm an exact number.",
       },
     },
     {
@@ -68,7 +68,7 @@ const faqSchema = {
       name: "What happens if my project goes over scope?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We'll flag it before doing any extra work and agree on a fair additional cost together — no surprise invoices.",
+        text: "We'll tell you before doing any extra work and agree on a fair extra cost together. No surprise invoices.",
       },
     },
     {
@@ -76,7 +76,7 @@ const faqSchema = {
       name: "Are revisions included?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — every package includes 2–3 rounds of revisions depending on the tier, detailed above.",
+        text: "Yes. Every package includes 2 to 3 rounds of revisions depending on the tier, as listed above.",
       },
     },
     {
@@ -84,7 +84,7 @@ const faqSchema = {
       name: "Can I start with a small package and upgrade later?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Absolutely — many clients start with Starter and move to Business or a retainer as they grow.",
+        text: "Absolutely. Plenty of clients start with Starter and move up to Business or a retainer as they grow.",
       },
     },
     {
@@ -92,7 +92,7 @@ const faqSchema = {
       name: "Do you offer discounts for NGOs or nonprofits?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. We have dedicated NGO rates for monthly content and storytelling. Reach out and we'll share them.",
+        text: "Yes. We have dedicated NGO rates for monthly content and storytelling. Just reach out and we'll share them.",
       },
     },
     {
@@ -100,7 +100,7 @@ const faqSchema = {
       name: "What's the minimum project budget you'll take on?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our Starter Package begins at ₦95,000 and single videos start at ₦150,000. For anything smaller, let's talk.",
+        text: "Our Starter Package begins at ₦95,000 and single videos start at ₦150,000. If your budget is smaller than that, let's talk anyway.",
       },
     },
     {
@@ -108,7 +108,7 @@ const faqSchema = {
       name: "Can I switch between monthly plans?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. You can move up or down a plan at the end of any month after your first 3 months.",
+        text: "Yes. After your first 3 months you can move up or down a plan at the end of any month.",
       },
     },
   ],

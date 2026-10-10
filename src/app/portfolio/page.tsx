@@ -8,9 +8,9 @@ import { portfolioProjects } from "../../lib/portfolio-projects";
 
 export const metadata: Metadata = {
   title:
-    "Our Portfolio — Daniekeys Studios | Brand Identity, Web Design & Motion Graphics Nigeria",
+    "Our Portfolio - Daniekeys Studios | Brand Identity, Web Design & Motion Graphics Nigeria",
   description:
-    "Browse Daniekeys Studios' portfolio of branding, web development, motion graphics, and AI projects across Nigeria and Africa. Real work, real results, real clients.",
+    "Browse our portfolio of branding, web development, motion graphics and AI projects across Nigeria and Africa. Real work for real clients, with real results.",
   keywords: [
     "creative portfolio Nigeria",
     "branding portfolio Nigeria",
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "Our Portfolio — Daniekeys Studios | Brand Identity, Web Design & Motion Graphics Nigeria",
+      "Our Portfolio - Daniekeys Studios | Brand Identity, Web Design & Motion Graphics Nigeria",
     description:
-      "Browse Daniekeys Studios' portfolio of branding, web development, motion graphics, and AI projects across Nigeria and Africa.",
+      "Browse our portfolio of branding, web development, motion graphics and AI projects across Nigeria and Africa.",
     type: "website",
     url: "https://www.daniekeysstudios.com/portfolio",
   },
@@ -64,7 +64,7 @@ const portfolioSchema = {
   "@type": "ItemList",
   name: "Daniekeys Studios Portfolio",
   description:
-    "Creative and AI projects across branding, motion graphics, web development, and digital marketing",
+    "Creative and AI projects across branding, motion graphics, web development and digital marketing",
   itemListElement: portfolioProjects.map((project, index) => ({
     "@type": "CreativeWork",
     position: index + 1,

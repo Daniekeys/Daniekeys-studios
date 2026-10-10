@@ -16,7 +16,7 @@ const testimonials = [
     name: "Afriment",
     company: "Verified client",
     quote:
-      "The new brand system made us look sharper immediately. More importantly, customers understood what we offered faster.",
+      "The new brand system made us look sharper right away. More importantly, customers understood what we offered a lot faster.",
     avatarSrc:
       "https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=200&q=80",
   },
@@ -24,7 +24,7 @@ const testimonials = [
     name: "Candexa",
     company: "Verified client",
     quote:
-      "Daniekeys Studios gave us structure, better visuals, and a launch plan that felt practical from day one.",
+      "Daniekeys Studios gave us structure, better visuals and a launch plan that felt practical from day one.",
     avatarSrc:
       "https://images.unsplash.com/photo-1616805765352-beedbad46b2a?auto=format&fit=crop&w=200&q=80",
   },
@@ -32,7 +32,7 @@ const testimonials = [
     name: "Lagos Business Owner",
     company: "Verified client",
     quote:
-      "The ROI was visible within 30 days. Not just better design — actually more customers coming through the door.",
+      "We saw the ROI within 30 days. And it wasn't just nicer design, we actually had more customers walking through the door.",
     avatarSrc:
       "https://images.unsplash.com/photo-1614023342667-6f060e9d1e04?auto=format&fit=crop&w=200&q=80",
   },
@@ -73,7 +73,7 @@ export default function TestimonialsSection() {
         <Eyebrow theme="dark">{"// Testimonials"}</Eyebrow>
         <div className="mt-space-3 flex flex-col gap-space-4 lg:flex-row lg:items-end lg:justify-between">
           <h2 className="max-w-2xl text-ds-h2 font-heading text-primary-white">
-            Don&apos;t Take Our Word for It. Take Theirs.
+            Don&apos;t Take Our Word for It, Take Theirs
           </h2>
           <div className="flex flex-wrap items-center gap-space-2 text-ds-body text-primary-white">
             <span className="text-dk-blue-1">★★★★★</span>

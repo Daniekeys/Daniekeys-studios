@@ -34,12 +34,12 @@ const clientAvatars = [
 const pillars: ImageAccordionItem[] = [
   {
     title: "Creative Excellence",
-    description: "World-class design rooted in strategy and storytelling.",
+    description: "Great design that starts with strategy and a good story.",
     image: "who-we-are/creative-excellence",
   },
   {
     title: "AI-Powered",
-    description: "We use AI to deliver faster, smarter, and more scalable results.",
+    description: "We use AI to get you faster, smarter results that scale.",
     image: "who-we-are/ai-powered",
   },
   {
@@ -49,7 +49,7 @@ const pillars: ImageAccordionItem[] = [
   },
   {
     title: "Pan-African",
-    description: "Built in Africa, built for Africa — and the world.",
+    description: "Built in Africa, for Africa and the rest of the world.",
     image: "who-we-are/pan-african",
   },
 ];
@@ -82,13 +82,13 @@ export default function WhoWeAreSection() {
 
         <div>
           <h2 className="text-ds-h2 font-heading text-primary">
-            We Don&apos;t Just Make Things Look Good. We Make Your Business Grow.
+            We Don&apos;t Just Make Things Look Good. We Help Your Business Grow.
           </h2>
           <p className="mt-space-5 max-w-2xl text-ds-body-lg text-light-dark">
-            We bring together three things most agencies separate: creative excellence,
-            AI engineering, and growth strategy. Whether you&apos;re a startup finding
-            your identity or an established business ready to scale, we become your
-            creative and technology partner from day one.
+            Most agencies keep creative, AI engineering and growth strategy in
+            separate boxes. We put all three under one roof. Whether you&apos;re a
+            startup still finding your identity or an established business ready
+            to scale, we&apos;ll be your creative and tech partner from day one.
           </p>
 
           <div className="mt-space-6 flex flex-col gap-space-4 sm:flex-row-reverse sm:items-center sm:justify-between">

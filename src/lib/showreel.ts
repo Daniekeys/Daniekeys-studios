@@ -61,14 +61,14 @@ const RAW_CLIPS: RawClip[] = [
   },
   {
     id: "lovable-brand-spot",
-    title: "Lovable — Brand Spot",
+    title: "Lovable: Brand Spot",
     category: "Product / Brand",
     orientation: "landscape",
     path: "v1788314559/LOVABLE_-REFINED_hpbllf",
   },
   {
     id: "pastel-teen-assassin-anime-sequence",
-    title: "Pastel Teen Assassin — Anime Sequence",
+    title: "Pastel Teen Assassin: Anime Sequence",
     category: "Anime / Stylised",
     orientation: "landscape",
     path: "v1788314554/Pastel_teen_assassin_anime_sequence_202609010007_xcyazh",
@@ -89,7 +89,7 @@ const RAW_CLIPS: RawClip[] = [
   },
   {
     id: "mars-concept-film",
-    title: "Mars — Concept Film",
+    title: "Mars: Concept Film",
     category: "Motion Graphics",
     orientation: "landscape",
     path: "v1787222316/mars_wyl4ag",
@@ -148,7 +148,7 @@ const RAW_GRAPHICS: RawGraphic[] = [
   },
   {
     id: "christmas-bite-key-art",
-    title: "Christmas Bite — Campaign Key Art",
+    title: "Christmas Bite: Campaign Key Art",
     path: "v1788315681/christmas-bite_sg3gwb",
   },
 ];
