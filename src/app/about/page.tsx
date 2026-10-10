@@ -8,7 +8,7 @@ import AboutPageContent from "@/components/AboutPageContent";
 
 export const metadata: Metadata = {
   title:
-    "About Daniekeys Studios — Africa's AI-Powered Digital Agency | Our Story, Team & Track Record",
+    "About Daniekeys Studios - Africa's AI-Powered Digital Agency | Our Story, Team & Track Record",
   description:
     "Daniekeys Studios is a full-service AI-powered digital agency based in Nigeria, built for businesses ready to compete locally and globally. 50+ projects delivered, 5+ years in business, 100% on-time delivery, rated 5.0 by 30+ clients on Google.",
   keywords: [
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     canonical: "https://www.daniekeysstudios.com/about",
   },
   openGraph: {
-    title: "About Daniekeys Studios — Africa's AI-Powered Digital Agency",
+    title: "About Daniekeys Studios - Africa's AI-Powered Digital Agency",
     description:
-      "Creative excellence, AI engineering, and growth strategy under one roof. Meet the agency helping ambitious African brands look premium and perform.",
+      "Creative, AI engineering and growth strategy under one roof. Meet the agency helping ambitious African brands look premium and perform.",
     type: "website",
     url: "https://www.daniekeysstudios.com/about",
     siteName: "Daniekeys Studios",
@@ -38,7 +38,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "Daniekeys Studios",
   description:
-    "Full-service AI-powered digital agency based in Nigeria — brand identity, web and app development, motion graphics, AI chatbots and automation, and digital marketing for businesses across Africa.",
+    "Full-service AI-powered digital agency based in Nigeria. We do brand identity, web and app development, motion graphics, AI chatbots and automation, and digital marketing for businesses across Africa.",
   url: "https://www.daniekeysstudios.com",
   email: "hello@daniekeysstudios.com",
   telephone: "+2349030909624",

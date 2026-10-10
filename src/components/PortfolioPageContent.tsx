@@ -41,10 +41,10 @@ export default function PortfolioPageContent({
         <div className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6">
           <Eyebrow theme="dark">{"// Our Work"}</Eyebrow>
           <h1 className="mt-space-4 max-w-4xl text-ds-hero font-heading text-primary-white">
-            Work That Speaks Before We Do.
+            Our Work Speaks Before We Do
           </h1>
           <p className="mt-space-5 max-w-xl text-ds-body-lg text-light-dark">
-            Real projects. Real clients. Real results.
+            Real projects, real clients and real results.
           </p>
         </div>
       </section>
@@ -102,7 +102,7 @@ export default function PortfolioPageContent({
         >
           <Eyebrow theme="light">{"// Let's Talk"}</Eyebrow>
           <h2 className="max-w-2xl text-ds-h3 font-heading text-primary">
-            Like What You See? Let&apos;s Build Something for You.
+            Like What You See? Let&apos;s Build Something for You
           </h2>
           <Button variant="primary" href="/contact">
             Book a Free Discovery Call

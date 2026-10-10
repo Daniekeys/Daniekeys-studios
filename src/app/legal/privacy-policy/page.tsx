@@ -7,7 +7,7 @@ import Eyebrow from "@/components/shared/Eyebrow";
 import GridOverlay from "@/components/shared/GridOverlay";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Daniekeys Studios",
+  title: "Privacy Policy - Daniekeys Studios",
   description:
     "How Daniekeys Studios handles personal data collected through this site. Placeholder structure pending final legal copy.",
   alternates: {
@@ -65,11 +65,11 @@ export default function PrivacyPolicyPage() {
               <AlertTriangle className="mt-1 h-5 w-5 flex-none text-dk-blue-1" />
               <p className="text-ds-small text-light-dark">
                 <span className="font-semibold text-primary">
-                  Placeholder content — not a binding policy.
+                  Placeholder content, not a binding policy.
                 </span>{" "}
-                The sections below are a structural outline only. Real,
-                lawyer-reviewed policy text must replace every placeholder note
-                before this site goes live.
+                The sections below are just an outline. Real, lawyer-reviewed
+                text needs to replace every placeholder note before this site
+                goes live.
               </p>
             </div>
 
@@ -80,7 +80,7 @@ export default function PrivacyPolicyPage() {
                     {heading}
                   </h2>
                   <p className="mt-space-3 text-ds-body text-light-dark">
-                    [Placeholder — replace with real policy text.]
+                    [Placeholder: replace with real policy text.]
                   </p>
                 </div>
               ))}

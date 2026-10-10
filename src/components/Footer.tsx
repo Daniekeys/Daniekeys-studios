@@ -90,8 +90,8 @@ export default async function Footer() {
                 That Actually Works?
               </h2>
               <p className="mt-space-4 max-w-xl text-ds-body-lg text-light-dark">
-                Let&apos;s talk about your brand, your goals, and how Daniekeys Studios
-                can help you grow. First call is always free.
+                Let&apos;s talk about your brand, your goals and how we can help you
+                grow. The first call is always free.
               </p>
               <div className="mt-space-6 flex flex-col gap-space-4 sm:flex-row sm:items-center">
                 <Button
@@ -201,12 +201,12 @@ export default async function Footer() {
               <div className="flex gap-space-3">
                 <MapPin size={17} className="mt-1 flex-none text-dk-blue-1" />
                 <p className="text-ds-body text-light-dark">
-                  Nigeria (serving Pan-Africa &amp; globally)
+                  Nigeria, serving Africa and the world
                 </p>
               </div>
               <div className="flex gap-space-3">
                 <Share2 size={17} className="mt-1 flex-none text-dk-blue-1" />
-                <p className="text-ds-body text-light-dark">Mon–Fri 9am–6pm WAT</p>
+                <p className="text-ds-body text-light-dark">Mon-Fri, 9am-6pm WAT</p>
               </div>
             </div>
           </div>

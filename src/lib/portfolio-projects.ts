@@ -33,46 +33,46 @@ export const PORTFOLIO_CATEGORIES = [
 export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "afriment-brand-identity-system",
-    title: "Afriment — Brand Identity System",
+    title: "Afriment: Brand Identity System",
     categories: ["Branding"],
     image:
       "https://images.unsplash.com/photo-1717994818194-5760d533cab6?auto=format&fit=crop&w=1200&q=80",
     imageAlt:
-      "Brand identity presentation — logo, colour, and type system laid out on a studio wall",
+      "Brand identity presentation with the logo, colour and type system laid out on a studio wall",
     blurb:
-      "A full identity system — logo suite, colour, typography, and usage rules — built to give Afriment a confident, consistent presence across every touchpoint.",
+      "A full identity system, with a logo suite, colour, typography and usage rules, built to give Afriment a confident, consistent look at every touchpoint.",
   },
   {
     slug: "candexa-visual-identity-rebrand",
-    title: "Candexa — Visual Identity Rebrand",
+    title: "Candexa: Visual Identity Rebrand",
     categories: ["Branding"],
     image:
       "https://images.unsplash.com/photo-1695634281254-e94a29d234c0?auto=format&fit=crop&w=1200&q=80",
     imageAlt:
-      "Rebrand presentation — refreshed logo and brand collateral arranged on a desk",
+      "Rebrand presentation with a refreshed logo and brand collateral arranged on a desk",
     blurb:
-      "A strategic rebrand that kept what made Candexa recognisable and modernised everything else — a sharper mark, a tighter palette, and a system that scales.",
+      "A strategic rebrand that kept what made Candexa recognisable and modernised everything else. It got a sharper mark, a tighter palette and a system that scales.",
   },
   {
     slug: "my-lang-coach-promotional-video-series",
-    title: "My Lang Coach — Promotional Video Series",
+    title: "My Lang Coach: Promotional Video Series",
     categories: ["Marketing", "Motion"],
     image:
       "https://images.unsplash.com/photo-1635360381874-edd74cbd57f3?auto=format&fit=crop&w=1200&q=80",
     imageAlt:
       "Motion design frames from a promotional video series shown on screen",
     blurb:
-      "A run of short promotional videos built for the feed — hook in the first second, one clear message each, cut for sound-off viewing.",
+      "A run of short promo videos built for the feed. Each one hooks you in the first second, has one clear message and works with the sound off.",
   },
   {
     slug: "buymejollof-brand-launch-video",
-    title: "Buymejollof — Brand Launch Video",
+    title: "Buymejollof: Brand Launch Video",
     categories: ["Marketing", "Motion"],
     image:
       "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Video production still framed as a brand launch film presentation",
     blurb:
-      "A launch film that introduced Buymejollof with energy and warmth — brand story, product, and call to action in under sixty seconds.",
+      "A launch film that introduced Buymejollof with energy and warmth. Brand story, product and call to action, all in under sixty seconds.",
   },
   {
     slug: "digital-commerce-website",
@@ -83,7 +83,7 @@ export const portfolioProjects: PortfolioProject[] = [
     imageAlt:
       "Website design shown on a desktop screen in a low-lit studio workspace",
     blurb:
-      "A mobile-first commerce site designed around one goal — turning visitors into customers — with SEO foundations and a CMS the client can run themselves.",
+      "A mobile-first commerce site designed around one goal, turning visitors into customers, with SEO foundations and a CMS the client can run themselves.",
   },
   {
     slug: "launch-campaign-system",
@@ -94,7 +94,7 @@ export const portfolioProjects: PortfolioProject[] = [
     imageAlt:
       "Marketing analytics dashboard on a laptop, used as a campaign presentation shot",
     blurb:
-      "An end-to-end launch system — content calendar, paid social, email sequence, and a single analytics view so every channel is accountable to the same numbers.",
+      "An end-to-end launch system with a content calendar, paid social, an email sequence and one analytics view, so every channel is held to the same numbers.",
   },
 ];
 

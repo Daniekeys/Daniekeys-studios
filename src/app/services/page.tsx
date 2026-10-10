@@ -89,7 +89,7 @@ const faqSchema = {
       name: "Do you work with businesses outside Nigeria?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — we work with clients across Africa and internationally. We accept payment via Wise, PayPal, and direct bank transfer in USD, GBP, EUR, and NGN.",
+        text: "Yes, we work with clients across Africa and internationally. You can pay through Wise, PayPal or direct bank transfer in USD, GBP, EUR or NGN.",
       },
     },
     {
@@ -97,7 +97,7 @@ const faqSchema = {
       name: "How long does a typical project take?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Most projects take 1–10 weeks depending on scope — a Starter package is 1–2 weeks, a full Premium transformation is 6–10 weeks.",
+        text: "Most projects take 1 to 10 weeks depending on scope. A Starter package is about 1 to 2 weeks, and a full Premium transformation is 6 to 10 weeks.",
       },
     },
     {
@@ -105,7 +105,7 @@ const faqSchema = {
       name: "What if I don't like the first design concepts?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Every project includes two full rounds of revisions. We don't submit final work until you're happy with it.",
+        text: "Every project includes two full rounds of revisions, and we won't hand over final work until you're happy with it.",
       },
     },
     {
@@ -113,7 +113,7 @@ const faqSchema = {
       name: "Can I pay in instalments?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — most projects use a 50% upfront / 50% on delivery split. Larger projects above ₦500,000 can use a 3-stage payment plan.",
+        text: "Yes. Most projects are split 50% upfront and 50% on delivery. For bigger projects above ₦500,000 we can do a 3-stage payment plan.",
       },
     },
     {
@@ -121,7 +121,7 @@ const faqSchema = {
       name: "Do you offer monthly retainers?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Our Monthly Video & Content Plans give you a set number of videos and graphics every month. See the Pricing page.",
+        text: "Yes. Our Monthly Video & Content Plans give you a set number of videos and graphics every month. Have a look at the Pricing page.",
       },
     },
     {
@@ -129,7 +129,7 @@ const faqSchema = {
       name: "What is an AI-powered studio?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "It means AI is built into how we produce. We use it to make UGC ads, animation and motion content faster and at lower cost than a traditional studio, while our team handles the story, design and final quality.",
+        text: "It means AI is part of how we produce. We use it to make UGC ads, animation and motion content faster and cheaper than a traditional studio, while our team takes care of the story, the design and the final quality.",
       },
     },
     {
@@ -137,7 +137,7 @@ const faqSchema = {
       name: "How fast can you deliver a video?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Your first video is usually ready within 7 working days of a confirmed brief. Rush delivery is available as an add-on.",
+        text: "Your first video is usually ready within 7 working days of a confirmed brief. If you need it sooner, rush delivery is available as an add-on.",
       },
     },
   ],

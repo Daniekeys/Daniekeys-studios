@@ -40,7 +40,7 @@ export default function OurNumbersSection() {
       >
         <Eyebrow theme="light">{"// The Numbers"}</Eyebrow>
         <h3 className="mt-space-3 max-w-2xl text-ds-h4 text-primary">
-          Real Results, Not Just Promises.
+          Real Results, Not Just Promises
         </h3>
 
         <div className="mt-space-7 grid grid-cols-2 gap-x-space-5 gap-y-space-7 lg:grid-cols-4 lg:gap-x-space-8 lg:gap-y-0">

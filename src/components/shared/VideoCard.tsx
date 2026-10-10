@@ -74,7 +74,7 @@ export default function VideoCard({ clip, onOpen, delay = 0 }: VideoCardProps) {
           loop
           playsInline
           preload="none"
-          aria-label={`${clip.title} — silent preview`}
+          aria-label={`${clip.title}, silent preview`}
           className="h-full w-full object-cover"
         />
 

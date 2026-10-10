@@ -19,23 +19,23 @@ import type { PortfolioAsset } from "@/lib/cloudinary-portfolio";
 const processSteps = [
   {
     title: "Discovery Call (Free)",
-    copy: "30 minutes to understand your business, your goals, and what success looks like for you. No jargon. No hard sell.",
+    copy: "A 30 minute chat so we can understand your business, your goals and what a win looks like for you. No jargon and no hard sell.",
   },
   {
     title: "Strategy & Proposal",
-    copy: "We map out a precise creative and technical strategy, and send you a transparent proposal with clear deliverables and timelines.",
+    copy: "We map out the creative and technical plan, then send you a clear proposal with what you're getting and when.",
   },
   {
     title: "Create & Build",
-    copy: "Our team gets to work. You get progress updates every 3 days — not radio silence.",
+    copy: "Our team gets to work and you get a progress update every 3 days, so you're never left guessing.",
   },
   {
     title: "Review & Refine",
-    copy: "Two rounds of revisions are included. We don't stop until the work is right.",
+    copy: "Two rounds of revisions are included, and we keep going until the work feels right.",
   },
   {
     title: "Launch & Support",
-    copy: "We go live together. Then we stay close — monitoring, supporting, and optimising for 30 days post-launch.",
+    copy: "We go live together, then we stick around for 30 days after launch to monitor, support and tweak things.",
   },
 ];
 
@@ -94,10 +94,10 @@ export default function ProcessSection({ video }: ProcessSectionProps) {
         <Eyebrow theme="dark">{"// How We Work"}</Eyebrow>
         <div className="mt-space-3 flex flex-col gap-space-4 lg:flex-row lg:items-end lg:justify-between">
           <h2 className="max-w-2xl text-ds-h2 font-heading text-primary-white">
-            From First Call to Final Delivery — Here&apos;s Exactly How We Work
+            From First Call to Final Delivery, Here&apos;s How We Work
           </h2>
           <p className="max-w-md text-ds-body text-light-dark">
-            No jargon. No hard sell. Just a clear path from hello to launch.
+            No jargon, no hard sell. Just a clear path from hello to launch.
           </p>
         </div>
 
@@ -142,7 +142,7 @@ export default function ProcessSection({ video }: ProcessSectionProps) {
               </div>
               <p className="mt-space-4 text-ds-small text-light-dark">
                 Every project we ship follows these five steps, this one
-                included.
+                too.
               </p>
             </div>
           )}

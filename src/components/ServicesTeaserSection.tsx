@@ -83,8 +83,8 @@ export default function ServicesTeaserSection() {
             Six Ways We Help Your Business Win Online.
           </h2>
           <p className="max-w-md text-ds-body text-light-dark">
-            From scroll-stopping video to websites that convert, every service
-            is built to deliver a measurable return on your investment.
+            From videos that stop the scroll to websites that actually convert,
+            everything we do is meant to pay you back.
           </p>
         </div>
 

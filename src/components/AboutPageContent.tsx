@@ -35,12 +35,12 @@ const buildFadeUp = (reduced: boolean | null) => ({
 const pillars: ImageAccordionItem[] = [
   {
     title: "Creative Excellence",
-    description: "World-class design rooted in strategy and storytelling.",
+    description: "Great design that starts with strategy and a good story.",
     image: "who-we-are/creative-excellence",
   },
   {
     title: "AI-Powered",
-    description: "We use AI to deliver faster, smarter, and more scalable results.",
+    description: "We use AI to get you faster, smarter results that scale.",
     image: "who-we-are/ai-powered",
   },
   {
@@ -50,7 +50,7 @@ const pillars: ImageAccordionItem[] = [
   },
   {
     title: "Pan-African",
-    description: "Built in Africa, built for Africa — and the world.",
+    description: "Built in Africa, for Africa and the rest of the world.",
     image: "who-we-are/pan-african",
   },
 ];
@@ -64,31 +64,31 @@ const stats = [
 
 // Years are placeholders — no published year-by-year company story exists, only
 // "5+ years in business" is confirmed (see 00-OVERVIEW.md open items). Each
-// eyebrow reads "// [YEAR — confirm]" so nothing here presents as fact.
+// eyebrow reads "// [YEAR - confirm]" so nothing here presents as fact.
 const historyEntries = [
   {
-    year: "[YEAR — confirm]",
+    year: "[YEAR - confirm]",
     title: "The Beginning",
     description:
-      "Daniekeys Studios started as a one-person creative operation, taking on brand identity and design projects for early clients.",
+      "Daniekeys Studios started out as a one-person creative operation, taking on brand identity and design projects for our first clients.",
   },
   {
-    year: "[YEAR — confirm]",
+    year: "[YEAR - confirm]",
     title: "Going Full-Service",
     description:
-      "Expanded from design-only into web development and motion graphics, becoming a full-service creative partner.",
+      "We grew from design only into web development and motion graphics, and became a full-service creative partner.",
   },
   {
-    year: "[YEAR — confirm]",
+    year: "[YEAR - confirm]",
     title: "The AI Shift",
     description:
-      "Began integrating AI engineering into client work — chatbots, automation, and AI-powered content pipelines — well ahead of the market.",
+      "We started bringing AI engineering into client work, things like chatbots, automation and AI-powered content pipelines, well before most of the market caught on.",
   },
   {
-    year: "[YEAR — confirm]",
+    year: "[YEAR - confirm]",
     title: "50+ Projects, Pan-African Reach",
     description:
-      "Now serving clients across Nigeria and the wider African market, with a 100% on-time delivery track record and a 5.0 Google rating.",
+      "Today we work with clients across Nigeria and the wider African market, with 100% on-time delivery and a 5.0 Google rating.",
   },
 ];
 
@@ -101,13 +101,13 @@ const trustRows: ImageAccordionItem[] = [
   {
     title: "5.0 Rating on Google",
     description:
-      "Rated by 30+ verified clients — see for yourself, we don't hide our reviews.",
+      "Rated by 30+ verified clients. Go and see for yourself, we don't hide our reviews.",
     metaRight: "30+ reviews",
     image: "trust/rating-5-0",
   },
   {
     title: "100% On-Time Delivery",
-    description: "Every project, every deadline, no exceptions.",
+    description: "Every project, every deadline.",
     metaRight: "100%",
     image: "trust/on-time-delivery",
   },
@@ -121,7 +121,7 @@ const trustRows: ImageAccordionItem[] = [
   {
     title: "3× Average Revenue Growth",
     description:
-      "Our clients don't just get better design — they get better business results.",
+      "Our clients don't just get better design, they get better business results.",
     metaRight: "3×",
     image: "trust/revenue-growth",
   },
@@ -140,11 +140,11 @@ export default function AboutPageContent() {
         <div className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6">
           <Eyebrow theme="dark">{"// About Daniekeys Studios"}</Eyebrow>
           <h1 className="mt-space-4 max-w-4xl text-ds-hero font-heading text-primary-white">
-            Built Different. On Purpose.
+            Built Different, On Purpose
           </h1>
           <p className="mt-space-5 max-w-xl text-ds-body-lg text-light-dark">
             Daniekeys Studios exists because average creative work is everywhere in
-            this market — and we&apos;re not interested in average.
+            this market, and we&apos;re just not interested in average.
           </p>
         </div>
       </section>
@@ -166,17 +166,16 @@ export default function AboutPageContent() {
 
           <div>
             <h2 className="text-ds-h2 font-heading text-primary">
-              We Don&apos;t Just Make Things Look Good. We Make Your Business Grow.
+              We Don&apos;t Just Make Things Look Good. We Help Your Business Grow.
             </h2>
             <p className="mt-space-5 max-w-2xl text-ds-body-lg text-light-dark">
-              Daniekeys Studios is a full-service AI-powered digital agency based in
-              Nigeria, built for businesses that are ready to compete — locally and
-              globally. We bring together three things that most agencies separate:
-              creative excellence, AI engineering, and growth strategy. The result?
-              Brands that don&apos;t just look premium — they perform. Whether
-              you&apos;re a startup finding your identity or an established business
-              ready to scale, we become your creative and technology partner from
-              day one.
+              Daniekeys Studios is a full-service, AI-powered digital agency based in
+              Nigeria, built for businesses that are ready to compete locally and
+              globally. Most agencies keep creative, AI engineering and growth
+              strategy apart. We put them together, so your brand doesn&apos;t just
+              look premium, it performs. Whether you&apos;re a startup finding your
+              identity or an established business ready to scale, we&apos;ll be your
+              creative and tech partner from day one.
             </p>
 
             <div className="relative mt-space-7 aspect-[16/9] w-full overflow-hidden rounded-radius-lg">
@@ -207,7 +206,7 @@ export default function AboutPageContent() {
         >
           <Eyebrow theme="dark">{"// The Numbers"}</Eyebrow>
           <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary-white">
-            The Track Record, in Four Numbers.
+            Our Track Record in Four Numbers
           </h2>
 
           <div className="mt-space-8 grid grid-cols-2 gap-x-space-5 gap-y-space-7 lg:grid-cols-4 lg:gap-x-space-8 lg:gap-y-0">
@@ -248,7 +247,7 @@ export default function AboutPageContent() {
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-radius-lg">
               <Image
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
-                alt="Placeholder portrait — pending the real Daniekeys Studios founder photo"
+                alt="Placeholder portrait, pending the real Daniekeys Studios founder photo"
                 fill
                 sizes="(min-width: 768px) 360px, 100vw"
                 className="object-cover"
@@ -258,15 +257,15 @@ export default function AboutPageContent() {
             <figure className="space-y-space-5">
               <Quote aria-hidden className="h-10 w-10 text-dk-blue-1" />
               <blockquote className="max-w-2xl text-ds-h3 text-primary">
-                We started Daniekeys Studios because we were tired of seeing
+                We started Daniekeys Studios because we were tired of watching
                 ambitious African brands settle for generic, cookie-cutter creative
                 work. Every project we take on is a chance to prove that AI
-                engineering, sharp design, and relentless execution can change the
-                trajectory of a business.
+                engineering, sharp design and relentless execution can change where
+                a business is headed.
               </blockquote>
               <figcaption className="text-ds-small text-light-dark">
                 <span className="font-semibold text-primary">
-                  [FOUNDER NAME — confirm]
+                  [FOUNDER NAME - confirm]
                 </span>
                 , Founder @ Daniekeys Studios
               </figcaption>
@@ -286,11 +285,11 @@ export default function AboutPageContent() {
         >
           <Eyebrow theme="light">{"// Our History"}</Eyebrow>
           <h2 className="mt-space-3 max-w-2xl text-ds-h2 font-heading text-primary">
-            The Story So Far.
+            The Story So Far
           </h2>
           <p className="mt-space-4 max-w-xl text-ds-body text-light-dark">
-            The milestones below are placeholders — exact years and details are
-            being finalised before launch.
+            The milestones below are placeholders. We&apos;re still finalising the
+            exact years and details before launch.
           </p>
 
           <div className="mt-space-9">
@@ -324,14 +323,14 @@ export default function AboutPageContent() {
               Why Businesses Trust Daniekeys Studios
             </h2>
             <p className="max-w-md text-ds-body text-light-dark">
-              We don&apos;t have a trophy case yet — we have something better: a
-              track record.
+              We don&apos;t have a trophy case yet. What we do have is a track
+              record, and we think that&apos;s better.
             </p>
           </div>
 
           <div className="mt-space-8">
             <div className="hidden items-center justify-between border-b border-primary/[0.08] pb-space-3 text-ds-micro uppercase tracking-wide text-light-dark md:flex">
-              <span>No. — Trust Signal</span>
+              <span>No. / Trust Signal</span>
               <span>Proof</span>
             </div>
             <ImageAccordion items={trustRows} theme="light" />

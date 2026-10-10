@@ -9,14 +9,17 @@ import Eyebrow from "@/components/shared/Eyebrow";
 import FeaturedWorkCard from "@/components/shared/FeaturedWorkCard";
 import GridOverlay from "@/components/shared/GridOverlay";
 import TrustBar from "@/components/TrustBar";
-import { showreelClips } from "@/lib/showreel";
-
-// The lone portrait clip from the reel — used as the hero's Featured Work card.
-const heroClip = showreelClips.find((clip) => clip.orientation === "portrait");
+import type { PortfolioAsset } from "@/lib/cloudinary-portfolio";
 
 const proofPoints = ["3× Brand Lift", "+64% Lead Flow", "First Video in 7 Days"];
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  // The 9:16 portrait reel from the Cloudinary portfolio shown in the Featured
+  // Work card. The card renders without a video if Cloudinary can't be reached.
+  video?: PortfolioAsset;
+}
+
+export default function HeroSection({ video }: HeroSectionProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -26,14 +29,13 @@ export default function HeroSection() {
         <div>
           <Eyebrow theme="dark">{"// Meet Daniekeys Studios"}</Eyebrow>
           <h1 className="mt-space-4 text-ds-hero font-heading text-primary-white">
-            Africa&apos;s Most Ambitious Brands Don&apos;t Just Look Good.
+            The Most Ambitious Brands in Africa Don&apos;t Just Look Good.
             <br />
             They Grow.
           </h1>
           <p className="mt-space-5 max-w-xl text-ds-body-lg text-light-dark">
-            Daniekeys Studios combines AI, standout motion design and solid
-            engineering to help businesses across Africa launch faster, look
-            premium and grow.
+            We mix AI, eye-catching motion design and solid engineering to help
+            businesses across Africa launch faster, look premium and grow.
           </p>
 
           <div className="mt-space-6 flex flex-col gap-space-4 sm:flex-row sm:items-center">
@@ -79,10 +81,11 @@ export default function HeroSection() {
             }
           >
             <FeaturedWorkCard
-              videoSrc={heroClip?.src}
-              posterSrc={heroClip?.poster}
+              className="mx-auto w-full max-w-[340px] lg:ml-auto lg:mr-0"
+              videoSrc={video?.url}
+              posterSrc={video?.posterUrl}
               imageAlt="Daniekeys Studios vertical motion graphics sample"
-              caption={heroClip?.title ?? "Vertical Motion Sample"}
+              caption="BGR 2026: So Far"
             />
           </motion.div>
         </div>

@@ -29,16 +29,16 @@ interface PageProps {
 
 export function generateMetadata({ params }: PageProps): Metadata {
   const project = getPortfolioProject(params.slug);
-  if (!project) return { title: "Project Not Found — Daniekeys Studios" };
+  if (!project) return { title: "Project Not Found - Daniekeys Studios" };
 
   return {
-    title: `${project.title} — Daniekeys Studios Portfolio`,
+    title: `${project.title} - Daniekeys Studios Portfolio`,
     description: project.blurb,
     alternates: {
       canonical: `https://www.daniekeysstudios.com/portfolio/${project.slug}`,
     },
     openGraph: {
-      title: `${project.title} — Daniekeys Studios`,
+      title: `${project.title} - Daniekeys Studios`,
       description: project.blurb,
       type: "article",
       url: `https://www.daniekeysstudios.com/portfolio/${project.slug}`,
@@ -96,9 +96,9 @@ export default function PortfolioProjectPage({ params }: PageProps) {
 
             <div className="mt-space-8 flex flex-col gap-space-5">
               <p className="max-w-2xl text-ds-body text-light-dark">
-                A full case study for this project — the challenge, our approach,
-                and the results — is on the way. In the meantime, if this is the
-                kind of work you need, let&apos;s talk.
+                The full case study for this project, with the challenge, our
+                approach and the results, is on the way. In the meantime, if this
+                is the kind of work you need, let&apos;s talk.
               </p>
               <div>
                 <Button variant="primary" href="/contact">

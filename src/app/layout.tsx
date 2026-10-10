@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.daniekeysstudios.com/"),
 
   title:
-    "Daniekeys Studios — Daniekeys Studios | AI Digital Strategy, Branding & Web Nigeria",
+    "Daniekeys Studios | AI Digital Strategy, Branding & Web Nigeria",
   description:
-    "Daniekeys Studios is Africa's AI-powered digital agency for brand identity, web development, motion graphics, and automation in Nigeria.",
+    "Daniekeys Studios is an AI-powered digital agency for brand identity, web development, motion graphics and automation, based in Nigeria and working across Africa.",
   keywords: [
     "creative studio Nigeria",
     "motion graphics agency",

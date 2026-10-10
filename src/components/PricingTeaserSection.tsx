@@ -37,11 +37,11 @@ export default function PricingTeaserSection() {
         <Eyebrow theme="light">{"// Investment"}</Eyebrow>
         <div className="mt-space-3 flex flex-col gap-space-4 lg:flex-row lg:items-end lg:justify-between">
           <h2 className="max-w-2xl text-ds-h2 font-heading text-primary">
-            Transparent Pricing. No Hidden Fees. No Surprises.
+            Clear Pricing. No Hidden Fees. No Surprises.
           </h2>
           <p className="max-w-md text-ds-body text-light-dark">
-            We publish our prices because we respect your time. See exactly
-            what things cost — and what you get for every naira.
+            We put our prices out in the open because we respect your time. See
+            what things cost and what you get for every naira.
           </p>
         </div>
 

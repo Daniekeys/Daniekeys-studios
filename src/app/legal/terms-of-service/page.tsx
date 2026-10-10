@@ -7,7 +7,7 @@ import Eyebrow from "@/components/shared/Eyebrow";
 import GridOverlay from "@/components/shared/GridOverlay";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Daniekeys Studios",
+  title: "Terms of Service - Daniekeys Studios",
   description:
     "The terms governing use of the Daniekeys Studios website and services. Placeholder structure pending final legal copy.",
   alternates: {
@@ -67,11 +67,11 @@ export default function TermsOfServicePage() {
               <AlertTriangle className="mt-1 h-5 w-5 flex-none text-dk-blue-1" />
               <p className="text-ds-small text-light-dark">
                 <span className="font-semibold text-primary">
-                  Placeholder content — not binding terms.
+                  Placeholder content, not binding terms.
                 </span>{" "}
-                The sections below are a structural outline only. Real,
-                lawyer-reviewed terms must replace every placeholder note before
-                this site goes live.
+                The sections below are just an outline. Real, lawyer-reviewed
+                terms need to replace every placeholder note before this site
+                goes live.
               </p>
             </div>
 
@@ -82,7 +82,7 @@ export default function TermsOfServicePage() {
                     {heading}
                   </h2>
                   <p className="mt-space-3 text-ds-body text-light-dark">
-                    [Placeholder — replace with real policy text.]
+                    [Placeholder: replace with real policy text.]
                   </p>
                 </div>
               ))}

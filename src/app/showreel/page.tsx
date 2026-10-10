@@ -10,9 +10,9 @@ import { graphicSamples, showreelClips } from "@/lib/showreel";
 
 export const metadata: Metadata = {
   title:
-    "Showreel — Daniekeys Studios | Motion Graphics, Commercials & Animation Nigeria",
+    "Showreel - Daniekeys Studios | Motion Graphics, Commercials & Animation Nigeria",
   description:
-    "Watch the Daniekeys Studios showreel — animated commercials, product films, character animation, and campaign key art produced for clients across Nigeria and Africa.",
+    "Watch the Daniekeys Studios showreel. You'll find animated commercials, product films, character animation and campaign key art we've made for clients across Nigeria and Africa.",
   keywords: [
     "motion graphics showreel Nigeria",
     "animation studio Nigeria",
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     canonical: "https://www.daniekeysstudios.com/showreel",
   },
   openGraph: {
-    title: "Showreel — Daniekeys Studios",
+    title: "Showreel - Daniekeys Studios",
     description:
-      "Animated commercials, product films, character animation, and campaign key art from Daniekeys Studios.",
+      "Animated commercials, product films, character animation and campaign key art from Daniekeys Studios.",
     type: "website",
     url: "https://www.daniekeysstudios.com/showreel",
     siteName: "Daniekeys Studios",
@@ -43,11 +43,11 @@ const showreelSchema = {
   "@type": "ItemList",
   name: "Daniekeys Studios Showreel",
   description:
-    "Motion graphics, animated commercials, and product films produced by Daniekeys Studios",
+    "Motion graphics, animated commercials and product films made by Daniekeys Studios",
   itemListElement: showreelClips.map((clip, index) => ({
     "@type": "VideoObject",
     position: index + 1,
-    name: `${clip.title} — Daniekeys Studios`,
+    name: `${clip.title} - Daniekeys Studios`,
     description: `${clip.category} motion work produced by Daniekeys Studios.`,
     thumbnailUrl: clip.poster,
     contentUrl: clip.lightboxSrc,
@@ -72,10 +72,10 @@ export default function ShowreelPage() {
           <div className="relative z-10 mx-auto max-w-[1280px] px-space-4 md:px-space-6">
             <Eyebrow theme="dark">{"// Showreel"}</Eyebrow>
             <h1 className="mt-space-4 max-w-4xl text-ds-hero font-heading text-primary-white">
-              Motion, Frame by Frame.
+              Motion, Frame by Frame
             </h1>
             <p className="mt-space-5 max-w-xl text-ds-body-lg text-light-dark">
-              Commercials, product films, character animation, and key art —
+              Commercials, product films, character animation and key art, all
               built for African brands that need to move.
             </p>
           </div>
@@ -83,9 +83,9 @@ export default function ShowreelPage() {
 
         <ShowreelSection
           eyebrow="// The Reel"
-          heading="Press Play."
+          heading="Press Play"
           intro={
-            "Clips autoplay silent. Hit “View video” for the full cut with sound."
+            "Clips autoplay on mute. Hit “View video” to watch the full cut with sound."
           }
           clips={showreelClips}
           graphics={graphicSamples}

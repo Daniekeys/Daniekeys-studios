@@ -41,7 +41,7 @@ export default function TrustBar({ className }: TrustBarProps) {
       }
     >
       <p className="text-ds-small uppercase tracking-wide text-light-dark">
-        Trusted by Ambitious Brands Across Nigeria and Africa
+        Trusted by ambitious brands across Nigeria and Africa
       </p>
       <ClientLogoStrip logos={clients} className="mt-space-4" />
     </motion.div>
