@@ -32,6 +32,18 @@
     { "name": "tejs-launch-posts", "type": "image", "bytes": 130456, "sha256": "60f48831e426b13962fadc9dcbaced7a6b4b00398632d4169e582d942f2a4333", "hint": "Tej's post: Another year, sweeter" },
     { "name": "tejs-small-chops", "type": "image", "bytes": 232992, "sha256": "c6f87a3efe95523fffe2dfa2c62fb1a10404343601e21a883c31b71d2a52028d", "hint": "Tej's post: The party starts here" },
     { "name": "tejs-how-to-order", "type": "image", "bytes": 109306, "sha256": "b17a20796fbe98ddbb5461f696d4e65fabc8b22975a649806ae1aba3128eb0dc", "hint": "Tej's post: Ordering is easy as cake" },
-    { "name": "tejs-wedding-cakes", "type": "image", "bytes": 92589, "sha256": "e268351da51fe6cb018e7a32941f6b57bb7a8ebce346620161b73862b256b389", "hint": "Tej's post: Say yes to the cake" }
+    { "name": "tejs-wedding-cakes", "type": "image", "bytes": 92589, "sha256": "e268351da51fe6cb018e7a32941f6b57bb7a8ebce346620161b73862b256b389", "hint": "Tej's post: Say yes to the cake" },
+    { "name": "ire-jars", "type": "image", "bytes": 86846, "sha256": "400ecb0d5539009e9f2e4076e54845ee28bfc3577b3b07e93a02d1bb01b81a3c", "hint": "Ire still from the launch film: Every bill gets a Jar" },
+    { "name": "ire-cards", "type": "image", "bytes": 22665, "sha256": "84f6a413b540ebf0eb8fb65b592e1e9114b1c0e6ee174397352f301979755bb0", "hint": "Ire still from the launch film: the cards" },
+    { "name": "ire-merch", "type": "image", "bytes": 83579, "sha256": "f3a64085dff1bf42895e6bc7a11d35856084404a39277b91cea979de35d174ae", "hint": "Ire still from the launch film: worn, the cap" },
+    { "name": "ire-website", "type": "image", "bytes": 84028, "sha256": "8dd1911f989bee5d329a0c9f07e5eb5061cb5b6188d20cf0d1dac40de26eea9b", "hint": "Ire still from the launch film: a site that moves like the app" },
+    { "name": "ire-sorted", "type": "image", "bytes": 84007, "sha256": "e9149dbdcf2ae2496c03624802d1d6771bc39352d17a8cb0e77f4bc306327d2b", "hint": "Ire still from the product film: Your money, sorted" },
+    { "name": "ire-features", "type": "image", "bytes": 70421, "sha256": "f2111ae72d10109de3cb97b2ebd41b5d2d208ee2d49eea05d692ed644d53b6d3", "hint": "Ire still from the product film: Jars, Ajo, Insights, Dollar card" },
+    { "name": "tandari-icons", "type": "image", "bytes": 84692, "sha256": "3c156f703031af246d41a2c75efca1c8c043130f5d3c53a7e126527760287b3c", "hint": "Tandari still from the brand film: Twelve icons, pick your mood" },
+    { "name": "tandari-app-screens", "type": "image", "bytes": 99363, "sha256": "aa485734c5c02de1a9003125c741b1651cf513fc58b742eeb3f43e860bff0ec4", "hint": "Tandari still from the brand film: three app screens" },
+    { "name": "tandari-open-briefs", "type": "image", "bytes": 132353, "sha256": "4d9c7b4c37510e8439aaa96e5a5c240fe3dbb82f2be1b74416b747319f726a2f", "hint": "Tandari still from the brand film: Open briefs" },
+    { "name": "afriment-logo-round-1", "type": "image", "bytes": 115689, "sha256": "791a013670de3e92b54bf2f8d8d64edf777fc193f32c8240f5e10bbbde9dcb0a", "hint": "Afriment logo round 1 board, four routes (Downloads/Round 1 Overview@1x.png)" },
+    { "name": "tandari-logo-round-1", "type": "image", "bytes": 103785, "sha256": "59c0a767846995dbd15bc1b544453ca7b8884de6e5d158eab026ba08c6b96490", "hint": "Tandari logo round 1 board, four routes (Downloads/Overview@1x.png)" },
+    { "name": "tandari-bead-t", "type": "image", "bytes": 101721, "sha256": "e38e0e4507ac65fb2a62ef14704cf4ac6beaa77b18aed5c7530f2e335eb408d1", "hint": "Tandari bead T board (Downloads/03 Bead T@1x.png)" }
   ]
 }
