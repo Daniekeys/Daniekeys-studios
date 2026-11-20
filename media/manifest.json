@@ -1,0 +1,37 @@
+{
+  "about": "Every image and film the site uses. Each is uploaded to Cloudinary as daniekeys-site/<name>. The sha256 and bytes are the exact file used in the Claude Design canvas (Daniekeys Studios Website UI), so `node scripts/media.mjs find <folders>` can locate the same file on disk. Originals of the films may be larger versions with a different hash; the hint says what each one is so it can be picked by eye.",
+  "folder": "daniekeys-site",
+  "items": [
+    { "name": "tejs-reel", "type": "video", "bytes": 2020976, "sha256": "f223463134c00961512643400d0a58e5496de793d7daebdf0836f64e0401c426", "hint": "Tej's Bakes brand reel, 16:9 (TejsBakes_BrandReel_16x9_v2.mp4 or similar)" },
+    { "name": "tejs-reel-poster", "type": "image", "bytes": 22553, "sha256": "e54fd3cdd8499eb89a408979b846cd13259e61d68e5c5d2f3079bfe9a7dedf72", "hint": "Still frame of the Tej's reel. Can be made with ffmpeg from tejs-reel" },
+    { "name": "ire-launch", "type": "video", "bytes": 2410328, "sha256": "2608978a4c6424dbcaf2fb2f4769aea317ac310006f3518be026b17a66507155", "hint": "Ire launch film, 40 seconds, 16:9, light/lime look" },
+    { "name": "ire-launch-poster", "type": "image", "bytes": 57683, "sha256": "eb3c5b4194df9c4563e78839fb4d2b5c5f48d014ed947669c17efc41da480306", "hint": "Still frame of the Ire launch film" },
+    { "name": "ire-product", "type": "video", "bytes": 2988542, "sha256": "1c0a4937c1004b47f63535e433fb9984f6a4cb2fd2a9b2d1d29dd702675d544c", "hint": "Ire product film, the dark cinematic one (Tap. Paid.)" },
+    { "name": "ire-product-poster", "type": "image", "bytes": 51967, "sha256": "4e1af1e575eb4a591a13a23dd22c383eb0d4494f78b50fa8f84a276ae120adf7", "hint": "Still frame of the Ire product film" },
+    { "name": "tandari-film", "type": "video", "bytes": 3000194, "sha256": "4f52dc7c874816cf225e2ee3bce208816d3fca77d02aa6e6622ef393bece5840", "hint": "Tandari brand film (Bring your people)" },
+    { "name": "tandari-film-poster", "type": "image", "bytes": 67650, "sha256": "620a8af184c7f0a455d75b00298767d27f4f2a9809a248a0098d953c7986d558", "hint": "Still frame of the Tandari film" },
+    { "name": "showreel", "type": "video", "same_as": "tandari-film", "hint": "Home page showreel. Uses the Tandari film until a real studio showreel is cut" },
+    { "name": "showreel-poster", "type": "image", "same_as": "tandari-film-poster", "hint": "Poster for the showreel" },
+
+    { "name": "afriment-cover", "type": "image", "bytes": 667534, "sha256": "a829c1791938d422576c24a912f9032884d783c3ee28e1c404244bbc2b4d15c7", "hint": "Afriment rebrand hero mockup, portrait 4:5" },
+    { "name": "afriment-website", "type": "image", "bytes": 169970, "sha256": "b3fdb4ef691c83d0f9e49ef74cdf3aa297ea0fa3669def49708b6bb72c5a224e", "hint": "Afriment website homepage screen, 16:9" },
+    { "name": "afriment-social", "type": "image", "bytes": 62018, "sha256": "1ead697fb864c031b743f2c2adc76d7997cf7367ced3a781ed9b98335bfcd074", "hint": "Afriment social post, three-step story" },
+    { "name": "afriment-wordmark", "type": "image", "bytes": 142247, "sha256": "5034b1be009b46c9b23aec71353b585d94660eb93d5d1320048fbd24207a382e", "hint": "Afriment wordmark, wide" },
+    { "name": "tandari-cover", "type": "image", "bytes": 962940, "sha256": "3a6667747a0962518f7dec67663992da286cdddca7b589c15bdbf0b19d13daef", "hint": "Tandari brand hero mockup, portrait 4:5" },
+    { "name": "tandari-product-screens", "type": "image", "bytes": 217747, "sha256": "6b99f38c5a9de316f326349625c86a31e637ef88bfce689d8565902f44e03f6a", "hint": "Tandari brief writer and creator match on phones" },
+    { "name": "tandari-launch-posts", "type": "image", "bytes": 70874, "sha256": "97df1b05a530eb28f793511e53581b52ca404dd70f0401d3aba77186562e5957", "hint": "Tandari launch post, Pidgin first" },
+    { "name": "daniekeys-cover", "type": "image", "bytes": 420708, "sha256": "ad36df93d9e7a9e15aaaede4cb5bc48f25201bfb7e573119d9e410e7db1bf7b4", "hint": "Daniekeys Studios rebrand hero, 16:9 (Monochrome mockups in Drive)" },
+    { "name": "daniekeys-ooh", "type": "image", "bytes": 674818, "sha256": "347308c4080084c5a3d89bcac108c9c674de0ae29027f5d3e0aa052db404a9f3", "hint": "Daniekeys out of home, ambition line lit up at night" },
+    { "name": "daniekeys-merch", "type": "image", "bytes": 474861, "sha256": "042a885316a19e321071870e0a6dd20f5e2fc71bf4320233f49b7c563c49c412", "hint": "Daniekeys black hoodie with the small mark" },
+    { "name": "daniekeys-card", "type": "image", "bytes": 343197, "sha256": "6dadae155d57b035c13c1edba6f4010030b85ff57bf879e70932e94ef4481a18", "hint": "Daniekeys business card in hand" },
+    { "name": "daniekeys-billboard", "type": "image", "bytes": 433212, "sha256": "ff0a97d4d2d19b1d243407e69d7a752009dc0f6e282b2c76a66f05480df0c4d2", "hint": "Daniekeys billboard at dusk" },
+    { "name": "tejs-cover", "type": "image", "bytes": 70850, "sha256": "6fb7a6b6b7913428f73da08cdba0ab693dae41fa324a0a8ccd9f1ef7ace6f565", "hint": "Tej's Bakes cover: wordmark and scalloped shapes" },
+    { "name": "tejs-stationery", "type": "image", "bytes": 349784, "sha256": "bae43119e829b1684f9881d71cd452650f05e23fcff2d7b27671e8164b5123ec", "hint": "Tej's card on a kraft envelope" },
+    { "name": "tejs-logo-system", "type": "image", "bytes": 101337, "sha256": "f44630e01b31e44f86fb65176296ab26cc77cbd9d5d6aab37e8d9cf059ec63e0", "hint": "Tej's wordmark, seal and rosette on the palette colours" },
+    { "name": "tejs-palette", "type": "image", "bytes": 89819, "sha256": "e4a35f5971f42e339f46c9dfc9ee2adc16b7c66bf724c0592a418aa6737ec492", "hint": "Tej's colour palette board" },
+    { "name": "tejs-launch-posts", "type": "image", "bytes": 130456, "sha256": "60f48831e426b13962fadc9dcbaced7a6b4b00398632d4169e582d942f2a4333", "hint": "Tej's post: Another year, sweeter" },
+    { "name": "tejs-small-chops", "type": "image", "bytes": 232992, "sha256": "c6f87a3efe95523fffe2dfa2c62fb1a10404343601e21a883c31b71d2a52028d", "hint": "Tej's post: The party starts here" },
+    { "name": "tejs-how-to-order", "type": "image", "bytes": 109306, "sha256": "b17a20796fbe98ddbb5461f696d4e65fabc8b22975a649806ae1aba3128eb0dc", "hint": "Tej's post: Ordering is easy as cake" },
+    { "name": "tejs-wedding-cakes", "type": "image", "bytes": 92589, "sha256": "e268351da51fe6cb018e7a32941f6b57bb7a8ebce346620161b73862b256b389", "hint": "Tej's post: Say yes to the cake" }
+  ]
+}

@@ -1,5 +1,8 @@
 # CLAUDE.md
 
+> **Current work:** the site is being rebuilt on branch `website-rebuild-monochrome`. Before doing anything, read `HANDOFF.md` in the repo root (status, next steps, decisions, log). Add a line to its Log before you stop.
+
+
 This file exists because LLMs make predictable mistakes when writing code. Not random mistakes. The same ones, over and over. I've watched it happen enough times to write them down.
 
 These are not suggestions. These are rules. Follow them and you'll produce code that doesn't need to be rewritten. Ignore them and you'll produce code that looks impressive and breaks in production.

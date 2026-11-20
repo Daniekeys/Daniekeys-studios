@@ -31,6 +31,10 @@ Every image and film is served from Cloudinary, folder `daniekeys-site`, cloud n
 To add work: upload to `daniekeys-site/<name>` in Cloudinary, then add an entry to `src/lib/work.ts`
 (and a case study in `src/lib/case-studies.ts` if it has one). The home showreel plays `daniekeys-site/showreel`.
 
+## Media script
+
+`node scripts/media.mjs` finds the design's files on disk, checks the Cloudinary keys and uploads to `daniekeys-site/<name>`. Run it with no arguments to see the commands. The list of files is `media/manifest.json`.
+
 ## Run
 
 ```
