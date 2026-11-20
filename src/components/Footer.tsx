@@ -61,7 +61,8 @@ export default function Footer() {
         </div>
 
         <div className="giant" aria-hidden="true">
-          daniekeys
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/daniekeys-studios-light.png" alt="" width={1731} height={212} />
         </div>
         <div
           style={{

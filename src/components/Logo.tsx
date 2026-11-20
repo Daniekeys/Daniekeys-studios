@@ -1,20 +1,13 @@
-// The arrow-key "d" mark plus the daniekeys wordmark.
-export function Mark({ width = 26, height = 18 }: { width?: number; height?: number }) {
-  return (
-    <svg width={width} height={height} viewBox="0 0 245 170" aria-hidden="true">
-      <polygon
-        points="0,35 140,35 140,75 58,75 125,118 197,70 170,0 210,0 245,90 125,170 0,90"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
+// The Daniekeys Studios logo files (mark, "daniekeys" and "STUDIOS"). Dark for Paper, light for Ink.
+const FILES = {
+  dark: { src: "/brand/daniekeys-studios.png", w: 1731, h: 212 },
+  light: { src: "/brand/daniekeys-studios-light.png", w: 1731, h: 212 },
+};
 
-export default function Logo() {
+export default function Logo({ tone = "dark", height = 22 }: { tone?: "dark" | "light"; height?: number }) {
+  const f = FILES[tone];
   return (
-    <>
-      <Mark />
-      <span>daniekeys</span>
-    </>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={f.src} alt="Daniekeys Studios" width={Math.round((f.w / f.h) * height)} height={height} />
   );
 }

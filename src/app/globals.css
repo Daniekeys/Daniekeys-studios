@@ -65,7 +65,8 @@ html{scroll-behavior:smooth}
 .fnav{display:flex;flex-direction:column;gap:2px}
 .fnav a{font-size:clamp(40px,4.6cqw,76px);line-height:1.08}
 .fnav a:hover{opacity:.6}
-.giant{font-size:22cqw;font-weight:500;letter-spacing:-0.065em;line-height:.74;margin-top:120px;white-space:nowrap;margin-left:-0.04em;padding-bottom:3cqw}
+.giant{margin-top:120px;padding-bottom:3cqw}
+.giant img{width:100%;height:auto}
 
 .field{display:flex;align-items:center;gap:12px;border-bottom:1px solid currentColor;padding:10px 0}
 .field input,.field textarea{flex:1;background:transparent;border:0;color:inherit;font:inherit;outline:none;min-width:0}

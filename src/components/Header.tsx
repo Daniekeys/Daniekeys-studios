@@ -49,7 +49,7 @@ export default function Header() {
         <div className="overlay" role="dialog" aria-modal="true" aria-label="Menu">
           <div className="wrap nav">
             <Link href="/" className="logo" aria-label="Daniekeys Studios home">
-              <Logo />
+              <Logo tone="light" />
             </Link>
             <button className="menu" type="button" onClick={() => setOpen(false)}>
               Close
