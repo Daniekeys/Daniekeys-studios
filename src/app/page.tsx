@@ -85,6 +85,7 @@ export default function Home() {
               media={image("afriment-cover", "Afriment")}
               wide={false}
               tags={["Brand identity", "Website"]}
+              href="/work/afriment"
             />
             <WorkTile
               title="Tandari"
@@ -93,6 +94,7 @@ export default function Home() {
               wide={false}
               concept
               tags={["Brand identity", "Product"]}
+              href="/work/tandari"
             />
           </div>
           <WorkTile
@@ -102,6 +104,7 @@ export default function Home() {
             wide
             concept
             tags={["Film and motion", "Brand identity"]}
+            href="/work/ire"
           />
           <WorkTile
             title="Daniekeys Studios"
@@ -109,6 +112,7 @@ export default function Home() {
             media={image("daniekeys-cover", "Daniekeys Studios")}
             wide
             tags={["Brand identity"]}
+            href="/work/daniekeys-studios"
           />
         </div>
       </section>

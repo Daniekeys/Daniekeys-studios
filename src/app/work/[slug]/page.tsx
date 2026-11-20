@@ -32,37 +32,71 @@ function Section({ label, text }: { label: string; text: string }) {
 }
 
 function Gallery({ blocks }: { blocks: Block[] }) {
-  // Consecutive image blocks share one full-bleed column; a "line" breaks it.
+  // Consecutive image blocks share one full-bleed column; a "line" or "section" breaks it.
+  const isText = (b: Block) => b.type === "line" || b.type === "section";
   const groups: Block[][] = [];
   for (const b of blocks) {
-    if (b.type === "line" || !groups.length || groups[groups.length - 1][0].type === "line") groups.push([b]);
+    if (isText(b) || !groups.length || isText(groups[groups.length - 1][0])) groups.push([b]);
     else groups[groups.length - 1].push(b);
   }
   return (
     <>
-      {groups.map((g, gi) =>
-        g[0].type === "line" ? (
-          <section key={gi} className="wrap sec" style={{ textAlign: "center" }}>
-            <p className="serif l" style={{ maxWidth: 1000, marginInline: "auto" }}>
-              {g[0].text}
-            </p>
-          </section>
-        ) : (
+      {groups.map((g, gi) => {
+        const first = g[0];
+        if (first.type === "line")
+          return (
+            <section key={gi} className="wrap sec" style={{ textAlign: "center" }}>
+              <p className="serif l" style={{ maxWidth: 1000, marginInline: "auto" }}>
+                {first.text}
+              </p>
+            </section>
+          );
+        if (first.type === "section")
+          return (
+            <section key={gi} className="wrap" style={{ paddingTop: 120, paddingBottom: 48 }}>
+              <div className="split" style={{ borderTop: rule, paddingTop: 28 }}>
+                <span className="mono mut" style={{ paddingTop: 8 }}>
+                  {first.label}
+                </span>
+                <p className="serif m" style={{ maxWidth: 980 }}>
+                  {first.text}
+                </p>
+              </div>
+            </section>
+          );
+        return (
           <section key={gi} style={{ display: "flex", flexDirection: "column", gap: 24, paddingInline: 24 }}>
             {g.map((b, i) =>
               b.type === "full" ? (
-                <MediaBox key={i} media={b.media} ratio="16/10" />
+                <MediaBox
+                  key={i}
+                  media={b.media}
+                  ratio={b.ratio ?? "16/10"}
+                  style={b.narrow ? { width: "100%", maxWidth: 720, marginInline: "auto" } : undefined}
+                />
               ) : b.type === "pair" || b.type === "trio" ? (
                 <div key={i} className={b.type === "pair" ? "g2" : "g3"}>
                   {b.media.map((m) => (
+                    <MediaBox key={m.src} media={m} ratio={b.ratio ?? "4/5"} />
+                  ))}
+                </div>
+              ) : b.type === "posts" ? (
+                <div key={i} className="g4 keep">
+                  {b.media.map((m) => (
                     <MediaBox key={m.src} media={m} ratio="4/5" />
+                  ))}
+                </div>
+              ) : b.type === "screens" ? (
+                <div key={i} className="g6">
+                  {b.media.map((m) => (
+                    <MediaBox key={m.src} media={m} ratio="780/1688" />
                   ))}
                 </div>
               ) : null
             )}
           </section>
-        )
-      )}
+        );
+      })}
     </>
   );
 }
