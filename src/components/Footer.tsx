@@ -1,260 +1,84 @@
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Share2,
-  Youtube,
-} from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
-import Button from "@/components/shared/Button";
-import LoopingVideo from "@/components/shared/LoopingVideo";
-import { getImageUrl } from "@/lib/cloudinary";
-import { getPortfolioSections } from "@/lib/cloudinary-portfolio";
-import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
-import WatermarkGlyph from "@/components/shared/WatermarkGlyph";
+import Clock from "./Clock";
+import { Newsletter } from "./Forms";
+import { EMAIL, NAV, SOCIAL, WHATSAPP, WHATSAPP_LABEL } from "@/lib/site";
 
-const services = [
-  "AI Digital Strategy",
-  "Brand Identity Design",
-  "Website Development",
-  "Motion Graphics & Video",
-  "AI Chatbot & Automation",
-  "Digital Marketing",
-];
-
-const companyLinks = [
-  { label: "About Us", href: "/about" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Showreel", href: "/showreel" },
-  { label: "Services", href: "/services" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Process", href: "/services#process" },
-  { label: "Contact", href: "/contact" },
-];
-
-const socialLinks = [
-  {
-    icon: Instagram,
-    href: "https://www.instagram.com/daniekeys_studios/",
-    label: "Instagram",
-  },
-  {
-    icon: Linkedin,
-    href: "https://www.linkedin.com/company/daniekeys-studios/",
-    label: "LinkedIn",
-  },
-  {
-    icon: Youtube,
-    href: "https://www.youtube.com/@Danieskeys",
-    label: "YouTube",
-  },
-  {
-    icon: Facebook,
-    href: "https://www.facebook.com/profile.php?id=61583310572575",
-    label: "Facebook",
-  },
-];
-
-export default async function Footer() {
-  // The reel in the CTA block: Daniel's pick, looked up by Cloudinary file
-  // name (the last segment of the public_id), as in FeaturedWorkSection.
-  const ctaVideo = (await getPortfolioSections())
-    .flatMap((section) => section.assets)
-    .find((asset) => asset.publicId.endsWith("/Oyeleke_Emik_SaaS_16x9_swgzuw"));
-
+export default function Footer() {
   return (
-    <footer className="bg-primary text-white">
-      {/* CTA block — doubles as the landing page's Final CTA per
-          docs/revamp/10-LANDING-shell-hero.md, not duplicated mid-page. */}
-      <div className="relative overflow-hidden border-b border-white/10">
-        <WatermarkGlyph size={420} className="absolute -right-16 -top-24 hidden lg:block" />
-        <div className="relative mx-auto max-w-[1280px] px-space-4 py-space-9 md:px-space-6 lg:py-space-10">
-          <Image
-            src="/images/logos/daniekeys-logo-light.png"
-            alt="Daniekeys Studios logo"
-            width={150}
-            height={42}
-            className="h-8 w-auto"
-          />
-
-          <div className="mt-space-8 grid gap-space-8 lg:grid-cols-2 lg:items-center">
-            <div>
-              <h2 className="text-ds-h2 font-heading text-primary-white">
-                Ready to Build Something
-                <br />
-                That Actually Works?
-              </h2>
-              <p className="mt-space-4 max-w-xl text-ds-body-lg text-light-dark">
-                Let&apos;s talk about your brand, your goals and how we can help you
-                grow. The first call is always free.
-              </p>
-              <div className="mt-space-6 flex flex-col gap-space-4 sm:flex-row sm:items-center">
-                <Button
-                  variant="primary"
-                  href="/contact"
-                  className="w-full justify-between sm:w-auto"
-                >
-                  Book a Free Discovery Call
-                </Button>
-                <Button
-                  variant="secondary"
-                  href="https://wa.me/2349030909624"
-                  className="w-full justify-between sm:w-auto"
-                >
-                  WhatsApp Us Now
-                </Button>
-              </div>
-            </div>
-
-            {/* Landscape (16:9) to match the reel. The still only stands in
-                when Cloudinary can't be reached or the video is removed. */}
-            <div className="relative aspect-video w-full overflow-hidden rounded-radius-xl bg-primary">
-              {ctaVideo ? (
-                <LoopingVideo
-                  // Cloudinary caps the width; the frame is never wider than this.
-                  src={ctaVideo.url.replace("/upload/", "/upload/c_limit,w_1280/")}
-                  poster={ctaVideo.posterUrl?.replace("/upload/", "/upload/c_limit,w_1280/")}
-                  label={ctaVideo.title}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <Image
-                  src={getImageUrl("cta/build-something")}
-                  alt="Daniekeys Studios creative team mapping out a brand strategy session"
-                  fill
-                  sizes="(min-width: 1024px) 600px, 100vw"
-                  className="object-cover"
-                />
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Link columns */}
-      <div className="mx-auto max-w-[1280px] px-space-4 py-space-8 md:px-space-6 lg:py-space-9">
-        <div className="grid gap-space-8 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <h3 className="text-ds-micro uppercase tracking-widest text-primary-white">
-              Services
-            </h3>
-            <ul className="mt-space-5 space-y-space-3">
-              {services.map((service) => (
-                <li key={service}>
-                  <Link
-                    href="/services"
-                    className="text-ds-body text-light-dark transition-colors hover:text-dk-blue-1"
-                  >
-                    {service}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-ds-micro uppercase tracking-widest text-primary-white">
-              Company
-            </h3>
-            <ul className="mt-space-5 space-y-space-3">
-              {companyLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-ds-body text-light-dark transition-colors hover:text-dk-blue-1"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-ds-micro uppercase tracking-widest text-primary-white">
-              Contact
-            </h3>
-            <div className="mt-space-5 space-y-space-4">
-              <div className="flex gap-space-3">
-                <Mail size={17} className="mt-1 flex-none text-dk-blue-1" />
-                <a
-                  href="mailto:hello@daniekeysstudios.com"
-                  className="text-ds-body text-light-dark transition-colors hover:text-dk-blue-1"
-                >
-                  hello@daniekeysstudios.com
-                </a>
-              </div>
-              <div className="flex gap-space-3">
-                <Phone size={17} className="mt-1 flex-none text-dk-blue-1" />
-                <a
-                  href="tel:+2349030909624"
-                  className="text-ds-body text-light-dark transition-colors hover:text-dk-blue-1"
-                >
-                  +234 903 090 9624
-                </a>
-              </div>
-              <div className="flex gap-space-3">
-                <MapPin size={17} className="mt-1 flex-none text-dk-blue-1" />
-                <p className="text-ds-body text-light-dark">
-                  Nigeria, serving Africa and the world
-                </p>
-              </div>
-              <div className="flex gap-space-3">
-                <Share2 size={17} className="mt-1 flex-none text-dk-blue-1" />
-                <p className="text-ds-body text-light-dark">Mon-Fri, 9am-6pm WAT</p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-ds-micro uppercase tracking-widest text-primary-white">
-              Follow
-            </h3>
-            <div className="mt-space-5 flex gap-space-3">
-              {socialLinks.map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-radius-md border border-white/15 text-white transition-colors hover:border-dk-blue-1 hover:text-dk-blue-1"
-                >
-                  <Icon size={17} />
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Legal row + copyright + scroll-to-top, all sharing the container's
-            left edge so the scroll button aligns under the logo above. */}
-        <div className="mt-space-8 flex flex-col gap-space-5 border-t border-white/10 pt-space-6 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-space-4">
-            <ScrollToTopButton />
-            <p className="text-ds-small text-light-dark">
-              © 2026 Daniekeys Studios. All rights reserved.
+    <footer className="foot">
+      <div className="wrap">
+        <div className="split" style={{ alignItems: "end" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+            <p className="s serif" style={{ maxWidth: 360 }}>
+              Have something ambitious in mind? Let us talk.
             </p>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <Link className="pill inv" href="/contact">
+                Start a project
+              </Link>
+              <a className="pill" style={{ borderColor: "rgba(244,243,239,.35)" }} href={`mailto:${EMAIL}`}>
+                {EMAIL}
+              </a>
+            </div>
           </div>
-          <div className="flex gap-space-5">
-            <Link
-              href="/legal/privacy-policy"
-              className="text-ds-small text-light-dark transition-colors hover:text-dk-blue-1"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/legal/terms-of-service"
-              className="text-ds-small text-light-dark transition-colors hover:text-dk-blue-1"
-            >
-              Terms of Service
-            </Link>
+          <nav className="fnav serif" aria-label="Footer">
+            {NAV.map((n) => (
+              <Link key={n.href} href={n.href}>
+                {n.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <div className="g4" style={{ marginTop: 96, fontSize: 14 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <span className="mono mut">Newsletter</span>
+            <Newsletter />
           </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <span className="mono mut">Studio</span>
+            <span>Ilorin, Nigeria</span>
+            <span>Working worldwide</span>
+            <span>
+              Local time <Clock />
+            </span>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <span className="mono mut">Contact</span>
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+            <a href={WHATSAPP}>WhatsApp {WHATSAPP_LABEL}</a>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <span className="mono mut">Follow</span>
+            {SOCIAL.map((s) => (
+              <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer">
+                {s.label}
+              </a>
+            ))}
+            <span>Behance, Contra</span>
+          </div>
+        </div>
+
+        <div className="giant" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/daniekeys-studios-light.png" alt="" width={1731} height={212} />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            gap: 16,
+            flexWrap: "wrap",
+            paddingBlock: 24,
+            borderTop: "1px solid rgba(244,243,239,.15)",
+            fontSize: 13,
+          }}
+        >
+          <span className="serif" style={{ fontSize: 20 }}>
+            Press forward.
+          </span>
+          <span className="mut">&#169; {new Date().getFullYear()} Daniekeys Studios</span>
         </div>
       </div>
     </footer>

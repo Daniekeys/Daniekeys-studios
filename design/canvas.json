@@ -1,0 +1,25 @@
+{
+ "title": "Daniekeys Studios Website UI",
+ "source": "https://claude.ai/artifact/UMdqDY7K47XGfugD2SjE1j (Claude Design canvas, exported 2026-11-20, version 1795168334-e438)",
+ "boards": [
+  {"page": "Home", "title": "Home / desktop", "w": 1440, "h": 8474},
+  {"page": "Home", "title": "Home / mobile", "w": 390, "h": 6253},
+  {"page": "Work", "title": "Work index (interactive filters) / desktop", "w": 1440, "h": 13651},
+  {"page": "Work", "title": "Work index (interactive filters) / mobile", "w": 390, "h": 11893},
+  {"page": "CaseStudy", "title": "Case study template: Tej's Bakes / desktop", "w": 1440, "h": 9703},
+  {"page": "CaseStudy", "title": "Case study template: Tej's Bakes / mobile", "w": 390, "h": 7535},
+  {"page": "Services", "title": "Services / desktop", "w": 1440, "h": 4836},
+  {"page": "Services", "title": "Services / mobile", "w": 390, "h": 6480},
+  {"page": "Studio", "title": "Studio (About) / desktop", "w": 1440, "h": 5060},
+  {"page": "Studio", "title": "Studio (About) / mobile", "w": 390, "h": 5845},
+  {"page": "Journal", "title": "Journal / desktop", "w": 1440, "h": 3192},
+  {"page": "Journal", "title": "Journal / mobile", "w": 390, "h": 4744},
+  {"page": "Contact", "title": "Contact / desktop", "w": 1440, "h": 2390},
+  {"page": "Contact", "title": "Contact / mobile", "w": 390, "h": 2813}
+ ],
+ "notes": [
+  "Daniekeys Studios website, v1. Desktop and mobile",
+  "Tej's Bakes uses the real brand. Placeholders, marked with a dashed tag: the home showreel (Wolff Olins), the Eventbrite x BUCK film and a reference brand film. They are other studios' work, here only to preview the look, so swap them before anything goes public. Afriment stills and some Tandari stills are still improvised stand-ins. Logo mark is a hand trace.",
+  "Mobile frames import the desktop pages, so edit the desktop page once and mobile follows. Work index is live: try the sentence filter and Grid / Index toggle in Play."
+ ]
+}

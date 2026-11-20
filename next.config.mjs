@@ -1,22 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: ["images.unsplash.com", "res.cloudinary.com"],
-  },
-  // Legal pages moved to their sitemap paths (docs/revamp/02-SITEMAP-AND-PAGE-PLAN.md).
-  // Keep the old flat URLs working for existing links / bookmarks.
+  // Old URLs from the previous site point at their new homes.
   async redirects() {
     return [
-      {
-        source: "/privacy",
-        destination: "/legal/privacy-policy",
-        permanent: true,
-      },
-      {
-        source: "/terms",
-        destination: "/legal/terms-of-service",
-        permanent: true,
-      },
+      { source: "/about", destination: "/studio", permanent: true },
+      { source: "/portfolio", destination: "/work", permanent: true },
+      { source: "/portfolio/:slug*", destination: "/work", permanent: true },
+      { source: "/showreel", destination: "/work", permanent: true },
+      { source: "/pricing", destination: "/services", permanent: true },
+      { source: "/privacy", destination: "/", permanent: false },
+      { source: "/terms", destination: "/", permanent: false },
+      { source: "/legal/:path*", destination: "/", permanent: false },
     ];
   },
 };
