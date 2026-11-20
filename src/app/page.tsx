@@ -1,165 +1,142 @@
-import AIAdvantageSection from "@/components/AIAdvantageSection";
-import FeaturedWorkSection from "@/components/FeaturedWorkSection";
-import Footer from "@/components/Footer";
-import HeroSection from "@/components/HeroSection";
-import Navigation from "@/components/Navigation";
-import OurNumbersSection from "@/components/OurNumbersSection";
-import PricingTeaserSection from "@/components/PricingTeaserSection";
-import ProcessSection from "@/components/ProcessSection";
-import ServicesTeaserSection from "@/components/ServicesTeaserSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import WhoWeAreSection from "@/components/WhoWeAreSection";
-import { getPortfolioSections } from "@/lib/cloudinary-portfolio";
-import type { Metadata } from "next";
-import Script from "next/script";
+import Link from "next/link";
 
-export const metadata: Metadata = {
-  title:
-    "Daniekeys Studios - AI-Powered Digital Agency in Nigeria | Brand Design, Web & AI Automation",
-  description:
-    "Daniekeys Studios is an AI-powered digital agency in Nigeria. We help ambitious brands with web design, brand identity, motion graphics and AI automation, across Nigeria and the rest of Africa.",
-  keywords:
-    "digital agency Nigeria, AI agency Nigeria, branding agency Nigeria, web design Nigeria, motion graphics Nigeria, AI automation Nigeria, brand identity Lagos, website design Nigeria",
-  alternates: {
-    canonical: "https://www.daniekeysstudios.com/",
-  },
-  openGraph: {
-    title: "Daniekeys Studios - Africa's AI-Powered Digital Agency",
-    description:
-      "From brand identity to AI automation, we help African businesses build brands that convert, scale and own their market.",
-    url: "https://www.daniekeysstudios.com/",
-    siteName: "Daniekeys Studios",
-    type: "website",
-    images: [
-      {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Daniekeys Studios AI-powered digital agency",
-      },
-    ],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+import StartSection from "@/components/StartSection";
+import Showreel from "@/components/Showreel";
+import WorkTile from "@/components/WorkTile";
+import { film, image } from "@/lib/media";
+import { WORK } from "@/lib/work";
 
-const professionalServiceSchema = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Daniekeys Studios",
-  description:
-    "AI-powered digital agency offering brand identity, web development, motion graphics, and AI automation services in Nigeria and Africa.",
-  url: "https://www.daniekeysstudios.com",
-  telephone: "+2349030909624",
-  email: "hello@daniekeysstudios.com",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Ilorin",
-    addressRegion: "Kwara State",
-    addressCountry: "NG",
-  },
-  areaServed: ["Nigeria", "Africa"],
-  serviceType: [
-    "Brand Identity Design",
-    "Web Development",
-    "Motion Graphics",
-    "AI Automation",
-    "Digital Marketing",
-  ],
-  priceRange: "₦₦₦",
-};
+const SERVICES = [
+  ["Brand identity", "Strategy, naming, logo and the full system, ready for every screen and surface.", "Brand Foundations, Brand 360"],
+  ["Websites", "Marketing sites and launch pages that look as good as the brand and load fast.", "Launch Page, Marketing Site"],
+  ["Film and motion", "Logo animations, product launch films and AI video ads, made for every format.", "Launch Film, Motion Ads"],
+  ["Social and content", "Launch posts and monthly content that keep the brand consistent after day one.", "Content Retainers"],
+];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What does Daniekeys Studios do?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Daniekeys Studios is an AI-powered digital agency in Nigeria that provides brand identity design, website development, motion graphics, AI automation, and digital marketing services to businesses across Africa.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How much does Daniekeys Studios charge?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Daniekeys Studios offers packages starting from ₦95,000 for basic digital presence up to ₦3,000,000+ for full-scale AI-powered brand transformation. Custom quotes are available.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is Daniekeys Studios an AI agency?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Daniekeys Studios is founded by an AI engineer and integrates AI tools into brand strategy, content creation, chatbot deployment and digital marketing. That makes us one of the few truly AI-native digital agencies in Nigeria.",
-      },
-    },
-  ],
-};
-
-export default async function Home() {
-  const sections = await getPortfolioSections();
-  const videosIn = (slug: string) =>
-    sections
-      .find((section) => section.slug === slug)
-      ?.assets.filter((asset) => asset.type === "video") ?? [];
-  // Hand-picked videos are looked up by Cloudinary file name (the last segment
-  // of the public_id), as in FeaturedWorkSection.
-  const assets = sections.flatMap((section) => section.assets);
-  // The AI Advantage visual: Daniel's pick, the real-estate video. If it is
-  // ever removed, his second pick, the Digital Ninja motion ad, then the newest
-  // AI animation, else the newest UGC ad.
-  const aiVideo =
-    assets.find((asset) => asset.publicId.endsWith("/real-estate")) ??
-    assets.find((asset) =>
-      asset.publicId.endsWith("/DigitalNinja_MotionAd_45s_idbqtr")
-    ) ??
-    videosIn("ai-animation")[0] ??
-    videosIn("ugc-ads")[0];
-  // The reel that plays beside the How We Work steps.
-  const processVideo = assets.find((asset) =>
-    asset.publicId.endsWith("/afriment_welcome_motion_reel_video_b39krc")
-  );
-
-  // The hero's portrait (9:16) reel: the BGR 2026 "So Far" cut.
-  const heroVideo = assets.find((asset) =>
-    asset.publicId.endsWith("/BGR_2026_SoFar_9x16_e2kx9s")
-  );
-
+export default function Home() {
   return (
-    <main className="min-h-screen bg-primary">
-      <Script
-        id="homepage-professional-service-schema"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(professionalServiceSchema),
+    <>
+      <section
+        className="wrap"
+        style={{
+          paddingTop: "clamp(96px,13cqw,210px)",
+          paddingBottom: "clamp(72px,9cqw,150px)",
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 40,
         }}
-      />
-      <Script
-        id="homepage-faq-schema"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema),
-        }}
-      />
-      <Navigation />
-      <HeroSection video={heroVideo} />
-      <WhoWeAreSection />
-      <OurNumbersSection />
-      <ServicesTeaserSection />
-      <FeaturedWorkSection />
-      <AIAdvantageSection video={aiVideo} />
-      <ProcessSection video={processVideo} />
-      <TestimonialsSection />
-      <PricingTeaserSection />
-      <Footer />
-    </main>
+      >
+        <span className="mono mut">Brand, web and film studio</span>
+        <h1 className="serif xl" style={{ maxWidth: 1180 }}>
+          We turn ambitious businesses into brands the world takes seriously.
+        </h1>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
+          <Link className="pill" href="/contact">
+            Start a project
+          </Link>
+          <Link className="pill line" href="/work">
+            See the work
+          </Link>
+        </div>
+      </section>
+
+      <section className="wrap">
+        <Showreel name="showreel" />
+      </section>
+
+      <section className="wrap sec">
+        <div className="split">
+          <span className="mono mut">The studio</span>
+          <div style={{ display: "flex", flexDirection: "column", gap: 36 }}>
+            <p className="serif m">
+              We are a brand, web and film studio from Nigeria, working with startups and growing businesses
+              everywhere. Strategy, identity, websites and launch films, made by a small team that sweats every
+              detail and uses AI to move like a big one.
+            </p>
+            <Link href="/studio" style={{ fontSize: 15, textDecoration: "underline", textUnderlineOffset: 5 }}>
+              About the studio
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="wrap" style={{ paddingBottom: 140 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", paddingBottom: 28 }}>
+          <h2 className="serif m">Selected work</h2>
+          <Link href="/work" style={{ fontSize: 15 }}>
+            All work ({WORK.length}) &#8594;
+          </Link>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 72 }}>
+          <WorkTile
+            title="Tej's Bakes"
+            blurb="A warm, grown-up identity for a cake and pastry kitchen. Made for the moment."
+            media={film("tejs-reel", "Tej's Bakes")}
+            wide
+            tags={["Brand identity", "Film", "Social"]}
+            href="/work/tejs-bakes"
+          />
+          <div className="g2">
+            <WorkTile
+              title="Afriment"
+              blurb="Rebrand for a platform that turns trained talent into hired talent."
+              media={image("afriment-cover", "Afriment")}
+              wide={false}
+              tags={["Brand identity", "Website"]}
+            />
+            <WorkTile
+              title="Tandari"
+              blurb="An AI creator marketing studio, branded loud and local."
+              media={image("tandari-cover", "Tandari")}
+              wide={false}
+              concept
+              tags={["Brand identity", "Product"]}
+            />
+          </div>
+          <WorkTile
+            title="Ire, launch film"
+            blurb="Good money moves. A Lagos money app, launched with a 40-second brand film."
+            media={film("ire-launch", "Ire, launch film")}
+            wide
+            concept
+            tags={["Film and motion", "Brand identity"]}
+          />
+          <WorkTile
+            title="Daniekeys Studios"
+            blurb="Our own rebrand. Two values, one grey and the arrow-key d."
+            media={image("daniekeys-cover", "Daniekeys Studios")}
+            wide
+            tags={["Brand identity"]}
+          />
+        </div>
+      </section>
+
+      <section className="wrap sec" style={{ paddingTop: 0 }}>
+        <div className="split" style={{ paddingBottom: 48 }}>
+          <span className="mono mut">What we do</span>
+          <h2 className="serif l">Four ways we help brands get taken seriously.</h2>
+        </div>
+        {SERVICES.map(([name, line, offers], i) => (
+          <div
+            key={name}
+            className="row"
+            style={i === SERVICES.length - 1 ? { borderBottom: "1px solid rgba(17,17,17,.14)" } : undefined}
+          >
+            <span className="s">{name}</span>
+            <span className="mut">{line}</span>
+            <span className="mut hide-m">{offers}</span>
+          </div>
+        ))}
+        <div style={{ paddingTop: 28 }}>
+          <Link className="pill line" href="/services">
+            All services
+          </Link>
+        </div>
+      </section>
+
+      <StartSection />
+    </>
   );
 }
