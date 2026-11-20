@@ -47,7 +47,7 @@ const PILLARS: { name: string; line: string; media: Media; offers: [string, stri
     media: image("tejs-launch-posts", "Social and content example: Tej's Bakes posts", 1200),
     offers: [
       ["Launch Set", "Five posts for launch week"],
-      ["Content Retainers", "Content Starter, Growth Partner, Agency Partner"],
+      ["Content Retainers", "Monthly posts and content, planned with you"],
     ],
   },
 ];
