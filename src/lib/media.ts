@@ -2,7 +2,7 @@
 // To swap a piece of work, upload the new file to the same public ID
 // (overwrite) or change the name here.
 
-const CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? "www-daniekeys-com";
+const CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? "gtvnqv9v";
 const FOLDER = "daniekeys-site";
 
 export function img(name: string, width = 2000): string {
