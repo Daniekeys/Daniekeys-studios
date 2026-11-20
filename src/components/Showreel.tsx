@@ -39,6 +39,8 @@ export default function Showreel({ name }: { name: string }) {
           justifyContent: "flex-end",
           padding: "clamp(18px,2.4cqw,36px)",
           color: "#F4F3EF",
+          // The reel is light (Tandari film), so give the button and label something dark to sit on.
+          background: "linear-gradient(to top, rgba(17,17,17,.5), rgba(17,17,17,0) 45%)",
           pointerEvents: "none",
         }}
       >
