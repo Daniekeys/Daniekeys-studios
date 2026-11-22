@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tandari: Brands meet the right creators</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Tell Tandari what you're launching. AI writes the brief, finds the creators who fit, checks every draft and pays them on time. Studio concept by Daniekeys Studios.">
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-display:swap;font-weight:200 800;src:url(/sites/tandari/fonts/bricolage-grotesque-latin-opsz-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-display:swap;font-weight:200 800;src:url(/sites/tandari/fonts/bricolage-grotesque-latin-ext-opsz-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'DM Sans';font-style:normal;font-display:swap;font-weight:100 1000;src:url(/sites/tandari/fonts/dm-sans-latin-opsz-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'DM Sans';font-style:normal;font-display:swap;font-weight:100 1000;src:url(/sites/tandari/fonts/dm-sans-latin-ext-opsz-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Caveat';font-style:normal;font-display:swap;font-weight:700;src:url(/sites/tandari/fonts/caveat-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Caveat';font-style:normal;font-display:swap;font-weight:700;src:url(/sites/tandari/fonts/caveat-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+:root{
+  --paper:#FFFDF8;--cream:#FFF6E9;--hair:#EFE3D0;--ink:#15110E;--muted:#6B6259;
+  --yellow:#FFC93C;--indigo:#2B2FD9;--pink:#E2366B;--pinkd:#B8204F;--green:#1F9D6B;--greend:#157A53;
+  --r-lg:24px;--r-md:16px;--wrap:1240px;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;--sans:"DM Sans",system-ui,sans-serif;--hand:"Caveat",cursive;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.03em;margin:0;line-height:1}
+.hand{font-family:var(--hand);font-weight:700;line-height:1;display:inline-block}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--pink);display:block}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;font-weight:700;font-size:14px;white-space:nowrap}
+.btn{padding:13px 22px;border-radius:999px;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;transition:transform .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--indigo);color:var(--cream)}
+.btn-primary:hover{box-shadow:0 8px 20px rgba(43,47,217,.25)}
+.btn-ghost{background:var(--paper);border-color:var(--hair)}
+.btn-ink{background:var(--ink);color:var(--cream)}
+.btn-yellow{background:var(--yellow);color:var(--ink)}
+.sample{font-size:11px;font-weight:700;color:var(--ink);background:var(--yellow);padding:3px 9px;border-radius:999px;letter-spacing:.02em;white-space:nowrap}
+.sample.g{background:var(--green)}
+.sample.c{background:var(--cream);border:1px solid var(--hair)}
+.card{background:var(--cream);border:1px solid var(--hair);border-radius:var(--r-lg);position:relative;overflow:hidden}
+.card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--line,var(--yellow))}
+.l1{--line:var(--yellow)}.l2{--line:var(--indigo)}.l3{--line:var(--pink)}.l4{--line:var(--green)}
+.av{width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);margin-left:-9px;flex:none}
+.av:first-child{margin-left:0}
+.stack{display:flex;align-items:center}
+.sec{padding:110px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:48px}
+.sec-head h2{font-size:clamp(38px,5vw,60px);max-width:720px}
+.sec-head p{max-width:400px;color:var(--muted);font-size:17px;margin:0}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{animation:none!important}}
+
+/* concept bar + nav */
+.concept{background:var(--ink);color:var(--cream);font-size:13px;text-align:center;padding:9px 16px}
+.concept b{color:var(--yellow);font-weight:700}
+nav.top{position:sticky;top:0;z-index:40;background:rgba(255,253,248,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+nav.top.scrolled{border-bottom-color:var(--hair)}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+.logo{display:flex;align-items:center;gap:10px}
+.word{font-family:var(--display);font-weight:800;font-size:27px;letter-spacing:-.035em;position:relative;line-height:1}
+.word .spark-i{position:relative;display:inline-block}
+.word .spark-i svg{position:absolute;left:50%;top:-.04em;width:.36em;height:.36em;transform:translateX(-50%)}
+.nav-links{display:flex;gap:28px;font-size:15px;font-weight:600}
+.nav-links a{color:var(--muted)}.nav-links a:hover{color:var(--ink)}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.menu-btn{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--hair);background:var(--paper);align-items:center;justify-content:center}
+
+/* hero */
+.hero{position:relative;padding:64px 0 40px;overflow:hidden}
+.hero-inner{position:relative;min-height:680px}
+.hero-copy{position:relative;z-index:3;text-align:center;max-width:720px;margin:0 auto;padding-top:20px}
+.hero h1{font-size:clamp(46px,6.2vw,86px);line-height:.98;letter-spacing:-.04em}
+.hero h1 .ico{display:inline-flex;width:.78em;height:.78em;border-radius:26%;align-items:center;justify-content:center;vertical-align:-.06em;margin:0 .04em;transform:rotate(-6deg)}
+.hero h1 .ico svg{width:58%;height:58%}
+.hero h1 .ico.b{background:var(--yellow)}.hero h1 .ico.c{background:var(--pink);transform:rotate(7deg)}
+.hero h1 .ico.a{background:var(--indigo);transform:rotate(4deg)}
+.hero-sub{font-size:19px;color:var(--muted);max-width:560px;margin:24px auto 0}
+.prompt{margin:36px auto 0;max-width:680px;background:var(--paper);border:1.5px solid var(--ink);border-radius:999px;padding:8px 8px 8px 24px;display:flex;align-items:center;gap:12px;box-shadow:0 6px 0 var(--ink)}
+.prompt svg.sp{flex:none}
+.prompt input{flex:1;border:0;outline:0;background:transparent;font:inherit;font-size:17px;color:var(--ink);min-width:0}
+.prompt input::placeholder{color:#8F857B}
+.prompt .btn{padding:14px 22px}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:18px}
+.chip{background:var(--cream);border:1px solid var(--hair);padding:8px 14px;border-radius:999px;font-size:14px;font-weight:600;transition:background .15s}
+.chip:hover{background:var(--yellow);border-color:var(--yellow)}
+.hero-proof{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:28px;font-size:14px;color:var(--muted)}
+.live{display:flex;align-items:center;gap:14px;max-width:560px;margin:26px auto 0;padding:14px 16px 18px;text-align:left;background:var(--paper)}
+.live .lg{width:40px;height:40px;border-radius:12px;background:var(--pink);color:var(--cream);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;flex:none}
+.live .lv-main{flex:1;min-width:0;font-size:15px}
+@media (max-width:680px){.live .stack{display:none}}
+.brief-out{max-width:680px;margin:22px auto 0;text-align:left;display:none}
+.brief-out.show{display:block;animation:pop .45s ease}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.brief-card{padding:22px 24px 26px}
+.brief-card .bh{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+.brief-card h4{font-family:var(--display);font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0 0 12px;line-height:1.1}
+.brief-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;font-size:14px}
+.brief-grid div b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* arches */
+.arch{position:absolute;z-index:2;border-radius:999px 999px 28px 28px;overflow:hidden;box-shadow:0 18px 40px rgba(21,17,14,.14);animation:float 7s ease-in-out infinite}
+.arch img{width:100%;height:100%;object-fit:cover}
+.arch.blob{border-radius:46% 54% 40% 60% / 52% 44% 56% 48%}
+.arch.circ{border-radius:50%}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.tag{position:absolute;z-index:4;background:var(--paper);border:1px solid var(--hair);border-radius:16px;padding:9px 12px;box-shadow:0 10px 24px rgba(21,17,14,.10);font-size:13px;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.tag b{display:block;font-size:13px}
+.tag small{display:block;color:var(--muted);font-size:12px}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.note{position:absolute;z-index:4;color:var(--pink);font-size:30px}
+.a1{left:0;top:40px;width:170px;height:226px;background:var(--yellow)}
+.a2{left:40px;top:330px;width:190px;height:250px;animation-delay:-2s;background:var(--indigo)}
+.a3{left:220px;top:540px;width:118px;height:118px;animation-delay:-4s}
+.a4{right:0;top:30px;width:176px;height:236px;animation-delay:-1s}
+.a5{right:30px;top:330px;width:200px;height:250px;animation-delay:-3s}
+.a6{right:250px;top:548px;width:112px;height:112px;animation-delay:-5s}
+.t1{left:110px;top:244px}.t2{right:96px;top:262px}.t3{left:-6px;top:606px}.t4{right:-6px;top:612px}
+.n1{left:30px;top:2px;transform:rotate(-6deg)}.n2{right:44px;top:690px;transform:rotate(5deg);color:var(--indigo)}
+.bead{position:absolute;border-radius:50%;z-index:1}
+
+/* brands strip */
+.brands{padding:30px 0 10px}
+.brands .wrap{display:flex;align-items:center;gap:28px}
+.brands .lbl{font-size:13px;color:var(--muted);max-width:150px;line-height:1.35;flex:none}
+.marquee{flex:1;min-width:0;width:100%;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:16px;width:max-content;animation:scroll 32s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.bl{display:flex;align-items:center;gap:10px;padding:12px 18px;border:1px solid var(--hair);border-radius:999px;background:var(--paper);white-space:nowrap}
+.bl .mk{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:14px}
+.bl .nm{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em}
+.bl .ct{font-size:12px;color:var(--muted)}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{padding:22px 22px 26px;display:flex;flex-direction:column;gap:14px}
+.step .num{display:flex;align-items:center;justify-content:space-between}
+.step .num > span:first-child{font-family:var(--display);font-weight:800;font-size:15px;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:center}
+.step h3{font-size:26px;letter-spacing:-.02em}
+.step p{margin:0;color:var(--muted);font-size:15px}
+.mini{background:var(--paper);border:1px solid var(--hair);border-radius:18px;padding:14px;font-size:13px;margin-top:auto}
+.mini .row{display:flex;align-items:center;gap:10px;padding:7px 0}
+.mini .row + .row{border-top:1px solid var(--hair)}
+.mini .k{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.bar{height:6px;border-radius:999px;background:var(--hair);overflow:hidden;flex:1}
+.bar i{display:block;height:100%;border-radius:999px}
+.ck{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+.vid{position:relative;height:112px;border-radius:12px;overflow:hidden;margin-bottom:8px}
+.vid img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.vid .play{position:absolute;left:50%;top:50%;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;background:rgba(255,246,233,.92);display:flex;align-items:center;justify-content:center}
+.vid .ts{position:absolute;left:8px;top:8px;background:var(--cream);font-weight:700;font-size:11px;padding:3px 8px;border-radius:999px}
+.steps-foot{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:34px;flex-wrap:wrap}
+
+/* AI bento */
+.bento{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto;gap:18px}
+.bx{padding:28px 28px 32px;display:flex;flex-direction:column;gap:14px}
+.bx h3{font-size:30px;letter-spacing:-.025em}
+.bx p{margin:0;color:var(--muted);font-size:15px;max-width:420px}
+.bx .kicker{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.bx-brief{grid-column:1;grid-row:1 / span 2;background:var(--indigo);border-color:var(--indigo);color:var(--cream)}
+.bx-brief p{color:rgba(255,246,233,.82)}
+.bx-brief::after{background:var(--yellow)}
+.typed{background:rgba(255,246,233,.12);border:1px solid rgba(255,246,233,.25);border-radius:999px;padding:12px 18px;font-size:15px;display:flex;gap:10px;align-items:center}
+.typed .caret{width:2px;height:18px;background:var(--yellow);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.ai-add{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ai-add span{background:rgba(255,246,233,.1);border:1px solid rgba(255,246,233,.22);border-radius:14px;padding:10px 12px;font-size:14px;font-weight:600}
+.ai-add b{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.7;font-weight:700}
+.brief-doc{background:var(--paper);color:var(--ink);border-radius:20px;padding:18px 20px;margin-top:auto}
+.brief-doc .ttl{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1.1;margin:8px 0 10px}
+.brief-doc .li{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--hair);font-size:14px}
+.brief-doc .li .d{width:8px;height:8px;border-radius:50%;margin-top:6px;flex:none}
+.brief-doc .li b{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.bx-photo{padding:0;min-height:380px;color:var(--cream)}
+.bx-photo img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bx-photo .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,17,14,0) 30%,rgba(21,17,14,.78) 100%)}
+.bx-photo .inner{position:relative;z-index:2;padding:26px 26px 30px;margin-top:auto;display:flex;flex-direction:column;gap:8px;height:100%;justify-content:flex-end}
+.bx-photo p{color:rgba(255,246,233,.86)}
+.bx-photo .floater{position:absolute;z-index:3;background:var(--paper);color:var(--ink);border-radius:16px;padding:10px 12px;font-size:13px;box-shadow:0 12px 28px rgba(21,17,14,.22);display:flex;gap:10px;align-items:center}
+.flag{position:absolute;z-index:3;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;display:flex;gap:7px;align-items:center;box-shadow:0 8px 18px rgba(21,17,14,.18)}
+.price{display:flex;flex-direction:column;gap:10px;margin-top:auto;background:var(--paper);border:1px solid var(--hair);border-radius:18px;padding:16px}
+.range{position:relative;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--hair),var(--yellow) 40%,var(--green) 70%,var(--hair))}
+.range .knob{position:absolute;top:50%;left:58%;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;background:var(--ink);border:4px solid var(--paper);box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.chart{display:flex;align-items:flex-end;gap:8px;height:84px;margin-top:auto}
+.chart i{flex:1;border-radius:8px 8px 3px 3px;display:block}
+.summary{background:var(--paper);border:1px solid var(--hair);border-radius:16px;padding:12px 14px;font-size:14px}
+
+/* creator side */
+.creator{padding:0 0 110px}
+.cpanel{background:var(--yellow);border-radius:40px;padding:64px;display:grid;grid-template-columns:1fr 1fr;gap:48px;position:relative;overflow:hidden}
+.cpanel h2{font-size:clamp(40px,5.4vw,72px)}
+.cpanel .hand.big{font-size:clamp(44px,5vw,72px);white-space:nowrap;color:var(--indigo);transform:rotate(-4deg);margin-bottom:6px}
+.cpanel p.lead{font-size:18px;max-width:460px;margin:20px 0 26px}
+.perks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:30px}
+.perk{background:var(--paper);border-radius:20px;padding:16px;display:flex;gap:12px;align-items:flex-start}
+.perk .ic{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.perk b{display:block;font-size:15px}
+.perk span{font-size:13px;color:var(--muted)}
+.cvis{position:relative;min-height:560px}
+.cvis .ph{position:absolute;left:8%;top:0;width:70%;height:100%;border-radius:999px 999px 32px 32px;overflow:hidden;border:6px solid var(--paper)}
+.cvis .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.wallet{position:absolute;right:-8px;bottom:40px;width:270px;background:var(--green);border-radius:26px;padding:20px;box-shadow:0 24px 50px rgba(21,17,14,.25);color:var(--ink)}
+.wallet .amt{font-family:var(--display);font-weight:800;font-size:40px;letter-spacing:-.03em;margin:4px 0 2px}
+.deal{position:absolute;left:-12px;top:70px;width:250px;background:var(--paper);border-radius:22px;padding:16px;box-shadow:0 20px 44px rgba(21,17,14,.2)}
+.deal .hd{display:flex;align-items:center;gap:10px}
+.deal .lg{width:36px;height:36px;border-radius:11px;background:var(--pink);color:var(--cream);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:15px}
+.lang{position:absolute;right:20px;top:24px;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.lang span{background:var(--ink);color:var(--cream);font-size:13px;font-weight:700;padding:7px 12px;border-radius:999px}
+.cbeads{position:absolute;right:-60px;top:-60px;opacity:.18;pointer-events:none}
+
+/* payments */
+.pay-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+.checkout{padding:28px 28px 32px;background:var(--paper)}
+.co-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.co-line{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--hair);font-size:15px}
+.co-line.t{font-weight:700;font-size:17px;border-bottom:0}
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.method{border:1.5px solid var(--hair);border-radius:16px;padding:14px;display:flex;align-items:center;gap:10px;background:var(--paper);font-weight:700;font-size:15px;position:relative}
+.method.on{border-color:var(--ink);box-shadow:0 3px 0 var(--ink)}
+.method .lo{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:none}
+.method .lo svg{width:18px;height:18px;fill:#fff}
+.method small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.payees{margin-top:18px;background:var(--cream);border:1px solid var(--hair);border-radius:18px;padding:14px 16px}
+.payees .pr{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:14px;border-top:1px solid var(--hair)}
+.payees .pr span{flex:1}
+.trust-col{display:grid;grid-template-rows:1fr auto;gap:18px}
+.flow{display:flex;flex-direction:column}
+.flow{padding:24px 24px 28px}
+.flow-foot{margin-top:auto;display:flex;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--hair);border-radius:16px;padding:12px 14px;font-size:14px}
+.flow-foot b{display:block}.flow-foot span{color:var(--muted)}
+.flow-row{display:flex;gap:14px;align-items:flex-start;padding:12px 0;position:relative}
+.flow-row:not(:last-child)::before{content:"";position:absolute;left:15px;top:44px;bottom:-8px;width:2px;background:var(--hair)}
+.flow-row .ck{width:32px;height:32px}
+.flow-row b{display:block;font-size:15px}
+.flow-row span{font-size:13px;color:var(--muted)}
+.flow-row time{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+.tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+.tile{padding:22px 22px 26px}
+.tile .ic{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.tile b{display:block;font-family:var(--display);font-size:20px;letter-spacing:-.02em;margin-bottom:4px}
+.tile span{font-size:14px;color:var(--muted)}
+
+/* creators grid */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.filters button{border:1px solid var(--hair);background:var(--paper);padding:9px 16px;border-radius:999px;font-weight:600;font-size:14px}
+.filters button.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cc{display:flex;flex-direction:column;transition:transform .2s ease, box-shadow .2s ease}
+.cc:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(21,17,14,.10)}
+.cc .pic{height:290px;position:relative;overflow:hidden}
+.cc .pic img{width:100%;height:100%;object-fit:cover}
+.cc .fit{position:absolute;left:14px;top:14px;background:var(--paper);border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;display:flex;gap:6px;align-items:center}
+.cc .city{position:absolute;right:14px;top:14px;background:rgba(21,17,14,.72);color:var(--cream);border-radius:999px;padding:6px 11px;font-size:12px;font-weight:600}
+.cc .body{padding:18px 20px 24px;display:flex;flex-direction:column;gap:10px}
+.cc .nm{display:flex;justify-content:space-between;align-items:center}
+.cc .nm b{font-family:var(--display);font-size:22px;letter-spacing:-.02em}
+.cc .niche{font-size:14px;color:var(--muted);margin-top:-6px}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tags span{font-size:12px;font-weight:600;background:var(--paper);border:1px solid var(--hair);padding:4px 10px;border-radius:999px}
+.cc .ft{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--hair);font-size:13px}
+.cc .ft b{font-size:15px}
+.cc.hide{display:none}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:start}
+.help{padding:30px 28px 34px}
+.faq-side{display:flex;flex-direction:column;gap:18px}
+.danfo{min-height:300px;padding:0;display:flex;align-items:flex-end}
+.danfo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.danfo .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,17,14,0) 35%,rgba(21,17,14,.75))}
+.danfo .in{position:relative;padding:22px 24px 26px;color:var(--cream)}
+.help h3{font-size:34px;margin:16px 0 10px}
+.help p{color:var(--muted);margin:0 0 20px}
+.qa{border-bottom:1px solid var(--hair)}
+.qa button{width:100%;text-align:left;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;gap:20px;align-items:center;font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.015em}
+.qa .pm{width:34px;height:34px;border-radius:50%;background:var(--cream);border:1px solid var(--hair);flex:none;display:flex;align-items:center;justify-content:center;transition:transform .2s, background .2s}
+.qa.open .pm{transform:rotate(45deg);background:var(--yellow);border-color:var(--yellow)}
+.qa .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.qa.open .ans{grid-template-rows:1fr}
+.qa .ans > div{overflow:hidden}
+.qa .ans p{margin:0 0 22px;color:var(--muted);font-size:16px;max-width:620px}
+
+/* final cta */
+.final{padding:0 0 90px}
+.fpanel{position:relative;border-radius:40px;overflow:hidden;background:var(--indigo);color:var(--cream);padding:84px 48px;text-align:center}
+.fpanel .pat{position:absolute;inset:0;opacity:.12}
+.fpanel h2{position:relative;z-index:3;font-size:clamp(40px,5.4vw,74px);max-width:760px;margin:0 auto;line-height:.98}
+.fpanel h2 span{color:var(--yellow)}
+.fpanel p{position:relative;font-size:19px;opacity:.88;max-width:520px;margin:22px auto 0}
+.fpanel .prompt{position:relative;border-color:var(--paper);box-shadow:0 6px 0 var(--yellow)}
+.fpanel .cphoto{position:absolute;width:132px;height:132px;border-radius:50%;overflow:hidden;border:5px solid var(--paper);z-index:2}
+.fpanel .cphoto img{width:100%;height:100%;object-fit:cover}
+.fp1{left:4%;top:12%}.fp2{right:5%;top:14%;width:110px!important;height:110px!important}.fp3{left:7%;bottom:10%;width:100px!important;height:100px!important}.fp4{right:6%;bottom:9%}
+.fpanel .hand{position:absolute;font-size:34px;color:var(--yellow)}
+
+/* footer */
+footer{border-top:1px solid var(--hair);padding:64px 0 36px;background:var(--paper)}
+.fgrid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px}
+.fgrid h5{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.fgrid a.logo{display:flex}
+.fgrid a{display:block;padding:5px 0;font-weight:600;font-size:15px}
+.fgrid a:hover{color:var(--indigo)}
+.fbot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:48px;padding-top:24px;border-top:1px solid var(--hair);font-size:13px;color:var(--muted)}
+.concept-tag{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);padding:7px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em}
+.credits{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6}
+.credits a{text-decoration:underline;text-underline-offset:2px}
+
+/* responsive */
+@media (max-width:1180px){
+  .a1{left:-40px}.a4{right:-40px}.a2{left:-20px}.a5{right:-20px}.a3{left:140px}.a6{right:150px}
+  .t1{left:40px}.t2{right:30px}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .bento{grid-template-columns:1fr 1fr}.bx-brief{grid-column:1 / span 2;grid-row:auto}
+  .cpanel{padding:48px}
+}
+@media (max-width:980px){
+  .nav-links{display:none}
+  .nav-cta .btn-ghost{display:none}
+  .hero-inner{min-height:0}
+  .arch,.tag,.note{display:none}
+  .hero-row{display:flex!important}
+  .cpanel{grid-template-columns:1fr}
+  .cvis{min-height:520px;max-width:520px;margin:0 auto;width:100%}
+  .pay-grid{grid-template-columns:1fr}
+  .cgrid{grid-template-columns:1fr 1fr}
+  .faq-grid{grid-template-columns:1fr}
+  .help{}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .fpanel .cphoto,.fpanel .hand{display:none}
+}
+@media (max-width:680px){
+  .wrap{padding:0 18px}
+  .sec{padding:76px 0}
+  .hero{padding-top:36px}
+  .hero-sub{font-size:17px}
+  .prompt{flex-wrap:wrap;border-radius:26px;padding:14px 14px 14px 18px}
+  .prompt input{flex-basis:calc(100% - 40px)}
+  .prompt .btn{width:100%;justify-content:center}
+  .brands .wrap{flex-direction:column;align-items:flex-start;gap:14px}
+  .brands .lbl{max-width:none}
+  .steps{grid-template-columns:1fr}
+  .step{min-height:0}
+  .bento{grid-template-columns:1fr}.bx-brief{grid-column:auto}
+  .cpanel{padding:34px 22px;border-radius:30px}
+  .perks{grid-template-columns:1fr}
+  .deal{left:0;top:20px;width:220px}
+  .cvis{min-height:480px}
+  .cvis .ph{left:6%;width:88%}
+  .lang{right:0;top:150px}
+  .cbeads{display:none}
+  .deal .btn{font-size:13px!important;padding:9px!important}
+  .flow-foot{flex-wrap:wrap}
+  .flow-row time{display:none}
+  .wallet{right:0;width:230px}
+  .cgrid{grid-template-columns:1fr}
+  .tiles{grid-template-columns:1fr}
+  .methods{grid-template-columns:1fr}
+  .fpanel{padding:60px 22px;border-radius:30px}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .brief-grid{grid-template-columns:1fr}
+  .qa button{font-size:18px}
+  .nav-cta .btn-primary{padding:11px 16px;font-size:14px}
+}
+.hero-row{display:none;gap:12px;overflow-x:auto;margin:30px -18px 0;padding:0 18px 8px;scrollbar-width:none}
+.hero-row::-webkit-scrollbar{display:none}
+.hero-row .arch{position:relative;display:block!important;flex:none;width:150px;height:200px;animation:none;left:auto;right:auto;top:auto}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="beadT" viewBox="0 0 100 100"><rect x="2" y="2" width="96" height="96" rx="26" fill="#2B2FD9"/><circle cx="26" cy="30" r="9.5" fill="#FFC93C"/><circle cx="50" cy="30" r="9.5" fill="#E2366B"/><circle cx="50" cy="54" r="9.5" fill="#FFC93C"/><circle cx="50" cy="78" r="9.5" fill="#FFC93C"/><path d="M74 18 Q76.64 27.36 86 30 Q76.64 32.64 74 42 Q71.36 32.64 62 30 Q71.36 27.36 74 18 Z" fill="#FFF6E9"/></symbol>
+    <symbol id="spark" viewBox="0 0 20 20"><path d="M10 .5Q12.09 7.91 19.5 10 12.09 12.09 10 19.5 7.91 12.09.5 10 7.91 7.91 10 .5Z"/></symbol>
+    <symbol id="check" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.5 9.5 3.5" stroke="#FFF6E9" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="arrow" viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="stripe" viewBox="0 0 24 24"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></symbol>
+    <symbol id="paypal" viewBox="0 0 24 24"><path d="M15.607 4.653H8.941L6.645 19.251H1.82L4.862 0h7.995c3.754 0 6.375 2.294 6.473 5.513-.648-.478-2.105-.86-3.722-.86m6.57 5.546c0 3.41-3.01 6.853-6.958 6.853h-2.493L11.595 24H6.74l1.845-11.538h3.592c4.208 0 7.346-3.634 7.153-6.949a5.24 5.24 0 0 1 2.848 4.686M9.653 5.546h6.408c.907 0 1.942.222 2.363.541-.195 2.741-2.655 5.483-6.441 5.483H8.714Z"/></symbol>
+  </defs>
+</svg>
+
+<div class="concept"><b>Studio concept</b> by Daniekeys Studios. Tandari is not a real company. Every brand, name and number here is sample data.</div>
+
+<nav class="top" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Tandari home">
+      <svg width="38" height="38"><use href="#beadT"/></svg>
+      <span class="word">tandar<span class="spark-i">ı<svg viewBox="0 0 20 20" fill="#E2366B"><use href="#spark"/></svg></span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#ai">Tandari AI</a>
+      <a href="#creators">For creators</a>
+      <a href="#pay">Payments</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#creators" class="btn btn-ghost">Join as creator</a>
+      <a href="#top" class="btn btn-primary" data-focus-prompt>Start a campaign</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-inner">
+      <!-- floating creators -->
+      <span class="note hand n1">AI don write am!</span>
+      <div class="arch a1"><img src="/sites/tandari/img/hero-phone.jpg" alt="Creator reacting to her phone on a yellow wall" style="object-position:50% 20%"></div>
+      <div class="arch a2"><img src="/sites/tandari/img/hero-filming.jpg" alt="Creator setting up a video camera outdoors" style="object-position:40% 30%"></div>
+      <div class="arch circ a3"><img src="/sites/tandari/img/hero-mic.jpg" alt="Creator speaking into a yellow microphone" style="object-position:50% 30%"></div>
+      <div class="arch a4"><img src="/sites/tandari/img/hero-camera.jpg" alt="Creator holding a camera in a bright studio" style="object-position:50% 25%"></div>
+      <div class="arch blob a5"><img src="/sites/tandari/img/hero-gele.jpg" alt="Smiling creator in a blue gele" style="object-position:50% 25%"></div>
+      <div class="arch circ a6"><img src="/sites/tandari/img/hero-afro.jpg" alt="Creator holding a camera" style="object-position:50% 30%"></div>
+
+      <div class="tag t1"><span class="dot" style="background:var(--green)"></span><div><b>Ada · Food</b><small>Lagos · Pidgin, English</small></div></div>
+      <div class="tag t2"><svg width="18" height="18" fill="#E2366B"><use href="#spark"/></svg><div><b>96% fit for Zobo Rush</b><small>Sample match</small></div></div>
+      <div class="tag t3"><span class="ck" style="background:var(--green)"><svg width="11" height="11"><use href="#check"/></svg></span><div><b>Draft approved</b><small>Gidi Cover · sample</small></div></div>
+      <div class="tag t4"><span class="dot" style="background:var(--yellow)"></span><div><b>Payment don land</b><small>₦000,000 · sample</small></div></div>
+      <span class="note hand n2">Na you dey shine!</span>
+
+      <div class="hero-copy">
+        <span class="eyebrow reveal"><i></i>AI creator marketing, made in Africa</span>
+        <h1 style="margin-top:20px" class="reveal">Brands <span class="ico b" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#15110E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M16 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11"/></svg></span> meet the <span class="ico a" aria-hidden="true"><svg viewBox="0 0 20 20" fill="#FFC93C"><use href="#spark"/></svg></span> right creators <span class="ico c" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#FFF6E9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="3"/><path d="m16 10 5-3v10l-5-3"/></svg></span></h1>
+        <p class="hero-sub reveal">Tell Tandari what you're launching. Our AI writes the brief, finds the creators who fit, checks every draft and pays them on time.</p>
+
+        <form class="prompt reveal" id="promptForm" autocomplete="off">
+          <svg class="sp" width="22" height="22" fill="#E2366B"><use href="#spark"/></svg>
+          <input id="promptInput" type="text" aria-label="What are you launching?" placeholder="What are you launching?">
+          <button class="btn btn-primary" type="submit">Write my brief <svg width="16" height="16"><use href="#arrow"/></svg></button>
+        </form>
+        <div class="chips reveal" id="chips">
+          <button class="chip" data-p="A new zobo drink for hot Lagos days">New zobo drink</button>
+          <button class="chip" data-p="Phone screen insurance for students">Phone insurance</button>
+          <button class="chip" data-p="A savings app for market traders">Savings app</button>
+          <button class="chip" data-p="A shea body butter for dry harmattan skin">Harmattan skincare</button>
+        </div>
+
+        <div class="brief-out" id="briefOut">
+          <div class="card l1 brief-card">
+            <div class="bh"><span class="eyebrow" style="color:var(--indigo)"><svg width="14" height="14" fill="#E2366B"><use href="#spark"/></svg>Written by Tandari AI</span><span class="sample">Sample brief</span></div>
+            <h4 id="briefTitle">Zobo Rush: the cold drink for hot Lagos days.</h4>
+            <div class="brief-grid">
+              <div><b>Key message</b><span id="bMsg">Chilled, real hibiscus, no wahala.</span></div>
+              <div><b>Creators</b><span>6 matches in Lagos and Abuja</span></div>
+              <div><b>Do</b><span>Show the product in the first 3 seconds. Film in daylight.</span></div>
+              <div><b>Don't</b><span>No health claims. No other brands in shot.</span></div>
+              <div><b>Deliverables</b><span>2 TikToks, 1 Instagram story each</span></div>
+              <div><b>Fair price</b><span>₦000,000 per creator (sample)</span></div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap"><a href="#creators-grid" class="btn btn-primary">See my matches</a><button class="btn btn-ghost" id="briefAgain" type="button">Try another line</button></div>
+          </div>
+        </div>
+
+        <div class="hero-proof reveal">
+          <div class="stack"><img class="av" src="/sites/tandari/img/a1.jpg" alt=""><img class="av" src="/sites/tandari/img/a5.jpg" alt=""><img class="av" src="/sites/tandari/img/a3.jpg" alt=""><img class="av" src="/sites/tandari/img/a6.jpg" alt=""><img class="av" src="/sites/tandari/img/a2.jpg" alt=""></div>
+          <span>Creators in Lagos, Abuja, Port Harcourt, Accra and Nairobi</span>
+        </div>
+        <div class="live card l4 reveal">
+          <span class="lg">ZR</span>
+          <div class="lv-main"><div style="display:flex;justify-content:space-between;gap:10px"><b>Zobo Rush launch</b><span style="font-size:12px;color:var(--muted)">4 of 6 drafts approved</span></div><div class="bar" style="margin-top:8px"><i style="width:66%;background:var(--green)"></i></div></div>
+          <div class="stack"><img class="av" src="/sites/tandari/img/a5.jpg" alt=""><img class="av" src="/sites/tandari/img/a2.jpg" alt=""><img class="av" src="/sites/tandari/img/a6.jpg" alt=""></div>
+          <span class="sample">Sample</span>
+        </div>
+      </div>
+
+      <div class="hero-row" aria-hidden="true">
+        <div class="arch"><img src="/sites/tandari/img/hero-phone.jpg" alt="" style="object-position:50% 20%"></div>
+        <div class="arch"><img src="/sites/tandari/img/hero-filming.jpg" alt=""></div>
+        <div class="arch"><img src="/sites/tandari/img/hero-camera.jpg" alt=""></div>
+        <div class="arch"><img src="/sites/tandari/img/hero-gele.jpg" alt=""></div>
+        <div class="arch"><img src="/sites/tandari/img/hero-afro.jpg" alt=""></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="brands" aria-label="Sample brands">
+  <div class="wrap">
+    <div class="lbl">Sample brands using Tandari. All invented for this concept.</div>
+    <div class="marquee"><div class="track" id="track">
+      <div class="bl"><span class="mk" style="background:#E2366B;color:#FFF6E9">ZR</span><div><div class="nm">Zobo Rush</div><div class="ct">Drinks · sample</div></div></div>
+      <div class="bl"><span class="mk" style="background:#2B2FD9;color:#FFF6E9">GC</span><div><div class="nm">Gidi Cover</div><div class="ct">Insurance · sample</div></div></div>
+      <div class="bl"><span class="mk" style="background:#FFC93C">OM</span><div><div class="nm">Ona Money</div><div class="ct">Fintech · sample</div></div></div>
+      <div class="bl"><span class="mk" style="background:#15110E;color:#FFF6E9">OJ</span><div><div class="nm">Oja Studio</div><div class="ct">Fashion · sample</div></div></div>
+      <div class="bl"><span class="mk" style="background:#D9A58B">S&amp;S</span><div><div class="nm">Shea &amp; Stone</div><div class="ct">Beauty · sample</div></div></div>
+      <div class="bl"><span class="mk" style="background:#1F9D6B">KH</span><div><div class="nm">Kova House</div><div class="ct">Events · sample</div></div></div>
+    </div></div>
+  </div>
+</section>
+
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow"><i></i>How it works</span><h2 style="margin-top:14px">From one line to paid, in four steps.</h2></div>
+      <p>No agency back and forth, no long email chains. Brief, match, check and pay all live in one place.</p>
+    </div>
+    <div class="steps">
+      <article class="card l1 step reveal">
+        <div class="num"><span>1</span><span class="hand" style="font-size:24px;color:var(--pink);background:none;width:auto;height:auto">one line in</span></div>
+        <h3>Brief</h3><p>Type what you're launching. Tandari AI writes the full brief.</p>
+        <div class="mini">
+          <div class="row" style="border:1px solid var(--hair);border-radius:999px;padding:8px 12px"><svg width="13" height="13" fill="#E2366B"><use href="#spark"/></svg><span>new zobo drink, Lagos</span></div>
+          <div class="row"><span class="dot" style="background:var(--yellow)"></span><div><div class="k">Key message</div>Chilled, real hibiscus</div></div>
+          <div class="row"><span class="dot" style="background:var(--green)"></span><div><div class="k">Deliverables</div>2 TikToks, 1 story</div></div>
+          <div class="row"><span class="dot" style="background:var(--indigo)"></span><div><div class="k">Timeline</div>Live in 7 days</div></div>
+        </div>
+      </article>
+      <article class="card l2 step reveal">
+        <div class="num"><span>2</span><span class="sample c">Sample</span></div>
+        <h3>Match</h3><p>Creators who fit your city, language and audience, with the reason why.</p>
+        <div class="mini">
+          <div class="row"><img class="av" src="/sites/tandari/img/a5.jpg" alt="" style="margin:0"><div style="flex:1"><b>Ada O.</b><div class="k" style="text-transform:none;letter-spacing:0">Food · Pidgin</div></div><b style="color:var(--greend)">96%</b></div>
+          <div class="row"><img class="av" src="/sites/tandari/img/a2.jpg" alt="" style="margin:0"><div style="flex:1"><b>Tobi A.</b><div class="k" style="text-transform:none;letter-spacing:0">Comedy · Yoruba</div></div><b style="color:var(--greend)">91%</b></div>
+          <div class="row"><img class="av" src="/sites/tandari/img/a6.jpg" alt="" style="margin:0"><div style="flex:1"><b>Zainab M.</b><div class="k" style="text-transform:none;letter-spacing:0">Lifestyle · Hausa</div></div><b style="color:var(--greend)">88%</b></div>
+        </div>
+      </article>
+      <article class="card l3 step reveal">
+        <div class="num"><span>3</span><span class="hand" style="font-size:24px;color:var(--indigo);background:none;width:auto;height:auto">AI check</span></div>
+        <h3>Draft check</h3><p>AI reviews every video against the brief before it goes live.</p>
+        <div class="mini">
+          <div class="vid"><img src="/sites/tandari/img/camgirl.jpg" alt="Creator filming with a camera" style="object-position:50% 40%"><span class="ts">Draft 1 · 0:28</span><span class="play"><svg width="14" height="14" viewBox="0 0 20 20"><path d="M6 3 17 10 6 17Z" fill="#15110E"/></svg></span></div>
+          <div class="row"><span class="ck" style="background:var(--green)"><svg width="10" height="10"><use href="#check"/></svg></span>Bottle shows in 3 seconds</div>
+          <div class="row"><span class="ck" style="background:var(--pink);color:#FFF6E9;font-weight:800;font-size:11px">!</span>"Cures stress" is a health claim</div>
+        </div>
+      </article>
+      <article class="card l4 step reveal">
+        <div class="num"><span>4</span><span class="hand" style="font-size:24px;color:var(--greend);background:none;width:auto;height:auto">on time</span></div>
+        <h3>Pay</h3><p>Money is held safe and released the moment you approve.</p>
+        <div class="mini" style="background:var(--green);border-color:var(--green)">
+          <div class="hand" style="font-size:26px;transform:rotate(-3deg)">Payment don land!</div>
+          <div style="font-family:var(--display);font-weight:800;font-size:32px;letter-spacing:-.03em;margin:4px 0 8px">₦000,000</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <span class="pill" style="background:var(--paper);padding:5px 10px;font-size:12px"><svg width="12" height="12" fill="#635BFF"><use href="#stripe"/></svg>Stripe</span>
+            <span class="pill" style="background:var(--paper);padding:5px 10px;font-size:12px"><svg width="12" height="12" fill="#003087"><use href="#paypal"/></svg>PayPal</span>
+            <span class="pill" style="background:var(--ink);color:var(--cream);padding:5px 10px;font-size:12px">Sample</span>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="steps-foot reveal">
+      <div class="stack"><img class="av" src="/sites/tandari/img/a7.jpg" alt=""><img class="av" src="/sites/tandari/img/a8.jpg" alt=""><img class="av" src="/sites/tandari/img/a4.jpg" alt=""></div>
+      <span style="color:var(--muted);font-size:15px">Your team stays in charge. A person approves every step.</span>
+      <a href="#top" class="btn btn-ink" data-focus-prompt>Try the brief writer</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="ai" style="background:var(--cream);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow"><i></i>Tandari AI</span><h2 style="margin-top:14px">AI does the heavy lifting.</h2></div>
+      <p>Five jobs that used to take a week of calls. The AI is a helper, not the boss: your team checks and sends.</p>
+    </div>
+    <div class="bento">
+      <article class="card bx bx-brief reveal">
+        <div class="kicker"><svg width="16" height="16" fill="#FFC93C"><use href="#spark"/></svg>Brief writer</div>
+        <h3>One line in. A full brief out.</h3>
+        <p>Key message, dos and don'ts, deliverables and a timeline, written in seconds and ready to edit.</p>
+        <div class="typed"><svg width="16" height="16" fill="#FFC93C"><use href="#spark"/></svg><span id="typed">insurance for okada riders in Abuja</span><span class="caret"></span></div>
+        <div class="ai-add">
+          <span><b>Tone</b>Warm, a bit funny</span><span><b>Languages</b>Pidgin, Hausa</span><span><b>Creators</b>6 matched</span><span><b>Live in</b>7 days</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;opacity:.9"><div class="stack"><img class="av" src="/sites/tandari/img/a3.jpg" alt="" style="border-color:var(--indigo)"><img class="av" src="/sites/tandari/img/a6.jpg" alt="" style="border-color:var(--indigo)"><img class="av" src="/sites/tandari/img/a1.jpg" alt="" style="border-color:var(--indigo)"><img class="av" src="/sites/tandari/img/a5.jpg" alt="" style="border-color:var(--indigo)"></div><span class="hand" style="font-size:26px;color:var(--yellow);transform:rotate(-3deg)">AI don write am!</span></div>
+        <div class="brief-doc">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span class="eyebrow" style="font-size:11px">Gidi Cover · brief</span><span class="sample">Sample</span></div>
+          <div class="ttl">Ride easy. Gidi Cover has your back.</div>
+          <div class="li"><span class="d" style="background:var(--yellow)"></span><div><b>Key message</b>Cover from ₦000 a week, claim on your phone</div></div>
+          <div class="li"><span class="d" style="background:var(--green)"></span><div><b>Do</b>Film on the road, show the claim screen</div></div>
+          <div class="li"><span class="d" style="background:var(--pink)"></span><div><b>Don't</b>No promises about payouts, no unsafe riding</div></div>
+          <div class="li"><span class="d" style="background:var(--indigo)"></span><div><b>Deliverables</b>3 short videos in Pidgin and Hausa</div></div>
+        </div>
+      </article>
+
+      <article class="card l1 bx bx-photo reveal">
+        <img class="bg" src="/sites/tandari/img/rig.jpg" alt="Creator filming with a camera rig" style="object-position:40% 30%">
+        <div class="shade"></div>
+        <div class="floater" style="left:18px;top:18px"><svg width="16" height="16" fill="#E2366B"><use href="#spark"/></svg><div><b>94% fit</b> · Tech, Lagos<br><small style="color:var(--muted)">Speaks to Gen Z in Pidgin</small></div></div>
+        <div class="inner">
+          <div class="kicker"><svg width="14" height="14" fill="#FFC93C"><use href="#spark"/></svg>Creator match</div>
+          <h3>The right creators, and why.</h3>
+          <p>By niche, city, language and audience. English, Pidgin, Yoruba, Igbo and Hausa.</p>
+        </div>
+      </article>
+
+      <article class="card l3 bx bx-photo reveal">
+        <img class="bg" src="/sites/tandari/img/pointing.jpg" alt="Creator pointing at her phone" style="object-position:50% 20%">
+        <div class="shade"></div>
+        <span class="flag" style="right:16px;top:18px;background:var(--green)"><svg width="10" height="10"><use href="#check"/></svg>Product in shot</span>
+        <span class="flag" style="right:16px;top:58px;background:var(--pink);color:var(--cream)">! Risky claim at 0:12</span>
+        <div class="inner">
+          <div class="kicker"><svg width="14" height="14" fill="#FFC93C"><use href="#spark"/></svg>Draft check</div>
+          <h3>Catches it before it posts.</h3>
+          <p>A missing product shot or a risky claim gets flagged. A person still approves.</p>
+        </div>
+      </article>
+
+      <article class="card l2 bx reveal">
+        <div class="kicker" style="color:var(--indigo)"><svg width="14" height="14" fill="#2B2FD9"><use href="#spark"/></svg>Fair price</div>
+        <h3>A rate nobody has to guess.</h3>
+        <p>Suggested from the work, the reach and the market. Both sides see the same number.</p>
+        <div class="price">
+          <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--muted)"><span>Low</span><b style="color:var(--ink)">Fair: ₦000,000</b><span>High</span></div>
+          <div class="range"><span class="knob"></span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px"><span>2 TikToks · Lagos</span><span class="sample">Sample</span></div>
+        </div>
+      </article>
+
+      <article class="card l4 bx reveal">
+        <div class="kicker" style="color:var(--greend)"><svg width="14" height="14" fill="#1F9D6B"><use href="#spark"/></svg>Results in plain English</div>
+        <h3>The campaign, summed up.</h3>
+        <div class="summary">"Pidgin videos did best. Ada's kitchen clip got the most saves. Run it again in Abuja." <span class="sample" style="margin-left:4px">Sample</span></div>
+        <div class="chart" aria-hidden="true"><i style="height:38%;background:var(--hair)"></i><i style="height:56%;background:var(--yellow)"></i><i style="height:44%;background:var(--hair)"></i><i style="height:92%;background:var(--green)"></i><i style="height:66%;background:var(--indigo)"></i><i style="height:50%;background:var(--pink)"></i></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec creator" id="creators" style="padding-top:110px">
+  <div class="wrap">
+    <div class="cpanel reveal">
+      <svg class="cbeads" width="420" height="420" viewBox="0 0 420 420" aria-hidden="true">
+        <g fill="#15110E"><circle cx="46" cy="46" r="18"/><circle cx="138" cy="46" r="18"/><rect x="217" y="12" width="25" height="68" rx="13"/><circle cx="322" cy="46" r="18"/><rect x="-13" y="104" width="25" height="68" rx="13"/><circle cx="92" cy="138" r="18"/><circle cx="184" cy="138" r="18"/><circle cx="276" cy="138" r="18"/><circle cx="368" cy="138" r="18"/><circle cx="46" cy="230" r="18"/><rect x="125" y="196" width="25" height="68" rx="13"/><circle cx="322" cy="230" r="18"/><circle cx="414" cy="230" r="18"/><circle cx="92" cy="322" r="18"/><rect x="263" y="288" width="25" height="68" rx="13"/><circle cx="368" cy="322" r="18"/></g>
+      </svg>
+      <div style="position:relative;z-index:2">
+        <span class="eyebrow" style="color:var(--ink)"><i style="background:var(--indigo)"></i>For creators</span>
+        <div class="hand big" style="display:block;margin-top:18px">Na you dey shine!</div>
+        <h2>Real brands. Clear briefs. Paid on time.</h2>
+        <p class="lead">Get deals that fit your niche and your voice. Read the brief in your language, film your way, and watch the money land in your wallet.</p>
+        <div class="perks">
+          <div class="perk"><span class="ic" style="background:var(--indigo)"><svg width="18" height="18" fill="#FFC93C"><use href="#spark"/></svg></span><div><b>Briefs that make sense</b><span>Short, clear, in English or Pidgin</span></div></div>
+          <div class="perk"><span class="ic" style="background:var(--green)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15110E" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v18M17 7.5c0-1.9-2.2-3-5-3s-5 1.1-5 3 2.2 2.7 5 3.3 5 1.4 5 3.4-2.2 3.3-5 3.3-5-1.2-5-3.1"/></svg></span><div><b>A fair rate, up front</b><span>No more guessing what to charge</span></div></div>
+          <div class="perk"><span class="ic" style="background:var(--pink)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF6E9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></span><div><b>Paid on time</b><span>Money is held before you start</span></div></div>
+          <div class="perk"><span class="ic" style="background:var(--yellow)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15110E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><div><b>A profile brands trust</b><span>Your best work, in one link</span></div></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><a href="#creators-grid" class="btn btn-ink">Join as a creator</a><a href="#faq" class="btn btn-ghost" style="border-color:var(--ink);background:transparent">How payouts work</a></div>
+      </div>
+      <div class="cvis">
+        <div class="ph"><img src="/sites/tandari/img/selfie.jpg" alt="Creator filming herself on her phone" style="object-position:78% 35%"></div>
+        <div class="lang"><span>English</span><span>Pidgin</span><span>Yorùbá</span></div>
+        <div class="deal">
+          <div class="hd"><span class="lg">ZR</span><div style="flex:1"><b style="font-size:15px">New deal</b><div style="font-size:12px;color:var(--muted)">Zobo Rush · 2 TikToks</div></div><span class="sample">Sample</span></div>
+          <div style="display:flex;gap:8px;margin-top:14px"><span class="btn btn-primary" style="flex:1;justify-content:center;padding:10px;font-size:14px">Accept</span><span class="btn btn-ghost" style="flex:1;justify-content:center;padding:10px;font-size:14px">View brief</span></div>
+        </div>
+        <div class="wallet">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Wallet</span><span class="sample" style="background:var(--paper)">Sample</span></div>
+          <div class="hand" style="font-size:30px;margin-top:10px;transform:rotate(-3deg)">Payment don land!</div>
+          <div class="amt">₦000,000</div>
+          <div style="font-size:13px">Zobo Rush · paid on time</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="pay" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow"><i></i>Payments and trust</span><h2 style="margin-top:14px">Safe for brands. On time for creators.</h2></div>
+      <p>Brands pay into Tandari before work starts. Creators get paid the moment a draft is approved. Nobody chases anybody.</p>
+    </div>
+    <div class="pay-grid">
+      <article class="card l2 checkout reveal">
+        <div class="co-head"><div><span class="eyebrow" style="font-size:11px">Tandari checkout</span><h3 style="font-size:28px;margin-top:6px">Zobo Rush launch</h3></div><span class="sample">Sample</span></div>
+        <div class="co-line"><span>6 creators · 12 TikToks</span><span>₦000,000</span></div>
+        <div class="co-line"><span>Tandari fee</span><span>₦00,000</span></div>
+        <div class="co-line t"><span>Total, held safe until approval</span><span>₦000,000</span></div>
+        <div class="methods" role="radiogroup" aria-label="Payment method, sample">
+          <button class="method on" role="radio" aria-checked="true"><span class="lo" style="background:#635BFF"><svg><use href="#stripe"/></svg></span><span>Stripe<small>Card or bank</small></span></button>
+          <button class="method" role="radio" aria-checked="false"><span class="lo" style="background:#003087"><svg><use href="#paypal"/></svg></span><span>PayPal<small>PayPal balance</small></span></button>
+        </div>
+        <a href="#top" class="btn btn-primary" style="width:100%;justify-content:center" data-focus-prompt>Pay and start campaign</a>
+        <div class="payees">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b style="font-size:14px">Who gets paid on approval</b><span class="sample c">Sample</span></div>
+          <div class="pr"><img class="av" src="/sites/tandari/img/a5.jpg" alt="" style="margin:0"><span>Ada O. · 2 TikToks</span><b>₦000,000</b></div>
+          <div class="pr"><img class="av" src="/sites/tandari/img/a2.jpg" alt="" style="margin:0"><span>Tobi A. · 2 TikToks</span><b>₦000,000</b></div>
+          <div class="pr"><img class="av" src="/sites/tandari/img/a6.jpg" alt="" style="margin:0"><span>Zainab M. · 2 TikToks</span><b>₦000,000</b></div>
+          <div class="pr" style="color:var(--muted)"><div class="stack"><img class="av" src="/sites/tandari/img/a7.jpg" alt=""><img class="av" src="/sites/tandari/img/a8.jpg" alt=""><img class="av" src="/sites/tandari/img/a3.jpg" alt=""></div><span>+ 3 more creators</span><b style="color:var(--ink)">₦000,000</b></div>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin:14px 0 0;text-align:center">Sample checkout for a studio concept. Stripe and PayPal shown as example payment options.</p>
+      </article>
+      <div class="trust-col">
+        <article class="card l4 flow reveal">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b style="font-family:var(--display);font-size:22px;letter-spacing:-.02em">Payment status</b><span class="sample g">Live · sample</span></div>
+          <div class="flow-row"><span class="ck" style="background:var(--indigo)"><svg width="13" height="13"><use href="#check"/></svg></span><div><b>Brand paid</b><span>Money held safe by Tandari</span></div><time>Mon 9:14</time></div>
+          <div class="flow-row"><span class="ck" style="background:var(--indigo)"><svg width="13" height="13"><use href="#check"/></svg></span><div><b>Draft uploaded</b><span>Ada O. · Draft 1</span></div><time>Wed 16:02</time></div>
+          <div class="flow-row"><span class="ck" style="background:var(--green)"><svg width="13" height="13"><use href="#check"/></svg></span><div><b>Approved by Zobo Rush</b><span>AI check passed, team signed off</span></div><time>Thu 11:40</time></div>
+          <div class="flow-row"><span class="ck" style="background:var(--yellow)"><svg width="14" height="14" fill="#15110E"><use href="#spark"/></svg></span><div><b>Creator paid</b><span class="hand" style="font-size:22px;color:var(--pink)">Payment don land!</span></div><time>Thu 11:41</time></div>
+          <div class="flow-row"><span class="ck" style="background:var(--green)"><svg width="13" height="13"><use href="#check"/></svg></span><div><b>Cashed out to bank</b><span>Ada O. · wallet to bank</span></div><time>Thu 11:52</time></div>
+          <div class="flow-foot"><div class="stack"><img class="av" src="/sites/tandari/img/a5.jpg" alt=""><img class="av" src="/sites/tandari/img/a2.jpg" alt=""><img class="av" src="/sites/tandari/img/a6.jpg" alt=""><img class="av" src="/sites/tandari/img/a3.jpg" alt=""></div><div><b>6 of 6 creators paid</b><span>Every step logged in one record</span></div><span class="sample" style="margin-left:auto">Sample</span></div>
+        </article>
+        <div class="tiles">
+          <div class="card l1 tile reveal"><div class="ic" style="background:var(--yellow)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15110E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><b>Held safe</b><span>Paid in before anyone films</span></div>
+          <div class="card l3 tile reveal"><div class="ic" style="background:var(--pink)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF6E9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6Z"/><path d="m9 12 2 2 4-4"/></svg></div><b>Checked creators</b><span>ID and past work reviewed</span></div>
+          <div class="card l2 tile reveal"><div class="ic" style="background:var(--indigo)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF6E9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><b>One clear record</b><span>Every brief, draft and payment</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="creators-grid" style="background:var(--cream);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow"><i></i>Sample creators</span><h2 style="margin-top:14px">Find the voice your customers trust.</h2></div>
+      <p>Names are invented and every number is sample data. Photos are free-licence and credited below.</p>
+    </div>
+    <div class="filters reveal" id="filters">
+      <button class="on" data-f="all">All</button><button data-f="food">Food</button><button data-f="comedy">Comedy</button><button data-f="lifestyle">Lifestyle</button><button data-f="tech">Tech</button><button data-f="pidgin">Speaks Pidgin</button>
+    </div>
+    <div class="cgrid">
+      <article class="card l1 cc reveal" data-t="food pidgin">
+        <div class="pic"><img src="/sites/tandari/img/chef.jpg" alt="Creator in a chef hat cooking in a home kitchen" style="object-position:50% 25%"><span class="fit"><svg width="12" height="12" fill="#E2366B"><use href="#spark"/></svg>96% fit</span><span class="city">Lagos</span></div>
+        <div class="body"><div class="nm"><b>Ada Okafor</b><span class="sample">Sample</span></div><div class="niche">Home cooking and street food</div><div class="tags"><span>Pidgin</span><span>English</span><span>Igbo</span></div><div class="ft"><span style="color:var(--muted)">Fair rate from</span><b>₦000,000</b></div></div>
+      </article>
+      <article class="card l2 cc reveal" data-t="comedy pidgin">
+        <div class="pic"><img src="/sites/tandari/img/agbada.jpg" alt="Smiling creator in a purple outfit" style="object-position:50% 20%"><span class="fit"><svg width="12" height="12" fill="#E2366B"><use href="#spark"/></svg>91% fit</span><span class="city">Ibadan</span></div>
+        <div class="body"><div class="nm"><b>Tobi Adeyemi</b><span class="sample">Sample</span></div><div class="niche">Skits and everyday comedy</div><div class="tags"><span>Yoruba</span><span>Pidgin</span></div><div class="ft"><span style="color:var(--muted)">Fair rate from</span><b>₦000,000</b></div></div>
+      </article>
+      <article class="card l3 cc reveal" data-t="lifestyle">
+        <div class="pic"><img src="/sites/tandari/img/pinkhat.jpg" alt="Creator in a pink hat smiling outdoors" style="object-position:50% 25%"><span class="fit"><svg width="12" height="12" fill="#E2366B"><use href="#spark"/></svg>89% fit</span><span class="city">Abuja</span></div>
+        <div class="body"><div class="nm"><b>Zainab Musa</b><span class="sample">Sample</span></div><div class="niche">Beauty, fashion and day-in-my-life</div><div class="tags"><span>Hausa</span><span>English</span></div><div class="ft"><span style="color:var(--muted)">Fair rate from</span><b>₦000,000</b></div></div>
+      </article>
+      <article class="card l4 cc reveal" data-t="tech pidgin">
+        <div class="pic"><img src="/sites/tandari/img/hero-filming.jpg" alt="Creator setting up a camera outdoors" style="object-position:40% 25%"><span class="fit"><svg width="12" height="12" fill="#E2366B"><use href="#spark"/></svg>94% fit</span><span class="city">Port Harcourt</span></div>
+        <div class="body"><div class="nm"><b>Emeka Nwosu</b><span class="sample">Sample</span></div><div class="niche">Gadgets, apps and money tips</div><div class="tags"><span>Pidgin</span><span>English</span></div><div class="ft"><span style="color:var(--muted)">Fair rate from</span><b>₦000,000</b></div></div>
+      </article>
+      <article class="card l1 cc reveal" data-t="tech lifestyle">
+        <div class="pic"><img src="/sites/tandari/img/laptop.jpg" alt="Smiling creator at a laptop on a yellow set" style="object-position:50% 30%"><span class="fit"><svg width="12" height="12" fill="#E2366B"><use href="#spark"/></svg>87% fit</span><span class="city">Accra</span></div>
+        <div class="body"><div class="nm"><b>Akosua Mensah</b><span class="sample">Sample</span></div><div class="niche">Work, side hustles and money apps</div><div class="tags"><span>Twi</span><span>English</span></div><div class="ft"><span style="color:var(--muted)">Fair rate from</span><b>₦000,000</b></div></div>
+      </article>
+      <article class="card l2 cc reveal" data-t="lifestyle">
+        <div class="pic"><img src="/sites/tandari/img/yellowsuit.jpg" alt="Creator posing in a yellow suit" style="object-position:50% 30%"><span class="fit"><svg width="12" height="12" fill="#E2366B"><use href="#spark"/></svg>85% fit</span><span class="city">Lagos</span></div>
+        <div class="body"><div class="nm"><b>Funmi Bakare</b><span class="sample">Sample</span></div><div class="niche">Fashion, nights out and city guides</div><div class="tags"><span>English</span><span>Yoruba</span></div><div class="ft"><span style="color:var(--muted)">Fair rate from</span><b>₦000,000</b></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap faq-grid">
+    <div class="faq-side reveal"><aside class="card l3 help">
+      <div class="stack"><img class="av" src="/sites/tandari/img/a5.jpg" alt="" style="width:46px;height:46px"><img class="av" src="/sites/tandari/img/a1.jpg" alt="" style="width:46px;height:46px"><img class="av" src="/sites/tandari/img/a3.jpg" alt="" style="width:46px;height:46px"></div>
+      <h3>Questions? Ask us anything.</h3>
+      <p>A real person from the team replies, usually the same day. Sample support for a studio concept.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><a href="#top" class="btn btn-primary" data-focus-prompt>Start a campaign</a><span class="hand" style="font-size:28px;color:var(--pink);transform:rotate(-4deg);align-self:center">We dey here!</span></div>
+    </aside>
+    <div class="card l1 danfo"><img src="/sites/tandari/img/danfo.jpg" alt="Yellow danfo bus on a Lagos road" style="object-position:30% 50%"><div class="shade"></div><div class="in"><span class="hand" style="font-size:32px;color:var(--yellow);transform:rotate(-3deg)">Made for Lagos.</span><div style="font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;margin-top:6px">Built for creators across Africa.</div></div></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow"><i></i>FAQ</span>
+      <h2 style="font-size:clamp(38px,5vw,60px);margin:14px 0 18px">Good questions.</h2>
+      <div class="qa open"><button aria-expanded="true">What does Tandari AI actually do?<span class="pm"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="#15110E" stroke-width="2" stroke-linecap="round"/></svg></span></button><div class="ans"><div><p>It writes the brief from your one line, suggests creators and explains why, checks drafts against the brief, suggests a fair price and writes the campaign summary. Your team reviews and approves every step.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">How do creators get paid?<span class="pm"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="#15110E" stroke-width="2" stroke-linecap="round"/></svg></span></button><div class="ans"><div><p>Brands pay into Tandari before work starts. When the brand approves a draft, the money goes straight to the creator's wallet, and they can cash out to their bank.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">Which payment options can brands use?<span class="pm"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="#15110E" stroke-width="2" stroke-linecap="round"/></svg></span></button><div class="ans"><div><p>In this concept, brands can pay by card or bank through Stripe, or with PayPal, inside Tandari's own checkout. These are sample options for a studio concept.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">Can I choose my own creators?<span class="pm"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="#15110E" stroke-width="2" stroke-linecap="round"/></svg></span></button><div class="ans"><div><p>Yes. The AI gives you a shortlist with reasons, and you can swap anyone in or out, or invite a creator you already work with.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">What languages do creators speak?<span class="pm"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="#15110E" stroke-width="2" stroke-linecap="round"/></svg></span></button><div class="ans"><div><p>English, Pidgin, Yoruba, Igbo and Hausa to start, with more across Africa. Matching takes language into account, so your message lands the way people actually talk.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">Is Tandari a real company?<span class="pm"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="#15110E" stroke-width="2" stroke-linecap="round"/></svg></span></button><div class="ans"><div><p>No. Tandari is a studio concept by Daniekeys Studios, made to show brand, product and web work. All brands, creators, names and numbers here are samples.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="final" aria-label="Get started">
+  <div class="wrap">
+    <div class="fpanel reveal">
+      <svg class="pat" width="100%" height="100%" aria-hidden="true"><defs><pattern id="bp" width="92" height="92" patternUnits="userSpaceOnUse"><circle cx="23" cy="23" r="9" fill="#FFC93C"/><circle cx="69" cy="69" r="9" fill="#FFF6E9"/><path d="M69 10Q70.5 21.5 82 23 70.5 24.5 69 36 67.5 24.5 56 23 67.5 21.5 69 10Z" fill="#E2366B"/><rect x="17" y="52" width="12" height="34" rx="6" fill="#FFF6E9"/></pattern></defs><rect width="100%" height="100%" fill="url(#bp)"/></svg>
+      <div class="cphoto fp1"><img src="/sites/tandari/img/hero-mic.jpg" alt=""></div>
+      <div class="cphoto fp2"><img src="/sites/tandari/img/hero-gele.jpg" alt="" style="object-position:50% 20%"></div>
+      <div class="cphoto fp3"><img src="/sites/tandari/img/floral.jpg" alt="" style="object-position:50% 20%"></div>
+      <div class="cphoto fp4"><img src="/sites/tandari/img/hero-camera.jpg" alt="" style="object-position:50% 20%"></div>
+      <span class="hand" style="left:16%;top:40%;transform:rotate(-8deg)">Oya, let's go!</span>
+      <h2>Brands meet the right creators. <span>AI does the heavy lifting.</span></h2>
+      <p>Type one line. Get a brief, a shortlist and a fair price in under a minute.</p>
+      <form class="prompt" id="promptForm2" autocomplete="off" style="margin-top:34px">
+        <svg class="sp" width="22" height="22" fill="#E2366B"><use href="#spark"/></svg>
+        <input type="text" aria-label="What are you launching?" placeholder="What are you launching?">
+        <button class="btn btn-primary" type="submit">Start free <svg width="16" height="16"><use href="#arrow"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a href="#top" class="logo"><svg width="38" height="38"><use href="#beadT"/></svg><span class="word">tandar<span class="spark-i">ı<svg viewBox="0 0 20 20" fill="#E2366B"><use href="#spark"/></svg></span></span></a>
+        <p style="color:var(--muted);max-width:320px;margin:16px 0 18px">Brands meet the right creators. AI does the heavy lifting. tandari.app</p>
+        <span class="concept-tag"><svg width="12" height="12" fill="#FFC93C"><use href="#spark"/></svg>Studio concept by Daniekeys Studios</span>
+      </div>
+      <div><h5>Product</h5><a href="#how">How it works</a><a href="#ai">Tandari AI</a><a href="#pay">Payments</a><a href="#creators-grid">Creators</a></div>
+      <div><h5>For you</h5><a href="#top" data-focus-prompt>Brands</a><a href="#creators">Creators</a><a href="#ai">Agencies</a><a href="#faq">FAQ</a></div>
+      <div><h5>Studio</h5><a href="https://www.daniekeysstudios.com/">Daniekeys Studios</a><a href="https://www.daniekeysstudios.com/">See more work</a></div>
+    </div>
+    <div class="fbot">
+      <span>Tandari is not a real company. All brands, creators, names and numbers are sample data. Stripe and PayPal are shown as example payment options only.</span>
+      <span>© 2026 Daniekeys Studios</span>
+    </div>
+    <p class="credits">Photos from Unsplash: Ahmed Nasiru, Blessing Olarewaju, Ugwu Samuel, Ufoma Ojo, Gift Habeshaw, Divine Effiong, Muhammad-Taha Ibrahim, Miguel Davis, Joseph Agboola, Emediong Umoh, lanre tobi, Favour Otunji, Jennifer mela444, Vinicius Amano, Ayoola Salako, Olawale Munna, Elizeu Dias, Michael Mike, Tahiti Spears, nana o., Bj Pearce.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>10)},{passive:true});
+
+  // reveal
+  var io='IntersectionObserver' in window ? new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12}) : null;
+  document.querySelectorAll('.reveal').forEach(function(el,i){ if(io){io.observe(el)} else el.classList.add('in') });
+
+  // marquee: duplicate items for a seamless loop
+  var tr=document.getElementById('track'); tr.innerHTML+=tr.innerHTML;
+
+  // prompt placeholder typing
+  var lines=["A new zobo drink for hot Lagos days","Phone insurance for students","A savings app for market traders","Shea butter for harmattan skin"];
+  var input=document.getElementById('promptInput'), li=0, ci=0, del=false;
+  function tick(){
+    if(document.activeElement===input||input.value){setTimeout(tick,600);return}
+    var t=lines[li]; input.placeholder=t.slice(0,ci)||'What are you launching?';
+    if(!del){ci++; if(ci>t.length){del=true;setTimeout(tick,1600);return}} else {ci--; if(ci<0){del=false;ci=0;li=(li+1)%lines.length}}
+    setTimeout(tick,del?28:55);
+  }
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches) setTimeout(tick,1200);
+
+  // brief writer demo
+  var out=document.getElementById('briefOut'), title=document.getElementById('briefTitle'), msg=document.getElementById('bMsg');
+  function brief(text){
+    text=(text||'').trim()||lines[0];
+    var clean=text.replace(/^(a|an|the)\s+/i,''); clean=clean.charAt(0).toUpperCase()+clean.slice(1);
+    title.textContent=clean+': made for the people who will actually use it.';
+    msg.textContent='Say it the way your customers say it. Keep it real, keep it short.';
+    out.classList.add('show');
+    out.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  document.getElementById('promptForm').addEventListener('submit',function(e){e.preventDefault();brief(input.value||input.placeholder)});
+  document.getElementById('promptForm2').addEventListener('submit',function(e){e.preventDefault();var v=this.querySelector('input').value;input.value=v;scrollTo({top:0,behavior:'smooth'});setTimeout(function(){brief(v)},500)});
+  document.querySelectorAll('#chips .chip').forEach(function(c){c.addEventListener('click',function(){input.value=c.dataset.p;brief(c.dataset.p)})});
+  document.getElementById('briefAgain').addEventListener('click',function(){input.value='';input.focus()});
+  document.querySelectorAll('[data-focus-prompt]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();scrollTo({top:0,behavior:'smooth'});setTimeout(function(){input.focus({preventScroll:true})},450)})});
+
+  // AI bento typing
+  var typed=document.getElementById('typed'), tl=["insurance for okada riders in Abuja","a new zobo flavour for December","a bank card for first jobbers"], ti=0;
+  setInterval(function(){ti=(ti+1)%tl.length;typed.style.opacity=0;setTimeout(function(){typed.textContent=tl[ti];typed.style.opacity=1},250)},3200);
+  typed.style.transition='opacity .25s';
+
+  // payment method toggle
+  document.querySelectorAll('.method').forEach(function(m){m.addEventListener('click',function(){document.querySelectorAll('.method').forEach(function(x){x.classList.remove('on');x.setAttribute('aria-checked','false')});m.classList.add('on');m.setAttribute('aria-checked','true')})});
+
+  // creator filters
+  document.querySelectorAll('#filters button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('#filters button').forEach(function(x){x.classList.remove('on')}); b.classList.add('on');
+    var f=b.dataset.f; document.querySelectorAll('.cc').forEach(function(c){c.classList.toggle('hide',f!=='all'&&c.dataset.t.split(' ').indexOf(f)<0)});
+  })});
+
+  // faq
+  document.querySelectorAll('.qa button').forEach(function(b){b.addEventListener('click',function(){var q=b.parentElement,o=q.classList.toggle('open');b.setAttribute('aria-expanded',o)})});
+})();
+</script>
+<!-- Daniekeys Studios portfolio badge: links back to the case study on daniekeysstudios.com. -->
+<a id="dk-badge" href="/work/tandari" aria-label="Made by Daniekeys Studios. Back to the case study" style="position:fixed;left:16px;bottom:16px;z-index:2147483647;display:inline-flex;align-items:center;gap:12px;padding:10px 16px;border-radius:999px;background:#111111;color:#F4F3EF;font:500 12px/1 system-ui,-apple-system,'Segoe UI',sans-serif;letter-spacing:.01em;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,.25)">
+<img src="/brand/daniekeys-studios-light.png" alt="" width="98" height="12" style="display:block;width:98px;height:12px">
+<span>Case study &#8594;</span>
+</a>
+<script>if (window.self !== window.top) document.getElementById("dk-badge").remove();</script>
+
+</body>
+</html>

@@ -7,7 +7,8 @@ import { film, image, type Media } from "./media";
 // 4:5 frames, "trio" three 4:5 frames (each can take its own ratio; "narrow"
 // centres a very tall full image), "posts" a grid of 4:5 social posts,
 // "screens" a row of phone screens, "line" a big centred sentence, "section"
-// a label and a line that starts a new part of the page.
+// a label and a line that starts a new part of the page, "site" the brand
+// website in a browser and phone frame (see src/lib/sites.ts).
 export type Block =
   | { type: "full"; media: Media; ratio?: string; narrow?: boolean }
   | { type: "pair"; media: [Media, Media]; ratio?: string }
@@ -15,7 +16,8 @@ export type Block =
   | { type: "posts"; media: Media[] }
   | { type: "screens"; media: Media[] }
   | { type: "line"; text: string }
-  | { type: "section"; label: string; text: string };
+  | { type: "section"; label: string; text: string }
+  | { type: "site"; slug: string };
 
 export type CaseStudy = {
   slug: string;
@@ -161,6 +163,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       { type: "pair", media: [image("tandari-kit-a15-in-hand", "In their hands"), image("tandari-kit-a16-campaign-cards", "Open briefs, styled like tickets")], ratio: "16/10" },
       { type: "pair", media: [image("tandari-kit-a17-social", "Social templates"), image("tandari-kit-a18-poster-wall", "Poster wall")], ratio: "16/10" },
       { type: "pair", media: [image("tandari-kit-a19-merch", "More merch: things people actually keep"), image("tandari-kit-a20-sign-off", "Sign-off: see you on the timeline")], ratio: "16/10" },
+      { type: "section", label: "The website", text: "A live landing page for brands and creators. Open it, scroll it, type in the brief box." },
+      { type: "site", slug: "tandari" },
       { type: "section", label: "Out in the world", text: "Billboards, walls, the commute, the website and the phone in your hand." },
       { type: "full", media: image("tandari-ooh-skyline", "Tandari billboards over the skyline") },
       { type: "pair", media: [image("tandari-ooh-drive-in", "Drive-in billboard"), image("tandari-ooh-mural", "Street wall mural")], ratio: "16/10" },
@@ -194,6 +198,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       { type: "section", label: "Identity", text: "The ire wordmark and its striped mark, in every colourway, with the rules for using it." },
       { type: "full", media: image("ire-logo-variations", "Ire logo variations and usage"), ratio: "1600/1360" },
       { type: "full", media: image("ire-cards", "Ire cards") },
+      { type: "section", label: "The website", text: "The launch site: the striped mark in 3D, Jars, Ajo and cards, told as you scroll." },
+      { type: "site", slug: "ire" },
       { type: "section", label: "The app", text: "Six screens: home, Jars, Ajo, cards, a payment and insights." },
       {
         type: "screens",

@@ -25,12 +25,13 @@ export type WorkItem = {
   title: string;
   blurb: string;
   media: Media;
-  thumb: string; // small image for the Index view
+  thumb: string; // small image for the Index view (Cloudinary name, or a /path)
   wide: boolean; // 16:9 full row, otherwise a 4:5 half
   industry: Industry;
   service: Service;
   concept?: boolean; // studio concept, not a paying client
   caseStudy?: string; // slug under /work, only where a case study exists
+  href?: string; // opens this instead of the case study (brand websites open the live site)
   year: number;
 };
 
@@ -108,6 +109,13 @@ export const WORK: WorkItem[] = [
     wide: true, industry: "mkt", service: "motion", concept: true, caseStudy: "tandari", year: 2026,
   },
   {
+    title: "Tandari, website",
+    blurb: "The live landing page. Type what you're launching and watch it work.",
+    media: { kind: "image", src: "/sites/tandari/preview-desktop.jpg", alt: "Tandari website" },
+    thumb: "/sites/tandari/preview-desktop.jpg",
+    wide: true, industry: "mkt", service: "web", concept: true, caseStudy: "tandari", href: "/work/tandari/site", year: 2026,
+  },
+  {
     title: "Afriment, social",
     blurb: "A simple three-step story for every cohort.",
     media: T("afriment-social", "Afriment, social"),
@@ -148,6 +156,13 @@ export const WORK: WorkItem[] = [
     media: film("ire-product", "Ire, product film"),
     thumb: "ire-product-poster",
     wide: true, industry: "fin", service: "motion", concept: true, caseStudy: "ire", year: 2026,
+  },
+  {
+    title: "Ire, website",
+    blurb: "The live launch site, with the striped mark in 3D. Open it and scroll.",
+    media: { kind: "image", src: "/sites/ire/preview-desktop.jpg", alt: "Ire website" },
+    thumb: "/sites/ire/preview-desktop.jpg",
+    wide: true, industry: "fin", service: "web", concept: true, caseStudy: "ire", href: "/work/ire/site", year: 2026,
   },
   {
     title: "Tej's Bakes, logo system",

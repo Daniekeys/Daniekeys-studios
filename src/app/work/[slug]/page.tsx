@@ -3,7 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import MediaBox from "@/components/MediaBox";
+import SitePreview from "@/components/SitePreview";
 import { CASE_STUDIES, getCaseStudy, type Block } from "@/lib/case-studies";
+import { getSite } from "@/lib/sites";
 
 export const dynamicParams = false;
 
@@ -92,6 +94,8 @@ function Gallery({ blocks }: { blocks: Block[] }) {
                     <MediaBox key={m.src} media={m} ratio="780/1688" />
                   ))}
                 </div>
+              ) : b.type === "site" && getSite(b.slug) ? (
+                <SitePreview key={i} site={getSite(b.slug)!} />
               ) : null
             )}
           </section>

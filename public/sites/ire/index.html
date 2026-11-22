@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ire, good money moves</title>
+<meta name="description" content="Ire, a Lagos money app. Studio concept by Daniekeys Studios.">
+<meta name="robots" content="noindex">
+<link rel="preload" href="/sites/ire/fonts/figtree-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Figtree';font-style:normal;font-weight:400;font-display:swap;src:url(/sites/ire/fonts/figtree-latin-400-normal.woff2) format('woff2')}@font-face{font-family:'Figtree';font-style:normal;font-weight:500;font-display:swap;src:url(/sites/ire/fonts/figtree-latin-500-normal.woff2) format('woff2')}@font-face{font-family:'Figtree';font-style:normal;font-weight:600;font-display:swap;src:url(/sites/ire/fonts/figtree-latin-600-normal.woff2) format('woff2')}@font-face{font-family:'Figtree';font-style:normal;font-weight:700;font-display:swap;src:url(/sites/ire/fonts/figtree-latin-700-normal.woff2) format('woff2')}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/sites/ire/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2')}</style>
+<style>
+/* VOICE: a Lagos neobank with award-site confidence: bold, warm, playful, precise
+   IDEA: storyscrolling like Jeton (Lenis + GSAP), the cowrie as the 3D hero object that travels the page
+   PICTURE: a glossy 3D lime cowrie on plum, then real Lagos people, then the app story pinned to scroll
+   COLOUR and TYPE: plum, lime, lilac, sand, cream, coral, cobalt, sun, pink; Figtree huge and tight, JetBrains Mono labels
+   LAYOUT: preloader, hero, zoom reveal, manifesto, pinned phone story, horizontal gallery, cards, marquee, FAQ, CTA, giant footer */
+:root{--plum:#261A33;--lime:#C6FF4D;--lilac:#C9B3F5;--sand:#B3A398;--cream:#F8F4EC;--ld:#7B4FD1;--coral:#FF7A59;--cobalt:#3D58F0;--sun:#FFD84D;--pink:#FF8FD8;--line:#e3dacb}
+*{box-sizing:border-box;min-width:0}
+html.lenis,html.lenis body{height:auto} .lenis.lenis-smooth{scroll-behavior:auto!important}
+body{margin:0;background:var(--plum);color:var(--cream);font:17px/1.6 Figtree,system-ui,sans-serif;overflow-x:clip}
+img{display:block;max-width:100%} a{color:inherit}
+.in{max-width:1320px;margin:0 auto;padding:0 max(4vw,20px)}
+.mono{font-family:'JetBrains Mono',monospace}
+.tag{display:inline-block;background:var(--lime);color:var(--plum);font:500 13px 'JetBrains Mono',monospace;padding:6px 10px;border-radius:7px}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-0.045em;line-height:.95}
+h2{font-size:clamp(44px,6.4vw,104px)}
+p{margin:0}
+.btn{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 26px;border-radius:28px;font-weight:600;font-size:16px;text-decoration:none;border:2px solid transparent;white-space:nowrap}
+.btn-lime{background:var(--lime);color:var(--plum)} .btn-ghost{border-color:currentColor}
+.btn:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.concept{position:relative;z-index:60;background:#1a1123;color:var(--lilac);text-align:center;font:500 12px 'JetBrains Mono',monospace;padding:8px 16px}
+/* cursor */
+.cur{position:fixed;left:0;top:0;width:14px;height:14px;border-radius:50%;background:var(--lime);pointer-events:none;z-index:200;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:width .25s,height .25s}
+.cur.big{width:64px;height:64px}
+@media (hover:none){.cur{display:none}}
+/* preloader */
+.pre{position:fixed;inset:0;z-index:150;background:var(--plum);display:grid;place-items:center}
+.pre .count{position:absolute;right:max(4vw,20px);bottom:24px;font-size:clamp(80px,14vw,200px);font-weight:600;letter-spacing:-0.06em;line-height:.8;color:var(--lime)}
+.pre .pm svg{width:120px;height:auto;animation:pspin 1.4s linear infinite}
+@keyframes pspin{to{transform:perspective(600px) rotateY(360deg)}}
+.curtain{position:fixed;inset:0;z-index:140;background:var(--lime);transform:translateY(100%)}
+/* nav */
+.nav{position:fixed;left:0;right:0;top:40px;z-index:50;transition:transform .4s}
+.nav .in{display:flex;align-items:center;gap:26px;height:72px}
+.nav .pill{display:flex;gap:4px;background:rgba(38,26,51,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(201,179,245,.25);border-radius:28px;padding:5px}
+.nav .pill a{text-decoration:none;font-size:15px;font-weight:500;padding:9px 16px;border-radius:22px} .nav .pill a:hover{background:var(--lime);color:var(--plum)}
+.nav .logo{display:flex;align-items:center;height:56px;padding:0 18px;border-radius:28px;background:rgba(38,26,51,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(201,179,245,.25)}
+.nav .right{margin-left:auto} .nav .btn{height:46px;padding:0 20px;font-size:15px}
+.nav.hide{transform:translateY(-140%)}
+/* hero */
+.hero{position:relative;height:100vh;min-height:680px;overflow:hidden;background:radial-gradient(1200px 700px at 72% 45%,#3a2650 0%,var(--plum) 60%)}
+#gl{position:absolute;inset:0;width:100%;height:100%}
+.hero .copy{position:absolute;left:max(4vw,20px);bottom:clamp(40px,9vh,96px);z-index:3;max-width:900px}
+.hero h1{font-size:clamp(64px,11.5vw,184px);letter-spacing:-0.06em;line-height:.86}
+.wd{display:inline-block;white-space:nowrap;overflow:hidden;vertical-align:top;padding-bottom:.06em}
+.ch{display:inline-block;will-change:transform}
+.hero h1 .lime .ch{color:var(--lime)}
+.hero .sub{margin-top:24px;font-size:clamp(18px,1.5vw,21px);max-width:44ch;color:var(--lilac)}
+.hero .ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.chip{position:absolute;z-index:2;border-radius:22px;padding:14px 18px;color:var(--cream);background:rgba(248,244,236,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(248,244,236,.25)}
+.chip.c1{right:4vw;top:15vh} .chip.c1 b{display:block;font-size:30px;letter-spacing:-0.03em} .chip.c1 span{font:500 12px 'JetBrains Mono',monospace;color:var(--lilac)}
+.chip.c2{right:24vw;bottom:12vh;display:flex;gap:12px;align-items:center;background:var(--cream);color:var(--plum);border:2px solid var(--lime)}
+.chip.c2 .ic{width:40px;height:40px;border-radius:11px;background:var(--plum);display:grid;place-items:center}
+.chip.c2 p{font-size:14px;line-height:1.3}
+.scrollcue{position:absolute;right:max(4vw,20px);bottom:clamp(40px,9vh,96px);z-index:3;font:500 12px 'JetBrains Mono',monospace;color:var(--lilac);writing-mode:vertical-rl}
+/* zoom reveal */
+.zoom{position:relative;height:100vh;overflow:hidden;background:var(--cream);display:grid;place-items:center}
+.zoom .ph{position:absolute;inset:0;margin:auto;width:34vw;height:46vh;border-radius:28px;overflow:hidden}
+.zoom .ph img{width:100%;height:100%;object-fit:cover;object-position:58% 30%;transform:scale(1.25)}
+.zoom .ztxt{position:relative;z-index:2;text-align:center;color:var(--cream);opacity:0}
+.zoom .ztxt h2{font-size:clamp(56px,10vw,170px);text-shadow:0 4px 40px rgba(38,26,51,.5)}
+.zoom .shade{position:absolute;inset:0;background:rgba(38,26,51,.35);opacity:0;z-index:1}
+/* manifesto */
+.mani{background:var(--cream);color:var(--plum);padding:clamp(100px,16vh,180px) 0}
+.mani p{font-size:clamp(32px,4.6vw,72px);font-weight:600;letter-spacing:-0.04em;line-height:1.06;max-width:20ch}
+.mw{opacity:.14;transition:none}
+.mani .row{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-top:56px;flex-wrap:wrap}
+.stats{display:flex;gap:clamp(24px,5vw,72px)} .stats b{display:block;font-size:clamp(40px,4vw,64px);letter-spacing:-0.04em;line-height:1} .stats span{font:500 13px 'JetBrains Mono',monospace;opacity:.7}
+/* story */
+.story{position:relative;background:var(--cream);color:var(--plum)}
+.story .pin{height:100vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:4vw;padding:0 max(4vw,20px);max-width:1320px;margin:0 auto}
+.story .bgfill{position:absolute;inset:0;background:var(--cream);z-index:0}
+.steps{position:relative;height:60vh;z-index:1}
+.step{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:20px;opacity:0}
+.step h3{font-size:clamp(44px,5.4vw,88px);letter-spacing:-0.05em;line-height:.92}
+.step p{font-size:20px;max-width:34ch;opacity:.85}
+.device{position:relative;z-index:1;justify-self:center;width:min(330px,30vw);aspect-ratio:390/844;border-radius:52px;background:var(--plum);padding:10px;box-shadow:0 60px 120px rgba(38,26,51,.35)}
+.device .scrw{position:relative;width:100%;height:100%;border-radius:42px;overflow:hidden;background:var(--cream)}
+.device .scr{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.device .scr:first-child{opacity:1}
+.device .notch{position:absolute;left:50%;top:18px;transform:translateX(-50%);width:96px;height:28px;border-radius:16px;background:#120b18;z-index:3}
+.progress{position:absolute;left:max(4vw,20px);bottom:40px;display:flex;gap:8px;z-index:2} .progress i{width:28px;height:4px;border-radius:2px;background:rgba(38,26,51,.2)} .progress i.on{background:var(--plum)}
+/* horizontal gallery */
+.hgal{background:var(--plum);overflow:hidden}
+.hgal .head{padding:clamp(80px,12vh,140px) max(4vw,20px) 40px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;max-width:1320px;margin:0 auto}
+.track{display:flex;gap:18px;padding:0 max(4vw,20px) clamp(80px,12vh,140px);width:max-content}
+.gi{margin:0;width:clamp(280px,30vw,440px);flex:none;position:relative;border-radius:28px;overflow:hidden}
+.gi img{width:100%;aspect-ratio:3/4;object-fit:cover;transform:scale(1.12)}
+.gi figcaption{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;gap:12px;align-items:flex-end}
+.gi b{background:var(--cream);color:var(--plum);padding:8px 12px;border-radius:12px;font-size:17px;letter-spacing:-0.01em} .gi span{font:500 12px 'JetBrains Mono',monospace;background:var(--lime);color:var(--plum);padding:5px 8px;border-radius:6px}
+/* cards */
+.cards{background:var(--lime);color:var(--plum);padding:clamp(100px,14vh,160px) 0;overflow:hidden}
+.cards .head{text-align:center} .cards .head p{margin:20px auto 0;max-width:44ch;font-size:19px}
+.fan{position:relative;height:clamp(300px,34vw,440px);margin-top:60px;perspective:1200px}
+.pcard{position:absolute;left:50%;top:20px;width:clamp(240px,26vw,360px);aspect-ratio:1.586;margin-left:calc(clamp(240px,26vw,360px) / -2);border-radius:22px;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 40px 70px rgba(38,26,51,.25);will-change:transform}
+.pc-top,.pc-bot{display:flex;justify-content:space-between;align-items:flex-start} .pc-bot{align-items:flex-end}
+.pcard span{font:500 13px 'JetBrains Mono',monospace} .pcard .dg{font-size:15px;letter-spacing:.14em}
+/* marquee */
+.marq{background:var(--plum);border-top:1px solid #3e2e4c;border-bottom:1px solid #3e2e4c;overflow:hidden;padding:26px 0}
+.mtrack{display:flex;gap:28px;align-items:center;width:max-content;animation:mq 34s linear infinite}
+.mtrack span{font-size:clamp(34px,4.4vw,64px);font-weight:600;letter-spacing:-0.04em;white-space:nowrap}
+.mtrack span:nth-of-type(odd){color:var(--lime)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* safety + faq */
+.safe{background:var(--sand);color:var(--plum);padding:clamp(90px,13vh,150px) 0}
+.sgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:48px}
+.sgrid div{background:var(--cream);border-radius:26px;padding:28px;min-height:240px;display:flex;flex-direction:column;justify-content:space-between}
+.sgrid b{font-size:24px;letter-spacing:-0.02em;line-height:1.1} .sgrid p{font-size:15px;opacity:.8;margin-top:8px}
+.sgrid .n{font:500 13px 'JetBrains Mono',monospace;opacity:.6}
+.faq{background:var(--cream);color:var(--plum);padding:clamp(90px,13vh,150px) 0}
+.faq .in{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px)}
+details{border-bottom:1px solid var(--line);padding:24px 0}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:22px;font-weight:600;letter-spacing:-0.02em}
+summary::-webkit-details-marker{display:none} summary span{font-size:30px;line-height:1;transition:transform .3s} details[open] summary span{transform:rotate(45deg)}
+details p{margin-top:12px;opacity:.85;max-width:60ch}
+/* cta + footer */
+.cta{background:var(--plum);padding:clamp(110px,16vh,180px) 0;text-align:center;position:relative;overflow:hidden}
+.cta h2{font-size:clamp(60px,10vw,170px);letter-spacing:-0.06em}
+.cta h2 em{font-style:normal;color:var(--lime)}
+.cta .mag{display:inline-flex;margin-top:46px;width:180px;height:180px;border-radius:50%;background:var(--lime);color:var(--plum);align-items:center;justify-content:center;font-weight:600;font-size:18px;text-decoration:none;will-change:transform}
+.cta .orbit{position:absolute;width:140px;opacity:.9} .cta .orbit svg{width:100%;height:auto}
+.cta .o1{left:4vw;top:8%} .cta .o2{right:10vw;bottom:16%;width:100px}
+footer{background:#1a1123;color:var(--lilac);font-size:15px;overflow:hidden}
+footer .cols{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:32px;padding-top:72px;padding-bottom:20px}
+footer h4{margin:0 0 12px;color:var(--cream);font-size:15px} footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px} footer a{text-decoration:none} footer a:hover{color:var(--lime)}
+.giant{padding:30px max(2vw,12px) 0} .giant svg{width:100%;height:auto;display:block}
+.legal{font:500 12px 'JetBrains Mono',monospace;padding:18px max(4vw,20px) 26px;border-top:1px solid #33243f}
+@media (max-width:900px){
+ .nav .pill{display:none} .story .pin{grid-template-columns:minmax(0,1fr);align-content:center;gap:24px} .steps{height:34vh} .device{width:min(230px,52vw);order:-1}
+ .step h3{font-size:clamp(34px,8vw,52px)} .step p{font-size:16px}
+ .chip.c2{display:none} .chip.c1{top:16vh;right:6vw} .zoom .ph{width:70vw;height:40vh}
+ .sgrid{grid-template-columns:repeat(2,minmax(0,1fr))} .faq .in{grid-template-columns:minmax(0,1fr)} footer .cols{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){ .sgrid{grid-template-columns:minmax(0,1fr)} .stats{flex-wrap:wrap} }
+@media (prefers-reduced-motion:reduce){ .mtrack,.pre .pm svg{animation:none} .mw{opacity:1} }
+</style>
+</head>
+<body>
+<div class="cur" aria-hidden="true"></div>
+<div class="pre" aria-hidden="true"><div class="pm"><svg viewBox="0 0 120 120" width="120" height="120" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></div><div class="count">0</div></div>
+<div class="curtain" aria-hidden="true"></div>
+<div class="concept">Studio concept by Daniekeys Studios &#8226; not a real bank &#8226; sample data</div>
+
+<nav class="nav" aria-label="Main"><div class="in">
+  <a class="logo" href="#top" aria-label="Ire home"><svg viewBox="0 0 393 156" width="96" height="38" aria-hidden="true"><g transform="translate(0 34)"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></g><g transform="translate(142 0) scale(0.95)"><g fill="none" stroke="#F8F4EC" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"><path d="M30 76 V144"/><path d="M82 144 V101 C82 80 97 66 121 66"/><path d="M158 107 H238 C238 80 220 62 197 62 C172 62 155 81 155 103 C155 127 172 144 198 144 C214 144 227 138 234 128"/></g><ellipse cx="30" cy="27" rx="16" ry="21" fill="#C6FF4D"/><path d="M30 10 C26 18 34 22 30 27 C26 32 34 36 30 44" fill="none" stroke="#261A33" stroke-width="4" stroke-linecap="round"/></g></svg></a>
+  <div class="pill"><a href="#story">Jars</a><a href="#story">Ajo</a><a href="#cards">Cards</a><a href="#safety">Safety</a><a href="#faq">Help</a></div>
+  <div class="right"><a class="btn btn-lime" href="#get">Get the app</a></div>
+</div></nav>
+
+<header class="hero" id="top">
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="chip c1" data-depth="0.6"><span>Total balance</span><b>&#8358;482,350</b><span>+ &#8358;38,200 into Jars</span></div>
+  <div class="chip c2" data-depth="1.1"><div class="ic"><svg viewBox="0 0 120 120" width="28" height="28" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></div><p><b>Ire</b><br>Light bill Jar &#8226; &#8358;18,500 paid</p></div>
+  <div class="copy">
+    <h1 class="split"><span class="wd"><span class="ch">G</span><span class="ch">o</span><span class="ch">o</span><span class="ch">d</span></span> <span class="wd"><span class="ch">m</span><span class="ch">o</span><span class="ch">n</span><span class="ch">e</span><span class="ch">y</span></span><br><span class="lime"><span class="wd"><span class="ch">m</span><span class="ch">o</span><span class="ch">v</span><span class="ch">e</span><span class="ch">s</span><span class="ch">.</span></span></span></h1>
+    <p class="sub fade">The everyday money app for Lagos. Jars for every bill, Ajo with your people, cards that just work.</p>
+    <div class="ctas fade"><a class="btn btn-lime" href="#get">Open an account <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="#story">See how it works</a></div>
+  </div>
+  <div class="scrollcue">Scroll</div>
+</header>
+
+<section class="zoom" aria-label="Made for Lagos">
+  <div class="ph"><img src="/sites/ire/img/friends.jpg" alt="Two friends laughing under palm trees in Lagos"></div>
+  <div class="shade"></div>
+  <div class="ztxt"><h2>Made for Lagos.</h2></div>
+</section>
+
+<section class="mani"><div class="in">
+  <p class="manip"><span class="mw">Money</span> <span class="mw">moves</span> <span class="mw">fast</span> <span class="mw">in</span> <span class="mw">Lagos.</span> <span class="mw">Light,</span> <span class="mw">data,</span> <span class="mw">rent,</span> <span class="mw">school</span> <span class="mw">fees,</span> <span class="mw">the</span> <span class="mw">owambe</span> <span class="mw">on</span> <span class="mw">Saturday.</span> <span class="mw">Ire</span> <span class="mw">gives</span> <span class="mw">every</span> <span class="mw">naira</span> <span class="mw">a</span> <span class="mw">place</span> <span class="mw">to</span> <span class="mw">go,</span> <span class="mw">so</span> <span class="mw">the</span> <span class="mw">bill</span> <span class="mw">is</span> <span class="mw">sorted</span> <span class="mw">before</span> <span class="mw">it</span> <span class="mw">bites</span> <span class="mw">and</span> <span class="mw">the</span> <span class="mw">rest</span> <span class="mw">is</span> <span class="mw">yours</span> <span class="mw">to</span> <span class="mw">live</span> <span class="mw">on.</span></p>
+  <div class="row">
+    <div class="stats"><div><b class="cnt" data-to="5">0</b><span>Jars per person, sample</span></div><div><b class="cnt" data-to="3">0</b><span>minutes to open</span></div><div><b>&#8358;0</b><span>to open an account</span></div></div>
+    <a class="btn btn-ghost" href="#story" style="color:var(--plum)">See the app <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</div></section>
+
+<section class="story" id="story">
+  <div class="bgfill"></div>
+  <div class="pin">
+    <div class="steps"><div class="step" data-bg="#F8F4EC"><span class="tag">Home</span><h3>See what's yours to spend.</h3><p>Your balance tells the truth, because bills already live in their Jars.</p></div><div class="step" data-bg="#C6FF4D"><span class="tag">Jars</span><h3>Every bill gets a Jar.</h3><p>Light, rent, owambe. Set it once and payday sorts itself.</p></div><div class="step" data-bg="#C9B3F5"><span class="tag">Ajo</span><h3>Ajo with your people.</h3><p>The savings circle your mum trusted, with a schedule everyone can see.</p></div><div class="step" data-bg="#FF7A59"><span class="tag">Cards</span><h3>Cards in four colours.</h3><p>Naira, dollar or an Ajo card for the group. Made in seconds.</p></div><div class="step" data-bg="#FFD84D"><span class="tag">Insights</span><h3>Spending in plain words.</h3><p>Small chops no dey small again? Ire will tell you, kindly.</p></div><div class="step" data-bg="#C6FF4D"><span class="tag">Paid</span><h3>Paid.</h3><p>One tap, one token, done. Back to your day.</p></div></div>
+    <div class="device"><div class="notch"></div><div class="scrw"><img class="scr" src="/sites/ire/img/scr-home.jpg" alt="Ire Home screen"><img class="scr" src="/sites/ire/img/scr-jars.jpg" alt="Ire Jars screen"><img class="scr" src="/sites/ire/img/scr-ajo.jpg" alt="Ire Ajo screen"><img class="scr" src="/sites/ire/img/scr-cards.jpg" alt="Ire Cards screen"><img class="scr" src="/sites/ire/img/scr-insights.jpg" alt="Ire Insights screen"><img class="scr" src="/sites/ire/img/scr-paid.jpg" alt="Ire Paid screen"></div></div>
+  </div>
+  <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<section class="hgal" aria-label="Life on Ire">
+  <div class="head"><h2>Life on <span style="color:var(--lime)">Ire.</span></h2><p style="max-width:40ch;color:var(--lilac);font-size:19px">From the market run to the owambe, Ire shows up where Lagos actually spends.</p></div>
+  <div class="track"><figure class="gi"><img src="/sites/ire/img/ire-tee-street.jpg" alt="Market run"><figcaption><b>Market run</b><span>Tee &#8226; front print</span></figcaption></figure><figure class="gi"><img src="/sites/ire/img/owambe.jpg" alt="Owambe fund, locked in"><figcaption><b>Owambe fund, locked in</b><span>Saturday sorted</span></figcaption></figure><figure class="gi"><img src="/sites/ire/img/ire-cap-person.jpg" alt="Cap on, bills off"><figcaption><b>Cap on, bills off</b><span>Cap &#8226; lime cowrie</span></figcaption></figure><figure class="gi"><img src="/sites/ire/img/mama.jpg" alt="Mama's Ajo turn"><figcaption><b>Mama's Ajo turn</b><span>Ajo payout</span></figcaption></figure><figure class="gi"><img src="/sites/ire/img/ire-hoodie-street.jpg" alt="Quiet money"><figcaption><b>Quiet money</b><span>Hoodie &#8226; chest mark</span></figcaption></figure><figure class="gi"><img src="/sites/ire/img/girl.jpg" alt="Data bundle, done"><figcaption><b>Data bundle, done</b><span>Everyday</span></figcaption></figure><figure class="gi"><img src="/sites/ire/img/ire-bus-stop-night.jpg" alt="Seen at the bus stop"><figcaption><b>Seen at the bus stop</b><span>Out of home</span></figcaption></figure></div>
+</section>
+
+<section class="cards" id="cards"><div class="in">
+  <div class="head"><span class="tag" style="background:var(--plum);color:var(--lime)">Cards</span><h2 style="margin-top:22px">It all starts with a <span style="color:var(--ld)">colour.</span></h2><p>Coral, cobalt, sun or pink. Naira, dollar or an Ajo card for the group.</p></div>
+  <div class="fan"><div class="pcard" style="background:#FF8FD8;color:#261A33"><div class="pc-top"><svg viewBox="0 0 264 160" width="70" height="42" aria-hidden="true"><g fill="none" stroke="#261A33" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"><path d="M30 76 V144"/><path d="M82 144 V101 C82 80 97 66 121 66"/><path d="M158 107 H238 C238 80 220 62 197 62 C172 62 155 81 155 103 C155 127 172 144 198 144 C214 144 227 138 234 128"/></g><ellipse cx="30" cy="27" rx="16" ry="21" fill="#261A33"/><path d="M30 10 C26 18 34 22 30 27 C26 32 34 36 30 44" fill="none" stroke="#FF8FD8" stroke-width="4" stroke-linecap="round"/></svg><span>Ajo card</span></div><div class="pc-bot"><span class="dg">&#8226;&#8226;&#8226;&#8226; 4417</span><svg viewBox="0 0 120 120" width="42" height="42" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#261A33"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#FF8FD8" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#FF8FD8" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#FF8FD8" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#FF8FD8" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#FF8FD8" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#FF8FD8" stroke-width="5" stroke-linecap="round"/></svg></div></div><div class="pcard" style="background:#FFD84D;color:#261A33"><div class="pc-top"><svg viewBox="0 0 264 160" width="70" height="42" aria-hidden="true"><g fill="none" stroke="#261A33" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"><path d="M30 76 V144"/><path d="M82 144 V101 C82 80 97 66 121 66"/><path d="M158 107 H238 C238 80 220 62 197 62 C172 62 155 81 155 103 C155 127 172 144 198 144 C214 144 227 138 234 128"/></g><ellipse cx="30" cy="27" rx="16" ry="21" fill="#261A33"/><path d="M30 10 C26 18 34 22 30 27 C26 32 34 36 30 44" fill="none" stroke="#FFD84D" stroke-width="4" stroke-linecap="round"/></svg><span>Virtual &#8358;</span></div><div class="pc-bot"><span class="dg">&#8226;&#8226;&#8226;&#8226; 7720</span><svg viewBox="0 0 120 120" width="42" height="42" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#261A33"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#FFD84D" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#FFD84D" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#FFD84D" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#FFD84D" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#FFD84D" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#FFD84D" stroke-width="5" stroke-linecap="round"/></svg></div></div><div class="pcard" style="background:#3D58F0;color:#F8F4EC"><div class="pc-top"><svg viewBox="0 0 264 160" width="70" height="42" aria-hidden="true"><g fill="none" stroke="#F8F4EC" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"><path d="M30 76 V144"/><path d="M82 144 V101 C82 80 97 66 121 66"/><path d="M158 107 H238 C238 80 220 62 197 62 C172 62 155 81 155 103 C155 127 172 144 198 144 C214 144 227 138 234 128"/></g><ellipse cx="30" cy="27" rx="16" ry="21" fill="#F8F4EC"/><path d="M30 10 C26 18 34 22 30 27 C26 32 34 36 30 44" fill="none" stroke="#3D58F0" stroke-width="4" stroke-linecap="round"/></svg><span>Dollar $</span></div><div class="pc-bot"><span class="dg">&#8226;&#8226;&#8226;&#8226; 0921</span><svg viewBox="0 0 120 120" width="42" height="42" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#F8F4EC"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#3D58F0" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#3D58F0" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#3D58F0" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#3D58F0" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#3D58F0" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#3D58F0" stroke-width="5" stroke-linecap="round"/></svg></div></div><div class="pcard" style="background:#FF7A59;color:#261A33"><div class="pc-top"><svg viewBox="0 0 264 160" width="70" height="42" aria-hidden="true"><g fill="none" stroke="#261A33" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"><path d="M30 76 V144"/><path d="M82 144 V101 C82 80 97 66 121 66"/><path d="M158 107 H238 C238 80 220 62 197 62 C172 62 155 81 155 103 C155 127 172 144 198 144 C214 144 227 138 234 128"/></g><ellipse cx="30" cy="27" rx="16" ry="21" fill="#261A33"/><path d="M30 10 C26 18 34 22 30 27 C26 32 34 36 30 44" fill="none" stroke="#FF7A59" stroke-width="4" stroke-linecap="round"/></svg><span>Virtual &#8358;</span></div><div class="pc-bot"><span class="dg">&#8226;&#8226;&#8226;&#8226; 4417</span><svg viewBox="0 0 120 120" width="42" height="42" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#261A33"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#FF7A59" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#FF7A59" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#FF7A59" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#FF7A59" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#FF7A59" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#FF7A59" stroke-width="5" stroke-linecap="round"/></svg></div></div></div>
+</div></section>
+
+<div class="marq" aria-hidden="true"><div class="mtrack"><span>Light bill? Already sorted.</span><i><svg viewBox="0 0 120 120" width="34" height="34" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></i><span>Owambe fund, locked in.</span><i><svg viewBox="0 0 120 120" width="34" height="34" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></i><span>Rent Jar is 80% full.</span><i><svg viewBox="0 0 120 120" width="34" height="34" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></i><span>Landlord who?</span><i><svg viewBox="0 0 120 120" width="34" height="34" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></i><span>Ajo with your people.</span><i><svg viewBox="0 0 120 120" width="34" height="34" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></i><span>Good money moves.</span><i><svg viewBox="0 0 120 120" width="34" height="34" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></i><span>Light bill? Already sorted.</span><i><svg viewBox="0 0 120 120" width="34" height="34" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></i><span>Owambe fund, locked in.</span><i><svg viewBox="0 0 120 120" width="34" height="34" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></i><span>Rent Jar is 80% full.</span><i><svg viewBox="0 0 120 120" width="34" height="34" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></i><span>Landlord who?</span><i><svg viewBox="0 0 120 120" width="34" height="34" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></i><span>Ajo with your people.</span><i><svg viewBox="0 0 120 120" width="34" height="34" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></i><span>Good money moves.</span><i><svg viewBox="0 0 120 120" width="34" height="34" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></i></div></div>
+
+<section class="safe" id="safety"><div class="in">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap"><h2>Held tight.</h2><p style="max-width:40ch;font-size:19px">Security that works quietly, so you only notice it when you need it.</p></div>
+  <div class="sgrid">
+    <div class="rv"><span class="n">01</span><div><b>Face or fingerprint</b><p>Every login and payment, checked by you.</p></div></div>
+    <div class="rv"><span class="n">02</span><div><b>Freeze in a tap</b><p>Lost your card at the market? Freeze it before you finish looking.</p></div></div>
+    <div class="rv"><span class="n">03</span><div><b>Alerts on every naira</b><p>A notification the second money moves.</p></div></div>
+    <div class="rv"><span class="n">04</span><div><b>Locked Jars</b><p>Money set aside can't be spent by accident.</p></div></div>
+  </div>
+</div></section>
+
+<section class="faq" id="faq"><div class="in">
+  <div><h2>Questions.</h2><p style="margin-top:20px;font-size:19px;opacity:.85">This is a studio concept, so the answers describe how Ire is designed to work.</p></div>
+  <div><details><summary>Is Ire a real bank?<span aria-hidden="true">+</span></summary><p>Ire is a studio concept by Daniekeys Studios, built to show how a Lagos money app could look and feel. Nothing on this page is a live financial product.</p></details><details><summary>What is a Jar?<span aria-hidden="true">+</span></summary><p>A pot inside your account for one bill or goal. Money in a Jar stays put until the bill is due, so your spending balance always tells the truth.</p></details><details><summary>How does Ajo work?<span aria-hidden="true">+</span></summary><p>Start an Ajo, set the amount and how often, and Ire collects from everyone and pays out to whoever's turn it is.</p></details><details><summary>Can I pay online in dollars?<span aria-hidden="true">+</span></summary><p>In the concept, yes. Make a virtual dollar card for subscriptions and freeze or delete it any time.</p></details></div>
+</div></section>
+
+<section class="cta" id="get">
+  <div class="orbit o1" aria-hidden="true"><svg viewBox="0 0 120 120" width="140" height="140" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C6FF4D"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></div><div class="orbit o2" aria-hidden="true"><svg viewBox="0 0 120 120" width="100" height="100" aria-hidden="true"><ellipse cx="60" cy="60" rx="38" ry="50" fill="#C9B3F5"/><path d="M60 18 C54 34 66 44 60 60 C54 76 66 86 60 102" fill="none" stroke="#261A33" stroke-width="7" stroke-linecap="round"/><path d="M49 36 H54 M66 36 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 48 H54 M66 48 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 60 H54 M66 60 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 72 H54 M66 72 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/><path d="M49 84 H54 M66 84 H71" stroke="#261A33" stroke-width="5" stroke-linecap="round"/></svg></div>
+  <div class="in"><h2>Good money <em>moves.</em></h2><a class="mag" href="#top">Get Ire <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</section>
+
+<footer>
+  <div class="in cols">
+    <div><p style="max-width:36ch">The everyday money app for Lagos. A studio concept by Daniekeys Studios.</p></div>
+    <div><h4>Product</h4><ul><li><a href="#story">Jars</a></li><li><a href="#story">Ajo</a></li><li><a href="#cards">Cards</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="#top">About</a></li><li><a href="#top">Careers</a></li><li><a href="#top">Press</a></li></ul></div>
+    <div><h4>Help</h4><ul><li><a href="#faq">FAQ</a></li><li><a href="#safety">Safety</a></li><li><a href="#top">Terms</a></li></ul></div>
+  </div>
+  <div class="giant" aria-hidden="true"><svg viewBox="0 0 264 160" width="1400" height="848" aria-hidden="true"><g fill="none" stroke="#F8F4EC" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"><path d="M30 76 V144"/><path d="M82 144 V101 C82 80 97 66 121 66"/><path d="M158 107 H238 C238 80 220 62 197 62 C172 62 155 81 155 103 C155 127 172 144 198 144 C214 144 227 138 234 128"/></g><ellipse cx="30" cy="27" rx="16" ry="21" fill="#C6FF4D"/><path d="M30 10 C26 18 34 22 30 27 C26 32 34 36 30 44" fill="none" stroke="#1a1123" stroke-width="4" stroke-linecap="round"/></svg></div>
+  <div class="legal">Ire is a studio concept, not a licensed bank or financial product. Photography: Unsplash (free licence) and the Daniekeys mockup library.</div>
+</footer>
+
+<script src="/sites/ire/vendor/gsap.min.js"></script>
+<script src="/sites/ire/vendor/ScrollTrigger.min.js"></script>
+<script src="/sites/ire/vendor/lenis.min.js"></script>
+<script src="/sites/ire/vendor/three.min.js"></script>
+<script>
+{
+const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hasG = typeof gsap !== 'undefined';
+/* smooth scroll */
+let lenis = null;
+if (!RM && typeof Lenis !== 'undefined') {
+  lenis = new Lenis({ lerp: 0.09 });
+  if (hasG) { lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
+  else { const raf = t => { lenis.raf(t); requestAnimationFrame(raf); }; requestAnimationFrame(raf); }
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: 0 }); } }));
+}
+/* cursor */
+const cur = document.querySelector('.cur');
+window.addEventListener('pointermove', e => { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; });
+document.querySelectorAll('a,summary,.gi,.pcard').forEach(el => { el.addEventListener('pointerenter', () => cur.classList.add('big')); el.addEventListener('pointerleave', () => cur.classList.remove('big')); });
+/* 3D cowrie */
+const canvas = document.getElementById('gl');
+let cowrie = null, renderer = null, camera = null, scene = null, mouse = { x: 0, y: 0 };
+if (typeof THREE !== 'undefined') {
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100); camera.position.set(0, 0, 9);
+    const lime = new THREE.MeshPhysicalMaterial({ color: 0xB8F53A, roughness: 0.3, metalness: 0.05, clearcoat: 1, clearcoatRoughness: 0.12 });
+    const plum = new THREE.MeshStandardMaterial({ color: 0x261A33, roughness: 0.45 });
+    cowrie = new THREE.Group();
+    const body = new THREE.Mesh(new THREE.SphereGeometry(1, 96, 96), lime); body.scale.set(1, 1.32, 0.72); cowrie.add(body);
+    const pts = []; for (let i = 0; i <= 40; i++) { const t = -1 + i / 20; const y = t * 1.16; const x = 0.07 * Math.sin(t * Math.PI * 2); const zz = 1 - x * x - (y / 1.32) * (y / 1.32); pts.push(new THREE.Vector3(x, y, 0.72 * Math.sqrt(Math.max(zz, 0)) + 0.005)); }
+    const curve = new THREE.CatmullRomCurve3(pts);
+    cowrie.add(new THREE.Mesh(new THREE.TubeGeometry(curve, 120, 0.055, 16, false), plum));
+    [-0.62, -0.31, 0, 0.31, 0.62].forEach(y => { [-1, 1].forEach(side => {
+      const t = (y / 1.16 + 1) * 20 / 40; const p = curve.getPoint(Math.min(Math.max(t, 0), 1));
+      const tooth = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.22, 12), plum);
+      const x = p.x + side * 0.2; const zz = 1 - x * x - (y / 1.32) * (y / 1.32);
+      tooth.position.set(x, y, 0.72 * Math.sqrt(Math.max(zz, 0)) - 0.005); tooth.rotation.z = Math.PI / 2; tooth.rotation.y = -x * 0.8; cowrie.add(tooth); }); });
+    cowrie.rotation.z = -0.35; scene.add(cowrie);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+    const key = new THREE.DirectionalLight(0xffffff, 1.1); key.position.set(3, 4, 6); scene.add(key);
+    const rim = new THREE.PointLight(0xC9B3F5, 1.6, 30); rim.position.set(-5, -2, 3); scene.add(rim);
+    const fill = new THREE.PointLight(0xFF8FD8, 0.6, 30); fill.position.set(4, -4, 2); scene.add(fill);
+    const size = () => { const w = canvas.clientWidth, h = canvas.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); cowrie.position.x = w > 900 ? 2.45 : 0; cowrie.position.y = w > 900 ? -0.1 : 1.5; const s = w > 900 ? 1.05 : 0.8; cowrie.scale.setScalar(s); };
+    new ResizeObserver(size).observe(canvas); size();
+    window.addEventListener('pointermove', e => { mouse.x = e.clientX / innerWidth - 0.5; mouse.y = e.clientY / innerHeight - 0.5; });
+    let t0 = performance.now();
+    const loop = now => { const t = (now - t0) / 1000;
+      if (!RM) { cowrie.rotation.y += ((mouse.x * 0.9 + Math.sin(t * 0.7) * 0.75) - cowrie.rotation.y) * 0.05; cowrie.rotation.x += ((mouse.y * 0.5) - cowrie.rotation.x) * 0.05; cowrie.position.y += Math.sin(t * 1.4) * 0.0025; }
+      renderer.render(scene, camera); requestAnimationFrame(loop); };
+    requestAnimationFrame(loop);
+  } catch (e) { canvas.style.display = 'none'; }
+}
+/* parallax chips */
+document.querySelectorAll('.chip').forEach(c => { const d = parseFloat(c.dataset.depth); window.addEventListener('pointermove', e => { c.style.transform = 'translate(' + (e.clientX / innerWidth - .5) * 30 * d + 'px,' + (e.clientY / innerHeight - .5) * 30 * d + 'px)'; }); });
+/* preloader */
+const pre = document.querySelector('.pre'), cnt = pre.querySelector('.count'), curtain = document.querySelector('.curtain');
+function intro() {
+  if (!hasG || RM) { pre.remove(); curtain.remove(); return; }
+  const o = { v: 0 };
+  const tl = gsap.timeline();
+  tl.to(o, { v: 100, duration: 1.6, ease: 'power2.inOut', onUpdate: () => cnt.textContent = Math.round(o.v) })
+    .to(curtain, { y: '0%', duration: .6, ease: 'power3.inOut' })
+    .set(pre, { display: 'none' })
+    .to(curtain, { y: '-100%', duration: .7, ease: 'power3.inOut' })
+    .from('.hero .ch', { yPercent: 110, duration: .9, ease: 'power4.out', stagger: .035 }, '-=.35')
+    .from('.hero .fade', { y: 30, opacity: 0, duration: .8, ease: 'power3.out', stagger: .12 }, '-=.6')
+    .from('.chip', { scale: .6, opacity: 0, duration: .8, ease: 'back.out(1.6)', stagger: .15 }, '-=.7')
+    .from('.nav', { y: -40, opacity: 0, duration: .6 }, '-=.8');
+}
+if (document.readyState === 'complete') intro(); else window.addEventListener('load', intro);
+if (hasG && typeof ScrollTrigger !== 'undefined' && !RM) {
+  gsap.registerPlugin(ScrollTrigger);
+  /* hide nav on scroll down */
+  let lastY = 0; ScrollTrigger.create({ onUpdate: s => { const y = s.scroll(); document.querySelector('.nav').classList.toggle('hide', y > lastY && y > 300); lastY = y; } });
+  /* hero exit: cowrie and copy drift */
+  gsap.to('.hero .copy', { yPercent: -30, opacity: 0, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  if (cowrie) ScrollTrigger.create({ trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true, onUpdate: s => { cowrie.position.y = (innerWidth > 900 ? -0.1 : 1.5) + s.progress * 2.4; cowrie.rotation.z = -0.35 + s.progress * 1.2; } });
+  /* zoom reveal */
+  const zt = gsap.timeline({ scrollTrigger: { trigger: '.zoom', start: 'top top', end: '+=140%', scrub: true, pin: true } });
+  zt.to('.zoom .ph', { width: '100vw', height: '100vh', borderRadius: 0, ease: 'none' })
+    .to('.zoom .ph img', { scale: 1, ease: 'none' }, 0)
+    .to('.zoom .shade', { opacity: 1, ease: 'none' }, .5)
+    .to('.zoom .ztxt', { opacity: 1, y: 0, ease: 'none' }, .6);
+  /* manifesto word reveal */
+  gsap.to('.mw', { opacity: 1, stagger: .05, ease: 'none', scrollTrigger: { trigger: '.manip', start: 'top 75%', end: 'bottom 45%', scrub: true } });
+  document.querySelectorAll('.cnt').forEach(el => { const o = { v: 0 }; gsap.to(o, { v: +el.dataset.to, duration: 1.4, ease: 'power2.out', onUpdate: () => el.textContent = Math.round(o.v), scrollTrigger: { trigger: el, start: 'top 85%' } }); });
+  /* pinned phone story */
+  const steps = gsap.utils.toArray('.step'), scrs = gsap.utils.toArray('.device .scr'), dots = gsap.utils.toArray('.progress i'), fill = document.querySelector('.story .bgfill');
+  const N = steps.length; let cur = -1;
+  const show = i => { if (i === cur) return; cur = i;
+    steps.forEach((s, k) => gsap.to(s, { opacity: k === i ? 1 : 0, y: k === i ? 0 : (k < i ? -40 : 40), duration: .5, ease: 'power3.out' }));
+    scrs.forEach((s, k) => gsap.to(s, { opacity: k === i ? 1 : 0, scale: k === i ? 1 : 1.04, duration: .5 }));
+    dots.forEach((d, k) => d.classList.toggle('on', k <= i));
+    gsap.to(fill, { backgroundColor: steps[i].dataset.bg, duration: .6 });
+    gsap.fromTo('.device', { rotate: i % 2 ? -3 : 3 }, { rotate: 0, duration: .7, ease: 'back.out(2)' }); };
+  show(0);
+  ScrollTrigger.create({ trigger: '.story', start: 'top top', end: '+=' + (N * 70) + '%', pin: '.story', scrub: true, onUpdate: s => show(Math.min(N - 1, Math.floor(s.progress * N))) });
+  /* horizontal gallery */
+  const track = document.querySelector('.track');
+  gsap.to(track, { x: () => -(track.scrollWidth - innerWidth), ease: 'none', scrollTrigger: { trigger: '.hgal', start: 'top top', end: () => '+=' + (track.scrollWidth - innerWidth), scrub: true, pin: true, invalidateOnRefresh: true } });
+  gsap.utils.toArray('.gi img').forEach(img => gsap.to(img, { xPercent: -8, ease: 'none', scrollTrigger: { trigger: '.hgal', start: 'top top', end: () => '+=' + (track.scrollWidth - innerWidth), scrub: true } }));
+  /* cards fan on scroll */
+  const cards = gsap.utils.toArray('.pcard'); const R = [-16, -6, 5, 15], X = [-115, -40, 40, 115];
+  cards.forEach((c, i) => gsap.fromTo(c, { rotate: 0, xPercent: 0, y: 120, rotateX: 40 }, { rotate: R[i], xPercent: X[i], y: Math.abs(i - 1.5) * 18, rotateX: 0, ease: 'none', scrollTrigger: { trigger: '.fan', start: 'top 85%', end: 'top 30%', scrub: true } }));
+  cards.forEach(c => { c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); gsap.to(c, { rotateY: ((e.clientX - r.left) / r.width - .5) * 22, rotateX: -((e.clientY - r.top) / r.height - .5) * 22, duration: .4 }); }); c.addEventListener('pointerleave', () => gsap.to(c, { rotateY: 0, rotateX: 0, duration: .6 })); });
+  /* reveals */
+  gsap.utils.toArray('.rv').forEach((el, i) => gsap.from(el, { y: 60, opacity: 0, duration: .9, delay: (i % 4) * .08, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } }));
+  gsap.utils.toArray('section h2').forEach(h => gsap.from(h, { y: 50, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: h, start: 'top 88%' } }));
+  gsap.from('.giant svg', { yPercent: 40, opacity: 0, ease: 'none', scrollTrigger: { trigger: 'footer', start: 'top bottom', end: 'bottom bottom', scrub: true } });
+  gsap.to('.o1', { y: -120, rotate: 40, ease: 'none', scrollTrigger: { trigger: '.cta', scrub: true } });
+  gsap.to('.o2', { y: 100, rotate: -30, ease: 'none', scrollTrigger: { trigger: '.cta', scrub: true } });
+  /* magnetic button */
+  const mag = document.querySelector('.mag');
+  mag.addEventListener('pointermove', e => { const r = mag.getBoundingClientRect(); gsap.to(mag, { x: (e.clientX - r.left - r.width / 2) * .35, y: (e.clientY - r.top - r.height / 2) * .35, duration: .4 }); });
+  mag.addEventListener('pointerleave', () => gsap.to(mag, { x: 0, y: 0, duration: .6, ease: 'elastic.out(1,.4)' }));
+  window.addEventListener('load', () => ScrollTrigger.refresh());
+} else {
+  document.querySelectorAll('.zoom .ztxt').forEach(e => e.style.opacity = 1);
+  document.querySelectorAll('.zoom .ph').forEach(e => { e.style.width = '100%'; e.style.height = '100%'; e.style.borderRadius = 0; });
+  document.querySelectorAll('.step').forEach((e, i) => e.style.opacity = i === 0 ? 1 : 0);
+  document.querySelectorAll('.cnt').forEach(e => e.textContent = e.dataset.to);
+}
+}
+</script>
+<!-- Daniekeys Studios portfolio badge: links back to the case study on daniekeysstudios.com. -->
+<a id="dk-badge" href="/work/ire" aria-label="Made by Daniekeys Studios. Back to the case study" style="position:fixed;left:16px;bottom:16px;z-index:2147483647;display:inline-flex;align-items:center;gap:12px;padding:10px 16px;border-radius:999px;background:#111111;color:#F4F3EF;font:500 12px/1 system-ui,-apple-system,'Segoe UI',sans-serif;letter-spacing:.01em;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,.25)">
+<img src="/brand/daniekeys-studios-light.png" alt="" width="98" height="12" style="display:block;width:98px;height:12px">
+<span>Case study &#8594;</span>
+</a>
+<script>if (window.self !== window.top) document.getElementById("dk-badge").remove();</script>
+
+</body>
+</html>

@@ -78,7 +78,7 @@ export default function WorkIndex() {
                   wide={w.wide}
                   concept={w.concept}
                   tags={[serviceLabel(w.service), industryLabel(w.industry)]}
-                  href={href(w.caseStudy)}
+                  href={w.href ?? href(w.caseStudy)}
                 />
               </div>
             ))}
@@ -97,7 +97,7 @@ export default function WorkIndex() {
                 <>
                   <div className="ph" style={{ aspectRatio: "4/3", width: 96 }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={img(w.thumb, 400)} alt={w.title} loading="lazy" />
+                    <img src={w.thumb.startsWith("/") ? w.thumb : img(w.thumb, 400)} alt={w.title} loading="lazy" />
                   </div>
                   <span style={{ fontSize: 18 }}>
                     {w.title}
@@ -112,7 +112,11 @@ export default function WorkIndex() {
                   <span className="mut c5">{w.year}</span>
                 </>
               );
-              return w.caseStudy ? (
+              return w.href ? (
+                <a key={w.title} href={w.href} className="row lrow" style={{ paddingBlock: 14 }}>
+                  {cells}
+                </a>
+              ) : w.caseStudy ? (
                 <Link key={w.title} href={`/work/${w.caseStudy}`} className="row lrow" style={{ paddingBlock: 14 }}>
                   {cells}
                 </Link>

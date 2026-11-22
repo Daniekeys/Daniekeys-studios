@@ -34,6 +34,13 @@ export default function WorkTile({ title, blurb, media, wide, tags, concept, hre
       </div>
     </>
   );
+  // Brand websites are static pages outside the app, so they get a plain link.
+  if (href?.endsWith("/site"))
+    return (
+      <a href={href} className="work-link" style={{ display: "block" }}>
+        {body}
+      </a>
+    );
   return href ? (
     <Link href={href} className="work-link" style={{ display: "block" }}>
       {body}
