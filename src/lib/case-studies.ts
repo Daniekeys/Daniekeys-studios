@@ -7,7 +7,8 @@ import { film, image, type Media } from "./media";
 // 4:5 frames, "trio" three 4:5 frames (each can take its own ratio; "narrow"
 // centres a very tall full image), "posts" a grid of 4:5 social posts,
 // "screens" a row of phone screens, "line" a big centred sentence, "section"
-// a label and a line that starts a new part of the page.
+// a label and a line that starts a new part of the page, "site" the brand
+// website in a browser and phone frame (see src/lib/sites.ts).
 export type Block =
   | { type: "full"; media: Media; ratio?: string; narrow?: boolean }
   | { type: "pair"; media: [Media, Media]; ratio?: string }
@@ -15,7 +16,8 @@ export type Block =
   | { type: "posts"; media: Media[] }
   | { type: "screens"; media: Media[] }
   | { type: "line"; text: string }
-  | { type: "section"; label: string; text: string };
+  | { type: "section"; label: string; text: string }
+  | { type: "site"; slug: string };
 
 export type CaseStudy = {
   slug: string;
@@ -49,7 +51,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "A warm, grown-up identity for a cake and pastry kitchen, built to look as good on a wedding table as it does in a DM.",
     hero: film("tejs-reel", "Tej's Bakes brand reel"),
     heroBg: "#3A1E1A",
-    services: "Strategy, brand identity, social, brand reel",
+    services: "Strategy, brand identity, website, social, brand reel",
     team: "Daniel Ayeni, John",
     brief:
       "Tej's makes cakes for birthdays, weddings and every small win in between, plus pastries and small chops. The business had grown on word of mouth and needed a brand that felt as special as the cakes.",
@@ -77,6 +79,8 @@ export const CASE_STUDIES: CaseStudy[] = [
           image("tejs-how-to-order", "Post: Ordering is easy as cake"),
         ],
       },
+      { type: "section", label: "The website", text: "A homepage that sells the moment: the cake menu, small chops, three steps to order and an order form, all in the brand." },
+      { type: "site", slug: "tejs-bakes" },
     ],
     credits: [
       { role: "Strategy and design", name: "Daniel Ayeni" },
@@ -161,6 +165,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       { type: "pair", media: [image("tandari-kit-a15-in-hand", "In their hands"), image("tandari-kit-a16-campaign-cards", "Open briefs, styled like tickets")], ratio: "16/10" },
       { type: "pair", media: [image("tandari-kit-a17-social", "Social templates"), image("tandari-kit-a18-poster-wall", "Poster wall")], ratio: "16/10" },
       { type: "pair", media: [image("tandari-kit-a19-merch", "More merch: things people actually keep"), image("tandari-kit-a20-sign-off", "Sign-off: see you on the timeline")], ratio: "16/10" },
+      { type: "section", label: "The website", text: "A live landing page for brands and creators. Open it, scroll it, type in the brief box." },
+      { type: "site", slug: "tandari" },
       { type: "section", label: "Out in the world", text: "Billboards, walls, the commute, the website and the phone in your hand." },
       { type: "full", media: image("tandari-ooh-skyline", "Tandari billboards over the skyline") },
       { type: "pair", media: [image("tandari-ooh-drive-in", "Drive-in billboard"), image("tandari-ooh-mural", "Street wall mural")], ratio: "16/10" },
@@ -194,6 +200,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       { type: "section", label: "Identity", text: "The ire wordmark and its striped mark, in every colourway, with the rules for using it." },
       { type: "full", media: image("ire-logo-variations", "Ire logo variations and usage"), ratio: "1600/1360" },
       { type: "full", media: image("ire-cards", "Ire cards") },
+      { type: "section", label: "The website", text: "The launch site: the striped mark in 3D, Jars, Ajo and cards, told as you scroll." },
+      { type: "site", slug: "ire" },
       { type: "section", label: "The app", text: "Six screens: home, Jars, Ajo, cards, a payment and insights." },
       {
         type: "screens",
@@ -235,6 +243,54 @@ export const CASE_STUDIES: CaseStudy[] = [
       { type: "full", media: image("ire-brand-at-scale", "Ire brand at scale: app, merch and people"), ratio: "1920/4288", narrow: true },
     ],
     credits: [{ role: "Studio", name: "Daniekeys Studios" }],
+    next: { title: "Zaharyn Residences", href: "/work/zaharyn", media: image("zaharyn-tower-bluehour", "The Zaharyn tower at blue hour") },
+  },
+  {
+    slug: "zaharyn",
+    title: "Zaharyn Residences",
+    kind: "Studio concept",
+    industry: "Real estate",
+    year: 2026,
+    intro:
+      "A brand, a launch film and a website for a tower of sea-view residences in Lusail Marina. A studio concept, so the development, the tower and every detail in it are samples.",
+    hero: film("zaharyn-film", "Zaharyn Residences launch film"),
+    heroBg: "#13233A",
+    services: "Naming, brand identity, launch film, website",
+    team: "Daniekeys Studios",
+    brief:
+      "A new address in Lusail needed a name, an identity and a launch kit that feel at home in Qatar and premium to buyers anywhere. We set the brief ourselves: sell a feeling, not square metres.",
+    challenge:
+      "Gulf property branding leans on black, gold and towers. Everything looks the same, and none of it says home.",
+    approach:
+      "We built the brand around one picture: your own doorway, with the sun coming up over the Gulf behind it. Both As in Zaharyn are redrawn as pointed arches, and a gold sun rests on the crossbar. Limestone by day, Gulf Night after dark, no black anywhere. Every image is seen through the arch, and the voice stays calm: Everything, minutes away.",
+    gallery: [
+      { type: "full", media: image("zaharyn-identity", "Zaharyn wordmark with the Doorway mark and the Arabic name"), ratio: "2000/1188" },
+      { type: "full", media: image("zaharyn-billboard", "Zaharyn billboard against a dusk sky"), ratio: "2000/1135" },
+      { type: "section", label: "The doorway", text: "An A that opens like a door. The crossbar becomes the transom, and the sun sits on it: first light over the Gulf, seen from your own front door." },
+      { type: "full", media: image("zaharyn-doorway", "The Doorway mark and the gold wordmark on Gulf Night"), ratio: "2000/1671" },
+      { type: "full", media: image("zaharyn-logo-family", "Zaharyn logo family on limestone, Gulf Night and dune"), ratio: "2000/988" },
+      { type: "pair", media: [image("zaharyn-card", "Gulf Night card with the Doorway mark in gold foil"), image("zaharyn-invitation", "Private viewing invitation on a kraft envelope")], ratio: "4/3" },
+      { type: "section", label: "Colour and type", text: "Limestone by day, Gulf Night after dark. Gold is the light, so it stays small. Bodoni Moda for the headlines, Jost for everything you read." },
+      { type: "full", media: image("zaharyn-colour", "Zaharyn colour: limestone, Gulf Night, dune, Katara gold and Corniche"), ratio: "2000/1650" },
+      { type: "full", media: image("zaharyn-type", "Zaharyn typography: Bodoni Moda, Jost and Noto Naskh Arabic"), ratio: "2000/940" },
+      { type: "section", label: "First light windows", text: "The arch is the camera. Every image in the brand is seen through a doorway, and when there is no photo, the window holds the Gulf itself." },
+      { type: "full", media: image("zaharyn-windows", "First light windows at dawn, dusk and one lit room"), ratio: "2000/1356" },
+      { type: "section", label: "The film", text: "Sixty seconds from sunrise over the Gulf to one light on in the tower. Doha's dhows, Katara and the marina, then the tower itself, rendered with AI." },
+      { type: "pair", media: [image("zaharyn-tower-dawn", "The Zaharyn tower at dawn"), image("zaharyn-tower-bluehour", "The Zaharyn tower at blue hour")], ratio: "16/9" },
+      { type: "full", media: film("zaharyn-film-vertical", "Zaharyn launch film, vertical cut"), ratio: "9/16", narrow: true },
+      { type: "section", label: "In the world", text: "A private viewing at sunrise, posters for the sales gallery walls, a bus shelter glowing after dark and a mobile site with one arch, one line and one button." },
+      { type: "pair", media: [image("zaharyn-poster-palm", "First Light poster in a white frame beside a palm leaf"), image("zaharyn-poster-night", "One Light On poster in a wooden frame")], ratio: "3/2" },
+      { type: "full", media: image("zaharyn-bus-shelter", "Come home to Lusail, on a bus shelter at night"), ratio: "3/4", narrow: true },
+      { type: "full", media: image("zaharyn-mobile", "The Zaharyn mobile site on a phone"), ratio: "2000/1120" },
+      { type: "line", text: "Everything, minutes away." },
+      { type: "full", media: image("zaharyn-voice", "Zaharyn voice: few words about light, the sea and time"), ratio: "2000/1127" },
+      { type: "section", label: "The website", text: "The door opens as the site loads. Switch between first light and after dark, walk through the arch into a residence, then watch the tower light up one window at a time." },
+      { type: "site", slug: "zaharyn" },
+    ],
+    credits: [
+      { role: "Brand, film and website", name: "Daniekeys Studios" },
+      { role: "Made with", name: "Claude" },
+    ],
     next: { title: "Daniekeys Studios", href: "/work/daniekeys-studios", media: image("daniekeys-billboard", "Daniekeys billboard at dusk") },
   },
   {

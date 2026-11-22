@@ -121,3 +121,23 @@ html{scroll-behavior:smooth}
  html{scroll-behavior:auto}
  .work-link .ph img,.work-link .ph video{transition:none}
 }
+
+/* Brand website previews on case studies (SitePreview) */
+.site-row{display:grid;grid-template-columns:minmax(0,3.4fr) minmax(0,1fr);gap:24px;align-items:end}
+.site-browser{border-radius:10px;overflow:hidden;background:#E6E5E0;border:1px solid rgba(17,17,17,.1)}
+.site-bar{display:flex;align-items:center;gap:7px;height:36px;padding:0 14px;font-size:12px;color:#8A8A86}
+.site-bar i{width:10px;height:10px;border-radius:50%;background:rgba(17,17,17,.16)}
+.site-bar span{margin-left:12px}
+.site-phone{border-radius:34px;padding:8px;background:#111111}
+.site-phone .site-view{border-radius:27px}
+.site-view{position:relative;overflow:hidden;background:#E6E5E0}
+.site-view iframe{position:absolute;inset:0;border:0;transform-origin:0 0;background:#fff}
+.site-view button{all:unset;display:block;width:100%;height:100%;cursor:pointer;position:relative}
+.site-view button img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.site-view button .pill{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);opacity:0;transition:opacity .25s ease}
+.site-view button:hover .pill,.site-view button:focus-visible .pill{opacity:1}
+@container (max-width:760px){
+ .site-row{grid-template-columns:minmax(0,1fr)}
+ .site-phone{width:min(300px,80%);margin-inline:auto}
+ .site-view button .pill{opacity:1}
+}

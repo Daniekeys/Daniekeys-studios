@@ -6,11 +6,13 @@
 //   node scripts/media.mjs add <name> <file>      use a file you picked by hand for <name> (see media/manifest.json)
 //   node scripts/media.mjs check                  test the Cloudinary keys in .env.local
 //   node scripts/media.mjs upload [name ...]      upload everything ready (or only the names given) to daniekeys-site/<name>
+//   node scripts/media.mjs sites [slug ...]       move a brand website's images (public/sites/<slug>/img) to Cloudinary
+//                                                 and point its index.html at them (f_auto,q_auto). Safe to re-run.
 //
 // Files are copied to media/files/<name>.<ext>. That folder is gitignored.
 
 import { createHash } from "node:crypto";
-import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -134,6 +136,41 @@ async function upload(names) {
   console.log(`\n${ok} uploaded.${skipped.length ? ` Not ready yet: ${skipped.join(", ")}` : ""}`);
 }
 
+// Brand websites (public/sites/<slug>/) ship with their images next to them so
+// they work straight away. This moves those images to Cloudinary, which serves
+// them as AVIF/WebP at the right quality, and rewrites the page to use them.
+async function sites(slugs) {
+  const { cloud, key, secret } = creds();
+  const root = join(ROOT, "public", "sites");
+  const list = slugs.length ? slugs : readdirSync(root).filter((d) => existsSync(join(root, d, "index.html")));
+  for (const slug of list) {
+    const dir = join(root, slug, "img");
+    const page = join(root, slug, "index.html");
+    if (!existsSync(dir)) { console.log(`${slug}: no img folder, skipped`); continue; }
+    let html = readFileSync(page, "utf8");
+    let ok = 0;
+    for (const file of readdirSync(dir)) {
+      const local = `/sites/${slug}/img/${file}`;
+      if (!html.includes(local)) continue; // already moved, or not used
+      const id = `${manifest.folder}/sites/${slug}/${file.replace(/\.[^.]+$/, "")}`;
+      const params = { invalidate: "true", overwrite: "true", public_id: id, timestamp: String(Math.floor(Date.now() / 1000)) };
+      const toSign = Object.keys(params).sort().map((k) => `${k}=${params[k]}`).join("&");
+      const form = new FormData();
+      for (const [k, v] of Object.entries(params)) form.append(k, v);
+      form.append("api_key", key);
+      form.append("signature", createHash("sha1").update(toSign + secret).digest("hex"));
+      form.append("file", new Blob([readFileSync(join(dir, file))]), file);
+      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloud}/image/upload`, { method: "POST", body: form });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) { console.error(`FAILED ${slug}/${file}: ${res.status} ${body?.error?.message ?? ""}`); continue; }
+      html = html.split(local).join(`https://res.cloudinary.com/${cloud}/image/upload/f_auto,q_auto,c_limit,w_1600/${id}`);
+      ok++;
+    }
+    writeFileSync(page, html);
+    console.log(`${slug}: ${ok} image(s) moved to Cloudinary. Check /work/${slug}/site, then commit public/sites/${slug}/index.html.`);
+  }
+}
+
 const [cmd, ...args] = process.argv.slice(2);
 try {
   if (cmd === "status") status();
@@ -141,7 +178,8 @@ try {
   else if (cmd === "add" && args.length === 2) add(...args);
   else if (cmd === "check") await check();
   else if (cmd === "upload") await upload(args);
-  else console.log(readFileSync(new URL(import.meta.url), "utf8").split("\n").slice(1, 10).join("\n"));
+  else if (cmd === "sites") await sites(args);
+  else console.log(readFileSync(new URL(import.meta.url), "utf8").split("\n").slice(1, 12).join("\n"));
 } catch (e) {
   console.error(e.message);
   process.exit(1);

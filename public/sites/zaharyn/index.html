@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zaharyn Residences, Lusail Marina</title>
+<meta name="description" content="Sea-view residences in Lusail Marina. Everything, minutes away. A studio concept by Daniekeys Studios.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F2ECE2">
+<link rel="preload" href="/sites/zaharyn/fonts/bodoni-moda-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/sites/zaharyn/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/sites/zaharyn/img/tower-dawn.jpg" as="image">
+<style>
+@font-face{font-family:'Bodoni Moda';font-style:normal;font-weight:400;font-display:swap;src:url(/sites/zaharyn/fonts/bodoni-moda-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Bodoni Moda';font-style:italic;font-weight:400;font-display:swap;src:url(/sites/zaharyn/fonts/bodoni-moda-latin-400-italic.woff2) format('woff2')}
+@font-face{font-family:'Jost';font-style:normal;font-weight:300;font-display:swap;src:url(/sites/zaharyn/fonts/jost-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'Jost';font-style:normal;font-weight:400;font-display:swap;src:url(/sites/zaharyn/fonts/jost-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Jost';font-style:normal;font-weight:500;font-display:swap;src:url(/sites/zaharyn/fonts/jost-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Noto Naskh Arabic';font-style:normal;font-weight:400;font-display:swap;src:url(/sites/zaharyn/fonts/noto-naskh-arabic-arabic-400-normal.woff2) format('woff2')}
+
+:root{
+  --limestone:#F2ECE2;--raised:#FAF7F1;--dune:#D9C4A1;--night:#13233A;--night-raised:#1B2E4A;
+  --gold:#B0874A;--corniche:#4F7F7D;
+  --surface:var(--limestone);--surface-raised:var(--raised);--ink:#13233A;--muted:#4A5566;--gold-text:#7E5C2A;--hair:#13233a2e;
+  --display:'Bodoni Moda',Didot,Georgia,serif;--text:'Jost',Futura,system-ui,sans-serif;--ar:'Noto Naskh Arabic','Geeza Pro',serif;
+  --pad:clamp(20px,4.4vw,64px);--ease:cubic-bezier(.22,.7,.12,1);
+}
+html[data-theme="night"]{--surface:#13233A;--surface-raised:#1B2E4A;--ink:#F2ECE2;--muted:#A9B3C2;--gold-text:#D9B47C;--hair:#f2ece233}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--surface);color:var(--ink);font:300 17px/1.6 var(--text);-webkit-font-smoothing:antialiased;transition:background-color .9s var(--ease),color .9s var(--ease);overflow-x:hidden}
+img,video,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.label{font:400 12px/1.2 var(--text);letter-spacing:.32em;text-transform:uppercase}
+.gold{color:var(--gold-text)}
+em{font-style:italic;color:var(--gold-text)}
+.display{font-family:var(--display);font-weight:400;letter-spacing:-.01em}
+.ar{font-family:var(--ar);letter-spacing:0}
+.wrap{padding-inline:var(--pad)}
+.arch{clip-path:url(#arch);-webkit-clip-path:url(#arch)}
+.media{position:relative;overflow:hidden;background:var(--dune)}
+.media>img,.media>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* concept bar */
+.concept{position:relative;z-index:60;height:34px;white-space:nowrap;overflow:hidden;background:#13233A;color:#D9B47C;text-align:center;font:400 11px/1.4 var(--text);letter-spacing:.24em;text-transform:uppercase;padding:9px 16px}
+
+/* loader: the door opens */
+.loader{position:fixed;inset:0;z-index:100;pointer-events:none}
+.loader .leaf{position:absolute;top:0;bottom:0;width:50.5%;background:var(--limestone)}
+.loader .leaf.l{left:0}.loader .leaf.r{right:0}
+.loader .center{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:28px;color:#13233A}
+.loader .mark{width:min(110px,22vw);overflow:visible}
+.loader .mark .stroke{fill:none;stroke:#13233A;stroke-width:14}
+.loader .mark .fillin{opacity:0}
+.loader .mark .sun{fill:var(--gold)}
+.loader .lw{width:min(300px,62vw);opacity:0}
+.no-js .loader{display:none}
+
+/* header */
+.hdr{position:fixed;left:0;right:0;top:34px;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px var(--pad);color:#F2ECE2;transition:color .5s var(--ease),background-color .5s var(--ease),top .4s var(--ease),padding .4s var(--ease)}
+.hdr.solid{top:0;padding-block:14px;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--ink);border-bottom:1px solid var(--hair)}
+.hdr .brand{display:flex;align-items:center;gap:14px}
+.hdr .brand svg.m{width:22px;height:auto}
+.hdr .brand svg.w{width:150px;height:auto}
+.hdr nav{display:flex;gap:34px}
+.hdr nav a{font:400 12px/1 var(--text);letter-spacing:.24em;text-transform:uppercase;opacity:.85;transition:opacity .3s}
+.hdr nav a:hover{opacity:1}
+.hdr .right{display:flex;align-items:center;gap:14px}
+.toggle{display:flex;align-items:center;border:1px solid currentColor;border-radius:999px;padding:3px;gap:2px;cursor:pointer;background:transparent}
+.toggle span{white-space:nowrap;font:400 11px/1 var(--text);letter-spacing:.18em;text-transform:uppercase;padding:8px 12px;border-radius:999px;transition:background-color .5s var(--ease),color .5s var(--ease)}
+html[data-theme="day"] .toggle .t-day,html[data-theme="night"] .toggle .t-night{background:currentColor}
+.toggle b{color:inherit}
+html[data-theme="day"] .hdr:not(.solid) .toggle .t-day b,html[data-theme="night"] .hdr:not(.solid) .toggle .t-night b{color:#13233A}
+html[data-theme="day"] .hdr.solid .toggle .t-day b,html[data-theme="night"] .hdr.solid .toggle .t-night b{color:var(--surface)}
+.toggle b{font-weight:400}
+.btn{display:inline-flex;align-items:center;gap:12px;height:46px;padding:0 24px;border-radius:2px;font:400 12px/1 var(--text);letter-spacing:.28em;text-transform:uppercase;border:1px solid currentColor;cursor:pointer;background:transparent;transition:background-color .4s var(--ease),color .4s var(--ease)}
+.btn.fill{background:var(--gold);border-color:var(--gold);color:#13233A}
+.btn.fill:hover{background:#c89c5a}
+.btn .sun{width:10px;height:5px;border-radius:10px 10px 0 0;background:currentColor}
+
+/* hero */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;color:#F2ECE2}
+.hero .bg{position:absolute;inset:-4%;}
+.hero .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;transition:opacity 1.4s var(--ease)}
+.hero .bg .night{opacity:0}
+html[data-theme="night"] .hero .bg .night{opacity:1}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,35,58,.35) 0%,rgba(19,35,58,0) 30%,rgba(19,35,58,0) 50%,rgba(19,35,58,.72) 100%);pointer-events:none}
+.hero .copy{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(36px,7vh,80px);z-index:2;display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px}
+.hero h1{font-size:clamp(54px,8.6vw,138px);line-height:.98}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+.hero h1 .ln>span{display:block}
+.hero h1 em{color:#E7C18C}
+.hero .eyebrow{margin-bottom:22px;display:flex;gap:18px;align-items:center}
+.hero .eyebrow i{width:40px;height:1px;background:currentColor;opacity:.6}
+.hero .side{max-width:330px;display:grid;gap:22px;justify-items:start;padding-bottom:12px}
+.hero .side p{font-size:17px;line-height:1.6;color:#E9E3D8}
+.scrollcue{position:absolute;left:50%;bottom:22px;z-index:2;transform:translateX(-50%);width:1px;height:46px;background:rgba(242,236,226,.35);overflow:hidden}
+.scrollcue::after{content:"";position:absolute;left:0;top:-46px;width:1px;height:46px;background:#F2ECE2;animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{to{top:46px}}
+
+/* statement */
+.statement{padding:clamp(110px,16vw,220px) var(--pad);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:40px}
+.statement p.big{font-family:var(--display);font-size:clamp(30px,4.1vw,64px);line-height:1.14;letter-spacing:-.01em}
+.statement p.big .w{opacity:.14;transition:opacity .2s linear}
+.statement .meta{display:grid;align-content:start;gap:18px}
+.statement .meta svg{width:46px}
+
+/* door: pinned arch that grows */
+.door{position:relative;height:300vh}
+.door .stage{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center}
+.door .win{position:relative;width:30vw;height:62vh;will-change:width,height}
+.door .win video{transition:opacity 1s var(--ease)}
+.door .win .v2{opacity:0}
+.door .cap{position:absolute;inset:auto 0 0 0;padding:22vh 0 9vh;text-align:center;z-index:2;color:#F2ECE2;pointer-events:none;background:linear-gradient(180deg,rgba(19,35,58,0),rgba(19,35,58,.55));opacity:0}
+.door .cap h2{opacity:1!important}
+.door .cap h2{font-size:clamp(40px,6vw,96px);line-height:1;opacity:0}
+.door .lead{position:absolute;top:12vh;left:0;right:0;text-align:center}
+.door .lead .label{color:var(--gold-text)}
+.door .lead h3{font-family:var(--display);font-weight:400;font-size:clamp(26px,2.6vw,40px);margin-top:14px}
+
+/* residences */
+.res{padding:clamp(100px,12vw,180px) 0}
+.sechead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:40px;align-items:end;padding:0 var(--pad) clamp(60px,7vw,110px)}
+.sechead h2{font-size:clamp(42px,5.4vw,88px);line-height:1.02}
+.sechead p{max-width:460px;color:var(--muted);font-size:18px}
+.sechead .label{color:var(--gold-text);margin-bottom:22px;display:block}
+.row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:center;padding:0 var(--pad);margin-bottom:clamp(90px,10vw,160px)}
+.row .media{aspect-ratio:3/4}
+.row.a .media{grid-column:1/span 5}
+.row.a .txt{grid-column:7/span 5}
+.row.b .media{grid-column:8/span 5;order:2}
+.row.b .txt{grid-column:2/span 5;order:1}
+.row .txt .no{font-family:var(--display);font-size:15px;color:var(--gold-text)}
+.row .txt h3{font-family:var(--display);font-weight:400;font-size:clamp(34px,3.6vw,56px);line-height:1.06;margin:18px 0 22px}
+.row .txt p{color:var(--muted);max-width:420px}
+.row .txt ul{list-style:none;margin-top:30px;border-top:1px solid var(--hair)}
+.row .txt li{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid var(--hair);font-size:15px}
+.row .txt li span:last-child{color:var(--muted)}
+.row .media>video,.row .media>img{inset:-8% 0;height:116%}
+
+/* neighbourhood: horizontal */
+.hood{position:relative;background:var(--night);color:#F2ECE2}
+.hood .pin{height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.hood .top{display:flex;justify-content:space-between;align-items:end;gap:30px;padding:0 var(--pad) 44px}
+.hood .top h2{font-size:clamp(40px,5vw,80px);line-height:1}
+.hood .top h2 em{color:#D9B47C}
+.hood .top .label{color:#D9B47C}
+.track{display:flex;gap:28px;padding:0 var(--pad);width:max-content;will-change:transform}
+.place{width:clamp(280px,27vw,420px);flex:none}
+.place .media{aspect-ratio:4/5;background:#1B2E4A}
+.place h3{font-family:var(--display);font-weight:400;font-size:30px;margin-top:22px}
+.place p{font-size:15px;color:#A9B3C2;margin-top:6px}
+.place p em{color:#D9B47C}
+.hood .progress{margin:44px var(--pad) 0;height:1px;background:rgba(242,236,226,.18);position:relative}
+.hood .progress i{position:absolute;left:0;top:0;bottom:0;width:0;background:#D9B47C}
+
+/* amenities */
+.amen{padding:clamp(110px,13vw,190px) 0 clamp(70px,8vw,120px)}
+.amen .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding:0 var(--pad)}
+.amen .card .media{aspect-ratio:2/3}
+.amen .card:nth-child(2){transform:translateY(80px)}
+.amen .card h3{font-family:var(--display);font-weight:400;font-size:32px;margin-top:24px}
+.amen .card p{color:var(--muted);font-size:15px;margin-top:6px;max-width:300px}
+
+/* band */
+.band{position:relative;height:110vh;overflow:hidden;display:grid;place-items:center;color:#F2ECE2;text-align:center;margin-top:120px}
+.band .media{position:absolute;inset:0;background:#0b1626}
+.band .media::after{content:"";position:absolute;inset:0;background:rgba(19,35,58,.38)}
+.band h2{position:relative;font-size:clamp(46px,8vw,132px);line-height:1}
+.band h2 em{color:#E7C18C}
+.band .label{position:relative;margin-bottom:26px;display:block}
+
+/* after dark */
+.dark{background:#0F1C2F;color:#F2ECE2;padding:clamp(110px,12vw,180px) var(--pad);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,100px);align-items:center}
+.dark .tower{aspect-ratio:9/16;max-height:86vh;width:100%;background:#13233A}
+.dark .tower img{object-position:50% 30%}
+.dark .label{color:#D9B47C}
+.dark h2{font-size:clamp(46px,6vw,100px);line-height:1;margin:22px 0 26px}
+.dark h2 em{color:#E7C18C}
+.dark p{color:#A9B3C2;max-width:440px}
+.arcade{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin-top:56px;max-width:520px}
+.arcade i{aspect-ratio:2/3;background:#1B2E4A;clip-path:url(#arch);-webkit-clip-path:url(#arch);transition:background-color .6s var(--ease),box-shadow .6s}
+.arcade i.on{background:linear-gradient(180deg,#f7e9d2,#dfa06c)}
+.arcade i.yours{background:linear-gradient(180deg,#f7e9d2,#f0c9a0 55%,#dfa06c)}
+
+/* register */
+.reg{padding:clamp(110px,12vw,180px) var(--pad);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,6vw,110px);align-items:start}
+.reg .media{aspect-ratio:4/5}
+.reg h2{font-size:clamp(42px,5vw,80px);line-height:1.02;margin:22px 0 22px}
+.reg .label{color:var(--gold-text)}
+.reg p.intro{color:var(--muted);max-width:460px;margin-bottom:46px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:26px 24px}
+.field{display:grid;gap:10px}
+.field.full{grid-column:1/-1}
+.field label{font:400 11px/1 var(--text);letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select{background:transparent;border:0;border-bottom:1px solid var(--hair);padding:10px 0 12px;font-size:18px;font-weight:300;outline:none;border-radius:0;-webkit-appearance:none;appearance:none}
+.field select option{color:#13233A}
+.field input:focus,.field select:focus{border-bottom-color:var(--gold)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;border:1px solid var(--hair);padding:10px 16px;font:400 12px/1 var(--text);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);transition:all .3s var(--ease)}
+.chips input:checked+span{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+form .btn{grid-column:1/-1;justify-self:start;margin-top:10px}
+.thanks{display:none;border:1px solid var(--hair);padding:40px;grid-column:1/-1}
+.thanks h3{font-family:var(--display);font-weight:400;font-size:40px;margin-bottom:14px}
+.thanks p{color:var(--muted)}
+.sent form{display:none}.sent .thanks{display:block}
+
+/* footer */
+footer{background:#13233A;color:#F2ECE2;padding:clamp(90px,10vw,150px) var(--pad) 40px;text-align:center}
+footer .m{width:64px;margin:0 auto 36px;color:#F2ECE2}
+footer .w{width:min(620px,80vw);margin:0 auto;color:#F2ECE2}
+footer .ar{font-size:30px;color:#D9B47C;margin-top:26px}
+footer .line{font-family:var(--display);font-style:italic;font-size:24px;color:#D9B47C;margin-top:14px}
+footer .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:90px;padding-top:36px;border-top:1px solid #f2ece233;text-align:left;font-size:15px;color:#A9B3C2}
+footer .cols .label{color:#F2ECE2;margin-bottom:14px;display:block}
+footer .legal{margin-top:60px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#7f8a9c}
+footer .legal a{color:#D9B47C}
+
+/* reveal helpers */
+.rv{opacity:0;transform:translateY(34px)}
+.js-off .rv{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .hdr nav{display:none}
+  .hdr .brand svg.w{width:118px}
+  .hdr .right .btn{display:none}
+  .concept .long{display:none}
+  .toggle span{padding:7px 9px;letter-spacing:.12em;font-size:10px}
+  .hdr{gap:12px}
+  .hero .copy{grid-template-columns:1fr}
+  .hero .side{max-width:none}
+  .statement{grid-template-columns:1fr;gap:28px}
+  .door{height:220vh}
+  .door .win{width:64vw;height:56vh}
+  .sechead{grid-template-columns:1fr;gap:20px}
+  .row{grid-template-columns:1fr;gap:28px}
+  .row .media,.row.a .media,.row.b .media,.row .txt,.row.a .txt,.row.b .txt{grid-column:1/-1;order:0}
+  .row .media{aspect-ratio:4/5}
+  .hood .pin{height:auto;padding:100px 0}
+  .hood .track{width:auto;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .hood .track::-webkit-scrollbar{display:none}
+  .place{width:78vw;scroll-snap-align:start}
+  .hood .top{flex-direction:column;align-items:start}
+  .hood .progress{display:none}
+  .amen .grid{grid-template-columns:1fr;gap:56px}
+  .amen .card:nth-child(2){transform:none}
+  .band{height:80vh}
+  .dark,.reg{grid-template-columns:1fr}
+  .dark .tower{max-height:none;aspect-ratio:4/5}
+  .arcade{grid-template-columns:repeat(6,1fr)}
+  form{grid-template-columns:1fr}
+  footer .cols{grid-template-columns:1fr;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none}
+  .loader{display:none}
+  .scrollcue::after{animation:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <clipPath id="arch" clipPathUnits="objectBoundingBox"><path d="M0,1 L0,0.46 C0,0.2 0.22,0.06 0.5,0 C0.78,0.06 1,0.2 1,0.46 L1,1 Z"/></clipPath>
+</defs></svg>
+
+<div class="concept"><span>Studio concept by Daniekeys Studios</span><span class="long"> · Not a real development · All content is sample</span></div>
+
+<div class="loader" aria-hidden="true">
+  <div class="leaf l"></div><div class="leaf r"></div>
+  <div class="center">
+    <svg class="mark" viewBox="-110 0 1140 1500">
+      <path class="stroke" d="M0.0,1500.0 L0.0,753.1 A846.4,846.4 0 0 1 460.0,0.0 A846.4,846.4 0 0 1 920.0,753.1 L920.0,1500.0"/>
+      <g class="fillin" fill="#13233A"><path d="M0.0,1500.0 L0.0,753.1 A846.4000000000001,846.4000000000001 0 0 1 460.0,0.0 A846.4000000000001,846.4000000000001 0 0 1 920.0,753.1 L920.0,1500.0 L715.0,1500.0 L715.0,753.1 A846.4000000000001,846.4000000000001 0 0 0 380.5,79.0 A846.4000000000001,846.4000000000001 0 0 0 46.0,753.1 L46.0,1500.0 Z"></path><path d="M45.0,753.1 L716.0,753.1 L716.0,714.0 L45.0,714.0 Z"></path><path d="M-105.0,1500.0 L135.2,1500.0 L135.2,1456.3 L-105.0,1456.3 Z"></path><path d="M631.0,1500.0 L1025.0,1500.0 L1025.0,1456.3 L631.0,1456.3 Z"></path></g>
+      <path class="sun" d="M206.6,714.0 A173.94,173.94 0 0 1 554.4,714.0 Z"/>
+    </svg>
+    <div class="lw"><svg class="lwsvg" viewBox="0 0 11495 1500" role="img" aria-label="Zaharyn"><g fill="#13233A"><path d="M47 1500V1461L837 39H471Q335 39 261.5 69.5Q188 100 160.5 166.5Q133 233 133 340H94V0H1047V39L257 1461H683Q820 1461 892.5 1428.5Q965 1396 992.5 1321.5Q1020 1247 1020 1120H1060V1500Z"></path><path d="M1604.0,1500.0 L1604.0,753.1 A846.4000000000001,846.4000000000001 0 0 1 2064.0,0.0 A846.4000000000001,846.4000000000001 0 0 1 2524.0,753.1 L2524.0,1500.0 L2319.0,1500.0 L2319.0,753.1 A846.4000000000001,846.4000000000001 0 0 0 1984.5,79.0 A846.4000000000001,846.4000000000001 0 0 0 1650.0,753.1 L1650.0,1500.0 Z"></path><path d="M1649.0,753.1 L2320.0,753.1 L2320.0,714.0 L1649.0,714.0 Z"></path><path d="M1499.0,1500.0 L1739.2,1500.0 L1739.2,1456.3 L1499.0,1456.3 Z"></path><path d="M2235.0,1500.0 L2629.0,1500.0 L2629.0,1456.3 L2235.0,1456.3 Z"></path><path d="M4436 0V39H4256V1461H4436V1500H3866V1461H4066V780H3407V1461H3606V1500H3036V1461H3216V39H3036V0H3606V39H3407V740H4066V39H3866V0Z"></path><path d="M4948.0,1500.0 L4948.0,753.1 A846.4000000000001,846.4000000000001 0 0 1 5408.0,0.0 A846.4000000000001,846.4000000000001 0 0 1 5868.0,753.1 L5868.0,1500.0 L5663.0,1500.0 L5663.0,753.1 A846.4000000000001,846.4000000000001 0 0 0 5328.5,79.0 A846.4000000000001,846.4000000000001 0 0 0 4994.0,753.1 L4994.0,1500.0 Z"></path><path d="M4993.0,753.1 L5664.0,753.1 L5664.0,714.0 L4993.0,714.0 Z"></path><path d="M4843.0,1500.0 L5083.2,1500.0 L5083.2,1456.3 L4843.0,1456.3 Z"></path><path d="M5579.0,1500.0 L5973.0,1500.0 L5973.0,1456.3 L5579.0,1456.3 Z"></path><path d="M6740 746V723H7040Q7136 723 7203.5 683.5Q7271 644 7306.0 568.0Q7341 492 7341 383Q7341 274 7306.0 197.0Q7271 120 7203.5 79.5Q7136 39 7040 39H6380V0H7040Q7191 0 7303.5 41.5Q7416 83 7478.0 168.0Q7540 253 7540 383Q7540 513 7482.0 593.0Q7424 673 7312.5 709.5Q7201 746 7040 746ZM6380 1500V1461H7011V1500ZM6600 1479V27H6790V1479ZM7530 1510Q7443 1510 7394.5 1478.5Q7346 1447 7324.0 1393.5Q7302 1340 7296.5 1273.5Q7291 1207 7290.0 1136.0Q7289 1065 7282.0 998.5Q7275 932 7251.0 878.5Q7227 825 7174.5 793.5Q7122 762 7030 762H6740V741H7070Q7213 741 7297.5 780.0Q7382 819 7425.0 884.0Q7468 949 7483.0 1026.0Q7498 1103 7499.5 1180.0Q7501 1257 7504.5 1322.0Q7508 1387 7526.5 1426.0Q7545 1465 7595 1465Q7627 1465 7651.5 1458.5Q7676 1452 7696 1442L7710 1479Q7686 1492 7638.0 1501.0Q7590 1510 7530 1510Z"></path><path d="M8593 1500V1461H8773V779L8317 39H8164V0H8744V39H8537L8940 700L9336 39H9126V0H9534V39H9382L8963 734V1461H9164V1500Z"></path><path d="M10256 0V1461H10492V1500H10010V1461H10215V39H10010V0ZM11434 0V39H11223V1520H11169L10227 0H10457L11183 1191V39H10952V0Z"></path></g></svg></div>
+  </div>
+</div>
+
+<header class="hdr" id="hdr">
+  <a class="brand" href="#top" aria-label="Zaharyn Residences"><svg class="m" viewBox="-110 0 1140 1500" aria-hidden="true"><g fill="currentColor"><path d="M0.0,1500.0 L0.0,753.1 A846.4000000000001,846.4000000000001 0 0 1 460.0,0.0 A846.4000000000001,846.4000000000001 0 0 1 920.0,753.1 L920.0,1500.0 L715.0,1500.0 L715.0,753.1 A846.4000000000001,846.4000000000001 0 0 0 380.5,79.0 A846.4000000000001,846.4000000000001 0 0 0 46.0,753.1 L46.0,1500.0 Z"></path><path d="M45.0,753.1 L716.0,753.1 L716.0,714.0 L45.0,714.0 Z"></path><path d="M-105.0,1500.0 L135.2,1500.0 L135.2,1456.3 L-105.0,1456.3 Z"></path><path d="M631.0,1500.0 L1025.0,1500.0 L1025.0,1456.3 L631.0,1456.3 Z"></path></g><path d="M206.6,714.0 A173.94,173.94 0 0 1 554.4,714.0 Z" fill="#B0874A"></path></svg><svg class="w" viewBox="0 0 11495 1500" role="img" aria-label="Zaharyn"><g fill="currentColor"><path d="M47 1500V1461L837 39H471Q335 39 261.5 69.5Q188 100 160.5 166.5Q133 233 133 340H94V0H1047V39L257 1461H683Q820 1461 892.5 1428.5Q965 1396 992.5 1321.5Q1020 1247 1020 1120H1060V1500Z"></path><path d="M1604.0,1500.0 L1604.0,753.1 A846.4000000000001,846.4000000000001 0 0 1 2064.0,0.0 A846.4000000000001,846.4000000000001 0 0 1 2524.0,753.1 L2524.0,1500.0 L2319.0,1500.0 L2319.0,753.1 A846.4000000000001,846.4000000000001 0 0 0 1984.5,79.0 A846.4000000000001,846.4000000000001 0 0 0 1650.0,753.1 L1650.0,1500.0 Z"></path><path d="M1649.0,753.1 L2320.0,753.1 L2320.0,714.0 L1649.0,714.0 Z"></path><path d="M1499.0,1500.0 L1739.2,1500.0 L1739.2,1456.3 L1499.0,1456.3 Z"></path><path d="M2235.0,1500.0 L2629.0,1500.0 L2629.0,1456.3 L2235.0,1456.3 Z"></path><path d="M4436 0V39H4256V1461H4436V1500H3866V1461H4066V780H3407V1461H3606V1500H3036V1461H3216V39H3036V0H3606V39H3407V740H4066V39H3866V0Z"></path><path d="M4948.0,1500.0 L4948.0,753.1 A846.4000000000001,846.4000000000001 0 0 1 5408.0,0.0 A846.4000000000001,846.4000000000001 0 0 1 5868.0,753.1 L5868.0,1500.0 L5663.0,1500.0 L5663.0,753.1 A846.4000000000001,846.4000000000001 0 0 0 5328.5,79.0 A846.4000000000001,846.4000000000001 0 0 0 4994.0,753.1 L4994.0,1500.0 Z"></path><path d="M4993.0,753.1 L5664.0,753.1 L5664.0,714.0 L4993.0,714.0 Z"></path><path d="M4843.0,1500.0 L5083.2,1500.0 L5083.2,1456.3 L4843.0,1456.3 Z"></path><path d="M5579.0,1500.0 L5973.0,1500.0 L5973.0,1456.3 L5579.0,1456.3 Z"></path><path d="M6740 746V723H7040Q7136 723 7203.5 683.5Q7271 644 7306.0 568.0Q7341 492 7341 383Q7341 274 7306.0 197.0Q7271 120 7203.5 79.5Q7136 39 7040 39H6380V0H7040Q7191 0 7303.5 41.5Q7416 83 7478.0 168.0Q7540 253 7540 383Q7540 513 7482.0 593.0Q7424 673 7312.5 709.5Q7201 746 7040 746ZM6380 1500V1461H7011V1500ZM6600 1479V27H6790V1479ZM7530 1510Q7443 1510 7394.5 1478.5Q7346 1447 7324.0 1393.5Q7302 1340 7296.5 1273.5Q7291 1207 7290.0 1136.0Q7289 1065 7282.0 998.5Q7275 932 7251.0 878.5Q7227 825 7174.5 793.5Q7122 762 7030 762H6740V741H7070Q7213 741 7297.5 780.0Q7382 819 7425.0 884.0Q7468 949 7483.0 1026.0Q7498 1103 7499.5 1180.0Q7501 1257 7504.5 1322.0Q7508 1387 7526.5 1426.0Q7545 1465 7595 1465Q7627 1465 7651.5 1458.5Q7676 1452 7696 1442L7710 1479Q7686 1492 7638.0 1501.0Q7590 1510 7530 1510Z"></path><path d="M8593 1500V1461H8773V779L8317 39H8164V0H8744V39H8537L8940 700L9336 39H9126V0H9534V39H9382L8963 734V1461H9164V1500Z"></path><path d="M10256 0V1461H10492V1500H10010V1461H10215V39H10010V0ZM11434 0V39H11223V1520H11169L10227 0H10457L11183 1191V39H10952V0Z"></path></g></svg></a>
+  <nav aria-label="Main">
+    <a href="#residences">Residences</a>
+    <a href="#neighbourhood">Neighbourhood</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#after-dark">After dark</a>
+  </nav>
+  <div class="right">
+    <button class="toggle" id="theme" type="button" aria-label="Switch between first light and after dark">
+      <span class="t-day"><b>First light</b></span><span class="t-night"><b>After dark</b></span>
+    </button>
+    <a class="btn" href="#register">Private viewing</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="bg" id="herobg">
+      <img class="day" src="/sites/zaharyn/img/tower-dawn.jpg" alt="The Zaharyn tower at dawn over Lusail Marina" fetchpriority="high">
+      <img class="night" src="/sites/zaharyn/img/tower-bluehour.jpg" alt="The Zaharyn tower lit at blue hour" loading="lazy">
+    </div>
+    <div class="copy">
+      <div>
+        <div class="eyebrow label"><span>Lusail Marina</span><i></i><span class="ar">لوسيل، قطر</span></div>
+        <h1 class="display"><span class="ln"><span>Everything,</span></span><span class="ln"><span><em>minutes away.</em></span></span></h1>
+      </div>
+      <div class="side rv">
+        <p>Sea-view residences in a tower shaped like a doorway. Private viewings now open, at sunrise or after dark.</p>
+        <a class="btn fill" href="#register"><i class="sun"></i>Register your interest</a>
+      </div>
+    </div>
+    <div class="scrollcue" aria-hidden="true"></div>
+  </section>
+
+  <section class="statement">
+    <div class="meta"><svg class="mg" viewBox="-110 0 1140 1500" aria-hidden="true"><g fill="var(--ink)"><path d="M0.0,1500.0 L0.0,753.1 A846.4000000000001,846.4000000000001 0 0 1 460.0,0.0 A846.4000000000001,846.4000000000001 0 0 1 920.0,753.1 L920.0,1500.0 L715.0,1500.0 L715.0,753.1 A846.4000000000001,846.4000000000001 0 0 0 380.5,79.0 A846.4000000000001,846.4000000000001 0 0 0 46.0,753.1 L46.0,1500.0 Z"></path><path d="M45.0,753.1 L716.0,753.1 L716.0,714.0 L45.0,714.0 Z"></path><path d="M-105.0,1500.0 L135.2,1500.0 L135.2,1456.3 L-105.0,1456.3 Z"></path><path d="M631.0,1500.0 L1025.0,1500.0 L1025.0,1456.3 L631.0,1456.3 Z"></path></g><path d="M206.6,714.0 A173.94,173.94 0 0 1 554.4,714.0 Z" fill="#B0874A"></path></svg><span class="label gold">01 · The address</span></div>
+    <p class="big" id="statement">A door that opens onto the Gulf. Rooms that fill with first light. A tower of sea-view residences in Lusail Marina, minutes from everything Doha loves, and quiet enough to feel like home.</p>
+  </section>
+
+  <section class="door" id="residences" aria-label="A door to residency">
+    <div class="stage">
+      <div class="lead"><span class="label">02 · The residences</span><h3>Come in.</h3></div>
+      <div class="win arch media" id="doorwin">
+        <video class="v1" muted loop playsinline preload="none" poster="/sites/zaharyn/media/door.jpg" data-src="/sites/zaharyn/media/door.mp4"></video>
+        <video class="v2" muted loop playsinline preload="none" poster="/sites/zaharyn/media/curtain.jpg" data-src="/sites/zaharyn/media/curtain.mp4"></video>
+      </div>
+      <div class="cap"><h2 class="display" id="doorcap">A door to <em>residency.</em></h2></div>
+    </div>
+  </section>
+
+  <section class="res">
+    <div class="sechead">
+      <div><span class="label">Three ways to live</span><h2 class="display rv">First light, <em>every morning.</em></h2></div>
+      <p class="rv">Every residence faces the water. Floor-to-ceiling windows, limestone floors and a balcony made for the hour when the Gulf turns gold.</p>
+    </div>
+
+    <article class="row a">
+      <div class="media arch par"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/balcony.jpg" data-src="/sites/zaharyn/media/balcony.mp4"></video></div>
+      <div class="txt rv">
+        <span class="no">i.</span>
+        <h3>Marina residences</h3>
+        <p>Low floors, close to the water. Mornings on the balcony, boats sliding past, the city waking up across the bay.</p>
+        <ul><li><span>Outlook</span><span>Marina and promenade</span></li><li><span>Light</span><span>East, sunrise</span></li><li><span>Viewings</span><span>Now open</span></li></ul>
+      </div>
+    </article>
+
+    <article class="row b">
+      <div class="media arch par"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/tap.jpg" data-src="/sites/zaharyn/media/tap.mp4"></video></div>
+      <div class="txt rv">
+        <span class="no">ii.</span>
+        <h3>Sky residences</h3>
+        <p>Higher up, quieter. Stone, brass and still water, with the whole Gulf framed in every window.</p>
+        <ul><li><span>Outlook</span><span>Open sea</span></li><li><span>Light</span><span>All day</span></li><li><span>Viewings</span><span>Now open</span></li></ul>
+      </div>
+    </article>
+
+    <article class="row a">
+      <div class="media arch par"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/rooftop.jpg" data-src="/sites/zaharyn/media/rooftop.mp4"></video></div>
+      <div class="txt rv">
+        <span class="no">iii.</span>
+        <h3>The penthouses</h3>
+        <p>Inside the arch at the top of the tower. A terrace for evenings, a fire for the cooler months and the city lit up below.</p>
+        <ul><li><span>Outlook</span><span>Lusail, Doha and the sea</span></li><li><span>Light</span><span>Sunrise to blue hour</span></li><li><span>Viewings</span><span>By invitation</span></li></ul>
+      </div>
+    </article>
+  </section>
+
+  <section class="hood" id="neighbourhood">
+    <div class="pin" id="hoodpin">
+      <div class="top">
+        <h2 class="display">Everything,<br><em>minutes away.</em></h2>
+        <span class="label">03 · The neighbourhood</span>
+      </div>
+      <div class="track" id="track">
+        <div class="place"><div class="media"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/marina-aerial.jpg" data-src="/sites/zaharyn/media/marina-aerial.mp4"></video></div><h3>The marina</h3><p>Yachts, cafés and the promenade, <em>right outside.</em></p></div>
+        <div class="place"><div class="media"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/katara.jpg" data-src="/sites/zaharyn/media/katara.mp4"></video></div><h3>Katara</h3><p>Galleries, the amphitheatre and the beach, <em>minutes away.</em></p></div>
+        <div class="place"><div class="media"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/msheireb.jpg" data-src="/sites/zaharyn/media/msheireb.mp4"></video></div><h3>Msheireb</h3><p>The old heart of Doha, made new, <em>minutes away.</em></p></div>
+        <div class="place"><div class="media"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/dhow.jpg" data-src="/sites/zaharyn/media/dhow.mp4"></video></div><h3>The Corniche</h3><p>Dhows at dusk and the West Bay skyline, <em>minutes away.</em></p></div>
+        <div class="place"><div class="media"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/gulf.jpg" data-src="/sites/zaharyn/media/gulf.mp4"></video></div><h3>The Gulf</h3><p>Always there, <em>at your window.</em></p></div>
+      </div>
+      <div class="progress"><i id="hoodbar"></i></div>
+    </div>
+  </section>
+
+  <section class="amen" id="amenities">
+    <div class="sechead">
+      <div><span class="label">04 · Life at Zaharyn</span><h2 class="display rv">Slow mornings, <em>long evenings.</em></h2></div>
+      <p class="rv">An infinity pool that meets the sea, a spa lit by candlelight and a rooftop that holds the last of the sun. A concierge looks after the rest.</p>
+    </div>
+    <div class="grid">
+      <div class="card rv"><div class="media arch"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/pool.jpg" data-src="/sites/zaharyn/media/pool.mp4"></video></div><h3>The pool</h3><p>Infinity edge, the Gulf beyond it.</p></div>
+      <div class="card rv"><div class="media arch"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/spa.jpg" data-src="/sites/zaharyn/media/spa.mp4"></video></div><h3>The spa</h3><p>Warm stone, still water, quiet light.</p></div>
+      <div class="card rv"><div class="media arch"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/keys.jpg" data-src="/sites/zaharyn/media/keys.mp4"></video></div><h3>The concierge</h3><p>Keys, cars, dinners and guests, handled.</p></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="media" id="bandmedia"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/glint.jpg" data-src="/sites/zaharyn/media/glint.mp4"></video></div>
+    <div><span class="label">Lusail Marina</span><h2 class="display rv">Come home <em>to Lusail.</em></h2></div>
+  </section>
+
+  <section class="dark" id="after-dark">
+    <div class="tower media rv"><img src="/sites/zaharyn/img/tower-bluehour.jpg" alt="The Zaharyn tower at blue hour" loading="lazy"></div>
+    <div>
+      <span class="label">05 · After dark</span>
+      <h2 class="display rv">One light on. <em>Yours.</em></h2>
+      <p class="rv">At night the arcade lights up one window at a time, and the arch at the top glows over the marina. Somewhere in there, a lamp is waiting for you.</p>
+      <div class="arcade" id="arcade" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="reg" id="register">
+    <div class="media arch"><video muted loop playsinline preload="none" poster="/sites/zaharyn/media/sunrise.jpg" data-src="/sites/zaharyn/media/sunrise.mp4"></video></div>
+    <div id="regbox">
+      <span class="label">Private viewings now open</span>
+      <h2 class="display">See it at <em>first light.</em></h2>
+      <p class="intro">Tell us a little about you and we will arrange a private viewing, at sunrise or after dark.</p>
+      <form id="regform" novalidate>
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="field"><label for="f-from">Viewing from</label><select id="f-from" name="from"><option>Qatar</option><option>Elsewhere in the Gulf</option><option>Abroad, online</option></select></div>
+        <div class="field full"><label>Interested in</label>
+          <div class="chips">
+            <label><input type="checkbox" name="type" value="marina"><span>Marina residence</span></label>
+            <label><input type="checkbox" name="type" value="sky"><span>Sky residence</span></label>
+            <label><input type="checkbox" name="type" value="penthouse"><span>Penthouse</span></label>
+          </div>
+        </div>
+        <div class="field full"><label>Best time</label>
+          <div class="chips">
+            <label><input type="radio" name="time" value="sunrise" checked><span>At sunrise</span></label>
+            <label><input type="radio" name="time" value="dark"><span>After dark</span></label>
+          </div>
+        </div>
+        <button class="btn fill" type="submit"><i class="sun"></i>Request a viewing</button>
+      </form>
+      <div class="thanks" role="status">
+        <h3>Thank you.</h3>
+        <p>Zaharyn is a studio concept by Daniekeys Studios, so nothing was sent and no one will call. But this is how it would feel.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="m"><svg class="ml" viewBox="-110 0 1140 1500" aria-hidden="true"><g fill="currentColor"><path d="M0.0,1500.0 L0.0,753.1 A846.4000000000001,846.4000000000001 0 0 1 460.0,0.0 A846.4000000000001,846.4000000000001 0 0 1 920.0,753.1 L920.0,1500.0 L715.0,1500.0 L715.0,753.1 A846.4000000000001,846.4000000000001 0 0 0 380.5,79.0 A846.4000000000001,846.4000000000001 0 0 0 46.0,753.1 L46.0,1500.0 Z"></path><path d="M45.0,753.1 L716.0,753.1 L716.0,714.0 L45.0,714.0 Z"></path><path d="M-105.0,1500.0 L135.2,1500.0 L135.2,1456.3 L-105.0,1456.3 Z"></path><path d="M631.0,1500.0 L1025.0,1500.0 L1025.0,1456.3 L631.0,1456.3 Z"></path></g><path d="M206.6,714.0 A173.94,173.94 0 0 1 554.4,714.0 Z" fill="#B0874A"></path></svg></div>
+  <div class="w"><svg class="wl" viewBox="0 0 11495 1500" role="img" aria-label="Zaharyn"><g fill="currentColor"><path d="M47 1500V1461L837 39H471Q335 39 261.5 69.5Q188 100 160.5 166.5Q133 233 133 340H94V0H1047V39L257 1461H683Q820 1461 892.5 1428.5Q965 1396 992.5 1321.5Q1020 1247 1020 1120H1060V1500Z"></path><path d="M1604.0,1500.0 L1604.0,753.1 A846.4000000000001,846.4000000000001 0 0 1 2064.0,0.0 A846.4000000000001,846.4000000000001 0 0 1 2524.0,753.1 L2524.0,1500.0 L2319.0,1500.0 L2319.0,753.1 A846.4000000000001,846.4000000000001 0 0 0 1984.5,79.0 A846.4000000000001,846.4000000000001 0 0 0 1650.0,753.1 L1650.0,1500.0 Z"></path><path d="M1649.0,753.1 L2320.0,753.1 L2320.0,714.0 L1649.0,714.0 Z"></path><path d="M1499.0,1500.0 L1739.2,1500.0 L1739.2,1456.3 L1499.0,1456.3 Z"></path><path d="M2235.0,1500.0 L2629.0,1500.0 L2629.0,1456.3 L2235.0,1456.3 Z"></path><path d="M4436 0V39H4256V1461H4436V1500H3866V1461H4066V780H3407V1461H3606V1500H3036V1461H3216V39H3036V0H3606V39H3407V740H4066V39H3866V0Z"></path><path d="M4948.0,1500.0 L4948.0,753.1 A846.4000000000001,846.4000000000001 0 0 1 5408.0,0.0 A846.4000000000001,846.4000000000001 0 0 1 5868.0,753.1 L5868.0,1500.0 L5663.0,1500.0 L5663.0,753.1 A846.4000000000001,846.4000000000001 0 0 0 5328.5,79.0 A846.4000000000001,846.4000000000001 0 0 0 4994.0,753.1 L4994.0,1500.0 Z"></path><path d="M4993.0,753.1 L5664.0,753.1 L5664.0,714.0 L4993.0,714.0 Z"></path><path d="M4843.0,1500.0 L5083.2,1500.0 L5083.2,1456.3 L4843.0,1456.3 Z"></path><path d="M5579.0,1500.0 L5973.0,1500.0 L5973.0,1456.3 L5579.0,1456.3 Z"></path><path d="M6740 746V723H7040Q7136 723 7203.5 683.5Q7271 644 7306.0 568.0Q7341 492 7341 383Q7341 274 7306.0 197.0Q7271 120 7203.5 79.5Q7136 39 7040 39H6380V0H7040Q7191 0 7303.5 41.5Q7416 83 7478.0 168.0Q7540 253 7540 383Q7540 513 7482.0 593.0Q7424 673 7312.5 709.5Q7201 746 7040 746ZM6380 1500V1461H7011V1500ZM6600 1479V27H6790V1479ZM7530 1510Q7443 1510 7394.5 1478.5Q7346 1447 7324.0 1393.5Q7302 1340 7296.5 1273.5Q7291 1207 7290.0 1136.0Q7289 1065 7282.0 998.5Q7275 932 7251.0 878.5Q7227 825 7174.5 793.5Q7122 762 7030 762H6740V741H7070Q7213 741 7297.5 780.0Q7382 819 7425.0 884.0Q7468 949 7483.0 1026.0Q7498 1103 7499.5 1180.0Q7501 1257 7504.5 1322.0Q7508 1387 7526.5 1426.0Q7545 1465 7595 1465Q7627 1465 7651.5 1458.5Q7676 1452 7696 1442L7710 1479Q7686 1492 7638.0 1501.0Q7590 1510 7530 1510Z"></path><path d="M8593 1500V1461H8773V779L8317 39H8164V0H8744V39H8537L8940 700L9336 39H9126V0H9534V39H9382L8963 734V1461H9164V1500Z"></path><path d="M10256 0V1461H10492V1500H10010V1461H10215V39H10010V0ZM11434 0V39H11223V1520H11169L10227 0H10457L11183 1191V39H10952V0Z"></path></g></svg></div>
+  <div class="ar">زهارين</div>
+  <div class="line">Everything, minutes away.</div>
+  <div class="cols">
+    <div><span class="label">Sales gallery</span>Lusail Marina, Qatar<br>By appointment</div>
+    <div><span class="label">Viewings</span>At sunrise or after dark<br><a href="#register">Request a viewing</a></div>
+    <div><span class="label">Zaharyn</span><a href="#residences">Residences</a> · <a href="#neighbourhood">Neighbourhood</a><br><a href="#amenities">Amenities</a> · <a href="#after-dark">After dark</a></div>
+  </div>
+  <p class="legal">Studio concept · Not a real development · All content is sample · Brand, film and website by <a href="/work/zaharyn">Daniekeys Studios</a></p>
+</footer>
+
+<script src="/sites/zaharyn/vendor/gsap.min.js"></script>
+<script src="/sites/zaharyn/vendor/ScrollTrigger.min.js"></script>
+<script src="/sites/zaharyn/vendor/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mobile = window.matchMedia('(max-width: 900px)').matches;
+  var root = document.documentElement;
+  var meta = document.querySelector('meta[name="theme-color"]');
+
+  // Theme: First light / After dark
+  function setTheme(t){ root.dataset.theme = t; meta.content = t === 'night' ? '#13233A' : '#F2ECE2'; }
+  document.getElementById('theme').addEventListener('click', function(){ setTheme(root.dataset.theme === 'night' ? 'day' : 'night'); });
+
+  // Videos load and play only while on screen
+  var vids = [].slice.call(document.querySelectorAll('video[data-src]'));
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting){ if (!v.src) { v.src = v.dataset.src; } var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+      else if (v.src) v.pause();
+    });
+  }, { rootMargin: '200px 0px' });
+  vids.forEach(function(v){ io.observe(v); });
+
+  // Statement: split into words for the scroll read
+  var st = document.getElementById('statement');
+  st.innerHTML = st.textContent.split(' ').map(function(w){
+    var gold = /Gulf|light|home\./.test(w);
+    return '<span class="w">' + (gold ? '<em>' + w + '</em>' : w) + '</span>';
+  }).join(' ');
+  var words = st.querySelectorAll('.w');
+
+  // Arcade of windows
+  var arc = document.getElementById('arcade'), cells = [], n = mobile ? 24 : 32;
+  for (var i = 0; i < n; i++){ var c = document.createElement('i'); arc.appendChild(c); cells.push(c); }
+  var order = cells.map(function(_, i){ return i; }).sort(function(){ return Math.random() - .5; });
+  var yours = mobile ? 15 : 21;
+
+  // Form: honest, nothing is sent
+  document.getElementById('regform').addEventListener('submit', function(e){
+    e.preventDefault(); document.getElementById('regbox').classList.add('sent');
+  });
+
+  var hdr = document.getElementById('hdr');
+  function onScroll(y){ hdr.classList.toggle('solid', y > window.innerHeight * 0.82); }
+  window.addEventListener('scroll', function(){ onScroll(window.scrollY); }, { passive: true });
+
+  if (reduce || !window.gsap){
+    root.classList.add('js-off');
+    words.forEach(function(w){ w.style.opacity = 1; });
+    order.slice(0, Math.round(n * .45)).forEach(function(i){ cells[i].classList.add('on'); });
+    cells[yours].classList.add('yours');
+    document.querySelector('.door .cap').style.opacity = 1;
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+  var lenis = new Lenis({ lerp: 0.085, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+  gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href'); if (id.length < 2) return;
+      var el = document.querySelector(id); if (!el) return;
+      e.preventDefault(); lenis.scrollTo(el, { offset: id === '#top' ? 0 : -20, duration: 1.6 });
+    });
+  });
+
+  // Loader: draw the doorway, raise the sun, open the door
+  var L = document.querySelector('.loader');
+  var path = L.querySelector('.stroke'), len = path.getTotalLength();
+  gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+  gsap.set(L.querySelector('.sun'), { y: 260, opacity: 0 });
+  gsap.set('.hero h1 .ln > span', { yPercent: 110 });
+  gsap.set('#herobg', { scale: 1.14 });
+  lenis.stop();
+  var tl = gsap.timeline({ defaults: { ease: 'power3.inOut' }, onComplete: function(){ L.remove(); lenis.start(); } });
+  tl.to(path, { strokeDashoffset: 0, duration: 1.3 })
+    .to(L.querySelector('.fillin'), { opacity: 1, duration: .5 }, '-=.2')
+    .to(path, { opacity: 0, duration: .3 }, '<')
+    .to(L.querySelector('.sun'), { y: 0, opacity: 1, duration: .9, ease: 'power3.out' }, '-=.35')
+    .to(L.querySelector('.lw'), { opacity: 1, duration: .6 }, '-=.5')
+    .to(L.querySelector('.center'), { opacity: 0, duration: .5 }, '+=.35')
+    .to(L.querySelector('.leaf.l'), { xPercent: -100, duration: 1.4, ease: 'expo.inOut' }, '-=.1')
+    .to(L.querySelector('.leaf.r'), { xPercent: 100, duration: 1.4, ease: 'expo.inOut' }, '<')
+    .to('#herobg', { scale: 1.04, duration: 2.4, ease: 'power2.out' }, '<')
+    .to('.hero h1 .ln > span', { yPercent: 0, duration: 1.2, stagger: .12, ease: 'expo.out' }, '-=1.4')
+    .to('.hero .side', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=.9');
+
+  // Hero drifts as you leave it
+  gsap.to('#herobg', { yPercent: 8, scale: 1.12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.hero .copy', { yPercent: -30, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: '30% top', end: 'bottom top', scrub: true } });
+
+  // Statement reads in word by word
+  ScrollTrigger.create({ trigger: st, start: 'top 80%', end: 'bottom 45%', scrub: true, onUpdate: function(s){
+    var k = Math.round(s.progress * words.length);
+    for (var i = 0; i < words.length; i++) words[i].style.opacity = i < k ? 1 : .14;
+  }});
+
+  // The door: the arch grows until you are inside
+  var door = gsap.timeline({ scrollTrigger: { trigger: '.door', start: 'top top', end: 'bottom bottom', scrub: 1 } });
+  door.to('#doorwin', { width: '124vw', height: '165vh', ease: 'power2.in', duration: 1 })
+      .to('.door .lead', { opacity: 0, y: -40, duration: .3 }, 0)
+      .to('#doorwin .v2', { opacity: 1, duration: .25 }, .55)
+      .to('.door .cap', { opacity: 1, duration: .25 }, .62);
+
+  // Residence media parallax
+  document.querySelectorAll('.par > video').forEach(function(v){
+    gsap.fromTo(v, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: v.parentNode, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+
+  // Reveals
+  gsap.utils.toArray('.rv').forEach(function(el){
+    if (el.closest('.hero')) return;
+    gsap.to(el, { opacity: 1, y: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 86%' } });
+  });
+  gsap.utils.toArray('.place .media').forEach(function(el){
+    gsap.fromTo(el, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 92%' } });
+  });
+  gsap.utils.toArray('.media.arch').forEach(function(el){
+    if (el.id === 'doorwin') return;
+    gsap.fromTo(el, { scale: .86, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
+  });
+
+  // Neighbourhood: sideways on desktop
+  if (!mobile){
+    var track = document.getElementById('track');
+    var dist = function(){ return track.scrollWidth - window.innerWidth; };
+    gsap.to(track, { x: function(){ return -dist(); }, ease: 'none', scrollTrigger: { trigger: '#hoodpin', start: 'top top', end: function(){ return '+=' + dist(); }, pin: true, scrub: 1, invalidateOnRefresh: true,
+      onUpdate: function(s){ document.getElementById('hoodbar').style.width = (s.progress * 100) + '%'; } } });
+  }
+
+  // Band slowly zooms
+  gsap.fromTo('#bandmedia', { scale: 1.18 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.band', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+  // After dark: windows light one by one, then yours
+  ScrollTrigger.create({ trigger: '#arcade', start: 'top 85%', end: 'top 30%', scrub: true, onUpdate: function(s){
+    var k = Math.round(s.progress * n * .55);
+    order.forEach(function(idx, j){ cells[idx].classList.toggle('on', j < k); });
+    cells[yours].classList.toggle('yours', s.progress > .92);
+  }});
+})();
+</script>
+<!-- Daniekeys Studios portfolio badge: links back to the case study on daniekeysstudios.com. -->
+<a id="dk-badge" href="/work/zaharyn" aria-label="Made by Daniekeys Studios. Back to the case study" style="position:fixed;left:16px;bottom:16px;z-index:2147483647;display:inline-flex;align-items:center;gap:12px;padding:10px 16px;border-radius:999px;background:#111111;color:#F4F3EF;font:500 12px/1 system-ui,-apple-system,'Segoe UI',sans-serif;letter-spacing:.01em;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,.25)">
+<img src="/brand/daniekeys-studios-light.png" alt="" width="98" height="12" style="display:block;width:98px;height:12px">
+<span>Case study &#8594;</span>
+</a>
+<script>if (window.self !== window.top) document.getElementById("dk-badge").remove();</script>
+
+</body>
+</html>

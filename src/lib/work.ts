@@ -1,6 +1,6 @@
 import { film, image, type Media } from "./media";
 
-export type Industry = "food" | "edu" | "mkt" | "creative" | "fin";
+export type Industry = "food" | "edu" | "mkt" | "creative" | "fin" | "estate";
 export type Service = "brand" | "web" | "motion" | "social";
 
 export const INDUSTRIES: { value: Industry; label: string; menu: string }[] = [
@@ -9,6 +9,7 @@ export const INDUSTRIES: { value: Industry; label: string; menu: string }[] = [
   { value: "mkt", label: "Marketing tech", menu: "marketing tech" },
   { value: "creative", label: "Creative services", menu: "creative services" },
   { value: "fin", label: "Finance", menu: "finance" },
+  { value: "estate", label: "Real estate", menu: "real estate" },
 ];
 
 export const SERVICES: { value: Service; label: string; menu: string }[] = [
@@ -25,12 +26,13 @@ export type WorkItem = {
   title: string;
   blurb: string;
   media: Media;
-  thumb: string; // small image for the Index view
+  thumb: string; // small image for the Index view (Cloudinary name, or a /path)
   wide: boolean; // 16:9 full row, otherwise a 4:5 half
   industry: Industry;
   service: Service;
   concept?: boolean; // studio concept, not a paying client
   caseStudy?: string; // slug under /work, only where a case study exists
+  href?: string; // opens this instead of the case study (brand websites open the live site)
   year: number;
 };
 
@@ -43,6 +45,13 @@ export const WORK: WorkItem[] = [
     media: film("tejs-reel", "Tej's Bakes brand reel"),
     thumb: "tejs-reel-poster",
     wide: true, industry: "food", service: "brand", caseStudy: "tejs-bakes", year: 2026,
+  },
+  {
+    title: "Tej's Bakes, website",
+    blurb: "The homepage. Pick a cake, see how ordering works and send the order form.",
+    media: { kind: "image", src: "/sites/tejs-bakes/preview-desktop.jpg", alt: "Tej's Bakes website" },
+    thumb: "/sites/tejs-bakes/preview-desktop.jpg",
+    wide: true, industry: "food", service: "web", caseStudy: "tejs-bakes", href: "/work/tejs-bakes/site", year: 2026,
   },
   {
     title: "Afriment",
@@ -108,6 +117,13 @@ export const WORK: WorkItem[] = [
     wide: true, industry: "mkt", service: "motion", concept: true, caseStudy: "tandari", year: 2026,
   },
   {
+    title: "Tandari, website",
+    blurb: "The live landing page. Type what you're launching and watch it work.",
+    media: { kind: "image", src: "/sites/tandari/preview-desktop.jpg", alt: "Tandari website" },
+    thumb: "/sites/tandari/preview-desktop.jpg",
+    wide: true, industry: "mkt", service: "web", concept: true, caseStudy: "tandari", href: "/work/tandari/site", year: 2026,
+  },
+  {
     title: "Afriment, social",
     blurb: "A simple three-step story for every cohort.",
     media: T("afriment-social", "Afriment, social"),
@@ -148,6 +164,41 @@ export const WORK: WorkItem[] = [
     media: film("ire-product", "Ire, product film"),
     thumb: "ire-product-poster",
     wide: true, industry: "fin", service: "motion", concept: true, caseStudy: "ire", year: 2026,
+  },
+  {
+    title: "Ire, website",
+    blurb: "The live launch site, with the striped mark in 3D. Open it and scroll.",
+    media: { kind: "image", src: "/sites/ire/preview-desktop.jpg", alt: "Ire website" },
+    thumb: "/sites/ire/preview-desktop.jpg",
+    wide: true, industry: "fin", service: "web", concept: true, caseStudy: "ire", href: "/work/ire/site", year: 2026,
+  },
+  {
+    title: "Zaharyn Residences",
+    blurb: "Sea-view residences in Lusail, branded around a doorway and the Gulf at first light.",
+    media: film("zaharyn-film", "Zaharyn Residences launch film"),
+    thumb: "zaharyn-film-poster",
+    wide: true, industry: "estate", service: "brand", concept: true, caseStudy: "zaharyn", year: 2026,
+  },
+  {
+    title: "Zaharyn, website",
+    blurb: "The door opens, first light or after dark, and one window lights up for you.",
+    media: { kind: "image", src: "/sites/zaharyn/preview-desktop.jpg", alt: "Zaharyn Residences website" },
+    thumb: "/sites/zaharyn/preview-desktop.jpg",
+    wide: true, industry: "estate", service: "web", concept: true, caseStudy: "zaharyn", href: "/work/zaharyn/site", year: 2026,
+  },
+  {
+    title: "Zaharyn, out of home",
+    blurb: "Come home to Lusail, glowing after dark.",
+    media: T("zaharyn-bus-shelter", "Zaharyn bus shelter poster at night"),
+    thumb: "zaharyn-bus-shelter",
+    wide: false, industry: "estate", service: "brand", concept: true, caseStudy: "zaharyn", year: 2026,
+  },
+  {
+    title: "Zaharyn, print",
+    blurb: "One light on. Yours. For the sales gallery walls.",
+    media: T("zaharyn-poster-night", "Zaharyn One Light On poster"),
+    thumb: "zaharyn-poster-night",
+    wide: false, industry: "estate", service: "brand", concept: true, caseStudy: "zaharyn", year: 2026,
   },
   {
     title: "Tej's Bakes, logo system",
