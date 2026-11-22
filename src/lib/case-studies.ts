@@ -51,7 +51,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "A warm, grown-up identity for a cake and pastry kitchen, built to look as good on a wedding table as it does in a DM.",
     hero: film("tejs-reel", "Tej's Bakes brand reel"),
     heroBg: "#3A1E1A",
-    services: "Strategy, brand identity, social, brand reel",
+    services: "Strategy, brand identity, website, social, brand reel",
     team: "Daniel Ayeni, John",
     brief:
       "Tej's makes cakes for birthdays, weddings and every small win in between, plus pastries and small chops. The business had grown on word of mouth and needed a brand that felt as special as the cakes.",
@@ -79,6 +79,8 @@ export const CASE_STUDIES: CaseStudy[] = [
           image("tejs-how-to-order", "Post: Ordering is easy as cake"),
         ],
       },
+      { type: "section", label: "The website", text: "A homepage that sells the moment: the cake menu, small chops, three steps to order and an order form, all in the brand." },
+      { type: "site", slug: "tejs-bakes" },
     ],
     credits: [
       { role: "Strategy and design", name: "Daniel Ayeni" },

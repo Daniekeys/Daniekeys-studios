@@ -46,6 +46,13 @@ export const WORK: WorkItem[] = [
     wide: true, industry: "food", service: "brand", caseStudy: "tejs-bakes", year: 2026,
   },
   {
+    title: "Tej's Bakes, website",
+    blurb: "The homepage. Pick a cake, see how ordering works and send the order form.",
+    media: { kind: "image", src: "/sites/tejs-bakes/preview-desktop.jpg", alt: "Tej's Bakes website" },
+    thumb: "/sites/tejs-bakes/preview-desktop.jpg",
+    wide: true, industry: "food", service: "web", caseStudy: "tejs-bakes", href: "/work/tejs-bakes/site", year: 2026,
+  },
+  {
     title: "Afriment",
     blurb: "Rebrand for a platform that turns trained talent into hired talent.",
     media: T("afriment-cover", "Afriment"),
