@@ -180,6 +180,13 @@ export const WORK: WorkItem[] = [
     wide: true, industry: "estate", service: "brand", concept: true, caseStudy: "zaharyn", year: 2026,
   },
   {
+    title: "Zaharyn, website",
+    blurb: "The door opens, first light or after dark, and one window lights up for you.",
+    media: { kind: "image", src: "/sites/zaharyn/preview-desktop.jpg", alt: "Zaharyn Residences website" },
+    thumb: "/sites/zaharyn/preview-desktop.jpg",
+    wide: true, industry: "estate", service: "web", concept: true, caseStudy: "zaharyn", href: "/work/zaharyn/site", year: 2026,
+  },
+  {
     title: "Zaharyn, out of home",
     blurb: "Come home to Lusail, glowing after dark.",
     media: T("zaharyn-bus-shelter", "Zaharyn bus shelter poster at night"),

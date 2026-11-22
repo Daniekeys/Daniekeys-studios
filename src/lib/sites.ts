@@ -23,6 +23,6 @@ const site = (slug: string, title: string): Site => ({
   mobile: `/sites/${slug}/preview-mobile.jpg`,
 });
 
-export const SITES: Site[] = [site("tejs-bakes", "Tej's Bakes"), site("tandari", "Tandari"), site("ire", "Ire")];
+export const SITES: Site[] = [site("tejs-bakes", "Tej's Bakes"), site("tandari", "Tandari"), site("ire", "Ire"), site("zaharyn", "Zaharyn Residences")];
 
 export const getSite = (slug: string) => SITES.find((s) => s.slug === slug);

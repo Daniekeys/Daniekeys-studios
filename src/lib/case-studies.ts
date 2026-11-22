@@ -284,6 +284,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       { type: "full", media: image("zaharyn-mobile", "The Zaharyn mobile site on a phone"), ratio: "2000/1120" },
       { type: "line", text: "Everything, minutes away." },
       { type: "full", media: image("zaharyn-voice", "Zaharyn voice: few words about light, the sea and time"), ratio: "2000/1127" },
+      { type: "section", label: "The website", text: "The door opens as the site loads. Switch between first light and after dark, walk through the arch into a residence, then watch the tower light up one window at a time." },
+      { type: "site", slug: "zaharyn" },
     ],
     credits: [
       { role: "Brand, film and website", name: "Daniekeys Studios" },
