@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="split" style={{ alignItems: "end" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
             <p className="s serif" style={{ maxWidth: 360 }}>
-              Have something ambitious in mind? Let us talk.
+              Tell us what&apos;s not selling. We&apos;ll tell you what we&apos;d fix first.
             </p>
             <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
               <Link className="pill inv" href="/contact">
@@ -38,10 +38,10 @@ export default function Footer() {
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             <span className="mono mut">Studio</span>
-            <span>Ilorin, Nigeria</span>
+            <span>Remote-first, from Nigeria</span>
             <span>Working worldwide</span>
             <span>
-              Local time <Clock />
+              Nigeria time <Clock />
             </span>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -56,7 +56,6 @@ export default function Footer() {
                 {s.label}
               </a>
             ))}
-            <span>Behance, Contra</span>
           </div>
         </div>
 

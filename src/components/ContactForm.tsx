@@ -5,7 +5,17 @@ import { useState, type FormEvent } from "react";
 
 import { EMAIL } from "@/lib/site";
 
-const NEEDS = ["Brand identity", "Website", "Film and motion", "Social and content", "Brand 360"];
+const NEEDS = [
+  "Growth Diagnosis",
+  "Brand identity",
+  "Website",
+  "UI/UX design",
+  "Video editing",
+  "Motion and video ads",
+  "Flyers and graphics",
+  "Social media management",
+  "Not sure, advise me",
+];
 
 // No form backend yet: Send opens the visitor's email app with everything
 // filled in, addressed to the studio inbox.
@@ -21,6 +31,7 @@ export default function ContactForm() {
       `Name: ${f.get("name") ?? ""}`,
       `Email: ${f.get("email") ?? ""}`,
       `Company: ${f.get("company") ?? ""}`,
+      `WhatsApp: ${f.get("whatsapp") ?? ""}`,
       `Needs: ${needs || "Not sure yet"}`,
       "",
       String(f.get("message") ?? ""),
@@ -32,7 +43,7 @@ export default function ContactForm() {
 
   return (
     <form style={{ display: "flex", flexDirection: "column", gap: 36 }} onSubmit={submit}>
-      <h1 className="serif xl">Tell us what you are building.</h1>
+      <h1 className="serif xl">Let&apos;s get you more customers.</h1>
       <div className="g2">
         <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           <span className="mono mut">Name</span>
@@ -47,12 +58,20 @@ export default function ContactForm() {
           </span>
         </label>
       </div>
-      <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        <span className="mono mut">Company</span>
-        <span className="field">
-          <input name="company" type="text" placeholder="Company and website" autoComplete="organization" />
-        </span>
-      </label>
+      <div className="g2">
+        <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <span className="mono mut">Company</span>
+          <span className="field">
+            <input name="company" type="text" placeholder="Company and website" autoComplete="organization" />
+          </span>
+        </label>
+        <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <span className="mono mut">WhatsApp</span>
+          <span className="field">
+            <input name="whatsapp" type="tel" placeholder="Your WhatsApp number" autoComplete="tel" />
+          </span>
+        </label>
+      </div>
       <fieldset style={{ border: 0, padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
         <legend className="mono mut" style={{ padding: 0, marginBottom: 12 }}>
           What do you need
@@ -72,7 +91,7 @@ export default function ContactForm() {
             name="message"
             rows={4}
             defaultValue={params.get("brief") ?? ""}
-            placeholder="What are you launching, and when?"
+            placeholder="What do you sell, who buys it, and what's not working right now?"
             style={{ resize: "vertical" }}
           />
         </span>

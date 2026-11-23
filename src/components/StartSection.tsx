@@ -8,8 +8,11 @@ export default function StartSection() {
     >
       <span className="mono mut">Start something</span>
       <h2 className="serif l" style={{ maxWidth: 900 }}>
-        Tell us what you are building.
+        Tell us what&apos;s not selling.
       </h2>
+      <p className="s mut" style={{ maxWidth: 640, marginTop: -12 }}>
+        Share what you sell and who you sell to. We&apos;ll tell you what we&apos;d fix first.
+      </p>
       <StartField style={{ width: "min(640px,100%)" }} />
     </section>
   );

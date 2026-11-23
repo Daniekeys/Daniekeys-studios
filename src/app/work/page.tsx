@@ -4,7 +4,9 @@ import WorkIndex from "@/components/WorkIndex";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Brands, websites and films for ambitious businesses, by Daniekeys Studios.",
+  description:
+    "Brand identity, websites, launch films, motion and social content by Daniekeys Studios, an AI-powered creative and growth studio from Nigeria.",
+  alternates: { canonical: "/work" },
 };
 
 export default function WorkPage() {

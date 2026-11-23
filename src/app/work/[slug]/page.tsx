@@ -15,7 +15,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const cs = getCaseStudy(params.slug);
-  return cs ? { title: cs.title, description: cs.intro } : {};
+  return cs ? { title: cs.title, description: cs.intro, alternates: { canonical: `/work/${cs.slug}` } } : {};
 }
 
 const rule = "1px solid rgba(17,17,17,.14)";

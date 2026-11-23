@@ -9,7 +9,7 @@ const fmt = () =>
     minute: "2-digit",
   });
 
-// Local studio time in Ilorin, refreshed every 20 seconds.
+// Studio time (Nigeria, WAT), refreshed every 20 seconds.
 export default function Clock() {
   const [time, setTime] = useState("");
   useEffect(() => {

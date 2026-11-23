@@ -6,8 +6,10 @@ import ContactForm from "@/components/ContactForm";
 import { EMAIL, SOCIAL, WHATSAPP, WHATSAPP_LABEL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Start a project with Daniekeys Studios.",
+  title: "Start a Project",
+  description:
+    "Tell us what you sell and who you sell to. We'll show you what we'd fix first. Email, WhatsApp or the form.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
@@ -31,7 +33,7 @@ export default function ContactPage() {
           <div>
             <span className="mono mut">Studio</span>
             <br />
-            Ilorin, Nigeria. Local time <Clock />
+            Remote-first, from Nigeria. Nigeria time <Clock />
           </div>
           <div>
             <span className="mono mut">Follow</span>
@@ -44,7 +46,6 @@ export default function ContactPage() {
                 {i < SOCIAL.length - 1 ? ", " : ""}
               </span>
             ))}
-            , Behance, Contra
           </div>
         </div>
       </div>
