@@ -82,7 +82,7 @@ export default function Home() {
       </section>
 
       <section className="wrap" id="showreel" aria-label="Showreel 2026">
-        <Showreel name="showreel" />
+        <Showreel />
       </section>
 
       <section className="wrap sec">
