@@ -2,7 +2,9 @@
 
 import { useRef, useState } from "react";
 
-import { img, video } from "@/lib/media";
+import { img, video, videoStream } from "@/lib/media";
+
+import Film from "./Film";
 
 // Home showreel. Plays muted on loop; the button turns the sound on from the start.
 export default function Showreel({ name }: { name: string }) {
@@ -20,15 +22,12 @@ export default function Showreel({ name }: { name: string }) {
 
   return (
     <div className="ph" style={{ aspectRatio: "16/9", position: "relative", background: "#111111" }}>
-      <video
+      <Film
         ref={ref}
-        src={video(name)}
+        stream={videoStream(name)}
+        fallback={video(name)}
         poster={img(`${name}-poster`)}
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-label="Daniekeys Studios showreel"
+        label="Daniekeys Studios showreel"
       />
       <div
         style={{

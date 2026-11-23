@@ -2,15 +2,15 @@
   "about": "Every image and film the site uses. Each is uploaded to Cloudinary as daniekeys-site/<name>. The sha256 and bytes are the exact file used in the Claude Design canvas (Daniekeys Studios Website UI), so `node scripts/media.mjs find <folders>` can locate the same file on disk. Originals of the films may be larger versions with a different hash; the hint says what each one is so it can be picked by eye.",
   "folder": "daniekeys-site",
   "items": [
-    { "name": "tejs-reel", "type": "video", "bytes": 2020976, "sha256": "f223463134c00961512643400d0a58e5496de793d7daebdf0836f64e0401c426", "hint": "Tej's Bakes brand reel, 16:9 (TejsBakes_BrandReel_16x9_v2.mp4 or similar)" },
+    { "name": "tejs-reel", "type": "video", "bytes": 12753020, "sha256": "bfb4a5b0a415ef272dc119c7e2781512301de7145e11443e2a39a6adb98a2703", "hint": "Tej's Bakes brand reel, 16:9 (TejsBakes_BrandReel_16x9_v2.mp4 or similar)" },
     { "name": "tejs-reel-poster", "type": "image", "bytes": 22553, "sha256": "e54fd3cdd8499eb89a408979b846cd13259e61d68e5c5d2f3079bfe9a7dedf72", "hint": "Still frame of the Tej's reel. Can be made with ffmpeg from tejs-reel" },
     { "name": "ire-launch", "type": "video", "bytes": 2410328, "sha256": "2608978a4c6424dbcaf2fb2f4769aea317ac310006f3518be026b17a66507155", "hint": "Ire launch film, 40 seconds, 16:9, light/lime look" },
     { "name": "ire-launch-poster", "type": "image", "bytes": 57683, "sha256": "eb3c5b4194df9c4563e78839fb4d2b5c5f48d014ed947669c17efc41da480306", "hint": "Still frame of the Ire launch film" },
     { "name": "ire-product", "type": "video", "bytes": 2988542, "sha256": "1c0a4937c1004b47f63535e433fb9984f6a4cb2fd2a9b2d1d29dd702675d544c", "hint": "Ire product film, the dark cinematic one (Tap. Paid.)" },
     { "name": "ire-product-poster", "type": "image", "bytes": 51967, "sha256": "4e1af1e575eb4a591a13a23dd22c383eb0d4494f78b50fa8f84a276ae120adf7", "hint": "Still frame of the Ire product film" },
-    { "name": "tandari-film", "type": "video", "bytes": 3000194, "sha256": "4f52dc7c874816cf225e2ee3bce208816d3fca77d02aa6e6622ef393bece5840", "hint": "Tandari brand film (Bring your people)" },
+    { "name": "tandari-film", "type": "video", "bytes": 43037879, "sha256": "e3a6364d80cce8837361dcb0924cda55b299e8f43333bf1ffaa9027a2248ac61", "hint": "Tandari brand film (Bring your people)" },
     { "name": "tandari-film-poster", "type": "image", "bytes": 67650, "sha256": "620a8af184c7f0a455d75b00298767d27f4f2a9809a248a0098d953c7986d558", "hint": "Still frame of the Tandari film" },
-    { "name": "showreel", "type": "video", "same_as": "tandari-film", "hint": "Home page showreel. Uses the Tandari film until a real studio showreel is cut" },
+    { "name": "showreel", "type": "video", "bytes": 44404105, "sha256": "a376a30f5576c719d420a95359bc1646017062f81aec73e1ddbe344b1cae9c1f", "hint": "Home page showreel. Uses the Tandari film until a real studio showreel is cut" },
     { "name": "showreel-poster", "type": "image", "same_as": "tandari-film-poster", "hint": "Poster for the showreel" },
 
     { "name": "afriment-cover", "type": "image", "bytes": 667534, "sha256": "a829c1791938d422576c24a912f9032884d783c3ee28e1c404244bbc2b4d15c7", "hint": "Afriment rebrand hero mockup, portrait 4:5" },
