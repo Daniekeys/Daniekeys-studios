@@ -161,6 +161,11 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <Section label="Brief" text={cs.brief} />
             <Section label="Challenge" text={cs.challenge} />
             <Section label="Approach" text={cs.approach} />
+            {cs.buyer && <Section label="Who buys" text={cs.buyer} />}
+            {cs.whySells && <Section label="Why it sells" text={cs.whySells} />}
+            {cs.measure && (
+              <Section label={cs.kind === "Own brand" ? "What we measure" : "What we'd measure"} text={cs.measure} />
+            )}
             {cs.result && <Section label="Result" text={cs.result} />}
           </div>
         </div>
