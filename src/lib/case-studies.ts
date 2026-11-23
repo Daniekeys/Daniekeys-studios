@@ -33,6 +33,10 @@ export type CaseStudy = {
   brief: string;
   challenge: string;
   approach: string;
+  // The selling: who buys, why the work makes them buy, and what we'd track.
+  buyer?: string;
+  whySells?: string;
+  measure?: string;
   // Only real results, and only once the client has said yes. Left out until then.
   result?: string;
   gallery: Block[];
@@ -59,6 +63,12 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Bakery branding is crowded with the same pastel script logos. Tej needed something warm and personal that still looked like a proper business, from the WhatsApp catalogue to the box on the table.",
     approach:
       "We built it around the moment itself. A warm serif wordmark with a rosette and a candle flame tucked into the j, a scalloped seal, a chocolate drip that frames posts and packaging, and a palette named after the table: Zobo Red, Cocoa, Vanilla Cream, Butter, Chin Chin Gold and Icing Blush. One line holds it together: Made for the moment.",
+    buyer:
+      "People ordering a cake for a moment that matters: a birthday, a wedding, a graduation. Most hear about Tej from a friend, then check her Instagram or WhatsApp before they trust her with the day.",
+    whySells:
+      "That check is where orders are won or lost. A wedding cake is a big risk, so the brand has to look like a business that won't let you down. A proper identity, a clear menu and three steps to order answer the two questions every buyer asks before paying: can I trust her, and how do I order? The chocolate drip and the seal make every post easy to recognise when it gets shared, so each happy customer advertises the next order.",
+    measure:
+      "Orders each month through the website form and WhatsApp, how many first-time buyers came from a share or a referral, and how many customers come back for the next birthday.",
     gallery: [
       { type: "full", media: image("tejs-cover", "Tej's Bakes cover: wordmark and scalloped shapes") },
       {
@@ -106,6 +116,12 @@ export const CASE_STUDIES: CaseStudy[] = [
       "People already knew Afriment by its blue. The new brand had to feel sharper and ready for hiring teams, without throwing that away.",
     approach:
       "We kept the blue and gave it a system. A clean wordmark with an orange full stop, and a constellation of linked points for people connecting to work. The story fits in three steps, Learn, Intern, Get hired, and it runs from the bus shelter to the homepage. The first round explored four routes in new colours before the final brand settled on the blue.",
+    buyer:
+      "Two buyers at once. Graduates and career switchers who want a job, not another certificate, and hiring teams who need people who can do the work from day one.",
+    whySells:
+      "Each side asks a different question. Talent asks, will this actually get me hired? Employers ask, are these people ready? Learn, Intern, Get hired answers both in three words, because it shows the path ends in a job. Keeping the blue protects the trust Afriment had already earned, and the sharper system makes it credible enough for a hiring manager to take the call.",
+    measure:
+      "Cohort sign-ups, how many trainees move into internships and jobs, and how many companies come back to hire from the next cohort.",
     gallery: [
       {
         type: "pair",
@@ -139,6 +155,12 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Creator platforms tend to look like generic tech. Tandari had to feel local and full of life, and still be clear enough to trust with a brief and a payment.",
     approach:
       "The mark is the bead T. Five beads, like the resist dots in Adire cloth or people coming together, line up into a T, and one bead is the AI spark. The palette is named after home: Danfo yellow, Adire indigo, Zobo pink and Palm green. The voice goes Pidgin first, and the film says it in three words: Bring your people.",
+    buyer:
+      "Marketing managers at Nigerian brands who want creator campaigns without chasing influencers in their DMs, and creators who want steady briefs and to be paid on time.",
+    whySells:
+      "On both sides the real objection is trust. Brands worry about wasted budget, and creators worry about not getting paid. A platform that looks like generic tech feels like it could disappear tomorrow. Tandari's loud, local brand shows it understands this market, and the product screens and brief box show how it works before anyone signs up. The copy speaks Pidgin first, in the creators' own voice, so they share it with each other.",
+    measure:
+      "Brand briefs posted, creator sign-ups, how fast a brief gets matched, and on-time payouts, which is the number creators will talk about most.",
     gallery: [
       { type: "full", media: image("tandari-identity", "Tandari identity overview"), ratio: "1600/1100" },
       { type: "full", media: image("tandari-brand-in-the-world", "Tandari creator kit, merch and moments"), ratio: "1600/1240" },
@@ -196,6 +218,12 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Money apps tend to look cold, or all the same shade of blue. Ire had to feel warm and confident, and each feature had to make sense in a few seconds of film.",
     approach:
       "We built a brand motion framework first: the ire wordmark and its striped mark, bold cards, and lime and lilac on a deep night purple. Then two films. The launch film walks through the system, from the cards to the website to the merch. The product film goes dark and cinematic: Money moves fast in Lagos. Your money, sorted.",
+    buyer:
+      "Young working Lagosians juggling rent, bills, ajo and side hustles. They already have a bank app, but they still run out before month end.",
+    whySells:
+      "Nobody switches money apps for a nicer colour. People switch when they believe a new app fixes a real problem. Each film shows one feature solving one Lagos problem in a few seconds, Jars for bills and Ajo for saving with friends, so the benefit lands before the viewer scrolls away. The warm brand feels trustworthy without looking like every other blue bank, and one feature per post gives every ad a clear reason why.",
+    measure:
+      "Downloads from each film and post, sign-ups completed, how many new users set up their first Jar or Ajo, and cost per install on paid ads.",
     gallery: [
       { type: "section", label: "Identity", text: "The ire wordmark and its striped mark, in every colourway, with the rules for using it." },
       { type: "full", media: image("ire-logo-variations", "Ire logo variations and usage"), ratio: "1600/1360" },
@@ -263,6 +291,12 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Gulf property branding leans on black, gold and towers. Everything looks the same, and none of it says home.",
     approach:
       "We built the brand around one picture: your own doorway, with the sun coming up over the Gulf behind it. Both As in Zaharyn are redrawn as pointed arches, and a gold sun rests on the crossbar. Limestone by day, Gulf Night after dark, no black anywhere. Every image is seen through the arch, and the voice stays calm: Everything, minutes away.",
+    buyer:
+      "Expat professionals working in Doha, and GCC families buying a second home by the sea. They compare many towers, often from abroad, before they ever book a visit.",
+    whySells:
+      "When every tower is sold with the same black, gold and skyline, buyers can't tell them apart, so they decide on price. Zaharyn gives them one reason to remember it. The doorway and the one window lighting up sell the feeling of coming home, not square metres. The film and the website let a buyer abroad walk through the place before they fly in, and the private viewing at sunrise turns interest into a booked visit, which is where property actually gets sold.",
+    measure:
+      "Private viewings booked, cost per lead from the film and the website, how many enquiries come from abroad, and how many viewings turn into reservations.",
     gallery: [
       { type: "full", media: image("zaharyn-identity", "Zaharyn wordmark with the Doorway mark and the Arabic name"), ratio: "2000/1188" },
       { type: "full", media: image("zaharyn-billboard", "Zaharyn billboard against a dusk sky"), ratio: "2000/1135" },
@@ -309,6 +343,12 @@ export const CASE_STUDIES: CaseStudy[] = [
       "The best studios let the work bring the colour. Our brand had to step back so client work could lead, and still be easy to spot on its own.",
     approach:
       "Two values and one grey: Paper, Ink and Stone. Newsreader Light for display, Geist for text and Geist Mono for labels. The mark is the arrow-key d, and the line is Press forward.",
+    buyer:
+      "Founders and marketing leads in Nigeria, the Gulf and the diaspora who want more customers, not just nicer design.",
+    whySells:
+      "A studio's own brand is the first piece of work a client judges. Ours stays quiet on purpose so the client work can do the selling, and every case study leads with who buys and why before it shows the visuals. Press forward is the promise: we move fast, and everything we make points at your next sale.",
+    measure:
+      "Enquiries from the website and our socials, how many become discovery calls, and how many calls become monthly retainers.",
     gallery: [
       { type: "pair", media: [image("daniekeys-ooh", "Daniekeys poster in a bus shelter at night"), image("daniekeys-merch", "Black hoodie with the small mark")] },
       { type: "line", text: "Press forward." },
