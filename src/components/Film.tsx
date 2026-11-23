@@ -6,7 +6,7 @@ import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 // quality the visitor's connection and the size of the frame can carry.
 const Film = forwardRef<
   HTMLVideoElement,
-  { stream: string; fallback: string; poster: string; label: string }
+  { stream?: string; fallback: string; poster: string; label: string }
 >(function Film({ stream, fallback, poster, label }, ref) {
   const inner = useRef<HTMLVideoElement>(null);
   useImperativeHandle(ref, () => inner.current as HTMLVideoElement);
@@ -19,6 +19,11 @@ const Film = forwardRef<
     let destroy = () => {};
 
     const start = async () => {
+      if (!stream) {
+        v.src = fallback; // a single file, played as it is
+        void v.play().catch(() => {});
+        return;
+      }
       const { default: Hls } = await import("hls.js/light");
       if (stopped) return;
       if (Hls.isSupported()) {

@@ -2,12 +2,11 @@
 
 import { useRef, useState } from "react";
 
-import { img, video, videoStream } from "@/lib/media";
-
 import Film from "./Film";
 
-// Home showreel. Plays muted on loop; the button turns the sound on from the start.
-export default function Showreel({ name }: { name: string }) {
+// Home showreel, served from public/showreel at full quality. Plays muted on loop;
+// the button turns the sound on from the start.
+export default function Showreel() {
   const ref = useRef<HTMLVideoElement>(null);
   const [sound, setSound] = useState(false);
 
@@ -24,9 +23,8 @@ export default function Showreel({ name }: { name: string }) {
     <div className="ph" style={{ aspectRatio: "16/9", position: "relative", background: "#111111" }}>
       <Film
         ref={ref}
-        stream={videoStream(name)}
-        fallback={video(name)}
-        poster={img(`${name}-poster`)}
+        fallback="/showreel/daniekeys-showreel-2026.mp4"
+        poster="/showreel/poster.jpg"
         label="Daniekeys Studios showreel"
       />
       <div
@@ -38,7 +36,7 @@ export default function Showreel({ name }: { name: string }) {
           justifyContent: "flex-end",
           padding: "clamp(18px,2.4cqw,36px)",
           color: "#F4F3EF",
-          // The reel is light (Tandari film), so give the button and label something dark to sit on.
+          // Give the button and label something dark to sit on, whatever frame is playing.
           background: "linear-gradient(to top, rgba(17,17,17,.5), rgba(17,17,17,0) 45%)",
           pointerEvents: "none",
         }}
