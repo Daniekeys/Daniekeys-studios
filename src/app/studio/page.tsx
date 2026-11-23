@@ -5,13 +5,16 @@ import MediaBox from "@/components/MediaBox";
 import { image } from "@/lib/media";
 
 export const metadata: Metadata = {
-  title: "Studio",
-  description: "Daniekeys Studios is a brand, web and film studio based in Ilorin, Nigeria, working worldwide.",
+  title: { absolute: "About Daniekeys Studios | AI Creative Studio in Nigeria" },
+  description:
+    "Daniekeys Studios is an AI-powered, remote-first creative and growth studio from Nigeria, helping businesses at home and abroad get more customers.",
+  alternates: { canonical: "/studio" },
 };
 
 const rule = "1px solid rgba(17,17,17,.14)";
 
 const VALUES = [
+  ["Results", "We judge our work by what it does for your business, not by how many likes it gets."],
   ["Clarity", "Say one thing well. Every brand we make can be explained in a sentence."],
   ["Craft", "Spacing, type and detail, checked against the best work in the world."],
   ["Forward", "Ship, learn, improve. Press forward is how we work, not just what we say."],
@@ -29,7 +32,7 @@ export default function StudioPage() {
       <section className="wrap" style={{ paddingTop: "clamp(72px,8cqw,140px)", paddingBottom: 100 }}>
         <span className="mono mut">The studio</span>
         <h1 className="serif xl" style={{ maxWidth: 1200, marginTop: 28 }}>
-          A small team with big-studio standards.
+          A small, AI-powered team that thinks like a sales team.
         </h1>
       </section>
 
@@ -45,8 +48,12 @@ export default function StudioPage() {
           <span className="mono mut">Who we are</span>
           <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
             <p className="serif m">
-              Daniekeys Studios is a brand, web and film studio based in Ilorin, Nigeria. We work with startups and
+              Daniekeys Studios is a remote-first creative and growth studio from Nigeria, working with startups and
               growing businesses at home and abroad.
+            </p>
+            <p className="s mut" style={{ maxWidth: 760 }}>
+              We noticed something. Businesses pay for logos, videos and websites, and sales don&apos;t move. The design
+              was never the real problem. So we start with your customers, then build.
             </p>
             <p className="s mut" style={{ maxWidth: 760 }}>
               We use AI across the whole process, from research to motion, so a small team can deliver what usually
@@ -115,9 +122,9 @@ export default function StudioPage() {
           <span className="mono mut">Where</span>
           <div className="g2">
             <div>
-              <p className="serif m">Ilorin, Nigeria</p>
+              <p className="serif m">Remote-first, from Nigeria</p>
               <p className="mut">
-                Local time <Clock />
+                Nigeria time <Clock />
               </p>
             </div>
             <div>

@@ -23,7 +23,7 @@ export function StartField({ style }: { style?: CSSProperties }) {
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="A new brand, a website, a launch film..."
+        placeholder="What you sell, and what's not working..."
         aria-label="Tell us about your project"
       />
       <button type="submit" aria-label="Continue to the contact form">

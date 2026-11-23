@@ -3,31 +3,101 @@ import Script from "next/script";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { ENTITY, SITE_URL, SOCIAL } from "@/lib/site";
 
 import "./globals.css";
 
-const SITE = "https://www.daniekeysstudios.com";
+const SITE = SITE_URL;
+const TITLE = "Daniekeys Studios | Branding, Video and Websites That Sell";
 const DESCRIPTION =
-  "Daniekeys Studios is a brand, web and film studio from Nigeria. We turn ambitious businesses into brands the world takes seriously.";
+  "AI-powered branding, video editing, motion, flyers, websites, UI/UX and social media management from Nigeria. We study your market first, then build creative that brings you customers.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: "Daniekeys Studios | Brand, web and film studio",
+    default: TITLE,
     template: "%s | Daniekeys Studios",
   },
   description: DESCRIPTION,
+  keywords: [
+    "branding agency in Nigeria",
+    "brand identity design Nigeria",
+    "logo design Nigeria",
+    "AI video production Nigeria",
+    "video editing Nigeria",
+    "motion graphics studio Africa",
+    "AI video ads",
+    "flyer design Nigeria",
+    "graphic design Lagos",
+    "website design Nigeria",
+    "website design Lagos",
+    "UI/UX design agency Nigeria",
+    "app design Nigeria",
+    "social media management Nigeria",
+    "creative agency Lagos",
+    "remote creative studio",
+    "product launch video",
+  ],
+  applicationName: "Daniekeys Studios",
+  authors: [{ name: "Daniekeys Studios", url: SITE }],
+  creator: "Daniekeys Studios",
   openGraph: {
-    title: "Daniekeys Studios",
+    title: TITLE,
     description: DESCRIPTION,
     url: SITE,
     siteName: "Daniekeys Studios",
     locale: "en_US",
     type: "website",
   },
-  twitter: { card: "summary_large_image", title: "Daniekeys Studios", description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
   alternates: { canonical: "/" },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-video-preview": -1 } },
   verification: { google: "j13HwmdDfAyxcRgD-X_KTTXJfqM2zKsNh1gRP0APgXc" },
+};
+
+// Organisation and website structured data, on every page.
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": `${SITE}/#org`,
+      name: "Daniekeys Studios",
+      url: SITE,
+      logo: `${SITE}/brand/daniekeys-studios.png`,
+      image: `${SITE}/brand/daniekeys-studios.png`,
+      description: ENTITY,
+      slogan: "Press forward.",
+      email: "daniel@daniekeysstudios.com",
+      telephone: "+2349030909624",
+      address: { "@type": "PostalAddress", addressCountry: "NG" },
+      areaServed: ["Nigeria", "United Arab Emirates", "United Kingdom", "Europe", "United States", "Africa"],
+      priceRange: "₦20,000 - ₦1,200,000",
+      founder: { "@type": "Person", name: "Daniel Ayeni" },
+      knowsAbout: [
+        "Brand identity",
+        "Logo design",
+        "AI video production",
+        "Video editing",
+        "Motion graphics",
+        "Graphic design",
+        "Flyer design",
+        "Website design",
+        "UI/UX design",
+        "Social media management",
+        "Marketing strategy",
+      ],
+      sameAs: SOCIAL.map((s) => s.href),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      url: SITE,
+      name: "Daniekeys Studios",
+      publisher: { "@id": `${SITE}/#org` },
+      inLanguage: "en",
+    },
+  ],
 };
 
 export const viewport: Viewport = {
@@ -50,6 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
         <div className="dk">
           <Header />
           <main>{children}</main>

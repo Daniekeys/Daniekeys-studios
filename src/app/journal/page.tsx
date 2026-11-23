@@ -4,7 +4,8 @@ import JournalList from "@/components/JournalList";
 
 export const metadata: Metadata = {
   title: "Journal",
-  description: "Studio notes, process and case notes from Daniekeys Studios.",
+  description: "Notes on branding, video, websites and getting more customers, from Daniekeys Studios.",
+  alternates: { canonical: "/journal" },
 };
 
 export default function JournalPage() {

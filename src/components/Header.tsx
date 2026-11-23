@@ -36,7 +36,7 @@ export default function Header() {
           <div className="clock top">
             <i />
             <span>
-              Ilorin <Clock />
+              Nigeria <Clock />
             </span>
           </div>
           <button className="menu" type="button" onClick={() => setOpen(true)} aria-expanded={open}>
@@ -65,7 +65,7 @@ export default function Header() {
           <div className="wrap" style={{ marginTop: "auto", paddingBottom: 32, display: "flex", justifyContent: "space-between", fontSize: 13 }}>
             <span className="serif" style={{ fontSize: 20 }}>Press forward.</span>
             <span style={{ opacity: 0.6 }}>
-              Ilorin <Clock />
+              Nigeria <Clock />
             </span>
           </div>
         </div>
